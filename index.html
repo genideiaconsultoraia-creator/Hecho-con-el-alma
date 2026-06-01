@@ -2542,8 +2542,8 @@ body.user-buyer .gallery-login-bar{display:none}
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
             <div class="art-hover">
-              <button class="btn btn-gold" data-action="cart" data-idx="0">Agregar al carrito</button>
-              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" data-action="buy" data-idx="0">Comprar ahora →</button>
+              <button class="btn btn-gold" onclick="addToCart(0)">Agregar al carrito</button>
+              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" onclick="openPurchaseModal(0)">Comprar ahora →</button>
             </div>
           </div>
           <div class="art-info">
@@ -2602,8 +2602,8 @@ body.user-buyer .gallery-login-bar{display:none}
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
             <div class="art-hover">
-              <button class="btn btn-gold" data-action="cart" data-idx="2">Agregar al carrito</button>
-              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" data-action="buy" data-idx="2">Comprar ahora →</button>
+              <button class="btn btn-gold" onclick="addToCart(2)">Agregar al carrito</button>
+              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" onclick="openPurchaseModal(2)">Comprar ahora →</button>
             </div>
           </div>
           <div class="art-info">
@@ -2650,8 +2650,8 @@ body.user-buyer .gallery-login-bar{display:none}
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
             <div class="art-hover">
-              <button class="btn btn-gold" data-action="cart" data-idx="4">Agregar al carrito</button>
-              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" data-action="buy" data-idx="4">Comprar ahora →</button>
+              <button class="btn btn-gold" onclick="addToCart(4)">Agregar al carrito</button>
+              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" onclick="openPurchaseModal(4)">Comprar ahora →</button>
             </div>
           </div>
           <div class="art-info">
@@ -4199,7 +4199,19 @@ let purchaseIdx   = -1;
 
 // ══ CART ════════════════════════════════════
 
+function requireAuth(callback) {
+  // Si no hay sesión activa, abre el modal de login y registra el callback para después
+  if (!_currentUser) {
+    _pendingAction = callback;
+    openAuthModal();
+    return false;
+  }
+  return true;
+}
+var _pendingAction = null; // acción pendiente hasta que el usuario se loguee
+
 function addToCart(idx) {
+  if (!requireAuth(function(){ addToCart(idx); })) return;
   const d = artworkData[idx];
   if (!d || !d.compra) return;
   if (cart.find(i => i.idx === idx)) { openCart(); return; }
@@ -4251,6 +4263,7 @@ function renderCartBody() {
 }
 
 function toggleCart() {
+  if (!requireAuth(function(){ toggleCart(); })) return;
   document.getElementById('cart-drawer').classList.contains('open') ? closeCart() : openCart();
 }
 function openCart() {
@@ -4280,6 +4293,7 @@ function selectDelivery(mode) {
 }
 
 function openPurchaseModal(idx) {
+  if (!requireAuth(function(){ openPurchaseModal(idx); })) return;
   try {
     purchaseIdx  = idx;
     purchaseStep = 1;
@@ -4883,6 +4897,7 @@ function doRegister() {
   closeAuthModal();
   updateNavForUser(user);
   updateDashboardForUser(user);
+  _dispatchPendingAction();
   showView('dashboard-buyer');
 }
 
@@ -4904,6 +4919,7 @@ function demoLogin(type) {
   closeAuthModal();
   updateNavForUser(user);
   updateDashboardForUser(user);
+  _dispatchPendingAction();
   showView('dashboard-' + user.type);
 }
 
@@ -4920,7 +4936,16 @@ function doLogin() {
   closeAuthModal();
   updateNavForUser(user);
   updateDashboardForUser(user);
+  _dispatchPendingAction();
   showView('dashboard-' + user.type);
+}
+
+function _dispatchPendingAction() {
+  if (_pendingAction) {
+    var fn = _pendingAction;
+    _pendingAction = null;
+    setTimeout(fn, 300); // pequeño delay para que el modal cierre primero
+  }
 }
 
 function doLogout() {
