@@ -1901,7 +1901,7 @@ body.user-buyer .gallery-login-bar{display:none}
         <div class="aj-benefits">
           <div class="aj-benefit"><div class="aj-check">✓</div>Sin costo fijo — comisión solo cuando se concreta una venta</div>
           <div class="aj-benefit"><div class="aj-check">✓</div>Perfil artístico completo y curado</div>
-          <div class="aj-benefit"><div class="aj-check">✓</div>Talleres pre-grabados publicados bajo tu nombre</div>
+          <div class="aj-benefit"><div class="aj-check">✓</div>Talleres online publicados bajo tu nombre <span style="font-size:.75rem;color:rgba(245,240,232,.35)">(requiere Zoom Plus activo)</span></div>
           <div class="aj-benefit"><div class="aj-check">✓</div>Visibilidad en redes de HcEA</div>
           <div class="aj-benefit"><div class="aj-check">✓</div>Protección de derechos de autor (Ley 9.739)</div>
         </div>
@@ -2943,7 +2943,7 @@ body.user-buyer .gallery-login-bar{display:none}
             </div>
             <div class="tcard-meta-row">
               <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              100% online · Zoom + materiales guía
+              100% online · Zoom Plus + materiales guía
             </div>
             <div class="tcard-meta-row">
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -2979,7 +2979,7 @@ body.user-buyer .gallery-login-bar{display:none}
             </div>
             <div class="tcard-meta-row">
               <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              Virtual · Desde cualquier lugar
+              Virtual · Zoom Plus · Desde cualquier lugar
             </div>
             <div class="tcard-meta-row">
               <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -3354,6 +3354,18 @@ body.user-buyer .gallery-login-bar{display:none}
             <div class="pm-art-sub" id="pm-sub-3">—</div>
           </div>
           <div class="pm-art-price-val" id="pm-price-3">—</div>
+        </div>
+        <!-- Desglose comisión -->
+        <div id="pm-split-box" style="border:1px solid rgba(0,0,0,.08);background:#fafaf8;padding:1.2rem 1.4rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--muted)">
+          <div style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--subtle);margin-bottom:.75rem">Distribución del pago</div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
+            <span>Artista recibe <span style="color:var(--gold-text);font-size:.65rem">(70%)</span></span>
+            <strong id="pm-split-artista" style="color:var(--text)">—</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding-top:.4rem;border-top:1px solid rgba(0,0,0,.06)">
+            <span>Hecho con el Alma <span style="color:var(--gold-text);font-size:.65rem">(30%)</span></span>
+            <strong id="pm-split-hcea" style="color:var(--text)">—</strong>
+          </div>
         </div>
         <div class="pm-mp-box">
           <div class="pm-mp-logo">Mercado<span>Pago</span></div>
@@ -3934,10 +3946,10 @@ function calcROI() {
   const precio = parseFloat(document.getElementById('roi-precio').value) || 0;
   const obras  = parseFloat(document.getElementById('roi-obras').value) || 0;
   const bruto  = precio * obras;
-  const comisionExternal = bruto * 0.35; // plataformas del mercado masivo
-  // HcEA max plan = USD 75/mes, no comisión por venta
-  const costoPlan = 75;
-  const ahorro = (comisionExternal - costoPlan) * 12; // anual
+  const comisionExternal = bruto * 0.35; // plataformas masivas (Saatchi, Artsy)
+  // HcEA: 30% comisión solo cuando se vende, sin costo fijo mensual
+  const comisionHcea = bruto * 0.30;
+  const ahorro = Math.round(comisionExternal - comisionHcea); // ahorro vs plataformas masivas
 
   document.getElementById('roi-bruto').textContent    = 'USD ' + Math.round(bruto).toLocaleString('es');
   document.getElementById('roi-comision').textContent = 'USD ' + Math.round(comisionExternal).toLocaleString('es');
@@ -4071,11 +4083,26 @@ function _fillPurchaseSummary(idx) {
   if (c1) c1.textContent = 'USD ' + p;
   if (c3) c3.textContent = 'USD ' + Math.round(p / 3);
   if (c6) c6.textContent = 'USD ' + Math.round(p / 6);
+  // split comisión 30/70
+  const HCEA_COMMISSION = 0.30;
+  const hcea    = Math.round(p * HCEA_COMMISSION);
+  const artista = p - hcea;
+  const splitArtista = document.getElementById('pm-split-artista');
+  const splitHcea    = document.getElementById('pm-split-hcea');
+  if (splitArtista) splitArtista.textContent = 'USD ' + artista;
+  if (splitHcea)    splitHcea.textContent    = 'USD ' + hcea;
 }
 
 function goToMP() {
-  // En producción: POST → backend → crear preferencia MP → redirigir a init_point
-  // Prototipo: muestra estado de éxito
+  // ══ PRODUCCIÓN — MP Marketplace (split automático 30/70) ══════════════════
+  // 1. POST /api/create-preference con { obra_id, buyer_email, price }
+  // 2. Backend crea preferencia con:
+  //    - marketplace_fee: price * 0.30  (HcEA recibe el 30% automáticamente)
+  //    - collector_id: artista.mp_account_id  (artista recibe el 70%)
+  //    - Artista debe tener cuenta MP vinculada al Marketplace de HcEA via OAuth
+  // 3. MP devuelve init_point → window.location.href = init_point
+  // ─────────────────────────────────────────────────────────────────────────
+  // PROTOTIPO: simula éxito
   document.getElementById('pm-mp-content').style.display = 'none';
   document.getElementById('pm-mp-success').style.display = 'block';
 }
