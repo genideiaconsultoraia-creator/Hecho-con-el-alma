@@ -6,6 +6,7 @@
 <title>Hecho con el Alma — Arte Uruguayo Curado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -4814,6 +4815,36 @@ document.addEventListener('DOMContentLoaded', function() {
 })();
 
 // ══════════════════════════════════════════
+// SUPABASE — cliente real
+// ══════════════════════════════════════════
+var _sb = window.supabase.createClient(
+  'https://fqtwvylhceieunomokzt.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxdHd2eWxoY2VpZXVub21va3p0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMzU5NjcsImV4cCI6MjA5NTkxMTk2N30.cuEJqcVk6TsNncb3qQ38YJiGa_T08jjyivpqty_mx8Y'
+);
+
+// Listener de cambios de sesión — dispara en login, logout y al cargar la página
+_sb.auth.onAuthStateChange(async function(event, session) {
+  if (session && session.user) {
+    // Cargar perfil desde la DB
+    var res = await _sb.from('profiles').select('*').eq('id', session.user.id).single();
+    var profile = res.data;
+    _currentUser = {
+      type:  profile ? profile.tipo : 'buyer',
+      name:  profile ? (profile.nombre || session.user.email.split('@')[0]) : session.user.email.split('@')[0],
+      plan:  null,
+      email: session.user.email,
+      id:    session.user.id
+    };
+    updateNavForUser(_currentUser);
+    updateDashboardForUser(_currentUser);
+    _dispatchPendingAction();
+  } else {
+    _currentUser = null;
+    updateNavForUser(null);
+  }
+});
+
+// ══════════════════════════════════════════
 // AUTH SYSTEM
 // ══════════════════════════════════════════
 var _authType = 'buyer';
@@ -4861,7 +4892,7 @@ function switchAuthMode(mode) {
 
   if (mode === 'register') {
     if (nameField)   nameField.style.display = '';
-    if (passField)   passField.style.display = 'none';
+    if (passField)   passField.style.display = ''; // contraseña requerida en registro
     if (submitBtn)   submitBtn.textContent = 'Crear mi cuenta gratis';
     if (backLink)    backLink.style.display = 'inline-block';
     if (sepLabel)    sepLabel.textContent = 'completá tus datos';
@@ -4883,61 +4914,78 @@ function handleAuthSubmit() {
   if (_authMode === 'register') { doRegister(); } else { doLogin(); }
 }
 
-function doRegister() {
+async function doRegister() {
   var nameEl  = document.getElementById('authName');
   var emailEl = document.getElementById('authEmail');
-  var name    = nameEl  ? nameEl.value.trim()  : '';
-  var email   = emailEl ? emailEl.value.trim()  : '';
-  if (!name)  { if (nameEl)  nameEl.focus();  return; }
-  if (!email) { if (emailEl) emailEl.focus(); return; }
-  var displayName = name.replace(/\b\w/g, function(c){ return c.toUpperCase(); });
-  var user = { type:'buyer', name:displayName, plan:null };
-  try { localStorage.setItem('hcea_user', JSON.stringify(user)); } catch(e){}
-  _currentUser = user;
+  var passEl  = document.getElementById('authPassword');
+  var nombre  = nameEl  ? nameEl.value.trim()  : '';
+  var email   = emailEl ? emailEl.value.trim().toLowerCase() : '';
+  var pass    = passEl  ? passEl.value : '';
+  if (!nombre) { if (nameEl) nameEl.focus(); return; }
+  if (!email)  { if (emailEl) emailEl.focus(); return; }
+  if (!pass || pass.length < 6) {
+    // En modo registro necesitamos contraseña — mostrar el campo si está oculto
+    if (passEl) { passEl.closest('.auth-field').style.display=''; passEl.focus(); }
+    alert('Ingresá una contraseña de al menos 6 caracteres.');
+    return;
+  }
+  var submitBtn = document.getElementById('authSubmitBtn');
+  if (submitBtn) submitBtn.textContent = 'Creando cuenta...';
+  var res = await _sb.auth.signUp({
+    email: email,
+    password: pass,
+    options: { data: { tipo: 'buyer', nombre: nombre } }
+  });
+  if (res.error) {
+    if (submitBtn) submitBtn.textContent = 'Crear mi cuenta gratis';
+    alert('Error: ' + res.error.message);
+    return;
+  }
+  // onAuthStateChange maneja el resto
   closeAuthModal();
-  updateNavForUser(user);
-  updateDashboardForUser(user);
-  _dispatchPendingAction();
-  showView('dashboard-buyer');
 }
-
-var DEMO_USERS = {
-  'artista@demo.com':   { type:'artist', name:'Maria Fontana',  plan:'Estandar' },
-  'maria@demo.com':     { type:'artist', name:'Maria Fontana',  plan:'Estandar' },
-  'lucas@demo.com':     { type:'artist', name:'Lucas Vera',     plan:'Premium' },
-  'valentina@demo.com': { type:'artist', name:'Valentina Rios', plan:'Basico' },
-  'comprador@demo.com': { type:'buyer',  name:'Sofia Mendez',   plan:null },
-  'sofia@demo.com':     { type:'buyer',  name:'Sofia Mendez',   plan:null },
-};
 
 function demoLogin(type) {
-  var user = type === 'artist'
-    ? { type:'artist', name:'Maria Fontana', plan:'Estandar' }
-    : { type:'buyer',  name:'Sofia Mendez',  plan:null };
-  try { localStorage.setItem('hcea_user', JSON.stringify(user)); } catch(e){}
-  _currentUser = user;
+  // Acceso demo rápido — solo para testing interno
+  var demoEmails = {
+    artist: { email:'artista@demo.com', pass:'demo123456' },
+    buyer:  { email:'comprador@demo.com', pass:'demo123456' }
+  };
+  var creds = demoEmails[type] || demoEmails.buyer;
+  _sb.auth.signInWithPassword({ email: creds.email, password: creds.pass }).then(function(res) {
+    if (res.error) {
+      // Si el demo user no existe en Supabase, crear sesión local temporal
+      var user = type === 'artist'
+        ? { type:'artist', name:'María Fontana (demo)', plan:'Estandar' }
+        : { type:'buyer',  name:'Sofía Méndez (demo)',  plan:null };
+      _currentUser = user;
+      closeAuthModal();
+      updateNavForUser(user);
+      updateDashboardForUser(user);
+      _dispatchPendingAction();
+      showView('dashboard-' + user.type);
+    }
+  });
   closeAuthModal();
-  updateNavForUser(user);
-  updateDashboardForUser(user);
-  _dispatchPendingAction();
-  showView('dashboard-' + user.type);
 }
 
-function doLogin() {
-  var email = (document.getElementById('authEmail') ? document.getElementById('authEmail').value : '').trim().toLowerCase();
-  if (!email) { var e=document.getElementById('authEmail'); if(e)e.focus(); return; }
-  var user = DEMO_USERS[email] || {
-    type: _authType,
-    name: email.split('@')[0].replace(/[._-]/g,' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); }),
-    plan: _authType === 'artist' ? 'Basico' : null
-  };
-  try { localStorage.setItem('hcea_user', JSON.stringify(user)); } catch(e){}
-  _currentUser = user;
+async function doLogin() {
+  var emailEl = document.getElementById('authEmail');
+  var passEl  = document.getElementById('authPassword');
+  var email   = emailEl ? emailEl.value.trim().toLowerCase() : '';
+  var pass    = passEl  ? passEl.value : '';
+  if (!email) { if (emailEl) emailEl.focus(); return; }
+  if (!pass)  { if (passEl)  passEl.focus();  return; }
+  var submitBtn = document.getElementById('authSubmitBtn');
+  if (submitBtn) submitBtn.textContent = 'Ingresando...';
+  var res = await _sb.auth.signInWithPassword({ email: email, password: pass });
+  if (res.error) {
+    if (submitBtn) submitBtn.textContent = 'Ingresar a mi cuenta';
+    alert('Email o contraseña incorrectos.');
+    return;
+  }
+  // onAuthStateChange maneja el resto
   closeAuthModal();
-  updateNavForUser(user);
-  updateDashboardForUser(user);
-  _dispatchPendingAction();
-  showView('dashboard-' + user.type);
 }
 
 function _dispatchPendingAction() {
@@ -4948,8 +4996,8 @@ function _dispatchPendingAction() {
   }
 }
 
-function doLogout() {
-  try { localStorage.removeItem('hcea_user'); } catch(e){}
+async function doLogout() {
+  await _sb.auth.signOut();
   _currentUser = null;
   updateNavForUser(null);
   showView('home');
