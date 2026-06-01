@@ -1450,22 +1450,22 @@ body.user-buyer .gallery-login-bar{display:none}
     </div>
     <div class="auth-body">
 
-      <!-- Acceso rapido (demo) -->
-      <div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,26,26,.38);margin-bottom:.55rem">Acceso rapido</div>
-      <div class="auth-quick">
-        <button class="auth-quick-btn" onclick="demoLogin('buyer')">
-          <span class="auth-quick-lbl">Comprador</span>
-          <span class="auth-quick-name">Sofía Mendez</span>
-          <span class="auth-quick-role">Ver galería + dashboard</span>
-        </button>
-        <button class="auth-quick-btn" onclick="demoLogin('artist')">
-          <span class="auth-quick-lbl">Artista</span>
-          <span class="auth-quick-name">Maria Fontana</span>
-          <span class="auth-quick-role">Ver panel de artista</span>
-        </button>
+      <!-- Acceso rapido (demo) — oculto en produccion, solo para testing interno -->
+      <div id="auth-demo-block" style="display:none">
+        <div style="font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,26,26,.38);margin-bottom:.55rem">Acceso demo</div>
+        <div class="auth-quick">
+          <button class="auth-quick-btn" onclick="demoLogin('buyer')">
+            <span class="auth-quick-lbl">Comprador</span>
+            <span class="auth-quick-name">Sofía Mendez</span>
+            <span class="auth-quick-role">Ver galería + dashboard</span>
+          </button>
+          <button class="auth-quick-btn" onclick="demoLogin('artist')">
+            <span class="auth-quick-lbl">Artista</span>
+            <span class="auth-quick-name">Maria Fontana</span>
+            <span class="auth-quick-role">Ver panel de artista</span>
+          </button>
+        </div>
       </div>
-
-      <div class="auth-sep" id="authSepLabel">o ingresá con tu email</div>
 
       <!-- Campo nombre (solo en modo registro) -->
       <div class="auth-field auth-register-only" id="authNameField" style="display:none">
@@ -4871,11 +4871,11 @@ function setAuthType(type) {
   var ba = document.getElementById('authTypeArtista');
   if (bc) bc.classList.toggle('active', type === 'buyer');
   if (ba) ba.classList.toggle('active', type === 'artist');
-  // Mostrar el camino correcto en el footer
+  // Mostrar el camino correcto en el footer — usar inline style para evitar conflicto con CSS
   var pathBuyer  = document.getElementById('auth-path-buyer');
   var pathArtist = document.getElementById('auth-path-artist');
-  if (pathBuyer)  pathBuyer.classList.toggle('active', type === 'buyer');
-  if (pathArtist) pathArtist.classList.toggle('active', type === 'artist');
+  if (pathBuyer)  { pathBuyer.style.display  = type === 'buyer'  ? 'block' : 'none'; }
+  if (pathArtist) { pathArtist.style.display = type === 'artist' ? 'block' : 'none'; }
   // Si cambia a artista estando en registro, volver a login
   if (type === 'artist' && _authMode === 'register') switchAuthMode('login');
 }
@@ -4906,7 +4906,11 @@ function switchAuthMode(mode) {
     if (backLink)    backLink.style.display = 'none';
     if (sepLabel)    sepLabel.textContent = 'o ingresá con tu email';
     if (headerTitle) headerTitle.textContent = 'Accedé a tu cuenta';
-    if (pathBuyer)   pathBuyer.style.display = _authType === 'buyer' ? 'block' : 'none';
+    // Mostrar el path correcto según tipo activo
+    var pathBuyerL  = document.getElementById('auth-path-buyer');
+    var pathArtistL = document.getElementById('auth-path-artist');
+    if (pathBuyerL)  pathBuyerL.style.display  = _authType === 'buyer'  ? 'block' : 'none';
+    if (pathArtistL) pathArtistL.style.display = _authType === 'artist' ? 'block' : 'none';
   }
 }
 
