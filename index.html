@@ -6,7 +6,6 @@
 <title>Hecho con el Alma — Arte Uruguayo Curado</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -3631,6 +3630,8 @@ body.user-buyer .gallery-login-bar{display:none}
   </div>
 </div>
 
+<!-- Supabase SDK — debe cargar ANTES del script principal -->
+<script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 // ══ VIEWS ══════════════════════════════════
 const VIEWS = ['home','galeria','artistas','talleres','evento','dashboard-buyer','dashboard-artist'];
