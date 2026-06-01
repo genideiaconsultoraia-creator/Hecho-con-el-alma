@@ -4928,25 +4928,36 @@ async function doRegister() {
   if (!nombre) { if (nameEl) nameEl.focus(); return; }
   if (!email)  { if (emailEl) emailEl.focus(); return; }
   if (!pass || pass.length < 6) {
-    // En modo registro necesitamos contraseña — mostrar el campo si está oculto
-    if (passEl) { passEl.closest('.auth-field').style.display=''; passEl.focus(); }
     alert('Ingresá una contraseña de al menos 6 caracteres.');
     return;
   }
   var submitBtn = document.getElementById('authSubmitBtn');
   if (submitBtn) submitBtn.textContent = 'Creando cuenta...';
-  var res = await _sb.auth.signUp({
-    email: email,
-    password: pass,
-    options: { data: { tipo: 'buyer', nombre: nombre } }
-  });
-  if (res.error) {
+  try {
+    var res = await _sb.auth.signUp({
+      email: email,
+      password: pass,
+      options: { data: { tipo: 'buyer', nombre: nombre } }
+    });
+    if (res.error) {
+      if (submitBtn) submitBtn.textContent = 'Crear mi cuenta gratis';
+      var msg = res.error.message;
+      if (msg.includes('already registered')) msg = 'Este email ya tiene una cuenta. Ingresá con tu contraseña.';
+      alert(msg);
+      return;
+    }
+    // Si requiere confirmación de email
+    if (res.data && res.data.user && !res.data.session) {
+      closeAuthModal();
+      alert('¡Cuenta creada! Revisá tu bandeja de entrada para confirmar el email.');
+      return;
+    }
+    // Login inmediato (sin confirmación de email)
+    closeAuthModal();
+  } catch(err) {
     if (submitBtn) submitBtn.textContent = 'Crear mi cuenta gratis';
-    alert('Error: ' + res.error.message);
-    return;
+    alert('Error al crear la cuenta: ' + err.message);
   }
-  // onAuthStateChange maneja el resto
-  closeAuthModal();
 }
 
 function demoLogin(type) {
