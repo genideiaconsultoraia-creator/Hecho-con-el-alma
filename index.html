@@ -4094,19 +4094,23 @@ function submitContactForm() {
 
 // ══ ROI CALCULATOR ════════════════════════
 function calcROI() {
-  const precio = parseFloat(document.getElementById('roi-precio').value) || 0;
-  const obras  = parseFloat(document.getElementById('roi-obras').value) || 0;
+  const precioEl  = document.getElementById('roi-precio');
+  const obrasEl   = document.getElementById('roi-obras');
+  const brutoEl   = document.getElementById('roi-bruto');
+  const comisEl   = document.getElementById('roi-comision');
+  const ahorroEl  = document.getElementById('roi-ahorro');
+  if (!precioEl || !obrasEl) return; // sección ROI no presente en esta vista
+  const precio = parseFloat(precioEl.value) || 0;
+  const obras  = parseFloat(obrasEl.value)  || 0;
   const bruto  = precio * obras;
   const comisionExternal = bruto * 0.35; // plataformas masivas (Saatchi, Artsy)
-  // HcEA: 30% comisión solo cuando se vende, sin costo fijo mensual
-  const comisionHcea = bruto * 0.30;
-  const ahorro = Math.round(comisionExternal - comisionHcea); // ahorro vs plataformas masivas
-
-  document.getElementById('roi-bruto').textContent    = 'USD ' + Math.round(bruto).toLocaleString('es');
-  document.getElementById('roi-comision').textContent = 'USD ' + Math.round(comisionExternal).toLocaleString('es');
-  document.getElementById('roi-ahorro').textContent   = ahorro > 0 ? 'USD ' + Math.round(ahorro).toLocaleString('es') : '— sin ahorro';
+  const comisionHcea     = bruto * 0.30; // HcEA: 30% solo cuando se vende
+  const ahorro = Math.round(comisionExternal - comisionHcea);
+  if (brutoEl)  brutoEl.textContent  = 'USD ' + Math.round(bruto).toLocaleString('es');
+  if (comisEl)  comisEl.textContent  = 'USD ' + Math.round(comisionExternal).toLocaleString('es');
+  if (ahorroEl) ahorroEl.textContent = ahorro > 0 ? 'USD ' + Math.round(ahorro).toLocaleString('es') : '— sin ahorro';
 }
-calcROI(); // init
+calcROI(); // init — con null guards, no tira error si la sección no existe
 
 // ══ NAVIGATE + FILTER HELPERS ════════════
 function showViewAndSearch(view, query) {
@@ -4165,8 +4169,13 @@ function showViewAndFilterTalleres(artistaVal) {
 }
 
 // ══ PURCHASE MODAL ════════════════════════
+// ══ VARIABLES GLOBALES — deben inicializarse antes de cualquier call ═════
+let cart          = [];
+let deliveryMode  = 'retiro';
+let purchaseStep  = 1;
+let purchaseIdx   = -1;
+
 // ══ CART ════════════════════════════════════
-let cart = [];
 
 function addToCart(idx) {
   const d = artworkData[idx];
@@ -4240,8 +4249,6 @@ function checkoutCart() {
 }
 
 // ══ DELIVERY ════════════════════════════════
-let deliveryMode = 'retiro';
-
 function selectDelivery(mode) {
   deliveryMode = mode;
   document.getElementById('pm-del-retiro').classList.toggle('active', mode === 'retiro');
@@ -4249,9 +4256,6 @@ function selectDelivery(mode) {
   document.getElementById('pm-retiro-fields').style.display = mode === 'retiro' ? '' : 'none';
   document.getElementById('pm-envio-fields').style.display = mode === 'envio' ? '' : 'none';
 }
-
-let purchaseStep = 1;
-let purchaseIdx  = -1;
 
 function openPurchaseModal(idx) {
   purchaseIdx  = idx;
