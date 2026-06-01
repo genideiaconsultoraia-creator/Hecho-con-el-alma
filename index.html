@@ -291,7 +291,7 @@ nav .btn-gold{font-size:.68rem;padding:.65rem 1.5rem}
 .art-badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--black);font-size:.58rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;padding:.28rem .7rem}
 .art-badge-sold{background:rgba(26,26,26,.7);color:rgba(245,240,232,.6)}
 .art-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.9rem;color:rgba(245,240,232,.22);font-style:italic;text-align:center;padding:1.5rem}
-.art-hover{position:absolute;inset:0;background:rgba(12,12,12,.75);display:flex;align-items:center;justify-content:center;opacity:0;transition:var(--tr)}
+.art-hover{position:absolute;inset:0;background:rgba(12,12,12,.75);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;opacity:0;transition:var(--tr);z-index:3}
 .artwork:hover .art-hover{opacity:1}
 .art-info{padding:1.4rem 1.4rem 2rem}
 .art-artist{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);margin-bottom:.35rem}
@@ -2541,7 +2541,10 @@ body.user-buyer .gallery-login-bar{display:none}
             <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Sinfonía de la Tierra')">
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
-            <div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openPurchaseModal(0)">Comprar ahora</button></div>
+            <div class="art-hover">
+              <button class="btn btn-gold" data-action="cart" data-idx="0">Agregar al carrito</button>
+              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" data-action="buy" data-idx="0">Comprar ahora →</button>
+            </div>
           </div>
           <div class="art-info">
             <div class="art-artist">María Fontana</div>
@@ -2559,7 +2562,6 @@ body.user-buyer .gallery-login-bar{display:none}
                 <div class="art-purchase-tag">Compra web</div>
               </div>
             </div>
-            <button class="btn btn-gold art-cart-btn" onclick="event.stopPropagation();addToCart(0)">Agregar al carrito</button>
             <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-0">— consultas esta semana</span></div>
           </div>
         </div>
@@ -2599,7 +2601,10 @@ body.user-buyer .gallery-login-bar{display:none}
             <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Raíces Doradas')">
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
-            <div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openPurchaseModal(2)">Comprar ahora</button></div>
+            <div class="art-hover">
+              <button class="btn btn-gold" data-action="cart" data-idx="2">Agregar al carrito</button>
+              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" data-action="buy" data-idx="2">Comprar ahora →</button>
+            </div>
           </div>
           <div class="art-info">
             <div class="art-artist">Valentina Ríos</div>
@@ -2617,7 +2622,6 @@ body.user-buyer .gallery-login-bar{display:none}
                 <div class="art-purchase-tag">Compra web</div>
               </div>
             </div>
-            <button class="btn btn-gold art-cart-btn" onclick="event.stopPropagation();addToCart(2)">Agregar al carrito</button>
             <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-2">— consultas esta semana</span></div>
           </div>
         </div>
@@ -2645,7 +2649,10 @@ body.user-buyer .gallery-login-bar{display:none}
             <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Memorias del Sur')">
               <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </button>
-            <div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openPurchaseModal(4)">Comprar ahora</button></div>
+            <div class="art-hover">
+              <button class="btn btn-gold" data-action="cart" data-idx="4">Agregar al carrito</button>
+              <button class="btn btn-light" style="font-size:.65rem;padding:.5rem 1.4rem" data-action="buy" data-idx="4">Comprar ahora →</button>
+            </div>
           </div>
           <div class="art-info">
             <div class="art-artist">María Fontana</div>
@@ -2663,7 +2670,6 @@ body.user-buyer .gallery-login-bar{display:none}
                 <div class="art-purchase-tag">Compra web</div>
               </div>
             </div>
-            <button class="btn btn-gold art-cart-btn" onclick="event.stopPropagation();addToCart(4)">Agregar al carrito</button>
             <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-4">— consultas esta semana</span></div>
           </div>
         </div>
@@ -4053,15 +4059,31 @@ function handleModalOverlayClick(e) {
   if (e.target === document.getElementById('artwork-modal-overlay')) closeArtworkModal();
 }
 
-// Wire artwork clicks
-document.querySelectorAll('#gallery-grid .artwork').forEach((el, i) => {
-  el.style.cursor = 'pointer';
-  el.addEventListener('click', (e) => {
-    // Don't open modal if clicking a link/button inside
+// Wire artwork clicks — delegated en la grid completa
+var galleryGrid = document.getElementById('gallery-grid');
+if (galleryGrid) {
+  galleryGrid.addEventListener('click', function(e) {
+    // Botones data-action: carrito o compra directa
+    var actionBtn = e.target.closest('[data-action]');
+    if (actionBtn) {
+      e.stopPropagation();
+      var idx = parseInt(actionBtn.dataset.idx);
+      var action = actionBtn.dataset.action;
+      if (action === 'cart') { addToCart(idx); return; }
+      if (action === 'buy')  { openPurchaseModal(idx); return; }
+    }
+    // Click en el card (no en link/button): abre modal de obra
     if (e.target.closest('a,button')) return;
-    openArtworkModal(i);
+    var artworkEl = e.target.closest('.artwork');
+    if (!artworkEl) return;
+    var cards = Array.from(galleryGrid.querySelectorAll('.artwork'));
+    var i = cards.indexOf(artworkEl);
+    if (i >= 0) openArtworkModal(i);
   });
-});
+  galleryGrid.querySelectorAll('.artwork').forEach(function(el) {
+    el.style.cursor = 'pointer';
+  });
+}
 
 // ══ CONTACT FORM MODAL ═══════════════════
 function openContactModal() {
@@ -4258,14 +4280,19 @@ function selectDelivery(mode) {
 }
 
 function openPurchaseModal(idx) {
-  purchaseIdx  = idx;
-  purchaseStep = 1;
-  _fillPurchaseSummary(idx);
-  _renderPurchaseStep(1);
-  document.getElementById('pm-mp-content').style.display = '';
-  document.getElementById('pm-mp-success').style.display = 'none';
-  document.getElementById('purchase-modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  try {
+    purchaseIdx  = idx;
+    purchaseStep = 1;
+    _fillPurchaseSummary(idx);
+    _renderPurchaseStep(1);
+    document.getElementById('pm-mp-content').style.display = '';
+    document.getElementById('pm-mp-success').style.display = 'none';
+    document.getElementById('purchase-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  } catch(err) {
+    console.error('[HcEA] openPurchaseModal error:', err);
+    alert('Error al abrir el modal de compra: ' + err.message);
+  }
 }
 
 function closePurchaseModal() {
