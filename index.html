@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -519,6 +519,19 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 .modal-status-avail::before{content:'';width:5px;height:5px;background:#5a8a5a;border-radius:50%}
 .modal-status-sold{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 @media(max-width:680px){.artwork-modal{grid-template-columns:1fr}.modal-img-wrap{aspect-ratio:16/9}}
+/* ══ MODAL CAROUSEL ══ */
+.modal-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(0,0,0,.55);border:none;cursor:pointer;align-items:center;justify-content:center;z-index:10;transition:background .2s;display:none}
+.modal-nav:hover{background:rgba(0,0,0,.85)}
+.modal-nav svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2}
+.modal-nav.prev{left:.7rem}.modal-nav.next{right:.7rem}
+.modal-nav.visible{display:flex}
+.modal-img-counter{position:absolute;bottom:.7rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.55);color:#fff;font-size:.62rem;letter-spacing:.12em;padding:.25rem .7rem;z-index:10;display:none}
+.modal-img-counter.visible{display:block}
+.modal-thumbs{display:flex;gap:.4rem;padding:.7rem;background:rgba(0,0,0,.06);overflow-x:auto;scrollbar-width:none;min-height:0}
+.modal-thumbs::-webkit-scrollbar{display:none}
+.modal-thumb{width:52px;height:52px;object-fit:cover;cursor:pointer;opacity:.5;border:2px solid transparent;flex-shrink:0;transition:opacity .2s,border-color .2s}
+.modal-thumb.active{opacity:1;border-color:var(--gold)}
+.art-photo-count{position:absolute;bottom:.6rem;left:.6rem;background:rgba(0,0,0,.6);color:#fff;font-size:.6rem;letter-spacing:.1em;padding:.2rem .55rem;z-index:2;pointer-events:none}
 
 /* ══ CONTACT FORM MODAL ══ */
 .contact-modal{position:fixed;inset:0;background:rgba(8,8,8,.92);z-index:300;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .3s ease}
@@ -2533,166 +2546,70 @@ body.user-buyer .gallery-login-bar{display:none}
     <div class="container">
       <div class="gallery-grid" id="gallery-grid">
 
-        <!-- OBRA: A través del tiempo — Leonardo Alvez -->
+        <!-- 0: A traves del tiempo (2 fotos) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
-          <div class="art-img art-img-1">
-            <img class="ai-img" src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A través del tiempo — Leonardo Alvez" loading="eager">
-            <div class="art-badge">Obra única</div>
-            <div class="art-dept-badge">Uruguay</div>
-            <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'A través del tiempo')">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <div class="art-hover"><a href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22A%20trav%C3%A9s%20del%20tiempo%22%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20y%20me%20interesa.%20%C2%BFPodemos%20conversar%20sobre%20la%20obra%20y%20su%20precio%3F" class="btn btn-gold" onclick="trackConsulta(0)">Consultar</a></div>
-          </div>
-          <div class="art-info">
-            <div class="art-artist">Leonardo Alvez</div>
-            <div class="art-title">A través del tiempo</div>
-            <div class="art-meta">Cerámica tallada · Pieza única · 2025</div>
-            <div class="art-foot">
-              <div class="art-price">
-                <span class="art-price-lock" onclick="event.stopPropagation();openAuthModal()">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ver precio
-                </span>
-              </div>
-              <div class="art-avail">Disponible</div>
-            </div>
-            <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-0">— consultas esta semana</span></div>
-          </div>
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A traves del tiempo" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(0)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">A través del tiempo</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
         </div>
-
-        <!-- OBRA: Umbral de la Metamorfosis — Leonardo Alvez -->
+        <!-- 1: Umbral de la Metamorfosis (1 foto) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
-          <div class="art-img art-img-2">
-            <img class="ai-img" src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis — Leonardo Alvez" loading="eager">
-            <div class="art-badge">Obra única</div>
-            <div class="art-dept-badge">Uruguay</div>
-            <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Umbral de la Metamorfosis')">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <div class="art-hover"><a href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Umbral%20de%20la%20Metamorfosis%22%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20y%20me%20interesa.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" onclick="trackConsulta(1)">Consultar</a></div>
-          </div>
-          <div class="art-info">
-            <div class="art-artist">Leonardo Alvez</div>
-            <div class="art-title">Umbral de la Metamorfosis</div>
-            <div class="art-meta">Relieve cerámico · Pieza única · 2024</div>
-            <div class="art-foot">
-              <div class="art-price">
-                <span class="art-price-lock" onclick="event.stopPropagation();openAuthModal()">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ver precio
-                </span>
-              </div>
-              <div class="art-avail">Disponible</div>
-            </div>
-            <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-1">— consultas esta semana</span></div>
-          </div>
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(1)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Umbral de la Metamorfosis</div><div class="art-meta">Relieve cerámico · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
         </div>
-
-        <!-- OBRA: Vasija ciudad — Leonardo Alvez -->
+        <!-- 2: Vasija ciudad (3 fotos) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
-          <div class="art-img art-img-3">
-            <img class="ai-img" src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija tallada — Leonardo Alvez" loading="eager">
-            <div class="art-badge art-badge-web">Compra web</div>
-            <div class="art-dept-badge">Colonia</div>
-            <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Vasija tallada')">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <div class="art-hover"><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20vasija%20tallada%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20y%20me%20interesa.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" onclick="trackConsulta(2)">Consultar</a></div>
-          </div>
-          <div class="art-info">
-            <div class="art-artist">Leonardo Alvez</div>
-            <div class="art-title">Sin título</div>
-            <div class="art-meta">Vasija cerámica tallada · Pieza única</div>
-            <div class="art-foot">
-              <div class="art-price">
-                <span class="art-price-lock" onclick="event.stopPropagation();openAuthModal()">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ver precio
-                </span>
-              </div>
-              <div class="art-avail">Disponible</div>
-            </div>
-            <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-2">— consultas esta semana</span></div>
-          </div>
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija ciudad" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">3 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(2)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Vasija ciudad</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
         </div>
-
-        <!-- OBRA: Sentidos — Leonardo Alvez -->
+        <!-- 3: Sentidos (1 foto) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
-          <div class="art-img art-img-4">
-            <img class="ai-img" src="images/leonardo-alvez/escultura_3.jpeg" alt="Sentidos — Leonardo Alvez" loading="eager">
-            <div class="art-badge">Obra única</div>
-            <div class="art-dept-badge">Uruguay</div>
-            <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Sentidos')">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <div class="art-hover"><a href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Sentidos%22%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20y%20me%20interesa.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" onclick="trackConsulta(3)">Consultar</a></div>
-          </div>
-          <div class="art-info">
-            <div class="art-artist">Leonardo Alvez</div>
-            <div class="art-title">Sentidos</div>
-            <div class="art-meta">Escultura cerámica · Pieza única</div>
-            <div class="art-foot">
-              <div class="art-price">
-                <span class="art-price-lock" onclick="event.stopPropagation();openAuthModal()">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ver precio
-                </span>
-              </div>
-              <div class="art-avail">Disponible</div>
-            </div>
-            <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-3">— consultas esta semana</span></div>
-          </div>
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_3.jpeg" alt="Sentidos" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(3)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sentidos</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
         </div>
-
-        <!-- OBRA: obra_2 — Leonardo Alvez -->
+        <!-- 4: 3 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
-          <div class="art-img art-img-5">
-            <img class="ai-img" src="images/leonardo-alvez/obra_2.jpeg" alt="Obra — Leonardo Alvez" loading="eager">
-            <div class="art-badge">Obra única</div>
-            <div class="art-dept-badge">Uruguay</div>
-            <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Obra Leonardo Alvez')">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <div class="art-hover"><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20y%20me%20interesa.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" onclick="trackConsulta(4)">Consultar</a></div>
-          </div>
-          <div class="art-info">
-            <div class="art-artist">Leonardo Alvez</div>
-            <div class="art-title">Sin título</div>
-            <div class="art-meta">Cerámica · Pieza única</div>
-            <div class="art-foot">
-              <div class="art-price">
-                <span class="art-price-lock" onclick="event.stopPropagation();openAuthModal()">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ver precio
-                </span>
-              </div>
-              <div class="art-avail">Disponible</div>
-            </div>
-            <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-4">— consultas esta semana</span></div>
-          </div>
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_5.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">3 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(4)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
         </div>
-
-        <!-- OBRA: obra_3 — Leonardo Alvez -->
+        <!-- 5: 4 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
-          <div class="art-img art-img-6">
-            <img class="ai-img" src="images/leonardo-alvez/obra_3.jpeg" alt="Obra — Leonardo Alvez" loading="eager">
-            <div class="art-badge">Obra única</div>
-            <div class="art-dept-badge">Uruguay</div>
-            <button class="art-save-btn" title="Guardar obra" onclick="event.stopPropagation();toggleSave(this,'Obra Leonardo Alvez 3')">
-              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-            <div class="art-hover"><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20y%20me%20interesa.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" onclick="trackConsulta(5)">Consultar</a></div>
-          </div>
-          <div class="art-info">
-            <div class="art-artist">Leonardo Alvez</div>
-            <div class="art-title">Sin título</div>
-            <div class="art-meta">Cerámica · Pieza única</div>
-            <div class="art-foot">
-              <div class="art-price">
-                <span class="art-price-lock" onclick="event.stopPropagation();openAuthModal()">
-                  <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Ver precio
-                </span>
-              </div>
-              <div class="art-avail">Disponible</div>
-            </div>
-            <div class="art-stats"><span class="art-stats-ico">◎</span><span id="stats-5">— consultas esta semana</span></div>
-          </div>
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_6.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">4 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(5)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 6: 4 fotos -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_7.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">4 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(6)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 7: 2 fotos -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_8.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(7)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 8: 2 fotos -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_9.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(8)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 9: 1 foto -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(9)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 10: obra_2 -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_2.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(10)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 11: obra_3 -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_3.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(11)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+        </div>
+        <!-- 12: obra_4 (2 fotos) -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+          <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_4.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(12)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
         </div>
 
         <div class="filter-empty" id="gallery-empty">
@@ -3494,12 +3411,22 @@ body.user-buyer .gallery-login-bar{display:none}
 <!-- ARTWORK MODAL -->
 <div class="modal-overlay" id="artwork-modal-overlay" onclick="handleModalOverlayClick(event)">
   <div class="artwork-modal" id="artwork-modal">
-    <div class="modal-img-wrap" id="modal-img-wrap">
-      <img id="modal-img" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
-      <div class="modal-img-ph" id="modal-img-ph">Imagen de la obra</div>
-      <button class="modal-close" onclick="closeArtworkModal()">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
+    <div style="display:flex;flex-direction:column">
+      <div class="modal-img-wrap" id="modal-img-wrap">
+        <img id="modal-img" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
+        <div class="modal-img-ph" id="modal-img-ph">Imagen de la obra</div>
+        <button class="modal-close" onclick="closeArtworkModal()">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="modal-nav prev" id="modal-prev" onclick="modalNavImg(-1)">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="modal-nav next" id="modal-next" onclick="modalNavImg(1)">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <div class="modal-img-counter" id="modal-img-counter"></div>
+      </div>
+      <div class="modal-thumbs" id="modal-thumbs"></div>
     </div>
     <div class="modal-body">
       <div>
@@ -3930,66 +3857,70 @@ function searchGrid(gridId, query) {
 }
 
 // ══ ARTWORK MODAL ════════════════════════
-// Artwork data indexed by position (would come from real data in production)
 const artworkData = [
-  { artist:'María Fontana', title:'Sinfonía de la Tierra', sub:'Óleo sobre tela · 60 × 80 cm · 2025',      price:'USD 480',   priceNum:480,  available:true,  compra:true,  consultas:7,  departamento:'Tacuarembó', desc:'Una composición de ocres y sienas que captura la tierra colorada del interior uruguayo. Fontana trabajó esta pieza durante tres meses en Tacuarembó, buscando la hora exacta en que la luz cambia el color del suelo.' },
-  { artist:'Lucas Vera',    title:'Azul Profundo',         sub:'Acrílico sobre tela · 90 × 120 cm · 2026', price:'USD 1.200', priceNum:1200, available:true,  compra:false, consultas:14, departamento:'Montevideo',  desc:'Gran formato con capas superpuestas de azul cobalto y ultramar. Vera explora la identidad del Río de la Plata desde su latitud más profunda. Obra única, sin reproducción.' },
-  { artist:'Valentina Ríos',title:'Raíces Doradas',        sub:'Técnica mixta · 45 × 60 cm · 2025',        price:'USD 290',   priceNum:290,  available:true,  compra:true,  consultas:5,  departamento:'Colonia',     desc:'Materiales naturales recolectados en Colonia del Sacramento — barro, paja y pigmentos vegetales — componen un relieve que cambia con la luz del día.' },
-  { artist:'Valentina Ríos',title:'Entre las Hojas',       sub:'Acrílico sobre madera · 50 × 70 cm · 2024',price:'USD 340',   priceNum:340,  available:false, compra:false, consultas:0,  departamento:'Colonia',     desc:'Obra vendida en 2024. Parte de la serie "Refugios" de Valentina Ríos. Si te interesa obra de esta artista, consultanos.' },
-  { artist:'María Fontana', title:'Memorias del Sur',      sub:'Óleo sobre tela · 70 × 90 cm · 2026',      price:'USD 680',   priceNum:680,  available:true,  compra:true,  consultas:11, departamento:'Tacuarembó', desc:'La pampa húmeda vista desde el recuerdo. Fontana pinta desde la memoria, no desde el modelo — y eso se nota en la calidez irreal del paisaje.' },
-  { artist:'Lucas Vera',    title:'Horizonte Azul',        sub:'Acrílico · 100 × 80 cm · 2025',            price:'USD 950',   priceNum:950,  available:true,  compra:false, consultas:9,  departamento:'Montevideo',  desc:'Uno de los trabajos más maduros de Vera. El horizonte como línea de fuga y como metáfora. Formato apaisado, paleta reducida, máximo impacto.' },
+  { artist:'Leonardo Alvez', title:'A través del tiempo',       sub:'Cerámica tallada · Pieza única',   available:true, images:['images/leonardo-alvez/escultura_4_(2).jpeg','images/leonardo-alvez/escultura_4.jpeg'],                                                                                                                      desc:'Vasija de cerámica trabajada con una escena arquitectónica medieval en su interior iluminado. La luz transforma la pieza según la posición del observador.' },
+  { artist:'Leonardo Alvez', title:'Umbral de la Metamorfosis', sub:'Relieve cerámico · Pieza única',   available:true, images:['images/leonardo-alvez/obra.jpeg'],                                                                                                                                                                          desc:'Relieve cerámico de gran detalle que representa una fachada de ventanas. Cada vano es distinto — una exploración de la arquitectura como piel y como memoria.' },
+  { artist:'Leonardo Alvez', title:'Vasija ciudad',             sub:'Cerámica tallada · Pieza única',   available:true, images:['images/leonardo-alvez/escultura_(1).jpeg','images/leonardo-alvez/escultura_(2).jpeg','images/leonardo-alvez/escultura_(3).jpeg'],                                                                          desc:'Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones.' },
+  { artist:'Leonardo Alvez', title:'Sentidos',                  sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_3.jpeg'],                                                                                                                                                                   desc:'Serie de formas orgánicas que evocan la piel, la textura y el tacto. Una obra que se entiende tanto con los ojos como con las manos.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'],                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'],                          desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'],                          desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'],                                                                                                                      desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'],                                                                                                                      desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'],                                                                                                                                                                     desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_2.jpeg'],                                                                                                                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_3.jpeg'],                                                                                                                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'],                                                                                                                                desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
 ];
 
-const bgClasses = ['art-img-1','art-img-2','art-img-3','art-img-4','art-img-5','art-img-6'];
+let currentModalIdx = 0, currentImgIdx = 0;
 
 function openArtworkModal(idx) {
   const d = artworkData[idx];
   if (!d) return;
+  currentModalIdx = idx; currentImgIdx = 0;
   document.getElementById('modal-artist').textContent = d.artist;
-  document.getElementById('modal-title').textContent = d.title;
-  document.getElementById('modal-sub').textContent = d.sub;
-  document.getElementById('modal-price').textContent = d.price;
-  document.getElementById('modal-desc').textContent = d.desc;
-  document.getElementById('modal-img-wrap').className = 'modal-img-wrap ' + bgClasses[idx];
-  // Poblar imagen real del grid
-  const artEl = document.querySelectorAll('#gallery-grid .artwork')[idx];
-  const modalImg = document.getElementById('modal-img');
-  const modalPh  = document.getElementById('modal-img-ph');
-  if (artEl && modalImg) {
-    const src = artEl.querySelector('.ai-img') ? artEl.querySelector('.ai-img').src : '';
-    if (src) {
-      modalImg.src = src;
-      modalImg.alt = d.title;
-      modalImg.style.display = 'block';
-      if (modalPh) modalPh.style.display = 'none';
-    } else {
-      modalImg.style.display = 'none';
-      if (modalPh) { modalPh.style.display = 'flex'; modalPh.textContent = d.title; }
-    }
-  } else {
-    document.getElementById('modal-img-ph').textContent = d.title;
-  }
+  document.getElementById('modal-title').textContent  = d.title;
+  document.getElementById('modal-sub').textContent    = d.sub;
+  document.getElementById('modal-price').textContent  = 'Consultar';
+  document.getElementById('modal-desc').textContent   = d.desc;
+  document.getElementById('modal-img-wrap').className = 'modal-img-wrap';
+  _renderModalImage();
+  _renderModalThumbs();
   const statusEl = document.getElementById('modal-status');
-  const ctaEl = document.getElementById('modal-cta');
-  if (d.available && d.compra) {
-    statusEl.className = 'modal-status-avail';
-    statusEl.textContent = 'Disponible · Compra web';
-    var msgCompra = 'Hola! Vi la obra "' + d.title + '" de ' + d.artist + ' (' + d.price + ') en la galería y quiero comprarla. Prefiero coordinar directamente. ¿Cómo cerramos la compra?';
-    ctaEl.innerHTML = '<button class="btn btn-gold" style="width:100%;justify-content:center" onclick="closeArtworkModal();openPurchaseModal(' + idx + ')">Comprar ahora — ' + d.price + '</button>'
-      + '<a href="https://wa.me/59894743435?text=' + encodeURIComponent(msgCompra) + '" class="btn btn-dark" style="width:100%;justify-content:center;margin-top:.6rem" target="_blank" rel="noopener">Coordinar por WhatsApp →</a>';
-  } else if (d.available) {
-    statusEl.className = 'modal-status-avail';
-    statusEl.textContent = 'Disponible';
-    var msgConsulta = 'Hola! Vi la obra "' + d.title + '" de ' + d.artist + ' (' + d.price + ') en la galería. ¿Está disponible? Me gustaría saber más sobre la obra y cómo adquirirla.';
-    ctaEl.innerHTML = '<a href="https://wa.me/59894743435?text=' + encodeURIComponent(msgConsulta) + '" class="btn btn-gold" style="width:100%;justify-content:center" target="_blank" rel="noopener">Consultar por WhatsApp →</a>'
-      + '<button class="btn btn-dark" style="width:100%;justify-content:center;margin-top:.6rem" onclick="closeArtworkModal();openContactModal()">Consultar por email →</button>';
-  } else {
-    statusEl.className = 'modal-status-sold';
-    statusEl.textContent = 'Vendida';
-    ctaEl.innerHTML = '<button class="btn btn-dark" style="width:100%;justify-content:center" onclick="showView(\'artistas\');closeArtworkModal()">Ver más de este artista →</button>';
-  }
+  const ctaEl    = document.getElementById('modal-cta');
+  statusEl.className = 'modal-status-avail';
+  statusEl.textContent = 'Disponible';
+  var msg = 'Hola! Vi la obra "' + d.title + '" de ' + d.artist + ' en la galería de Hecho con el Alma y me interesa. ¿Podemos conversar sobre el precio?';
+  ctaEl.innerHTML = '<a href="https://wa.me/59894743435?text=' + encodeURIComponent(msg) + '" class="btn btn-gold" style="width:100%;justify-content:center" target="_blank" rel="noopener">Consultar por WhatsApp →</a>';
   document.getElementById('artwork-modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+function _renderModalImage() {
+  const d = artworkData[currentModalIdx], imgs = d.images||[], total = imgs.length;
+  const src = imgs[currentImgIdx]||'';
+  const modalImg = document.getElementById('modal-img');
+  const modalPh  = document.getElementById('modal-img-ph');
+  if (src) { modalImg.src=src; modalImg.alt=d.title; modalImg.style.display='block'; if(modalPh) modalPh.style.display='none'; }
+  else      { modalImg.style.display='none'; if(modalPh){modalPh.style.display='flex';modalPh.textContent=d.title;} }
+  const multi = total > 1;
+  document.getElementById('modal-prev').classList.toggle('visible', multi);
+  document.getElementById('modal-next').classList.toggle('visible', multi);
+  const counter = document.getElementById('modal-img-counter');
+  counter.classList.toggle('visible', multi);
+  if (multi) counter.textContent = (currentImgIdx+1) + ' / ' + total;
+  document.querySelectorAll('#modal-thumbs .modal-thumb').forEach((t,i)=>t.classList.toggle('active',i===currentImgIdx));
+}
+function _renderModalThumbs() {
+  const d = artworkData[currentModalIdx], imgs = d.images||[];
+  const c = document.getElementById('modal-thumbs'); c.innerHTML='';
+  if (imgs.length<=1) return;
+  imgs.forEach((src,i)=>{ const img=document.createElement('img'); img.src=src; img.className='modal-thumb'+(i===0?' active':''); img.onclick=()=>{currentImgIdx=i;_renderModalImage();}; c.appendChild(img); });
+}
+function modalNavImg(dir) {
+  const total = (artworkData[currentModalIdx].images||[]).length;
+  currentImgIdx = (currentImgIdx+dir+total)%total;
+  _renderModalImage();
 }
 function closeArtworkModal() {
   document.getElementById('artwork-modal-overlay').classList.remove('open');
