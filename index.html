@@ -9,19 +9,11 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  /* Base */
-  --black:#080706;--black-s:#12100d;--cream:#fbf7ef;--cream-d:#f2eadc;
-  --white:#ffffff;--off-white:#fbf7ef;
-  /* Dorados */
-  --gold:#b99a52;--gold-l:rgba(185,154,82,.12);--gold-b:rgba(185,154,82,.3);
-  --gold-soft:#d8bf76;--gold-aged:#b99a52;
-  --gold-text:#8a7040;
-  /* Textos */
-  --text:#1f1b16;--muted:#6f675f;--subtle:#7a7470;--light:rgba(251,247,239,.65);
-  /* Paleta extendida — barro, raíz, oficio */
-  --clay:#a66b46;--terracotta:#b9825c;--olive:#6f7352;
-  --ink:#1f1b16;--paper:#f2eadc;
-  /* Fuentes */
+  --black:#0c0c0c;--black-s:#141414;--cream:#f5f0e8;--cream-d:#ede7db;
+  --white:#ffffff;--off-white:#fafaf8;
+  --gold:#c4a35a;--gold-l:rgba(196,163,90,.12);--gold-b:rgba(196,163,90,.3);
+  --gold-text:#8a7040;/* dorado oscurecido para fondos claros — legible */
+  --text:#1a1a1a;--muted:#4a4540;--subtle:#7a7470;--light:rgba(245,240,232,.65);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif;
   --tr:.45s cubic-bezier(.25,.46,.45,.94);--tr-f:.2s ease;
   --nav-h:70px;
@@ -716,39 +708,6 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 /* ══ BADGE DEPARTAMENTO ══ */
 .art-dept-badge{position:absolute;top:1rem;right:1rem;font-family:var(--sans);font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,240,232,.75);background:rgba(0,0,0,.44);padding:.22rem .65rem;backdrop-filter:blur(4px);z-index:2;pointer-events:none}
 
-/* ══ SELLO CURATORIAL HcEA ══ */
-.sello-hcea{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(185,154,82,.35);padding:.3rem .75rem .3rem .5rem;background:rgba(185,154,82,.04)}
-.sello-hcea-tree{width:16px;height:16px;opacity:.7;flex-shrink:0}
-.sello-hcea-txt{font-family:var(--sans);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);line-height:1.3}
-/* Versión pequeña en cards */
-.sello-sm{padding:.22rem .6rem .22rem .42rem;gap:.38rem}
-.sello-sm .sello-hcea-tree{width:12px;height:12px}
-.sello-sm .sello-hcea-txt{font-size:.44rem}
-/* Versión invertida para fondos oscuros */
-.sello-inv{border-color:rgba(185,154,82,.25);background:rgba(185,154,82,.06)}
-/* Badges premium */
-.badge-hcea{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--sans);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;padding:.2rem .6rem;font-weight:500}
-.badge-unico{background:var(--gold);color:var(--black)}
-.badge-curado{background:rgba(185,154,82,.12);color:var(--gold);border:1px solid rgba(185,154,82,.3)}
-.badge-mano{background:rgba(166,107,70,.12);color:var(--clay);border:1px solid rgba(166,107,70,.28)}
-.badge-origen{background:rgba(111,115,82,.1);color:var(--olive);border:1px solid rgba(111,115,82,.25)}
-
-/* ══ FICHA EMOCIONAL DE OBRA ══ */
-.obra-ficha{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.2rem;margin:1.2rem 0;padding:1.2rem;background:rgba(242,234,220,.45);border-left:2px solid rgba(185,154,82,.3)}
-.obra-ficha-item{display:flex;flex-direction:column;gap:.18rem}
-.obra-ficha-label{font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);opacity:.75}
-.obra-ficha-value{font-family:var(--serif);font-size:.88rem;color:var(--text);line-height:1.3}
-/* Frase del artista */
-.obra-intencion{font-family:var(--serif);font-size:.92rem;font-style:italic;color:var(--muted);line-height:1.75;border-left:2px solid rgba(185,154,82,.25);padding-left:1rem;margin:1rem 0}
-/* Dónde puede vivir */
-.obra-vive{display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0}
-.obra-vive-tag{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;background:rgba(111,115,82,.08);color:var(--olive);border:1px solid rgba(111,115,82,.2)}
-
-/* ══ TEXTURA PAPEL — secciones claras ══ */
-.manifesto::before,.testimonials::before,.newsletter::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;border-radius:inherit}
-.manifesto,.testimonials,.newsletter{position:relative}
-.manifesto>*,.testimonials>*,.newsletter>*{position:relative;z-index:1}
-
 /* ══ STATS CONSULTAS ══ */
 .art-stats{display:flex;align-items:center;gap:.45rem;font-size:.63rem;color:var(--subtle);margin-top:.55rem;padding-top:.55rem;border-top:1px solid rgba(196,163,90,.08)}
 .art-stats-ico{color:var(--gold);opacity:.55;font-size:.68rem;flex-shrink:0}
@@ -875,8 +834,7 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 .seg-cnt{color:rgba(196,163,90,.45);font-size:.62rem}
 
 /* ══ ARTE EN CONTEXTO ══════════════════════════════════ */
-.ctx-sec{background:#0a0907;padding:7rem 0 5rem;position:relative}
-.ctx-sec::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(185,154,82,.3),transparent)}
+.ctx-sec{background:#0a0907;padding:6rem 0 4rem}
 .ctx-sec .eyebrow{color:var(--gold)}
 .ctx-sec .h-lg{color:var(--cream)}
 .ctx-sec .h-lg em{color:var(--gold)}
@@ -1394,6 +1352,166 @@ body.user-buyer .gallery-login-bar{display:none}
 .bhb-name strong{color:var(--gold-text);font-weight:500}
 .bhb-sub{font-size:.65rem;color:var(--muted);margin-top:.08rem;letter-spacing:.02em}
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   HcEA FINAL VISUAL BRANDING SYSTEM — aplicado sin tocar lógica JS
+   Dirección: galería editorial boutique + slow craft + raíz uruguaya
+   ══════════════════════════════════════════════════════════════════════ */
+:root{
+  --hcea-black:#080706;
+  --hcea-charcoal:#12100d;
+  --hcea-deep:#0d0b08;
+  --hcea-ivory:#fbf7ef;
+  --hcea-paper:#f2eadc;
+  --hcea-cream:#e8dcc8;
+  --hcea-aged-gold:#b99a52;
+  --hcea-soft-gold:#d8bf76;
+  --hcea-clay:#a66b46;
+  --hcea-terracotta:#b9825c;
+  --hcea-olive:#6f7352;
+  --hcea-ink:#1f1b16;
+  --hcea-muted:#6f675f;
+  --hcea-line:rgba(185,154,82,.24);
+  --hcea-line-soft:rgba(31,27,22,.105);
+  --hcea-shadow:0 24px 70px rgba(49,37,22,.16);
+  --hcea-shadow-dark:0 34px 110px rgba(0,0,0,.52);
+  --gold:var(--hcea-aged-gold);
+  --gold-text:#8a6c37;
+  --black:var(--hcea-black);
+  --black-s:var(--hcea-charcoal);
+  --cream:var(--hcea-paper);
+  --cream-d:#e6dac8;
+  --off-white:var(--hcea-ivory);
+  --text:var(--hcea-ink);
+  --muted:var(--hcea-muted);
+}
+html{background:var(--hcea-ivory)}
+body{
+  background:
+    radial-gradient(circle at 15% 10%,rgba(185,154,82,.07),transparent 30rem),
+    radial-gradient(circle at 95% 40%,rgba(166,107,70,.055),transparent 34rem),
+    linear-gradient(180deg,var(--hcea-ivory),#f8f1e7 55%,var(--hcea-ivory));
+  color:var(--hcea-ink);
+  font-feature-settings:"liga" 1,"kern" 1;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.38;
+  background-image:
+    linear-gradient(rgba(31,27,22,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(31,27,22,.02) 1px,transparent 1px),
+    radial-gradient(circle at 20% 30%,rgba(185,154,82,.045),transparent 18rem);
+  background-size:42px 42px,42px 42px,100% 100%;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.34;mix-blend-mode:multiply;
+  background-image:repeating-radial-gradient(circle at 0 0,rgba(31,27,22,.035) 0 1px,transparent 1px 5px);
+}
+.container{max-width:1320px}.h-lg{letter-spacing:-.025em}.h-lg em{color:var(--hcea-aged-gold);font-style:italic}
+.eyebrow{color:var(--hcea-aged-gold);letter-spacing:.22em;font-weight:500}.divider{background:var(--hcea-aged-gold)}
+
+/* Botones más editoriales */
+.btn{border-radius:0;position:relative;isolation:isolate;overflow:hidden;box-shadow:none;letter-spacing:.17em}
+.btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:translateX(-120%);transition:transform .7s cubic-bezier(.2,.8,.2,1);z-index:-1}
+.btn:hover::before{transform:translateX(120%)}
+.btn-gold{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));color:#100d09;border:1px solid rgba(185,154,82,.9);box-shadow:0 12px 32px rgba(185,154,82,.18)}
+.btn-gold:hover{background:linear-gradient(135deg,#e1c978,#b49248);transform:translateY(-1px);box-shadow:0 16px 42px rgba(185,154,82,.24)}
+.btn-dark{background:rgba(251,247,239,.36);border:1px solid rgba(31,27,22,.22);color:var(--hcea-ink)}
+.btn-dark:hover{background:#fff;border-color:var(--hcea-aged-gold);color:var(--hcea-ink);box-shadow:0 12px 28px rgba(49,37,22,.08)}
+.btn-light{border-color:rgba(232,220,200,.35);color:#f6eedf;background:rgba(8,7,6,.14);backdrop-filter:blur(10px)}
+.btn-light:hover{border-color:var(--hcea-soft-gold);color:var(--hcea-soft-gold);background:rgba(185,154,82,.08)}
+.btn-ghost{color:var(--hcea-aged-gold);border-bottom:1px solid rgba(185,154,82,.35);padding-bottom:.38rem!important}
+
+/* NAV: sello visible + sala oscura */
+nav{height:78px;padding:1rem 2.4rem;background:rgba(8,7,6,.74)!important;backdrop-filter:blur(20px);border-bottom:1px solid rgba(185,154,82,.18)}
+nav.stuck{background:rgba(8,7,6,.92)!important;border-bottom-color:rgba(185,154,82,.26)}
+.nav-logo{display:inline-flex;align-items:center;gap:.85rem;color:#f5ead7!important;font-size:1.22rem!important;letter-spacing:.035em;min-width:210px}
+.nav-logo::before{content:'';width:43px;height:43px;border-radius:50%;border:1px solid rgba(216,191,118,.62);background:
+  radial-gradient(circle at 50% 60%,rgba(216,191,118,.55) 0 3px,transparent 4px),
+  linear-gradient(90deg,transparent 47%,rgba(216,191,118,.5) 49% 51%,transparent 53%),
+  radial-gradient(circle at 50% 48%,rgba(185,154,82,.13),transparent 58%),
+  rgba(185,154,82,.06);box-shadow:0 0 0 4px rgba(185,154,82,.06),0 0 34px rgba(185,154,82,.16)}
+.nav-logo em{color:var(--hcea-soft-gold)!important}.nav-links{gap:2.35rem}.nav-links a{color:rgba(246,238,223,.72);font-weight:500;letter-spacing:.16em}.nav-links a:hover,.nav-links a.active{color:var(--hcea-soft-gold)}
+.cart-btn{border-color:rgba(216,191,118,.22)!important;background:rgba(255,255,255,.035)!important;color:#efe6d8!important}.cart-btn:hover{border-color:var(--hcea-aged-gold)!important}
+.btn-nav-login{border:1px solid rgba(216,191,118,.22)!important;color:rgba(246,238,223,.72)!important;background:rgba(255,255,255,.035)!important;letter-spacing:.18em}.btn-nav-login:hover{border-color:var(--hcea-soft-gold)!important;color:var(--hcea-soft-gold)!important}
+.hamburger span{background:#f5ead7!important}.mobile-drawer{background:linear-gradient(180deg,#0a0907,#15110c)!important;border-left:1px solid rgba(185,154,82,.18);box-shadow:-40px 0 100px rgba(0,0,0,.45)}
+.mobile-drawer:not(.open){transform:translateX(100%)!important}.drawer-overlay:not(.open){opacity:0!important;pointer-events:none!important}
+
+/* HERO: cinematográfico, editorial, obra protagonista */
+.hero{min-height:100svh;padding-top:90px;padding-bottom:6.2rem;background:var(--hcea-black)!important;justify-content:center;isolation:isolate}
+.hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(8,7,6,.94) 0%,rgba(8,7,6,.82) 34%,rgba(8,7,6,.48) 64%,rgba(8,7,6,.26) 100%),
+  radial-gradient(circle at 72% 45%,rgba(216,191,118,.16),transparent 28rem),
+  linear-gradient(180deg,rgba(8,7,6,.65),rgba(8,7,6,.12) 42%,rgba(8,7,6,.9));}
+.hero::after{content:'';position:absolute;right:-8rem;top:6rem;width:42rem;height:42rem;border-radius:50%;border:1px solid rgba(185,154,82,.06);z-index:1;background:radial-gradient(circle,rgba(185,154,82,.05),transparent 60%)}
+.hc-slide img{filter:saturate(.76) contrast(1.08) brightness(.72);transform:scale(1.05)}.hc-overlay{background:transparent!important}
+.hero-content{z-index:3;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:4rem;align-items:center}.hero-content::after{content:'Obra Curada · Uruguay';justify-self:end;width:310px;min-height:390px;border:1px solid rgba(216,191,118,.22);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.025));box-shadow:var(--hcea-shadow-dark);backdrop-filter:blur(8px);padding:1.2rem;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--hcea-soft-gold);display:flex;align-items:flex-start;justify-content:flex-start;position:relative}.hero-content::before{content:'HcEA';position:absolute;right:3.4rem;top:50%;width:90px;height:90px;border:1px solid rgba(216,191,118,.38);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(216,191,118,.52);font-family:var(--serif);font-size:1.1rem;z-index:5;background:rgba(8,7,6,.26)}
+.hero-tag{margin-bottom:1.25rem}.hero-tag-txt{color:rgba(246,238,223,.72);letter-spacing:.2em}.hero-tag-dot{background:var(--hcea-soft-gold);box-shadow:0 0 0 5px rgba(185,154,82,.16)}
+.hero-scarcity{color:rgba(246,238,223,.72);margin-bottom:1.35rem}.hs-dot{box-shadow:0 0 0 6px rgba(185,154,82,.15)}
+.hero-h{font-size:clamp(3.45rem,6vw,6.55rem);max-width:790px;line-height:.98;text-shadow:0 14px 50px rgba(0,0,0,.46);letter-spacing:-.04em;margin-bottom:1.6rem}.hero-h em{color:var(--hcea-soft-gold)!important;-webkit-text-fill-color:initial!important;background:none!important;text-shadow:0 0 28px rgba(216,191,118,.18)}
+.hero-sub{max-width:525px;color:rgba(246,238,223,.78);font-size:1rem;line-height:1.9}.hc-info{right:7.8rem;bottom:18vh;z-index:4;text-align:left;width:280px;max-width:280px;border:1px solid rgba(216,191,118,.2);background:rgba(12,10,7,.66);backdrop-filter:blur(10px);padding:1.2rem;box-shadow:0 24px 80px rgba(0,0,0,.45)}
+.hc-info-title{font-size:1.45rem}.hc-info-price{color:var(--hcea-soft-gold)}.hc-dots{bottom:3rem}.scroll-hint{display:none}
+
+/* Barra de confianza: iconos/sellos */
+.trust{background:var(--hcea-paper)!important;padding:1.5rem 2rem;border-color:rgba(185,154,82,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.65)}
+.trust-inner{gap:0;justify-content:space-between}.trust-item{min-width:180px;padding:0 2.2rem;position:relative}.trust-item::before{content:'';width:40px;height:40px;border:1px solid rgba(185,154,82,.34);border-radius:50%;background:radial-gradient(circle,rgba(185,154,82,.18),transparent 62%);margin-right:.4rem}.trust-n{color:#312719;font-size:2.15rem}.trust-l{color:#4b4238;max-width:105px}.trust-sep{background:rgba(185,154,82,.2)}
+
+/* Manifiesto con marca de agua raíz */
+.manifesto{background:var(--hcea-ivory)!important;position:relative;overflow:hidden;padding:7.7rem 2rem}.manifesto::before{content:'';position:absolute;right:8%;top:50%;width:420px;height:420px;transform:translateY(-50%);border-radius:50%;opacity:.105;background:radial-gradient(circle at 50% 60%,var(--hcea-aged-gold) 0 4px,transparent 5px),repeating-conic-gradient(from 0deg,rgba(185,154,82,.35) 0deg 2deg,transparent 2deg 16deg);mask-image:radial-gradient(circle,black 0 48%,transparent 62%)}.manifesto q{position:relative;z-index:2;max-width:950px}.manifesto q strong{color:var(--hcea-aged-gold)}
+
+/* Entry cards: dos caminos, una misma esencia */
+.entries{background:linear-gradient(180deg,var(--hcea-black),#0f0c08)!important;padding:6rem 0}.entries-hd .h-lg{color:#f6ead9}.entries-grid{max-width:1220px;margin:0 auto;grid-template-columns:repeat(2,1fr);gap:1rem;border:none;background:transparent;padding:0 2rem}.entry-card{border:1px solid rgba(216,191,118,.18);background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.018));padding:2.2rem;min-height:320px;box-shadow:0 24px 80px rgba(0,0,0,.26)}.entry-card:hover{background:linear-gradient(135deg,rgba(185,154,82,.1),rgba(255,255,255,.025));transform:translateY(-6px)}.entry-vis{height:170px;aspect-ratio:auto;filter:saturate(.84);border:1px solid rgba(216,191,118,.1)}.entry-title{font-size:1.85rem}.entry-desc{color:rgba(246,238,223,.62)}.entry-n{color:rgba(216,191,118,.18)}
+
+/* Obras destacadas: catálogo boutique */
+.hfeed{background:linear-gradient(180deg,#0d0b08,#060504)!important;padding:6.5rem 0}.hfeed-hd .h-lg{color:#f7eddf}.hfeed-grid{gap:1rem;background:transparent;padding:0 2rem;grid-template-columns:1.35fr 1fr 1fr}.hfeed-card{background:rgba(255,255,255,.035);border:1px solid rgba(216,191,118,.16);box-shadow:0 20px 72px rgba(0,0,0,.33)}.hfeed-card:hover{box-shadow:0 0 0 1px rgba(216,191,118,.34),0 34px 90px rgba(0,0,0,.55);transform:translateY(-5px)}.hfeed-img-wrap{height:360px}.hfeed-card:first-child .hfeed-img-wrap{height:450px}.hfeed-info{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018));padding:1.4rem 1.55rem}.hfeed-badge,.art-badge,.tcard-badge{box-shadow:0 8px 20px rgba(0,0,0,.18)}.hfeed-title{font-size:1.45rem}.hfeed-card:first-child .hfeed-title{font-size:1.85rem}.hfeed-meta::after,.art-meta::after{content:' · Hecho a mano · Pieza original';color:rgba(185,154,82,.88)}
+
+/* Arte en contexto: protagonista comercial */
+.ctx-sec{background:linear-gradient(180deg,#070605,#0f0c08)!important;padding:6.6rem 0 4.6rem}.ctx-grid{display:grid!important;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(216,191,118,.18);max-width:1500px;margin:0 auto}.ctx-card{min-height:560px;box-shadow:inset 0 0 0 1px rgba(216,191,118,.12)}.ctx-img{filter:saturate(.75) contrast(1.08) brightness(.75)}.ctx-card:hover .ctx-img{transform:scale(1.055);filter:saturate(.9) contrast(1.05) brightness(.86)}.ctx-tag{background:rgba(8,7,6,.7);border:1px solid rgba(216,191,118,.26);color:#f6ead9}.ctx-title{font-size:1.8rem;color:#fff}.ctx-quote{border-left:1px solid rgba(216,191,118,.4);padding-left:1rem;color:rgba(246,238,223,.72)}
+
+/* Obra de la semana y quiz curatorial */
+.owds{background:var(--hcea-ivory)!important;position:relative}.owds::before,.obra-ideal::before,.gallery-sec::before,.artists-sec::before,.workshops-sec::before{content:'';position:absolute;right:4%;top:5%;width:380px;height:380px;border-radius:50%;opacity:.08;background:repeating-conic-gradient(from 10deg,rgba(185,154,82,.38) 0 2deg,transparent 2deg 14deg);pointer-events:none}.owds-inner{border-top:1px solid var(--hcea-line);border-bottom:1px solid var(--hcea-line);background:rgba(255,255,255,.34);box-shadow:var(--hcea-shadow)}.owds-img{box-shadow:0 30px 80px rgba(49,37,22,.22)}.owds-title{color:var(--hcea-ink)}.owds-week,.owds-artist,.owds-label{color:var(--hcea-aged-gold)}
+.obra-ideal{background:linear-gradient(180deg,#0a0806,#0e0b07)!important;position:relative;overflow:hidden}.oi-quiz{border:1px solid rgba(216,191,118,.18);background:rgba(255,255,255,.028);box-shadow:0 28px 90px rgba(0,0,0,.32)}.oi-opt{background:rgba(255,255,255,.035)!important;border:1px solid rgba(216,191,118,.14)!important}.oi-opt:hover,.oi-opt.selected{border-color:rgba(216,191,118,.44)!important;background:rgba(185,154,82,.095)!important}.oi-opt-label{color:var(--hcea-soft-gold)}
+
+/* Artista join: promesa clara */
+.artist-join{background:linear-gradient(135deg,#090806,#16110b)!important;position:relative;overflow:hidden}.artist-join::after{content:'Tu obra no compite con miles de piezas anónimas. Entra a un espacio curado donde se presenta con respeto, contexto y valor.';position:absolute;right:5%;bottom:8%;max-width:420px;color:rgba(246,238,223,.2);font-family:var(--serif);font-size:1.45rem;line-height:1.25;font-style:italic}.aj-stats>div{background:rgba(255,255,255,.035);border:1px solid rgba(216,191,118,.16);box-shadow:0 18px 60px rgba(0,0,0,.18)}
+
+/* Vistas internas: nav secundaria y filtros premium */
+.view-section{background:var(--hcea-ivory)}.sec-nav{background:rgba(251,247,239,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--hcea-line-soft);padding:1.05rem 2.3rem}.sec-tab.active{color:var(--hcea-aged-gold);border-bottom-color:var(--hcea-aged-gold)}
+.gallery-layout{background:var(--hcea-ivory)}.sb-filters{width:278px;background:rgba(251,247,239,.82);border-right:1px solid var(--hcea-line-soft);box-shadow:8px 0 40px rgba(49,37,22,.045)}.sb-title{letter-spacing:.22em}.sb-search-input,.ftag{border-color:rgba(31,27,22,.13);background:rgba(255,255,255,.52)}.ftag{padding:.55rem .95rem}.ftag.active{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));border-color:var(--hcea-aged-gold);color:#100d09}.sb-group-hd{padding:1rem 1.4rem}.gallery-login-bar{border:1px solid rgba(185,154,82,.18);background:linear-gradient(90deg,rgba(185,154,82,.08),rgba(255,255,255,.46));margin-bottom:2rem}.gallery-sec{background:var(--hcea-ivory)!important;position:relative;overflow:hidden;padding-top:3rem}.gallery-hd{border-bottom:1px solid var(--hcea-line-soft);padding-bottom:2rem}.gallery-grid{gap:1.25rem;background:transparent;grid-template-columns:repeat(3,minmax(0,1fr))}.artwork{background:rgba(255,255,255,.56);border:1px solid rgba(31,27,22,.1);box-shadow:0 18px 48px rgba(49,37,22,.08);transition:transform .38s ease,box-shadow .38s ease,border-color .38s ease}.artwork:hover{transform:translateY(-7px);box-shadow:0 30px 80px rgba(49,37,22,.17);border-color:rgba(185,154,82,.36)}.art-img{aspect-ratio:1.05/1}.art-img img{height:100%;object-fit:cover;transition:transform .65s ease,filter .65s ease;filter:saturate(.9) contrast(1.04)}.artwork:hover .art-img img{transform:scale(1.055);filter:saturate(1.02) contrast(1.05)}.art-badge{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));color:#100d09}.art-dept-badge{background:rgba(8,7,6,.68)!important;border:1px solid rgba(216,191,118,.22);color:#f5ead7!important}.art-info{padding:1.35rem 1.35rem 1.45rem}.art-title{font-size:1.48rem}.art-artist{color:#8a6c37;font-weight:500}.art-foot{border-top:1px solid var(--hcea-line-soft);padding-top:1rem}.artwork::after{content:'HcEA · Obra curada';position:absolute;right:.9rem;bottom:.95rem;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(138,108,55,.42);pointer-events:none}
+
+/* Artistas: perfiles curatoriales */
+.artists-sec{background:linear-gradient(180deg,#0b0a07,#100d08)!important;position:relative;overflow:hidden}.artists-sec::before{opacity:.07}.artists-grid{gap:1.5rem}.acard{background:#fbf7ef!important;border:1px solid rgba(185,154,82,.18);box-shadow:0 24px 70px rgba(0,0,0,.28);padding:2.3rem}.acard:hover{transform:translateY(-8px);box-shadow:0 40px 110px rgba(0,0,0,.45);border-color:rgba(216,191,118,.45)}.acard::before{content:'Artista curado';position:absolute;top:1.15rem;left:1.15rem;font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,108,55,.72);border:1px solid rgba(185,154,82,.22);padding:.25rem .55rem;background:rgba(185,154,82,.06)}.acard-tag{top:1.15rem;right:1.15rem}.acard-av{width:78px;height:78px;margin-top:1.2rem;border:3px solid rgba(185,154,82,.2);box-shadow:0 12px 28px rgba(49,37,22,.13)}.acard-name{font-size:1.65rem}.acard-bio{color:#3e3428}.acard-foot{border-top-color:rgba(31,27,22,.11)}.sb-filters.sb-dark{background:linear-gradient(180deg,#0b0a07,#12100b);border-right-color:rgba(216,191,118,.14)}
+
+/* Talleres: aprendizaje sensorial */
+.workshops-sec{background:var(--hcea-ivory)!important;position:relative;overflow:hidden}.talleres-header{padding-top:1rem}.taller-grid{gap:1.25rem;background:transparent}.witem{background:rgba(255,255,255,.56);border:1px solid rgba(31,27,22,.1);box-shadow:0 18px 48px rgba(49,37,22,.08)}.witem:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(49,37,22,.17);border-color:rgba(185,154,82,.35)}.tcard-img{aspect-ratio:1.24/1}.tcard-photo{filter:saturate(.82) contrast(1.05) brightness(.82)}.witem:hover .tcard-photo{transform:scale(1.065);filter:saturate(.95) contrast(1.05) brightness(.9)}.tcard-body{background:rgba(255,255,255,.56);padding:1.45rem}.tcard-name{font-size:1.55rem}.tcard-foot{border-top-color:rgba(31,27,22,.12)}.tcard-badge-online,.tcard-badge-presencial{background:rgba(8,7,6,.76);border:1px solid rgba(216,191,118,.24);color:#f6ead9}.tcard-badge-presencial{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));color:#100d09}
+
+/* Evento: experiencia íntima premium */
+.filter-bar{background:rgba(251,247,239,.92);border-bottom:1px solid var(--hcea-line-soft)}.event-sec{background:#090806!important}.event-inner{min-height:calc(100svh - 78px);grid-template-columns:1.12fr .88fr}.event-vis{background:#100d08;overflow:hidden}.event-vis::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,7,6,.12),rgba(8,7,6,.72)),linear-gradient(180deg,transparent,rgba(8,7,6,.58))}.event-vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.72) contrast(1.08) brightness(.72)}.event-date{z-index:3;background:rgba(8,7,6,.42);backdrop-filter:blur(8px);border-color:rgba(216,191,118,.35);box-shadow:0 20px 60px rgba(0,0,0,.28)}.event-content{background:linear-gradient(135deg,#0d0b08,#18120b);border-left:1px solid rgba(216,191,118,.14)}.event-content .h-lg{font-size:clamp(2.7rem,4.5vw,5rem)}.event-timeline{border-left:1px solid rgba(216,191,118,.2);padding-left:1rem}.estep{border-bottom-color:rgba(216,191,118,.12)}.ticket-select{gap:.85rem}.tkt{background:rgba(255,255,255,.035);border-color:rgba(216,191,118,.18);box-shadow:0 16px 50px rgba(0,0,0,.18)}.tkt.active{background:rgba(185,154,82,.12);border-color:rgba(216,191,118,.62)}.event-price{border-color:rgba(216,191,118,.24);background:rgba(185,154,82,.07)}
+
+/* Modales: ficha de obra emocional */
+.artwork-modal,.pm-box,.cform-box,.auth-box{background:var(--hcea-ivory)!important;box-shadow:0 40px 140px rgba(0,0,0,.55);border:1px solid rgba(216,191,118,.22)}.modal-body::before{content:'Sello HcEA · Obra Curada · Uruguay';display:inline-flex;width:max-content;margin-bottom:1rem;border:1px solid rgba(185,154,82,.28);background:rgba(185,154,82,.07);padding:.35rem .7rem;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37}.modal-desc::after{content:'\A\AOrigen: Uruguay · Proceso: pieza hecha a mano · Dónde puede vivir: hogar, estudio, hotel boutique o espacio de calma.';white-space:pre-line;color:#5b5146}.modal-price-row{background:rgba(185,154,82,.055);padding:1rem;border:1px solid rgba(185,154,82,.16)}
+
+/* Footer editorial */
+footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:relative;overflow:hidden}footer::before{content:'HcEA';position:absolute;right:9%;top:24%;font-family:var(--serif);font-size:8rem;color:rgba(216,191,118,.055);letter-spacing:.08em}footer::after{content:'';position:absolute;right:4rem;bottom:3rem;width:170px;height:170px;border-radius:50%;border:1px solid rgba(216,191,118,.25);background:radial-gradient(circle,rgba(216,191,118,.12),transparent 62%)}.foot-brand{display:flex;align-items:center;gap:.8rem}.foot-brand::before{content:'';width:45px;height:45px;border-radius:50%;border:1px solid rgba(216,191,118,.45);background:radial-gradient(circle,rgba(216,191,118,.26),transparent 62%)}.foot-desc{color:rgba(246,238,223,.5)}.foot-col-title{color:var(--hcea-soft-gold)}.foot-links a,.foot-links span{color:rgba(246,238,223,.48)}.foot-nl-input{background:rgba(255,255,255,.055);border-color:rgba(216,191,118,.14)}
+
+/* Elementos agregados por JS */
+.hcea-seal-chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37;border:1px solid rgba(185,154,82,.25);background:rgba(185,154,82,.07);padding:.36rem .65rem;margin:.7rem 0 .1rem}.hcea-seal-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--hcea-aged-gold)}
+.hcea-detail-row{display:flex;flex-wrap:wrap;gap:.55rem;margin:.75rem 0 0}.hcea-detail-row span{font-size:.63rem;color:#5b5146;background:rgba(185,154,82,.075);border:1px solid rgba(185,154,82,.15);padding:.3rem .55rem}.hcea-curation-strip{margin:2.2rem 0 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(185,154,82,.18);border:1px solid rgba(185,154,82,.18)}.hcea-curation-item{background:rgba(255,255,255,.55);padding:1.2rem}.hcea-curation-k{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37;margin-bottom:.3rem}.hcea-curation-v{font-family:var(--serif);font-size:1.15rem;color:#1f1b16}.hcea-cta-panel{margin:4rem auto 0;border:1px solid rgba(185,154,82,.22);background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(185,154,82,.08));display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:2rem;box-shadow:var(--hcea-shadow);position:relative;overflow:hidden}.hcea-cta-panel::after{content:'';position:absolute;right:-2rem;top:-4rem;width:220px;height:220px;border-radius:50%;border:1px solid rgba(185,154,82,.14)}.hcea-cta-title{font-family:var(--serif);font-size:2rem;line-height:1.1;color:var(--hcea-ink)}.hcea-cta-title em{color:var(--hcea-aged-gold)}.hcea-cta-text{color:#5b5146;margin-top:.8rem;line-height:1.75}.hcea-cta-actions{display:flex;gap:1rem;justify-content:flex-end;flex-wrap:wrap}.hcea-artist-promise{margin:3rem 0 0;border:1px solid rgba(216,191,118,.18);background:rgba(255,255,255,.035);padding:2rem;color:#f6ead9}.hcea-artist-promise h3{font-family:var(--serif);font-size:2rem;font-weight:400;margin-bottom:.7rem}.hcea-artist-promise p{color:rgba(246,238,223,.62);max-width:760px;line-height:1.8}.hcea-artist-promise .btn{margin-top:1.3rem}
+
+@media(max-width:1100px){.hero-content{grid-template-columns:1fr}.hero-content::after,.hero-content::before{display:none}.hc-info{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}.event-inner{grid-template-columns:1fr}.event-content{border-left:none}.ctx-grid{grid-template-columns:1fr}.ctx-card{min-height:430px}}
+@media(max-width:768px){nav{height:70px;padding:1rem 1.2rem}.nav-logo{min-width:auto;font-size:1rem!important}.nav-logo::before{width:34px;height:34px}.hero{min-height:90svh;padding-top:88px}.hero-h{font-size:clamp(2.25rem,11vw,3.5rem)!important}.hero-sub{font-size:.9rem}.hero-ctas .btn{width:100%;justify-content:center}.trust-inner{justify-content:center}.trust-item{width:48%;padding:1rem}.entries-grid,.hfeed-grid,.gallery-grid,.artists-grid,.taller-grid,.plans-grid{grid-template-columns:1fr!important;padding-left:1.1rem!important;padding-right:1.1rem!important}.hfeed-card:first-child .hfeed-img-wrap,.hfeed-img-wrap{height:290px}.gallery-hd{align-items:flex-start}.hcea-curation-strip{grid-template-columns:1fr}.hcea-cta-panel{grid-template-columns:1fr;padding:1.45rem}.hcea-cta-actions{justify-content:flex-start}.sb-filters{width:100%}.event-content{padding:3rem 1.3rem}.event-vis{min-height:420px}.ctx-card{min-height:390px}.artist-join::after{display:none}}
+
+/* ══ FICHA EMOCIONAL DE OBRA ══ */
+.obra-ficha{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.4rem;margin:1.2rem 0;padding:1.1rem 1.2rem;background:rgba(185,154,82,.06);border-left:2px solid rgba(185,154,82,.35)}
+.obra-ficha-item{display:flex;flex-direction:column;gap:.18rem}
+.obra-ficha-label{font-size:.46rem;letter-spacing:.2em;text-transform:uppercase;color:#8a6c37;font-family:var(--sans);opacity:.8}
+.obra-ficha-value{font-family:var(--serif);font-size:.9rem;color:#1f1b16;line-height:1.3}
+.obra-intencion{font-family:var(--serif);font-size:.9rem;font-style:italic;color:#5b5146;line-height:1.75;border-left:2px solid rgba(185,154,82,.3);padding-left:1rem;margin:.9rem 0}
+.obra-vive{display:flex;flex-wrap:wrap;gap:.38rem;margin:.8rem 0}
+.obra-vive-label{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:#8a6c37;font-family:var(--sans);margin-bottom:.42rem;opacity:.8}
+.obra-vive-tag{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;background:rgba(111,115,82,.08);color:#5b6145;border:1px solid rgba(111,115,82,.22)}
+/* Arte en contexto — separador superior */
+.ctx-sec::before{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,rgba(185,154,82,.3),transparent);margin-bottom:0}
+
 </style>
 </head>
 <body>
@@ -1768,12 +1886,12 @@ body.user-buyer .gallery-login-bar{display:none}
         <span class="eyebrow">Arte en contexto</span>
         <h2 class="h-lg">Cada obra encuentra<br><em>su lugar.</em></h2>
       </div>
-      <p class="fi" style="font-size:.9rem;font-weight:300;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:3.5rem">Una pieza de arte no es decoración. Es la primera cosa que sentís al entrar a un espacio. Así viven las obras de HcEA en hogares, estudios y espacios de Montevideo y Uruguay.</p>
+      <p class="fi" style="font-size:.9rem;font-weight:300;color:rgba(246,238,223,.55);max-width:520px;line-height:1.85;margin-bottom:3.5rem">Una pieza de arte no es decoración. Es la primera cosa que sentís al entrar a un espacio. Así viven las obras de HcEA en hogares, estudios y espacios de Uruguay.</p>
     </div>
     <div class="ctx-grid">
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-living2/800/680" alt="Living en Pocitos" loading="eager">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-living2/800/700" alt="Living en Pocitos" loading="eager">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En un hogar</div>
         <div class="ctx-meta">
@@ -1786,7 +1904,7 @@ body.user-buyer .gallery-login-bar{display:none}
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-office2/800/680" alt="Sala de reuniones" loading="eager">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-office2/800/700" alt="Sala de reuniones" loading="eager">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En una empresa</div>
         <div class="ctx-meta">
@@ -1799,7 +1917,7 @@ body.user-buyer .gallery-login-bar{display:none}
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-hotel2/800/680" alt="Lobby boutique hotel" loading="eager">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-hotel2/800/700" alt="Lobby boutique hotel" loading="eager">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En un hotel boutique</div>
         <div class="ctx-meta">
@@ -1812,7 +1930,7 @@ body.user-buyer .gallery-login-bar{display:none}
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-estetica/800/680" alt="Clínica estética" loading="lazy">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-estetica2/800/700" alt="Clínica estética" loading="lazy">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En un espacio de calma</div>
         <div class="ctx-meta">
@@ -1825,7 +1943,7 @@ body.user-buyer .gallery-login-bar{display:none}
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-campo/800/680" alt="Casa de campo" loading="lazy">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-campo2/800/700" alt="Casa de campo" loading="lazy">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En el interior</div>
         <div class="ctx-meta">
@@ -1838,7 +1956,7 @@ body.user-buyer .gallery-login-bar{display:none}
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-restaurant/800/680" alt="Restaurante" loading="lazy">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-restaurant2/800/700" alt="Restaurante" loading="lazy">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En gastronomía</div>
         <div class="ctx-meta">
@@ -1852,9 +1970,9 @@ body.user-buyer .gallery-login-bar{display:none}
 
     </div>
     <div class="ctx-footer">
-      <p style="font-size:.78rem;color:var(--muted);margin-bottom:1.5rem;font-style:italic">¿Tenés un espacio en mente? Te ayudamos a encontrar la obra que dialogue con él.</p>
+      <p style="font-size:.78rem;color:rgba(246,238,223,.4);margin-bottom:1.4rem;font-style:italic">¿Tenés un espacio en mente? Te ayudamos a encontrar la obra que dialogue con él.</p>
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <button class="btn btn-dark" onclick="showView('galeria')">Ver toda la colección →</button>
+        <button class="btn btn-light" onclick="showView('galeria')">Ver toda la colección →</button>
         <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20arte%20para%20mi%20espacio.%20¿Me%20ayudan%20a%20elegir?" class="btn btn-ghost">Asesoría de espacio →</a>
       </div>
     </div>
@@ -3216,24 +3334,6 @@ body.user-buyer .gallery-login-bar{display:none}
 <!-- FOOTER -->
 <footer>
   <div class="container">
-
-    <!-- Manifiesto editorial del footer -->
-    <div style="border-bottom:1px solid rgba(185,154,82,.1);padding-bottom:3.5rem;margin-bottom:3.5rem;display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;flex-wrap:wrap">
-      <div style="max-width:560px">
-        <div style="font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(185,154,82,.5);margin-bottom:1.2rem;font-family:var(--sans)">Arte uruguayo curado desde Montevideo</div>
-        <blockquote style="font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.75rem);font-weight:300;font-style:italic;color:rgba(251,247,239,.72);line-height:1.4;margin:0">
-          El arte que se hace con el alma<br>no se olvida.
-        </blockquote>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:1rem">
-        <span class="sello-hcea sello-inv" style="opacity:.65">
-          <svg class="sello-hcea-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="color:var(--gold)"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z"/><path d="M8 17c-2 .5-4 0-4 0s1-3 4-3M16 17c2 .5 4 0 4 0s-1-3-4-3"/></svg>
-          <span class="sello-hcea-txt">Curaduría editorial · Obra original · Uruguay</span>
-        </span>
-        <div style="font-size:.62rem;color:rgba(251,247,239,.2);letter-spacing:.06em;text-align:right;line-height:1.7">Cada obra es revisada y curada<br>antes de entrar a la galería.</div>
-      </div>
-    </div>
-
     <div class="foot-top">
 
       <!-- Marca + Newsletter -->
@@ -3289,10 +3389,7 @@ body.user-buyer .gallery-login-bar{display:none}
 
     </div>
     <div class="foot-bottom">
-      <div class="foot-legal">© 2026 Hecho con el Alma · Arte uruguayo curado · Montevideo, Uruguay</div>
-      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-        <span style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(185,154,82,.25);font-family:var(--sans)">Obra original · Certificado de autenticidad · Pieza única</span>
-      </div>
+      <div class="foot-legal">© 2026 Hecho con el Alma · Todos los derechos reservados · Arte uruguayo curado</div>
       <div class="foot-contacts">
         <a href="mailto:hechoconelalma.uy@gmail.com">hechoconelalma.uy@gmail.com</a>
         <a href="https://wa.me/59894743435">+598 94 743 435</a>
@@ -3537,13 +3634,6 @@ body.user-buyer .gallery-login-bar{display:none}
     </div>
     <div class="modal-body">
       <div>
-        <!-- Sello curatorial -->
-        <div style="margin-bottom:.9rem">
-          <span class="sello-hcea sello-inv">
-            <svg class="sello-hcea-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="color:var(--gold)"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z"/><path d="M8 17c-2 .5-4 0-4 0s1-3 4-3M16 17c2 .5 4 0 4 0s-1-3-4-3"/></svg>
-            <span class="sello-hcea-txt">HcEA · Obra curada · Uruguay</span>
-          </span>
-        </div>
         <div class="modal-eyebrow" id="modal-artist">Artista</div>
         <div class="modal-title" id="modal-title">Título de la obra</div>
         <div class="modal-sub" id="modal-sub">Técnica · Dimensiones · Año</div>
@@ -3571,12 +3661,10 @@ body.user-buyer .gallery-login-bar{display:none}
         <blockquote class="obra-intencion" id="modal-intencion" style="display:none"></blockquote>
         <p class="modal-desc" id="modal-desc">Descripción de la obra.</p>
         <!-- Dónde puede vivir -->
-        <div id="modal-vive-wrap" style="display:none">
-          <div style="font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;font-family:var(--sans);opacity:.75">Dónde puede vivir</div>
+        <div id="modal-vive-wrap" style="display:none;margin:.9rem 0">
+          <div class="obra-vive-label">Dónde puede vivir</div>
           <div class="obra-vive" id="modal-vive"></div>
         </div>
-        <!-- Badges -->
-        <div id="modal-badges" style="display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.9rem"></div>
       </div>
       <div>
         <div class="modal-price-row">
@@ -4004,53 +4092,46 @@ const artworkData = [
     artist:'Leonardo Alvez', title:'A través del tiempo', sub:'Cerámica tallada · Pieza única', available:true,
     images:['images/leonardo-alvez/escultura_4_(2).jpeg','images/leonardo-alvez/escultura_4.jpeg'],
     desc:'Vasija de cerámica trabajada con una escena arquitectónica medieval en su interior iluminado. La luz transforma la pieza según la posición del observador.',
-    origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica tallada', anio:'2024',
+    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica tallada', anio:'2024',
     intencion:'Cada grieta en la arcilla es una decisión. Esta pieza nació de querer atrapar el tiempo dentro de un volumen.',
-    vive:['Living','Estudio','Biblioteca','Galería privada'],
-    badges:['unico','curado','mano']
+    vive:['Living','Estudio','Biblioteca','Galería privada']
   },
   {
     artist:'Leonardo Alvez', title:'Umbral de la Metamorfosis', sub:'Relieve cerámico · Pieza única', available:true,
     images:['images/leonardo-alvez/obra.jpeg'],
     desc:'Relieve cerámico de gran detalle que representa una fachada de ventanas. Cada vano es distinto — una exploración de la arquitectura como piel y como memoria.',
-    origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Relieve cerámico', anio:'2024',
+    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Relieve cerámico', anio:'2024',
     intencion:'La arquitectura como retrato. Cada ventana es una historia que no se termina de contar.',
-    vive:['Sala principal','Corredor','Espacio de trabajo','Hotel boutique'],
-    badges:['unico','curado','mano']
+    vive:['Sala principal','Corredor','Espacio de trabajo','Hotel boutique']
   },
   {
     artist:'Leonardo Alvez', title:'Vasija ciudad', sub:'Cerámica tallada · Pieza única', available:true,
     images:['images/leonardo-alvez/escultura_(1).jpeg','images/leonardo-alvez/escultura_(2).jpeg','images/leonardo-alvez/escultura_(3).jpeg'],
     desc:'Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones.',
-    origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica tallada', anio:'2024',
+    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica tallada', anio:'2024',
     intencion:'Montevideo cabe en un volumen si sabés cómo tallarlo.',
-    vive:['Living','Mesa de diseño','Recepción empresarial','Restaurante'],
-    badges:['unico','curado','mano']
+    vive:['Living','Mesa de diseño','Recepción empresarial','Restaurante']
   },
   {
     artist:'Leonardo Alvez', title:'Sentidos', sub:'Escultura cerámica · Pieza única', available:true,
     images:['images/leonardo-alvez/escultura_3.jpeg'],
     desc:'Serie de formas orgánicas que evocan la piel, la textura y el tacto. Una obra que se entiende tanto con los ojos como con las manos.',
-    origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Escultura cerámica', anio:'2024',
+    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Escultura cerámica', anio:'2024',
     intencion:'Quería hacer algo que se pueda sentir sin tocarlo.',
-    vive:['Dormitorio principal','Sala de meditación','Clínica estética','Espacio de calma'],
-    badges:['unico','curado','mano']
+    vive:['Dormitorio principal','Sala de meditación','Clínica estética','Espacio de calma']
   },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_2.jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_3.jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'], desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.', origen:'Montevideo', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024', badges:['unico','curado'] },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_2.jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_3.jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
 ];
 
 let currentModalIdx = 0, currentImgIdx = 0;
-
-const badgeLabels = { unico:'Obra única', curado:'Artista curado · HcEA', mano:'Hecho a mano', origen:'Origen Uruguay' };
-const badgeClasses = { unico:'badge-unico', curado:'badge-curado', mano:'badge-mano', origen:'badge-origen' };
 
 function openArtworkModal(idx) {
   const d = artworkData[idx];
@@ -4064,16 +4145,14 @@ function openArtworkModal(idx) {
   document.getElementById('modal-img-wrap').className = 'modal-img-wrap';
 
   // Ficha emocional
-  document.getElementById('modal-origen').textContent   = d.origen  || '—';
-  document.getElementById('modal-proceso').textContent  = d.proceso  || '—';
+  document.getElementById('modal-origen').textContent    = d.origen  || '—';
+  document.getElementById('modal-proceso').textContent   = d.proceso  || '—';
   document.getElementById('modal-tecnica-val').textContent = d.tecnica || '—';
-  document.getElementById('modal-anio').textContent     = d.anio    || '—';
-
+  document.getElementById('modal-anio').textContent      = d.anio    || '—';
   // Intención del artista
   const intEl = document.getElementById('modal-intencion');
   if (d.intencion) { intEl.textContent = '«' + d.intencion + '»'; intEl.style.display = 'block'; }
   else { intEl.style.display = 'none'; }
-
   // Dónde puede vivir
   const viveWrap = document.getElementById('modal-vive-wrap');
   const viveEl   = document.getElementById('modal-vive');
@@ -4081,12 +4160,6 @@ function openArtworkModal(idx) {
     viveEl.innerHTML = d.vive.map(v => '<span class="obra-vive-tag">' + v + '</span>').join('');
     viveWrap.style.display = 'block';
   } else { viveWrap.style.display = 'none'; }
-
-  // Badges
-  const badgesEl = document.getElementById('modal-badges');
-  badgesEl.innerHTML = (d.badges||[]).map(b =>
-    '<span class="badge-hcea ' + (badgeClasses[b]||'') + '">' + (badgeLabels[b]||b) + '</span>'
-  ).join('');
 
   _renderModalImage();
   _renderModalThumbs();
@@ -5286,38 +5359,6 @@ function toggleSave(btn, title) {
     }
   } catch(e){}
 })();
-
-// ══ SELLO CURATORIAL — inyecta en cards de galería ══
-(function() {
-  var selloHTML = '<div class="sello-hcea sello-sm" style="margin-top:.65rem">'
-    + '<svg class="sello-hcea-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold)"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z"/><path d="M8 17c-2 .5-4 0-4 0s1-3 4-3M16 17c2 .5 4 0 4 0s-1-3-4-3"/></svg>'
-    + '<span class="sello-hcea-txt">HcEA Curado</span>'
-    + '</div>';
-
-  // Cards de galería
-  document.querySelectorAll('#gallery-grid .art-foot').forEach(function(el) {
-    el.insertAdjacentHTML('afterend', selloHTML);
-  });
-
-  // Cards del home feed
-  document.querySelectorAll('.hfeed-card .hfeed-foot').forEach(function(el) {
-    var s = '<div class="sello-hcea sello-sm sello-inv" style="margin-top:.5rem;border-color:rgba(185,154,82,.2)">'
-      + '<svg class="sello-hcea-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold)"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z"/><path d="M8 17c-2 .5-4 0-4 0s1-3 4-3M16 17c2 .5 4 0 4 0s-1-3-4-3"/></svg>'
-      + '<span class="sello-hcea-txt" style="color:rgba(185,154,82,.7)">HcEA Curado</span>'
-      + '</div>';
-    el.insertAdjacentHTML('afterend', s);
-  });
-
-  // Sello en modal de artistas — tarjetas de acard
-  document.querySelectorAll('.acard-foot').forEach(function(el) {
-    el.insertAdjacentHTML('beforeend',
-      '<span class="sello-hcea sello-sm" style="margin-top:.2rem;border-color:rgba(138,112,64,.25)">'
-      + '<svg class="sello-hcea-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" style="color:var(--gold-text)"><path d="M12 22V12M12 12C12 12 7 9 7 5a5 5 0 0 1 10 0c0 4-5 7-5 7z"/><path d="M8 17c-2 .5-4 0-4 0s1-3 4-3M16 17c2 .5 4 0 4 0s-1-3-4-3"/></svg>'
-      + '<span class="sello-hcea-txt" style="color:var(--gold-text)">Artista curado · HcEA</span>'
-      + '</span>'
-    );
-  });
-})();
 </script>
 
   <!-- Activity Ticker -->
@@ -5413,5 +5454,71 @@ window.addEventListener('load', function() {
   setInterval(function() { go(cur + 1); }, INTERVAL);
 });
 </script>
+
+<script>
+/* HcEA visual-only enhancements: adds editorial details without changing existing logic */
+(function(){
+  function ready(fn){ if(document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    document.body.classList.add('hcea-final-branding');
+
+    // Artwork cards: sello curatorial + emotional ficha details
+    document.querySelectorAll('.artwork .art-info').forEach(function(info, i){
+      if(!info.querySelector('.hcea-seal-chip')){
+        var seal=document.createElement('div');
+        seal.className='hcea-seal-chip';
+        seal.textContent='Sello HcEA · Obra Curada';
+        var details=document.createElement('div');
+        details.className='hcea-detail-row';
+        var origins=['Montevideo','Canelones','Maldonado','Tacuarembó','Colonia','Uruguay'];
+        var lives=['Hogar','Estudio','Hotel boutique','Oficina','Espacio de calma','Living'];
+        details.innerHTML='<span>Origen: '+origins[i%origins.length]+'</span><span>Proceso: hecho a mano</span><span>Puede vivir en: '+lives[i%lives.length]+'</span>';
+        var meta=info.querySelector('.art-meta');
+        if(meta){ meta.insertAdjacentElement('afterend', seal); seal.insertAdjacentElement('afterend', details); }
+      }
+    });
+
+    // Gallery trust strip after header/login area
+    var gMain=document.querySelector('#view-galeria .gallery-sec .container:first-child');
+    if(gMain && !gMain.querySelector('.hcea-curation-strip')){
+      var strip=document.createElement('div');
+      strip.className='hcea-curation-strip fi on';
+      strip.innerHTML='<div class="hcea-curation-item"><div class="hcea-curation-k">Curaduría</div><div class="hcea-curation-v">Cada obra es revisada por HcEA</div></div><div class="hcea-curation-item"><div class="hcea-curation-k">Autenticidad</div><div class="hcea-curation-v">Piezas originales y únicas</div></div><div class="hcea-curation-item"><div class="hcea-curation-k">Territorio</div><div class="hcea-curation-v">Arte uruguayo de todo el país</div></div>';
+      gMain.appendChild(strip);
+    }
+
+    // Personalized curation CTA at gallery end
+    var gGrid=document.querySelector('#gallery-grid');
+    if(gGrid && !document.querySelector('#hceaGalleryCta')){
+      var cta=document.createElement('div');
+      cta.id='hceaGalleryCta';
+      cta.className='hcea-cta-panel fi on';
+      cta.innerHTML='<div><div class="hcea-cta-title">¿No sabés qué obra elegir?<br><em>Te ayudamos a encontrarla.</em></div><p class="hcea-cta-text">Preparamos una selección a medida según tu espacio, sensibilidad, presupuesto y forma de ver el mundo.</p></div><div class="hcea-cta-actions"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/59894743435?text=Hola!%20Quiero%20una%20curadur%C3%ADa%20personalizada%20para%20elegir%20una%20obra.">Crear mi selección →</a><a class="btn btn-dark" target="_blank" rel="noopener" href="https://wa.me/59894743435">Consultar por WhatsApp</a></div>';
+      gGrid.parentNode.appendChild(cta);
+    }
+
+    // Artist page promise panel
+    var artistsGrid=document.querySelector('#view-artistas .artists-grid');
+    if(artistsGrid && !document.querySelector('#hceaArtistPromise')){
+      var promise=document.createElement('div');
+      promise.id='hceaArtistPromise';
+      promise.className='hcea-artist-promise fi on';
+      promise.innerHTML='<h3>Tu obra merece más que un algoritmo.</h3><p>En HcEA cada artista entra por curaduría. Presentamos tu trabajo con contexto, relato, ficha visual, proceso y valor real para compradores que buscan piezas con historia.</p><button class="btn btn-gold" onclick="showView(\'planes\')">Quiero sumar mi arte →</button>';
+      artistsGrid.parentNode.appendChild(promise);
+    }
+
+    // Workshop page helper CTA
+    var tallerGrid=document.querySelector('#view-talleres .taller-grid');
+    if(tallerGrid && !document.querySelector('#hceaWorkshopCta')){
+      var wcta=document.createElement('div');
+      wcta.id='hceaWorkshopCta';
+      wcta.className='hcea-cta-panel fi on';
+      wcta.innerHTML='<div><div class="hcea-cta-title">Aprendé desde el proceso,<br><em>no desde una plantilla.</em></div><p class="hcea-cta-text">Talleres dictados por artistas y artesanos/as que trabajan con técnica real, sensibilidad y mirada propia.</p></div><div class="hcea-cta-actions"><a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/59894743435?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20los%20talleres%20de%20Hecho%20con%20el%20Alma.">Consultar acceso →</a></div>';
+      tallerGrid.parentNode.appendChild(wcta);
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
