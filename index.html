@@ -4,10 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hecho con el Alma — Arte Uruguayo Curado</title>
-<meta property="og:title" content="Hecho con el Alma — Arte Uruguayo Curado">
-<meta property="og:description" content="Obras originales de artistas y artesanos/as uruguayos. Arte hecho a mano, curado con criterio.">
-<meta property="og:image" content="images/logo-horizontal.png">
-<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -51,8 +47,9 @@ img{display:block;width:100%}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
 /* ══ VIEW SYSTEM ══ */
-.view{display:none!important}
-.view.active{display:block!important;opacity:1!important;visibility:visible!important}
+.view{display:none}
+.view.active{display:block;animation:vfade .38s cubic-bezier(.25,.46,.45,.94)}
+@keyframes vfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .view-section{padding-top:var(--nav-h)}
 
 /* ══ SECTION NAV ══ */
@@ -208,8 +205,7 @@ nav .btn-gold{font-size:.68rem;padding:.65rem 1.5rem}
 .trust-sep{width:1px;height:28px;background:var(--gold-b)}
 
 /* ══ MANIFESTO ══ */
-.manifesto{background:var(--cream) url('images/textura-papel.png') center/cover;padding:9rem 2rem;text-align:center}
-.manifesto-tree{width:72px;height:auto;margin:0 auto 2.5rem;opacity:.75;display:block}
+.manifesto{background:var(--cream);padding:9rem 2rem;text-align:center}
 .manifesto q{font-family:var(--serif);font-size:clamp(1.8rem,3.8vw,3rem);font-weight:300;line-height:1.35;font-style:italic;max-width:860px;margin:0 auto 2rem;display:block;quotes:none}
 .manifesto q strong{font-style:normal;font-weight:500;color:var(--gold)}
 .manifesto p{font-size:.92rem;font-weight:400;line-height:1.85;color:var(--text);max-width:560px;margin:0 auto}
@@ -406,7 +402,6 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 .foot-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
 .foot-brand{font-family:var(--serif);font-size:1.5rem;font-weight:300;margin-bottom:.8rem}
 .foot-brand em{color:var(--gold);font-style:normal}
-.foot-brand-img{width:220px;height:auto;opacity:.92;filter:brightness(1.1)}
 .foot-desc{font-size:.82rem;font-weight:300;line-height:1.8;color:rgba(245,240,232,.35);max-width:260px;margin-bottom:1.8rem}
 .foot-social{display:flex;gap:.8rem;margin-bottom:2.2rem}
 .foot-sl{width:34px;height:34px;border:1px solid rgba(245,240,232,.12);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:rgba(245,240,232,.4);transition:var(--tr-f);font-family:var(--serif)}
@@ -737,6 +732,10 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 /* Stagger delays extendidos */
 .d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
 
+/* ── Placeholders premium ── */
+.art-price-consult{font-size:.72rem;color:rgba(31,27,22,.42);font-style:italic;letter-spacing:.02em}
+.art-title-pending{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(185,154,82,.6);margin-bottom:.25rem}
+
 /* ── Hero text reveal on load ── */
 @keyframes heroFadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes heroFadeIn{from{opacity:0}to{opacity:1}}
@@ -1064,12 +1063,8 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 
 /* ══ CONSULTORÍA DE CURADURÍA ══ */
 .obra-ideal{background:#0a0907;padding:8rem 2rem;text-align:center;border-top:1px solid rgba(196,163,90,.1)}
-.oi-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:380px 1fr;gap:5rem;align-items:start}
-.oi-banner-col{position:sticky;top:calc(var(--nav-h) + 2rem)}
-.oi-banner-img{width:100%;border-radius:4px;box-shadow:0 32px 80px rgba(0,0,0,.55)}
-.oi-content-col{text-align:center}
+.oi-inner{max-width:720px;margin:0 auto}
 .oi-hd{margin-bottom:4rem}
-@media(max-width:900px){.oi-inner{grid-template-columns:1fr}.oi-banner-col{display:none}}
 .oi-sub{font-size:.92rem;font-weight:400;color:rgba(245,240,232,.48);max-width:520px;margin:.9rem auto 0;line-height:1.85}
 .oi-quiz{min-height:220px}
 .oi-step{display:none}
@@ -1434,8 +1429,11 @@ body::after{
 nav{height:78px;padding:1rem 2.4rem;background:rgba(8,7,6,.74)!important;backdrop-filter:blur(20px);border-bottom:1px solid rgba(185,154,82,.18)}
 nav.stuck{background:rgba(8,7,6,.92)!important;border-bottom-color:rgba(185,154,82,.26)}
 .nav-logo{display:inline-flex;align-items:center;gap:.85rem;color:#f5ead7!important;font-size:1.22rem!important;letter-spacing:.035em;min-width:210px}
-.nav-logo::before{content:none}
-.nav-logo-img{width:46px;height:46px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(185,154,82,.35))}
+.nav-logo::before{content:'';width:43px;height:43px;border-radius:50%;border:1px solid rgba(216,191,118,.62);background:
+  radial-gradient(circle at 50% 60%,rgba(216,191,118,.55) 0 3px,transparent 4px),
+  linear-gradient(90deg,transparent 47%,rgba(216,191,118,.5) 49% 51%,transparent 53%),
+  radial-gradient(circle at 50% 48%,rgba(185,154,82,.13),transparent 58%),
+  rgba(185,154,82,.06);box-shadow:0 0 0 4px rgba(185,154,82,.06),0 0 34px rgba(185,154,82,.16)}
 .nav-logo em{color:var(--hcea-soft-gold)!important}.nav-links{gap:2.35rem}.nav-links a{color:rgba(246,238,223,.72);font-weight:500;letter-spacing:.16em}.nav-links a:hover,.nav-links a.active{color:var(--hcea-soft-gold)}
 .cart-btn{border-color:rgba(216,191,118,.22)!important;background:rgba(255,255,255,.035)!important;color:#efe6d8!important}.cart-btn:hover{border-color:var(--hcea-aged-gold)!important}
 .btn-nav-login{border:1px solid rgba(216,191,118,.22)!important;color:rgba(246,238,223,.72)!important;background:rgba(255,255,255,.035)!important;letter-spacing:.18em}.btn-nav-login:hover{border-color:var(--hcea-soft-gold)!important;color:var(--hcea-soft-gold)!important}
@@ -1485,7 +1483,7 @@ nav.stuck{background:rgba(8,7,6,.92)!important;border-bottom-color:rgba(185,154,
 .gallery-layout{background:var(--hcea-ivory)}.sb-filters{width:278px;background:rgba(251,247,239,.82);border-right:1px solid var(--hcea-line-soft);box-shadow:8px 0 40px rgba(49,37,22,.045)}.sb-title{letter-spacing:.22em}.sb-search-input,.ftag{border-color:rgba(31,27,22,.13);background:rgba(255,255,255,.52)}.ftag{padding:.55rem .95rem}.ftag.active{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));border-color:var(--hcea-aged-gold);color:#100d09}.sb-group-hd{padding:1rem 1.4rem}.gallery-login-bar{border:1px solid rgba(185,154,82,.18);background:linear-gradient(90deg,rgba(185,154,82,.08),rgba(255,255,255,.46));margin-bottom:2rem}.gallery-sec{background:var(--hcea-ivory)!important;position:relative;overflow:hidden;padding-top:3rem}.gallery-hd{border-bottom:1px solid var(--hcea-line-soft);padding-bottom:2rem}.gallery-grid{gap:1.25rem;background:transparent;grid-template-columns:repeat(3,minmax(0,1fr))}.artwork{background:rgba(255,255,255,.56);border:1px solid rgba(31,27,22,.1);box-shadow:0 18px 48px rgba(49,37,22,.08);transition:transform .38s ease,box-shadow .38s ease,border-color .38s ease}.artwork:hover{transform:translateY(-7px);box-shadow:0 30px 80px rgba(49,37,22,.17);border-color:rgba(185,154,82,.36)}.art-img{aspect-ratio:1.05/1}.art-img img{height:100%;object-fit:cover;transition:transform .65s ease,filter .65s ease;filter:saturate(.9) contrast(1.04)}.artwork:hover .art-img img{transform:scale(1.055);filter:saturate(1.02) contrast(1.05)}.art-badge{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));color:#100d09}.art-dept-badge{background:rgba(8,7,6,.68)!important;border:1px solid rgba(216,191,118,.22);color:#f5ead7!important}.art-info{padding:1.35rem 1.35rem 1.45rem}.art-title{font-size:1.48rem}.art-artist{color:#8a6c37;font-weight:500}.art-foot{border-top:1px solid var(--hcea-line-soft);padding-top:1rem}.artwork::after{content:'HcEA · Obra curada';position:absolute;right:.9rem;bottom:.95rem;font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(138,108,55,.42);pointer-events:none}
 
 /* Artistas: perfiles curatoriales */
-.artists-sec{background:linear-gradient(180deg,#0b0a07,#100d08)!important;position:relative;overflow:hidden}.artists-sec::before{opacity:.07}.artists-grid{gap:1.5rem}.acard{background:#fbf7ef!important;border:1px solid rgba(185,154,82,.18);box-shadow:0 24px 70px rgba(0,0,0,.28);padding:2.3rem}.acard:hover{transform:translateY(-8px);box-shadow:0 40px 110px rgba(0,0,0,.45);border-color:rgba(216,191,118,.45)}.acard::before{content:'Artista curado';position:absolute;top:1.15rem;left:1.15rem;font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,108,55,.72);border:1px solid rgba(185,154,82,.22);padding:.25rem .55rem;background:rgba(185,154,82,.06)}.acard-tag{top:1.15rem;right:1.15rem}.acard-av{width:78px;height:78px;margin-top:1.2rem;border:3px solid rgba(185,154,82,.2);box-shadow:0 12px 28px rgba(49,37,22,.13)}.acard-name{font-size:1.65rem}.acard-bio{color:#3e3428}.acard-foot{border-top-color:rgba(31,27,22,.11)}.sb-filters.sb-dark{background:linear-gradient(180deg,#0b0a07,#12100b);border-right-color:rgba(216,191,118,.14)}
+.artists-sec{background:var(--hcea-ivory)!important;position:relative;overflow:hidden}.artists-sec .h-lg,.artists-sec .fi h2{color:var(--hcea-ink)!important}.artists-sec .eyebrow{color:var(--hcea-aged-gold)!important}.artists-sec::before{opacity:.07}.artists-grid{gap:1.5rem}.acard{background:rgba(255,255,255,.75)!important;border:1px solid rgba(185,154,82,.18);box-shadow:0 18px 48px rgba(49,37,22,.09);padding:2.3rem}.acard:hover{transform:translateY(-8px);box-shadow:0 32px 80px rgba(49,37,22,.18);border-color:rgba(216,191,118,.45)}.acard::before{content:'Artista curado';position:absolute;top:1.15rem;left:1.15rem;font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(138,108,55,.72);border:1px solid rgba(185,154,82,.22);padding:.25rem .55rem;background:rgba(185,154,82,.06)}.acard-tag{top:1.15rem;right:1.15rem}.acard-av{width:78px;height:78px;margin-top:1.2rem;border:3px solid rgba(185,154,82,.2);box-shadow:0 12px 28px rgba(49,37,22,.13)}.acard-name{font-size:1.65rem}.acard-bio{color:#3e3428}.acard-foot{border-top-color:rgba(31,27,22,.11)}.sb-filters.sb-dark{background:rgba(251,247,239,.88);border-right-color:var(--hcea-line-soft)}
 
 /* Talleres: aprendizaje sensorial */
 .workshops-sec{background:var(--hcea-ivory)!important;position:relative;overflow:hidden}.talleres-header{padding-top:1rem}.taller-grid{gap:1.25rem;background:transparent}.witem{background:rgba(255,255,255,.56);border:1px solid rgba(31,27,22,.1);box-shadow:0 18px 48px rgba(49,37,22,.08)}.witem:hover{transform:translateY(-8px);box-shadow:0 30px 80px rgba(49,37,22,.17);border-color:rgba(185,154,82,.35)}.tcard-img{aspect-ratio:1.24/1}.tcard-photo{filter:saturate(.82) contrast(1.05) brightness(.82)}.witem:hover .tcard-photo{transform:scale(1.065);filter:saturate(.95) contrast(1.05) brightness(.9)}.tcard-body{background:rgba(255,255,255,.56);padding:1.45rem}.tcard-name{font-size:1.55rem}.tcard-foot{border-top-color:rgba(31,27,22,.12)}.tcard-badge-online,.tcard-badge-presencial{background:rgba(8,7,6,.76);border:1px solid rgba(216,191,118,.24);color:#f6ead9}.tcard-badge-presencial{background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold));color:#100d09}
@@ -1497,96 +1495,34 @@ nav.stuck{background:rgba(8,7,6,.92)!important;border-bottom-color:rgba(185,154,
 .artwork-modal,.pm-box,.cform-box,.auth-box{background:var(--hcea-ivory)!important;box-shadow:0 40px 140px rgba(0,0,0,.55);border:1px solid rgba(216,191,118,.22)}.modal-body::before{content:'Sello HcEA · Obra Curada · Uruguay';display:inline-flex;width:max-content;margin-bottom:1rem;border:1px solid rgba(185,154,82,.28);background:rgba(185,154,82,.07);padding:.35rem .7rem;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37}.modal-desc::after{content:'\A\AOrigen: Uruguay · Proceso: pieza hecha a mano · Dónde puede vivir: hogar, estudio, hotel boutique o espacio de calma.';white-space:pre-line;color:#5b5146}.modal-price-row{background:rgba(185,154,82,.055);padding:1rem;border:1px solid rgba(185,154,82,.16)}
 
 /* Footer editorial */
-footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:relative;overflow:hidden}footer::before{content:'HcEA';position:absolute;right:9%;top:24%;font-family:var(--serif);font-size:8rem;color:rgba(216,191,118,.055);letter-spacing:.08em}footer::after{content:'';position:absolute;right:4rem;bottom:3rem;width:170px;height:170px;border-radius:50%;border:1px solid rgba(216,191,118,.25);background:radial-gradient(circle,rgba(216,191,118,.12),transparent 62%)}.foot-brand{display:flex;align-items:center;gap:.8rem}.foot-brand::before{content:none}.foot-desc{color:rgba(246,238,223,.5)}.foot-col-title{color:var(--hcea-soft-gold)}.foot-links a,.foot-links span{color:rgba(246,238,223,.48)}.foot-nl-input{background:rgba(255,255,255,.055);border-color:rgba(216,191,118,.14)}
+footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:relative;overflow:hidden}footer::before{content:'HcEA';position:absolute;right:9%;top:24%;font-family:var(--serif);font-size:8rem;color:rgba(216,191,118,.055);letter-spacing:.08em}footer::after{content:'';position:absolute;right:4rem;bottom:3rem;width:170px;height:170px;border-radius:50%;border:1px solid rgba(216,191,118,.25);background:radial-gradient(circle,rgba(216,191,118,.12),transparent 62%)}.foot-brand{display:flex;align-items:center;gap:.8rem}.foot-brand::before{content:'';width:45px;height:45px;border-radius:50%;border:1px solid rgba(216,191,118,.45);background:radial-gradient(circle,rgba(216,191,118,.26),transparent 62%)}.foot-desc{color:rgba(246,238,223,.5)}.foot-col-title{color:var(--hcea-soft-gold)}.foot-links a,.foot-links span{color:rgba(246,238,223,.48)}.foot-nl-input{background:rgba(255,255,255,.055);border-color:rgba(216,191,118,.14)}
 
 /* Elementos agregados por JS */
 .hcea-seal-chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37;border:1px solid rgba(185,154,82,.25);background:rgba(185,154,82,.07);padding:.36rem .65rem;margin:.7rem 0 .1rem}.hcea-seal-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--hcea-aged-gold)}
 .hcea-detail-row{display:flex;flex-wrap:wrap;gap:.55rem;margin:.75rem 0 0}.hcea-detail-row span{font-size:.63rem;color:#5b5146;background:rgba(185,154,82,.075);border:1px solid rgba(185,154,82,.15);padding:.3rem .55rem}.hcea-curation-strip{margin:2.2rem 0 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(185,154,82,.18);border:1px solid rgba(185,154,82,.18)}.hcea-curation-item{background:rgba(255,255,255,.55);padding:1.2rem}.hcea-curation-k{font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37;margin-bottom:.3rem}.hcea-curation-v{font-family:var(--serif);font-size:1.15rem;color:#1f1b16}.hcea-cta-panel{margin:4rem auto 0;border:1px solid rgba(185,154,82,.22);background:linear-gradient(135deg,rgba(255,255,255,.62),rgba(185,154,82,.08));display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:2rem;box-shadow:var(--hcea-shadow);position:relative;overflow:hidden}.hcea-cta-panel::after{content:'';position:absolute;right:-2rem;top:-4rem;width:220px;height:220px;border-radius:50%;border:1px solid rgba(185,154,82,.14)}.hcea-cta-title{font-family:var(--serif);font-size:2rem;line-height:1.1;color:var(--hcea-ink)}.hcea-cta-title em{color:var(--hcea-aged-gold)}.hcea-cta-text{color:#5b5146;margin-top:.8rem;line-height:1.75}.hcea-cta-actions{display:flex;gap:1rem;justify-content:flex-end;flex-wrap:wrap}.hcea-artist-promise{margin:3rem 0 0;border:1px solid rgba(216,191,118,.18);background:rgba(255,255,255,.035);padding:2rem;color:#f6ead9}.hcea-artist-promise h3{font-family:var(--serif);font-size:2rem;font-weight:400;margin-bottom:.7rem}.hcea-artist-promise p{color:rgba(246,238,223,.62);max-width:760px;line-height:1.8}.hcea-artist-promise .btn{margin-top:1.3rem}
 
+/* ── Hero trust line ── */
+.hero-trust-line{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,240,232,.32);margin-top:1.6rem;font-family:var(--sans)}
+
+/* ── Ruta de compra ── */
+.ruta-sec{background:var(--hcea-ivory);padding:7rem 0;border-top:1px solid rgba(185,154,82,.14)}
+.ruta-hd{text-align:center;margin-bottom:4.5rem}
+.ruta-frase{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.45rem);font-weight:300;font-style:italic;color:var(--hcea-ink);max-width:620px;margin:0 auto 4.5rem;text-align:center;line-height:1.65;border-left:2px solid rgba(185,154,82,.38);padding-left:1.4rem}
+.ruta-pasos{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;max-width:1100px;margin:0 auto}
+.ruta-pasos::before{content:'';position:absolute;top:2.1rem;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,rgba(185,154,82,.3) 20%,rgba(185,154,82,.3) 80%,transparent);z-index:0}
+.ruta-paso{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1.4rem;position:relative;z-index:1}
+.ruta-num{width:42px;height:42px;border-radius:50%;border:1px solid rgba(185,154,82,.4);background:var(--hcea-ivory);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.05rem;color:var(--hcea-aged-gold);margin-bottom:1.3rem;font-weight:300}
+.ruta-paso-title{font-family:var(--serif);font-size:1.05rem;color:var(--hcea-ink);margin-bottom:.5rem;line-height:1.25}
+.ruta-paso-desc{font-size:.78rem;color:rgba(31,27,22,.52);line-height:1.7}
+.ruta-cta{text-align:center;margin-top:4rem}
+.ruta-sello{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:2rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(185,154,82,.6)}
+.ruta-sello::before{content:'';width:28px;height:1px;background:rgba(185,154,82,.35)}
+.ruta-sello::after{content:'';width:28px;height:1px;background:rgba(185,154,82,.35)}
+@media(max-width:900px){.ruta-pasos{grid-template-columns:1fr 1fr;gap:3rem}.ruta-pasos::before{display:none}}
+@media(max-width:600px){.ruta-pasos{grid-template-columns:1fr}}
+
 @media(max-width:1100px){.hero-content{grid-template-columns:1fr}.hero-content::after,.hero-content::before{display:none}.hc-info{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}.event-inner{grid-template-columns:1fr}.event-content{border-left:none}.ctx-grid{grid-template-columns:1fr}.ctx-card{min-height:430px}}
 @media(max-width:768px){nav{height:70px;padding:1rem 1.2rem}.nav-logo{min-width:auto;font-size:1rem!important}.nav-logo::before{width:34px;height:34px}.hero{min-height:90svh;padding-top:88px}.hero-h{font-size:clamp(2.25rem,11vw,3.5rem)!important}.hero-sub{font-size:.9rem}.hero-ctas .btn{width:100%;justify-content:center}.trust-inner{justify-content:center}.trust-item{width:48%;padding:1rem}.entries-grid,.hfeed-grid,.gallery-grid,.artists-grid,.taller-grid,.plans-grid{grid-template-columns:1fr!important;padding-left:1.1rem!important;padding-right:1.1rem!important}.hfeed-card:first-child .hfeed-img-wrap,.hfeed-img-wrap{height:290px}.gallery-hd{align-items:flex-start}.hcea-curation-strip{grid-template-columns:1fr}.hcea-cta-panel{grid-template-columns:1fr;padding:1.45rem}.hcea-cta-actions{justify-content:flex-start}.sb-filters{width:100%}.event-content{padding:3rem 1.3rem}.event-vis{min-height:420px}.ctx-card{min-height:390px}.artist-join::after{display:none}}
-
-/* ══ FICHA EMOCIONAL DE OBRA ══ */
-.obra-ficha{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.4rem;margin:1.2rem 0;padding:1.1rem 1.2rem;background:rgba(185,154,82,.06);border-left:2px solid rgba(185,154,82,.35)}
-.obra-ficha-item{display:flex;flex-direction:column;gap:.18rem}
-.obra-ficha-label{font-size:.46rem;letter-spacing:.2em;text-transform:uppercase;color:#8a6c37;font-family:var(--sans);opacity:.8}
-.obra-ficha-value{font-family:var(--serif);font-size:.9rem;color:#1f1b16;line-height:1.3}
-.obra-intencion{font-family:var(--serif);font-size:.9rem;font-style:italic;color:#5b5146;line-height:1.75;border-left:2px solid rgba(185,154,82,.3);padding-left:1rem;margin:.9rem 0}
-.obra-vive{display:flex;flex-wrap:wrap;gap:.38rem;margin:.8rem 0}
-.obra-vive-label{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:#8a6c37;font-family:var(--sans);margin-bottom:.42rem;opacity:.8}
-.modal-cert-wrap{margin-top:1.2rem;border-top:1px solid rgba(0,0,0,.08);padding-top:1rem}
-.modal-cert-summary{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-text);cursor:pointer;font-family:var(--sans);list-style:none;padding:.3rem 0}
-.modal-cert-summary::-webkit-details-marker{display:none}
-.modal-cert-summary:hover{color:var(--gold)}
-.modal-cert-img{width:100%;margin-top:.8rem;border:1px solid rgba(0,0,0,.08);box-shadow:0 4px 20px rgba(0,0,0,.1)}
-.obra-vive-tag{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;background:rgba(111,115,82,.08);color:#5b6145;border:1px solid rgba(111,115,82,.22)}
-/* Arte en contexto — separador superior */
-.ctx-sec::before{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,rgba(185,154,82,.3),transparent);margin-bottom:0}
-
-/* ══ SISTEMA DE BADGES ══ */
-.hcea-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sans);font-size:.56rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .75rem;border-radius:2px;white-space:nowrap}
-.hcea-badge svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
-.hcea-badge--unica{background:rgba(196,163,90,.1);color:#8a6c37;border:1px solid rgba(196,163,90,.3)}
-.hcea-badge--curado{background:#1c1a15;color:#d4b878;border:1px solid rgba(196,163,90,.25)}
-.hcea-badge--mano{background:rgba(138,90,60,.08);color:#7a4e35;border:1px solid rgba(138,90,60,.22)}
-.hcea-badge--historia{background:rgba(87,96,65,.08);color:#4e5a38;border:1px solid rgba(87,96,65,.2)}
-.hcea-badge--uruguay{background:rgba(111,115,82,.08);color:#5b6145;border:1px solid rgba(111,115,82,.2)}
-.hcea-badge--tecnica{background:rgba(160,90,60,.07);color:#7a4a30;border:1px solid rgba(160,90,60,.2)}
-.hcea-badge--disponible{background:rgba(60,110,70,.08);color:#2d6040;border:1px solid rgba(60,110,70,.22)}
-.hcea-badge--reservada{background:rgba(90,70,160,.07);color:#4a3890;border:1px solid rgba(90,70,160,.2)}
-.hcea-badge--vendida{background:rgba(100,100,100,.07);color:#5a5a5a;border:1px solid rgba(0,0,0,.14);text-decoration:line-through}
-.hcea-badge--nuevo{background:rgba(196,163,90,.14);color:#7a5c28;border:1px solid rgba(196,163,90,.38);box-shadow:0 0 0 1px rgba(196,163,90,.12)}
-.hcea-badge--sello{background:linear-gradient(135deg,rgba(196,163,90,.12),rgba(196,163,90,.06));color:#8a6c37;border:1px solid rgba(196,163,90,.32)}
-
-/* ══ CURADURÍA POR ESPACIO ══ */
-.hcea-espacio{background:var(--off-white);padding:7rem 2rem;border-top:1px solid rgba(0,0,0,.06)}
-.hcea-espacio-hd{text-align:center;margin-bottom:4rem}
-.hcea-espacio-hd .eyebrow{color:var(--gold-text)}
-.hcea-espacio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
-.hcea-espacio-card{background:var(--white);border:1px solid rgba(0,0,0,.07);padding:2rem 1.5rem;text-align:center;cursor:pointer;transition:border-color .3s,box-shadow .3s,transform .3s;position:relative;overflow:hidden}
-.hcea-espacio-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s ease;transform-origin:left}
-.hcea-espacio-card:hover{border-color:rgba(196,163,90,.35);box-shadow:0 8px 32px rgba(0,0,0,.07);transform:translateY(-3px)}
-.hcea-espacio-card:hover::after{transform:scaleX(1)}
-.hcea-espacio-icon{width:44px;height:44px;margin:0 auto 1.1rem;color:var(--gold-text)}
-.hcea-espacio-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
-.hcea-espacio-label{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:var(--text);margin-bottom:.4rem}
-.hcea-espacio-sub{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle)}
-@media(max-width:768px){.hcea-espacio-grid{grid-template-columns:repeat(2,1fr)}}
-
-/* ══ CURADURÍA POR SENSACIÓN ══ */
-.hcea-sensacion{background:var(--cream) url('images/textura-papel.png') center/cover;padding:7rem 2rem;border-top:1px solid rgba(196,163,90,.1)}
-.hcea-sensacion-hd{text-align:center;margin-bottom:4rem}
-.hcea-sensacion-hd .eyebrow{color:var(--gold-text)}
-.hcea-sensacion-grid{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;max-width:900px;margin:0 auto 3rem}
-.hcea-sensacion-pill{background:rgba(255,255,255,.7);border:1px solid rgba(196,163,90,.22);padding:.85rem 2rem;font-family:var(--serif);font-size:1.15rem;font-weight:300;color:var(--text);cursor:pointer;transition:all .3s;position:relative;backdrop-filter:blur(4px)}
-.hcea-sensacion-pill span{font-family:var(--sans);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle);display:block;margin-top:.2rem}
-.hcea-sensacion-pill:hover{background:rgba(255,255,255,.95);border-color:rgba(196,163,90,.55);box-shadow:0 6px 24px rgba(196,163,90,.12);transform:translateY(-2px)}
-.hcea-sensacion-cta{text-align:center}
-
-/* ══ RUTA DE COMPRA ACOMPAÑADA ══ */
-.hcea-ruta{background:var(--off-white);padding:8rem 2rem;border-top:1px solid rgba(0,0,0,.06)}
-.hcea-ruta-inner{max-width:1100px;margin:0 auto}
-.hcea-ruta-hd{text-align:center;margin-bottom:5rem}
-.hcea-ruta-hd .eyebrow{color:var(--gold-text)}
-.hcea-ruta-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
-.hcea-ruta-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(to right,var(--gold-b),rgba(196,163,90,.5),var(--gold-b));z-index:0}
-.hcea-ruta-step{text-align:center;position:relative;z-index:1;padding:0 1rem}
-.hcea-ruta-n{width:56px;height:56px;border-radius:50%;background:var(--white);border:1px solid rgba(196,163,90,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--gold-text);transition:all .4s}
-.hcea-ruta-step:hover .hcea-ruta-n{background:var(--gold);color:var(--black);border-color:var(--gold);box-shadow:0 0 0 6px rgba(196,163,90,.12)}
-.hcea-ruta-title{font-family:var(--serif);font-size:.95rem;font-weight:400;color:var(--text);margin-bottom:.5rem;line-height:1.3}
-.hcea-ruta-desc{font-size:.72rem;color:var(--muted);line-height:1.65}
-.hcea-ruta-seal{text-align:center;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(196,163,90,.14)}
-.hcea-ruta-seal-txt{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--muted);margin-bottom:1.5rem}
-@media(max-width:900px){.hcea-ruta-steps{grid-template-columns:1fr 1fr;gap:2.5rem}.hcea-ruta-steps::before{display:none}}
-@media(max-width:480px){.hcea-ruta-steps{grid-template-columns:1fr}}
-
-/* ══ SELLO HcEA REUTILIZABLE ══ */
-.hcea-sello-chip{display:inline-flex;align-items:center;gap:.5rem;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;padding:.35rem .8rem;border:1px solid rgba(196,163,90,.32);background:rgba(196,163,90,.07);color:#8a6c37;font-family:var(--sans)}
-.hcea-sello-chip img{width:18px;height:18px;object-fit:contain}
-
-/* ══ ÁRBOL WATERMARK GLOBAL ══ */
-.hcea-tree-bg{position:relative}
-.hcea-tree-bg::before{content:'';position:absolute;right:3%;top:10%;width:320px;height:320px;background:url('images/arbol-dorado.png') center/contain no-repeat;opacity:.04;pointer-events:none;z-index:0}
 
 </style>
 </head>
@@ -1601,7 +1537,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
 
 <!-- NAV -->
 <nav id="nav">
-  <button class="nav-logo" onclick="showView('home')"><img src="images/sello-circular.png" alt="Sello HcEA" class="nav-logo-img">Hecho con el <em>Alma</em></button>
+  <button class="nav-logo" onclick="showView('home')">Hecho con el <em>Alma</em></button>
   <ul class="nav-links">
     <li><a data-view="galeria">Galería</a></li>
     <li><a data-view="artistas">Artistas</a></li>
@@ -1775,13 +1711,13 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     </div>
   </div>
 
-  <section class="hero hcea-tree-bg">
+  <section class="hero">
     <div class="hero-bg"></div>
 
     <!-- ══ Hero Carousel ══ -->
     <div class="hero-carousel" id="heroCarousel">
       <div class="hc-slide active">
-        <img src="images/hero-foto.png" alt="Arte auténtico hecho a mano desde Uruguay" loading="eager" fetchpriority="high">
+        <img src="https://picsum.photos/seed/hcea1/900/600" alt="Tarde dorada" loading="eager" fetchpriority="high">
       </div>
       <div class="hc-slide">
         <img src="https://picsum.photos/seed/hcea2/900/600" alt="Movimiento azul" loading="eager">
@@ -1815,9 +1751,10 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
       <h1 class="hero-h">El arte que se hace con el <em>alma</em><br>no se olvida.</h1>
       <p class="hero-sub">Conectamos obras y piezas únicas de artistas y artesanos/as uruguayos con personas que entienden que lo hecho a mano no es decoración — es la historia más honesta que alguien puede contar.</p>
       <div class="hero-ctas">
-        <button class="btn btn-gold" onclick="document.getElementById('hfeed-section').scrollIntoView({behavior:'smooth'})">Quiero una obra →</button>
-        <button class="btn btn-light" onclick="document.getElementById('artist-join-section').scrollIntoView({behavior:'smooth'})">Soy artista o artesano/a →</button>
+        <button class="btn btn-gold" onclick="showView('galeria')">Explorar obras curadas →</button>
+        <button class="btn btn-light" onclick="document.getElementById('artist-join-section').scrollIntoView({behavior:'smooth'})">Solicitar curaduría →</button>
       </div>
+      <p class="hero-trust-line">Obras únicas &nbsp;·&nbsp; Artistas uruguayos &nbsp;·&nbsp; Curaduría humana</p>
     </div>
     <!-- Info sincronizado con carousel -->
     <div class="hc-info" id="hcInfo">
@@ -1849,7 +1786,6 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
   </div>
 
   <section class="manifesto">
-    <img src="images/arbol-dorado.png" alt="" class="manifesto-tree" aria-hidden="true">
     <span class="eyebrow">Nuestra convicción</span>
     <q class="fi">"El arte no es un lujo. Es la manera más honesta que tiene un ser humano de decir algo. <strong>Y merece ser visto.</strong>"</q>
   </section>
@@ -1901,14 +1837,10 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Leonardo Alvez</div>
-          <div class="hfeed-title">A través del tiempo</div>
-          <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0">
-            <span class="hcea-badge hcea-badge--unica">Obra única</span>
-            <span class="hcea-badge hcea-badge--mano">Hecho a mano</span>
-          </div>
+          <div class="hfeed-artist">María Fontana</div>
+          <div class="hfeed-title">Sinfonía de la Tierra</div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">Consultar</div>
+            <div class="hfeed-price">USD 480</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -1924,14 +1856,10 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Leonardo Alvez</div>
-          <div class="hfeed-title">Vasija ciudad</div>
-          <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0">
-            <span class="hcea-badge hcea-badge--tecnica">Técnica artesanal</span>
-            <span class="hcea-badge hcea-badge--uruguay">Curaduría uruguaya</span>
-          </div>
+          <div class="hfeed-artist">Valentina Ríos</div>
+          <div class="hfeed-title">Raíces Doradas</div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">Consultar</div>
+            <div class="hfeed-price">USD 290</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -1947,14 +1875,10 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Leonardo Alvez</div>
-          <div class="hfeed-title">Umbral de la Metamorfosis</div>
-          <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0">
-            <span class="hcea-badge hcea-badge--unica">Obra única</span>
-            <span class="hcea-badge hcea-badge--nuevo">Nuevo ingreso</span>
-          </div>
+          <div class="hfeed-artist">Lucas Vera</div>
+          <div class="hfeed-title">Azul Profundo</div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">Consultar</div>
+            <div class="hfeed-price">USD 1.200</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -1971,16 +1895,15 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
   <!-- ══ ARTE EN CONTEXTO ══ -->
   <section class="ctx-sec">
     <div class="container">
-      <div class="fi" style="margin-bottom:1rem">
+      <div class="fi" style="margin-bottom:3.5rem">
         <span class="eyebrow">Arte en contexto</span>
         <h2 class="h-lg">Cada obra encuentra<br><em>su lugar.</em></h2>
       </div>
-      <p class="fi" style="font-size:.9rem;font-weight:300;color:rgba(246,238,223,.55);max-width:520px;line-height:1.85;margin-bottom:3.5rem">Una pieza de arte no es decoración. Es la primera cosa que sentís al entrar a un espacio. Así viven las obras de HcEA en hogares, estudios y espacios de Uruguay.</p>
     </div>
     <div class="ctx-grid">
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-living2/800/700" alt="Living en Pocitos" loading="eager">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-living/800/620" alt="Living en Pocitos" loading="eager">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En un hogar</div>
         <div class="ctx-meta">
@@ -1993,7 +1916,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-office2/800/700" alt="Sala de reuniones" loading="eager">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-office/800/620" alt="Sala de reuniones" loading="eager">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En una empresa</div>
         <div class="ctx-meta">
@@ -2006,7 +1929,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
       </div>
 
       <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-hotel2/800/700" alt="Lobby boutique hotel" loading="eager">
+        <img class="ctx-img" src="https://picsum.photos/seed/ctx-hotel/800/620" alt="Lobby boutique hotel" loading="eager">
         <div class="ctx-vignette"></div>
         <div class="ctx-tag">En un hotel boutique</div>
         <div class="ctx-meta">
@@ -2018,52 +1941,9 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         </div>
       </div>
 
-      <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-estetica2/800/700" alt="Clínica estética" loading="lazy">
-        <div class="ctx-vignette"></div>
-        <div class="ctx-tag">En un espacio de calma</div>
-        <div class="ctx-meta">
-          <div class="ctx-place">Clínica estética · Punta Carretas, Mvd</div>
-          <div class="ctx-title">Silencio orgánico</div>
-          <div class="ctx-artist">Leonardo Alvez · Consultar</div>
-          <div class="ctx-quote">"Mis pacientes dicen que la cerámica les transmite calma desde que entran."</div>
-          <button class="ctx-btn" onclick="openArtworkModal(3)">Ver obra →</button>
-        </div>
-      </div>
-
-      <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-campo2/800/700" alt="Casa de campo" loading="lazy">
-        <div class="ctx-vignette"></div>
-        <div class="ctx-tag">En el interior</div>
-        <div class="ctx-meta">
-          <div class="ctx-place">Casa de campo · Garzón, Maldonado</div>
-          <div class="ctx-title">Tierra adentro</div>
-          <div class="ctx-artist">Carolina Damiani · USD 760</div>
-          <div class="ctx-quote">"Es perfecta para el campo. Habla del mismo paisaje que se ve por la ventana."</div>
-          <button class="ctx-btn" onclick="showView('galeria')">Ver obra →</button>
-        </div>
-      </div>
-
-      <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-restaurant2/800/700" alt="Restaurante" loading="lazy">
-        <div class="ctx-vignette"></div>
-        <div class="ctx-tag">En gastronomía</div>
-        <div class="ctx-meta">
-          <div class="ctx-place">Restaurante · Parque Rodó, Montevideo</div>
-          <div class="ctx-title">Mesa larga</div>
-          <div class="ctx-artist">Mateo Salisbury · USD 1.200</div>
-          <div class="ctx-quote">"La gente espera mesa cerca de esa pared. El arte sumó más que cualquier remodelación."</div>
-          <button class="ctx-btn" onclick="showView('galeria')">Ver obra →</button>
-        </div>
-      </div>
-
     </div>
     <div class="ctx-footer">
-      <p style="font-size:.78rem;color:rgba(246,238,223,.4);margin-bottom:1.4rem;font-style:italic">¿Tenés un espacio en mente? Te ayudamos a encontrar la obra que dialogue con él.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-        <button class="btn btn-light" onclick="showView('galeria')">Ver toda la colección →</button>
-        <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20arte%20para%20mi%20espacio.%20¿Me%20ayudan%20a%20elegir?" class="btn btn-ghost">Asesoría de espacio →</a>
-      </div>
+      <button class="btn btn-ghost" onclick="showView('galeria')">Ver toda la colección →</button>
     </div>
   </section>
 
@@ -2098,133 +1978,9 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     </div>
   </section>
 
-  <!-- ══ CURADURÍA POR ESPACIO ══ -->
-  <section class="hcea-espacio">
-    <div class="hcea-espacio-hd">
-      <span class="eyebrow">Encontrá tu obra por espacio</span>
-      <h2 class="h-lg">Arte que se <em>habita.</em></h2>
-      <p style="color:var(--muted);font-size:.9rem;max-width:480px;margin:1rem auto 0;line-height:1.8">Cada espacio tiene una obra que le habla. Navegá por ambiente y encontrá la pieza que transforme el tuyo.</p>
-    </div>
-    <div class="hcea-espacio-grid">
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para living</div>
-        <div class="hcea-espacio-sub">Sala principal</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-7 8 7v10"/><path d="M10 20v-6h4v6"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para dormitorio</div>
-        <div class="hcea-espacio-sub">Espacio de calma</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para estudio</div>
-        <div class="hcea-espacio-sub">Espacio creativo</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para oficina</div>
-        <div class="hcea-espacio-sub">Espacio profesional</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para hotel boutique</div>
-        <div class="hcea-espacio-sub">Hospitalidad de autor</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para consultorio</div>
-        <div class="hcea-espacio-sub">Wellness · Bienestar</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Para comedor</div>
-        <div class="hcea-espacio-sub">Mesa y convivencia</div>
-      </div>
-      <div class="hcea-espacio-card" onclick="showView('galeria')">
-        <div class="hcea-espacio-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        </div>
-        <div class="hcea-espacio-label">Rincón de calma</div>
-        <div class="hcea-espacio-sub">Meditación · Silencio</div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:3rem">
-      <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20una%20obra%20para%20un%20espacio%20específico.%20%C2%BFMe%20pueden%20ayudar?" class="btn btn-dark" target="_blank" rel="noopener">¿No encontrás lo que buscás? Consultanos →</a>
-    </div>
-  </section>
-
-  <!-- ══ CURADURÍA POR SENSACIÓN ══ -->
-  <section class="hcea-sensacion hcea-tree-bg">
-    <div class="hcea-sensacion-hd">
-      <span class="eyebrow">Encontrá tu obra por lo que querés sentir</span>
-      <h2 class="h-lg">El arte se elige<br>con el <em>cuerpo.</em></h2>
-      <p style="color:var(--muted);font-size:.9rem;max-width:480px;margin:1rem auto 0;line-height:1.8">Antes de saber qué obra querés, sabés cómo querés sentirte. Dejate guiar por la sensación.</p>
-    </div>
-    <div class="hcea-sensacion-grid">
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Calma
-        <span>silencio · contemplación</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Presencia
-        <span>fuerza · protagonismo</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Raíz
-        <span>origen · tierra · identidad</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Movimiento
-        <span>energía · tensión · flujo</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Intimidad
-        <span>cercanía · calidez · secreto</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Calidez
-        <span>tierra · hogar · cobijo</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Fuerza
-        <span>tensión · contraste · materia</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Silencio
-        <span>vacío · pausa · misterio</span>
-      </div>
-      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
-        Inspiración
-        <span>apertura · posibilidad</span>
-      </div>
-    </div>
-    <div class="hcea-sensacion-cta fi">
-      <button class="btn btn-dark" onclick="showView('galeria')">Explorar la colección completa →</button>
-    </div>
-  </section>
-
   <!-- ══ CONSULTORÍA DE CURADURÍA ══ -->
   <section class="obra-ideal">
     <div class="oi-inner">
-      <div class="oi-banner-col fi">
-        <img src="images/banner-curaduria.png" alt="¿No sabés qué obra elegir? Curaduría personalizada HcEA" class="oi-banner-img">
-      </div>
-      <div class="oi-content-col">
       <div class="oi-hd fi">
         <span class="eyebrow" style="color:rgba(196,163,90,.6)">Curaduría a medida</span>
         <h2 class="h-lg" style="color:var(--cream)">El arte correcto para el<br><em>espacio que merece.</em></h2>
@@ -2323,8 +2079,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         <div class="oi-prog-bar" id="oipb-2"></div>
         <div class="oi-prog-bar" id="oipb-3"></div>
       </div>
-      </div><!-- /oi-content-col -->
-    </div><!-- /oi-inner -->
+    </div>
   </section>
 
   <!-- ══ SECCIÓN VIDEO REEL ══ -->
@@ -2401,50 +2156,9 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     </div>
   </section>
 
-  <!-- ══ RUTA DE COMPRA ACOMPAÑADA ══ -->
-  <section class="hcea-ruta">
-    <div class="hcea-ruta-inner">
-      <div class="hcea-ruta-hd">
-        <span class="eyebrow">Cómo funciona</span>
-        <h2 class="h-lg">Comprar arte es simple<br>cuando alguien <em>te acompaña.</em></h2>
-        <p style="color:var(--muted);font-size:.9rem;max-width:520px;margin:1rem auto 0;line-height:1.8">Sin formularios complicados. Sin incertidumbre. Solo vos, la obra y un proceso diseñado para que la experiencia sea tan buena como la pieza.</p>
-      </div>
-      <div class="hcea-ruta-steps">
-        <div class="hcea-ruta-step">
-          <div class="hcea-ruta-n">1</div>
-          <div class="hcea-ruta-title">Explorás la selección curada</div>
-          <div class="hcea-ruta-desc">Navegás la galería o usás el quiz de curaduría para encontrar obras que resuenen con tu espacio y sensibilidad.</div>
-        </div>
-        <div class="hcea-ruta-step">
-          <div class="hcea-ruta-n">2</div>
-          <div class="hcea-ruta-title">Consultás por una pieza</div>
-          <div class="hcea-ruta-desc">Escribís por WhatsApp o completás el formulario. Te respondemos en menos de 24 horas con toda la información.</div>
-        </div>
-        <div class="hcea-ruta-step">
-          <div class="hcea-ruta-n">3</div>
-          <div class="hcea-ruta-title">Resolvemos tus dudas</div>
-          <div class="hcea-ruta-desc">Medidas, luz, proceso, historia del artista. Te ayudamos a imaginar la obra en tu espacio antes de decidir.</div>
-        </div>
-        <div class="hcea-ruta-step">
-          <div class="hcea-ruta-n">4</div>
-          <div class="hcea-ruta-title">Coordinás compra y entrega</div>
-          <div class="hcea-ruta-desc">Pago seguro, cuotas disponibles y envío a todo Uruguay. Coordinamos la logística con vos.</div>
-        </div>
-        <div class="hcea-ruta-step">
-          <div class="hcea-ruta-n">5</div>
-          <div class="hcea-ruta-title">La obra llega con historia</div>
-          <div class="hcea-ruta-desc">La pieza llega embalada con cuidado, con su certificado curatorial HcEA y la ficha del artista.</div>
-        </div>
-      </div>
-      <div class="hcea-ruta-seal">
-        <p class="hcea-ruta-seal-txt">"No vendemos arte. Acompañamos a personas a encontrar la obra que les habla."</p>
-        <span class="hcea-sello-chip"><img src="images/sello-circular.png" alt="Sello HcEA">Sello HcEA · Obra Curada · Uruguay</span>
-      </div>
-    </div>
-  </section>
-
+  <!-- ══ ARTE EN CONTEXTO ══ -->
   <!-- ══ ¿Sos artista? ══ -->
-  <section class="artist-join fi hcea-tree-bg" id="artist-join-section">
+  <section class="artist-join fi" id="artist-join-section">
     <div class="artist-join-inner">
       <div class="aj-content">
         <span class="eyebrow">Para artistas y artesanos/as</span>
@@ -2469,6 +2183,49 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         <div class="aj-stat fi d3"><div class="aj-stat-n">100%</div><div class="aj-stat-l">Arte original uruguayo</div></div>
         <p class="aj-quote">"Desde que entré a HcEA dejé de vender como hobby y empecé a vender como artista."<br><strong style="font-style:normal;font-size:.8rem;color:rgba(245,240,232,.4)">— María Fontana, Tacuarembó</strong></p>
       </div>
+    </div>
+  </section>
+
+  <!-- ══ RUTA DE COMPRA ══ -->
+  <section class="ruta-sec">
+    <div class="container">
+      <div class="ruta-hd fi">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 class="h-lg">Comprar arte no tiene<br>que ser <em>complicado.</em></h2>
+      </div>
+      <p class="ruta-frase fi">"No vendemos arte. Acompañamos a personas a encontrar la obra que les habla."</p>
+      <div class="ruta-pasos">
+        <div class="ruta-paso fi">
+          <div class="ruta-num">1</div>
+          <div class="ruta-paso-title">Explorás la selección curada</div>
+          <p class="ruta-paso-desc">Cada obra fue elegida por lo que es, no por lo que cuesta. Filtrá por técnica, sensación o espacio.</p>
+        </div>
+        <div class="ruta-paso fi d1">
+          <div class="ruta-num">2</div>
+          <div class="ruta-paso-title">Consultás por una pieza</div>
+          <p class="ruta-paso-desc">Por WhatsApp o email, sin formularios complicados. Una conversación real con alguien que conoce la obra.</p>
+        </div>
+        <div class="ruta-paso fi d2">
+          <div class="ruta-num">3</div>
+          <div class="ruta-paso-title">Resolvemos tus dudas</div>
+          <p class="ruta-paso-desc">Medidas, colores en contexto, historia del artista, opciones de pago. Todo lo que necesitás saber antes de decidir.</p>
+        </div>
+        <div class="ruta-paso fi d3">
+          <div class="ruta-num">4</div>
+          <div class="ruta-paso-title">Coordinás compra y entrega</div>
+          <p class="ruta-paso-desc">Pago seguro, envío a todo Uruguay. También podés retirar en Montevideo si preferís ver la obra en persona.</p>
+        </div>
+        <div class="ruta-paso fi d4">
+          <div class="ruta-num">5</div>
+          <div class="ruta-paso-title">La obra llega con historia</div>
+          <p class="ruta-paso-desc">Con certificado de autenticidad y la historia del artista. Una pieza que ya tiene algo que contar desde el primer día.</p>
+        </div>
+      </div>
+      <div class="ruta-cta fi">
+        <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20asesoría%20para%20elegir%20una%20obra." class="btn btn-gold" target="_blank" rel="noopener">Empezar por WhatsApp →</a>
+        <p style="font-size:.74rem;color:rgba(31,27,22,.38);margin-top:1rem">Sin compromiso · Respondemos en menos de 24 horas</p>
+      </div>
+      <div class="ruta-sello fi">Sello HcEA · Curaduría uruguaya</div>
     </div>
   </section>
 
@@ -3008,67 +2765,67 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         <!-- 0: A traves del tiempo (2 fotos) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A traves del tiempo" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(0)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">A través del tiempo</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">A través del tiempo</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 1: Umbral de la Metamorfosis (1 foto) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(1)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Umbral de la Metamorfosis</div><div class="art-meta">Relieve cerámico · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Umbral de la Metamorfosis</div><div class="art-meta">Relieve cerámico · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 2: Vasija ciudad (3 fotos) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija ciudad" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">3 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(2)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Vasija ciudad</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Vasija ciudad</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 3: Sentidos (1 foto) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_3.jpeg" alt="Sentidos" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(3)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sentidos</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sentidos</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 4: 3 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_5.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">3 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(4)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 5: 4 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_6.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">4 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(5)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 6: 4 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_7.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">4 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(6)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 7: 2 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_8.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(7)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 8: 2 fotos -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_9.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(8)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 9: 1 foto -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(9)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 10: obra_2 -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_2.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(10)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 11: obra_3 -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_3.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(11)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 12: obra_4 (2 fotos) -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_4.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(12)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div></div></div>
+          <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
 
         <div class="filter-empty" id="gallery-empty">
@@ -3106,7 +2863,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
   <!-- ARTISTAS LAYOUT -->
   <div class="gallery-layout">
 
-  <aside class="sb-filters sb-dark" id="sbArtistas">
+  <aside class="sb-filters" id="sbArtistas">
     <div class="sb-hd">
       <span class="sb-title">Filtros</span>
       <button class="sb-reset" onclick="resetFilters('artists-grid')">Limpiar todo</button>
@@ -3593,8 +3350,9 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
 
       <!-- Marca + Newsletter -->
       <div>
-        <div class="foot-brand"><img src="images/logo-horizontal.png" alt="Hecho con el Alma — Obra Curada Uruguay" class="foot-brand-img"></div>
-        <p class="foot-desc">Arte uruguayo curado. Obras originales de artistas locales para hogares, empresas y hoteles que entienden que el arte cuenta historias.</p>
+        <div class="foot-brand">Hecho con el <em>Alma</em></div>
+        <p style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(185,154,82,.55);margin-bottom:.9rem;font-family:var(--sans)">Curaduría de arte y artesanía uruguaya</p>
+        <p class="foot-desc">Una plataforma para descubrir obras, artistas, talleres y experiencias creadas desde Uruguay con sensibilidad, oficio y raíz.</p>
         <div class="foot-social">
           <a href="https://www.instagram.com/hechoconelalma.uy" class="foot-sl" target="_blank" rel="noopener">IG</a>
           <a href="https://wa.me/59894743435" class="foot-sl" target="_blank" rel="noopener">WA</a>
@@ -3607,42 +3365,47 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         </div>
       </div>
 
-      <!-- Para coleccionistas -->
+      <!-- Explorar -->
       <div>
-        <div class="foot-col-title">Para coleccionistas</div>
+        <div class="foot-col-title">Explorar</div>
         <ul class="foot-links">
-          <li><span onclick="showView('galeria')">Ver todas las obras</span></li>
-          <li><span onclick="showView('artistas')">Conocer los artistas</span></li>
+          <li><span onclick="showView('galeria')">Obras curadas</span></li>
+          <li><span onclick="showView('artistas')">Artistas y artesanos/as</span></li>
           <li><span onclick="showView('talleres')">Talleres y experiencias</span></li>
           <li><span onclick="showView('evento')">Próximos eventos</span></li>
-          <li><a href="https://wa.me/59894743435?text=Hola!%20Quiero%20asesoría%20para%20elegir%20una%20obra.">Asesoría personalizada</a></li>
+          <li><a href="https://wa.me/59894743435?text=Hola!%20Quiero%20asesoría%20para%20elegir%20una%20obra.">Curaduría personalizada</a></li>
         </ul>
       </div>
 
-      <!-- Para el comercio -->
+      <!-- Para artistas -->
       <div>
-        <div class="foot-col-title">Para el comercio</div>
+        <div class="foot-col-title">Para artistas</div>
         <ul class="foot-links">
-          <li><a href="https://wa.me/59894743435?text=Hola!%20Consulto%20por%20arte%20para%20empresa.">Arte para empresas <span class="foot-tag">B2B</span></a></li>
-          <li><a href="https://wa.me/59894743435?text=Hola!%20Consulto%20por%20arte%20para%20hotel.">Arte para hoteles</a></li>
-          <li><a href="https://wa.me/59894743435?text=Hola!%20Quiero%20saber%20sobre%20los%20planes%20para%20artistas.">Sumá tu arte</a></li>
-          <li><span onclick="showView('planes')">Planes para artistas</span></li>
+          <li><a href="https://wa.me/59894743435?text=Hola!%20Quiero%20postularme%20a%20Hecho%20con%20el%20Alma.">Postular mi obra</a></li>
+          <li><span onclick="showView('planes')">Planes y comisiones</span></li>
+          <li><span onclick="showView('talleres')">Ofrecer talleres</span></li>
+          <li><a href="https://wa.me/59894743435?text=Hola!%20Quiero%20saber%20cómo%20funciona%20la%20curaduría.">Conocer la curaduría</a></li>
         </ul>
       </div>
 
-      <!-- Sobre nosotros -->
+      <!-- Contacto -->
       <div>
-        <div class="foot-col-title">Sobre nosotros</div>
+        <div class="foot-col-title">Contacto</div>
         <ul class="foot-links">
-          <li><span style="cursor:default;pointer-events:none">Arte 100% uruguayo</span></li>
-          <li><span style="cursor:default;pointer-events:none">Curación editorial</span></li>
+          <li><a href="https://wa.me/59894743435">WhatsApp +598 94 743 435</a></li>
+          <li><a href="https://www.instagram.com/hechoconelalma.uy" target="_blank" rel="noopener">@hechoconelalma.uy</a></li>
           <li><a href="mailto:hechoconelalma.uy@gmail.com">hechoconelalma.uy@gmail.com</a></li>
-          <li><a href="https://wa.me/59894743435">+598 94 743 435</a></li>
           <li><span style="cursor:default;pointer-events:none;color:rgba(245,240,232,.2)">Montevideo, Uruguay</span></li>
         </ul>
       </div>
 
     </div>
+
+    <!-- Frase final -->
+    <div style="text-align:center;padding:2.5rem 0 0;border-top:1px solid rgba(245,240,232,.06);margin-bottom:1.5rem">
+      <p style="font-family:var(--serif);font-size:1.05rem;font-weight:300;font-style:italic;color:rgba(245,240,232,.28);letter-spacing:.02em">Arte con raíz. Obras con historia. <em style="color:rgba(185,154,82,.45);font-style:normal">Hecho en Uruguay.</em></p>
+    </div>
+
     <div class="foot-bottom">
       <div class="foot-legal">© 2026 Hecho con el Alma · Todos los derechos reservados · Arte uruguayo curado</div>
       <div class="foot-contacts">
@@ -3872,7 +3635,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
   <div class="artwork-modal" id="artwork-modal">
     <div style="display:flex;flex-direction:column">
       <div class="modal-img-wrap" id="modal-img-wrap">
-        <img id="modal-img" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none" onerror="this.src='images/placeholder-obra.png'">
+        <img id="modal-img" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none">
         <div class="modal-img-ph" id="modal-img-ph">Imagen de la obra</div>
         <button class="modal-close" onclick="closeArtworkModal()">
           <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -3893,38 +3656,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         <div class="modal-title" id="modal-title">Título de la obra</div>
         <div class="modal-sub" id="modal-sub">Técnica · Dimensiones · Año</div>
         <div class="modal-divider"></div>
-        <!-- Ficha emocional -->
-        <div class="obra-ficha" id="modal-ficha">
-          <div class="obra-ficha-item">
-            <span class="obra-ficha-label">Origen</span>
-            <span class="obra-ficha-value" id="modal-origen">—</span>
-          </div>
-          <div class="obra-ficha-item">
-            <span class="obra-ficha-label">Proceso</span>
-            <span class="obra-ficha-value" id="modal-proceso">—</span>
-          </div>
-          <div class="obra-ficha-item">
-            <span class="obra-ficha-label">Técnica</span>
-            <span class="obra-ficha-value" id="modal-tecnica-val">—</span>
-          </div>
-          <div class="obra-ficha-item">
-            <span class="obra-ficha-label">Año</span>
-            <span class="obra-ficha-value" id="modal-anio">—</span>
-          </div>
-        </div>
-        <!-- Intención del artista -->
-        <blockquote class="obra-intencion" id="modal-intencion" style="display:none"></blockquote>
         <p class="modal-desc" id="modal-desc">Descripción de la obra.</p>
-        <!-- Dónde puede vivir -->
-        <div id="modal-vive-wrap" style="display:none;margin:.9rem 0">
-          <div class="obra-vive-label">Dónde puede vivir</div>
-          <div class="obra-vive" id="modal-vive"></div>
-        </div>
-        <!-- Certificado curatorial -->
-        <details class="modal-cert-wrap">
-          <summary class="modal-cert-summary">Ver certificado de autenticidad</summary>
-          <img src="images/certificado-curatorial.png" alt="Certificado Curatorial HcEA" class="modal-cert-img">
-        </details>
       </div>
       <div>
         <div class="modal-price-row">
@@ -4004,15 +3736,9 @@ function showView(name) {
 
   if (!VIEWS.includes(name)) name = 'home';
 
-  document.querySelectorAll('.view').forEach(v => {
-    v.classList.remove('active');
-    v.style.display = '';
-  });
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById('view-' + name);
-  if (target) {
-    target.classList.add('active');
-    target.style.display = 'block';
-  }
+  if (target) target.classList.add('active');
 
   window.scrollTo({ top:0, behavior:'instant' });
   history.pushState(null, '', name === 'home' ? location.pathname : '#' + name);
@@ -4061,8 +3787,7 @@ document.querySelectorAll('[data-view]').forEach(el => {
 });
 
 // ══ HASH ROUTING ══════════════════════════
-// DOMContentLoaded: activa la vista apenas parsea el HTML, sin esperar imágenes
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   showView(location.hash.replace('#','').trim() || 'home');
 });
 window.addEventListener('popstate', () => {
@@ -4274,7 +3999,6 @@ function renderConsultaStats() {
     }
   });
 }
-// Render inicial — se llama después de que artworkData esté definido (ver abajo)
 
 // Evento filtering (different structure — top-level divs)
 function filterEventos() {
@@ -4354,50 +4078,24 @@ function searchGrid(gridId, query) {
 
 // ══ ARTWORK MODAL ════════════════════════
 const artworkData = [
-  {
-    artist:'Leonardo Alvez', title:'A través del tiempo', sub:'Cerámica tallada · Pieza única', available:true,
-    images:['images/leonardo-alvez/escultura_4_(2).jpeg','images/leonardo-alvez/escultura_4.jpeg'],
-    desc:'Vasija de cerámica trabajada con una escena arquitectónica medieval en su interior iluminado. La luz transforma la pieza según la posición del observador.',
-    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica tallada', anio:'2024',
-    intencion:'Cada grieta en la arcilla es una decisión. Esta pieza nació de querer atrapar el tiempo dentro de un volumen.',
-    vive:['Living','Estudio','Biblioteca','Galería privada']
-  },
-  {
-    artist:'Leonardo Alvez', title:'Umbral de la Metamorfosis', sub:'Relieve cerámico · Pieza única', available:true,
-    images:['images/leonardo-alvez/obra.jpeg'],
-    desc:'Relieve cerámico de gran detalle que representa una fachada de ventanas. Cada vano es distinto — una exploración de la arquitectura como piel y como memoria.',
-    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Relieve cerámico', anio:'2024',
-    intencion:'La arquitectura como retrato. Cada ventana es una historia que no se termina de contar.',
-    vive:['Sala principal','Corredor','Espacio de trabajo','Hotel boutique']
-  },
-  {
-    artist:'Leonardo Alvez', title:'Vasija ciudad', sub:'Cerámica tallada · Pieza única', available:true,
-    images:['images/leonardo-alvez/escultura_(1).jpeg','images/leonardo-alvez/escultura_(2).jpeg','images/leonardo-alvez/escultura_(3).jpeg'],
-    desc:'Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones.',
-    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica tallada', anio:'2024',
-    intencion:'Montevideo cabe en un volumen si sabés cómo tallarlo.',
-    vive:['Living','Mesa de diseño','Recepción empresarial','Restaurante']
-  },
-  {
-    artist:'Leonardo Alvez', title:'Sentidos', sub:'Escultura cerámica · Pieza única', available:true,
-    images:['images/leonardo-alvez/escultura_3.jpeg'],
-    desc:'Serie de formas orgánicas que evocan la piel, la textura y el tacto. Una obra que se entiende tanto con los ojos como con las manos.',
-    origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Escultura cerámica', anio:'2024',
-    intencion:'Quería hacer algo que se pueda sentir sin tocarlo.',
-    vive:['Dormitorio principal','Sala de meditación','Clínica estética','Espacio de calma']
-  },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_2.jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_3.jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
-  { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
+  { artist:'Leonardo Alvez', title:'A través del tiempo',       sub:'Cerámica tallada · Pieza única',   available:true, images:['images/leonardo-alvez/escultura_4_(2).jpeg','images/leonardo-alvez/escultura_4.jpeg'],                                                                                                                      desc:'Vasija de cerámica trabajada con una escena arquitectónica medieval en su interior iluminado. La luz transforma la pieza según la posición del observador.' },
+  { artist:'Leonardo Alvez', title:'Umbral de la Metamorfosis', sub:'Relieve cerámico · Pieza única',   available:true, images:['images/leonardo-alvez/obra.jpeg'],                                                                                                                                                                          desc:'Relieve cerámico de gran detalle que representa una fachada de ventanas. Cada vano es distinto — una exploración de la arquitectura como piel y como memoria.' },
+  { artist:'Leonardo Alvez', title:'Vasija ciudad',             sub:'Cerámica tallada · Pieza única',   available:true, images:['images/leonardo-alvez/escultura_(1).jpeg','images/leonardo-alvez/escultura_(2).jpeg','images/leonardo-alvez/escultura_(3).jpeg'],                                                                          desc:'Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones.' },
+  { artist:'Leonardo Alvez', title:'Sentidos',                  sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_3.jpeg'],                                                                                                                                                                   desc:'Serie de formas orgánicas que evocan la piel, la textura y el tacto. Una obra que se entiende tanto con los ojos como con las manos.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'],                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'],                          desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'],                          desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'],                                                                                                                      desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'],                                                                                                                      desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'],                                                                                                                                                                     desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_2.jpeg'],                                                                                                                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_3.jpeg'],                                                                                                                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'],                                                                                                                                desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
 ];
 
-renderConsultaStats(); // Movido acá para que artworkData ya esté definido
+// Render inicial — después de artworkData para evitar TDZ con const
+renderConsultaStats();
+
 let currentModalIdx = 0, currentImgIdx = 0;
 
 function openArtworkModal(idx) {
@@ -4410,24 +4108,6 @@ function openArtworkModal(idx) {
   document.getElementById('modal-price').textContent  = 'Consultar';
   document.getElementById('modal-desc').textContent   = d.desc;
   document.getElementById('modal-img-wrap').className = 'modal-img-wrap';
-
-  // Ficha emocional
-  document.getElementById('modal-origen').textContent    = d.origen  || '—';
-  document.getElementById('modal-proceso').textContent   = d.proceso  || '—';
-  document.getElementById('modal-tecnica-val').textContent = d.tecnica || '—';
-  document.getElementById('modal-anio').textContent      = d.anio    || '—';
-  // Intención del artista
-  const intEl = document.getElementById('modal-intencion');
-  if (d.intencion) { intEl.textContent = '«' + d.intencion + '»'; intEl.style.display = 'block'; }
-  else { intEl.style.display = 'none'; }
-  // Dónde puede vivir
-  const viveWrap = document.getElementById('modal-vive-wrap');
-  const viveEl   = document.getElementById('modal-vive');
-  if (d.vive && d.vive.length) {
-    viveEl.innerHTML = d.vive.map(v => '<span class="obra-vive-tag">' + v + '</span>').join('');
-    viveWrap.style.display = 'block';
-  } else { viveWrap.style.display = 'none'; }
-
   _renderModalImage();
   _renderModalThumbs();
   const statusEl = document.getElementById('modal-status');
@@ -4960,6 +4640,7 @@ document.addEventListener('keydown', e => {
 function revealViewItems(viewId) {
   const view = document.getElementById('view-' + viewId);
   if (!view) return;
+  // Cards con stagger
   const cards = view.querySelectorAll('.artwork, .acard, .witem, [data-eestado]');
   cards.forEach((card, i) => {
     card.style.opacity = '0';
@@ -4992,10 +4673,23 @@ const _origShowView = typeof showView === 'function' ? showView : null;
 const _showViewOrig = window.showView;
 window.showView = function(name) {
   _showViewOrig(name);
+  if (name !== 'home') {
+    setTimeout(() => revealViewItems(name), 50);
+  }
 };
 
 // ══ INTERACCIÓN & CTAs ══════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
+
+  // ── Sec-tabs: wiring de navegación ──
+  document.querySelectorAll('.sec-tab[data-view]').forEach(function(tab) {
+    tab.addEventListener('click', function() { showView(tab.dataset.view); });
+  });
+
+  // ── Nav links: wiring de navegación ──
+  document.querySelectorAll('.nav-links a[data-view]').forEach(function(a) {
+    a.addEventListener('click', function(e) { e.preventDefault(); showView(a.dataset.view); });
+  });
 
   // ── Poblar stats de consultas ──
   var statsData = [9,5,12,0,7,4];
@@ -5781,12 +5475,6 @@ window.addEventListener('load', function() {
     }
   });
 })();
-</script>
-
-<script>
-document.querySelectorAll('img.ai-img').forEach(function(img){
-  img.addEventListener('error', function(){ this.src = 'images/placeholder-obra.png'; }, {once:true});
-});
 </script>
 
 </body>
