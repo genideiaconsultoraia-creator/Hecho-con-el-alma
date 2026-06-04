@@ -1524,6 +1524,71 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
 /* Arte en contexto — separador superior */
 .ctx-sec::before{content:'';display:block;height:1px;background:linear-gradient(to right,transparent,rgba(185,154,82,.3),transparent);margin-bottom:0}
 
+/* ══ SISTEMA DE BADGES ══ */
+.hcea-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sans);font-size:.56rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .75rem;border-radius:2px;white-space:nowrap}
+.hcea-badge svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.8;flex-shrink:0}
+.hcea-badge--unica{background:rgba(196,163,90,.1);color:#8a6c37;border:1px solid rgba(196,163,90,.3)}
+.hcea-badge--curado{background:#1c1a15;color:#d4b878;border:1px solid rgba(196,163,90,.25)}
+.hcea-badge--mano{background:rgba(138,90,60,.08);color:#7a4e35;border:1px solid rgba(138,90,60,.22)}
+.hcea-badge--historia{background:rgba(87,96,65,.08);color:#4e5a38;border:1px solid rgba(87,96,65,.2)}
+.hcea-badge--uruguay{background:rgba(111,115,82,.08);color:#5b6145;border:1px solid rgba(111,115,82,.2)}
+.hcea-badge--tecnica{background:rgba(160,90,60,.07);color:#7a4a30;border:1px solid rgba(160,90,60,.2)}
+.hcea-badge--disponible{background:rgba(60,110,70,.08);color:#2d6040;border:1px solid rgba(60,110,70,.22)}
+.hcea-badge--reservada{background:rgba(90,70,160,.07);color:#4a3890;border:1px solid rgba(90,70,160,.2)}
+.hcea-badge--vendida{background:rgba(100,100,100,.07);color:#5a5a5a;border:1px solid rgba(0,0,0,.14);text-decoration:line-through}
+.hcea-badge--nuevo{background:rgba(196,163,90,.14);color:#7a5c28;border:1px solid rgba(196,163,90,.38);box-shadow:0 0 0 1px rgba(196,163,90,.12)}
+.hcea-badge--sello{background:linear-gradient(135deg,rgba(196,163,90,.12),rgba(196,163,90,.06));color:#8a6c37;border:1px solid rgba(196,163,90,.32)}
+
+/* ══ CURADURÍA POR ESPACIO ══ */
+.hcea-espacio{background:var(--off-white);padding:7rem 2rem;border-top:1px solid rgba(0,0,0,.06)}
+.hcea-espacio-hd{text-align:center;margin-bottom:4rem}
+.hcea-espacio-hd .eyebrow{color:var(--gold-text)}
+.hcea-espacio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.hcea-espacio-card{background:var(--white);border:1px solid rgba(0,0,0,.07);padding:2rem 1.5rem;text-align:center;cursor:pointer;transition:border-color .3s,box-shadow .3s,transform .3s;position:relative;overflow:hidden}
+.hcea-espacio-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform .3s ease;transform-origin:left}
+.hcea-espacio-card:hover{border-color:rgba(196,163,90,.35);box-shadow:0 8px 32px rgba(0,0,0,.07);transform:translateY(-3px)}
+.hcea-espacio-card:hover::after{transform:scaleX(1)}
+.hcea-espacio-icon{width:44px;height:44px;margin:0 auto 1.1rem;color:var(--gold-text)}
+.hcea-espacio-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
+.hcea-espacio-label{font-family:var(--serif);font-size:1.05rem;font-weight:300;color:var(--text);margin-bottom:.4rem}
+.hcea-espacio-sub{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--subtle)}
+@media(max-width:768px){.hcea-espacio-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ══ CURADURÍA POR SENSACIÓN ══ */
+.hcea-sensacion{background:var(--cream) url('images/textura-papel.png') center/cover;padding:7rem 2rem;border-top:1px solid rgba(196,163,90,.1)}
+.hcea-sensacion-hd{text-align:center;margin-bottom:4rem}
+.hcea-sensacion-hd .eyebrow{color:var(--gold-text)}
+.hcea-sensacion-grid{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;max-width:900px;margin:0 auto 3rem}
+.hcea-sensacion-pill{background:rgba(255,255,255,.7);border:1px solid rgba(196,163,90,.22);padding:.85rem 2rem;font-family:var(--serif);font-size:1.15rem;font-weight:300;color:var(--text);cursor:pointer;transition:all .3s;position:relative;backdrop-filter:blur(4px)}
+.hcea-sensacion-pill span{font-family:var(--sans);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle);display:block;margin-top:.2rem}
+.hcea-sensacion-pill:hover{background:rgba(255,255,255,.95);border-color:rgba(196,163,90,.55);box-shadow:0 6px 24px rgba(196,163,90,.12);transform:translateY(-2px)}
+.hcea-sensacion-cta{text-align:center}
+
+/* ══ RUTA DE COMPRA ACOMPAÑADA ══ */
+.hcea-ruta{background:var(--off-white);padding:8rem 2rem;border-top:1px solid rgba(0,0,0,.06)}
+.hcea-ruta-inner{max-width:1100px;margin:0 auto}
+.hcea-ruta-hd{text-align:center;margin-bottom:5rem}
+.hcea-ruta-hd .eyebrow{color:var(--gold-text)}
+.hcea-ruta-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.hcea-ruta-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(to right,var(--gold-b),rgba(196,163,90,.5),var(--gold-b));z-index:0}
+.hcea-ruta-step{text-align:center;position:relative;z-index:1;padding:0 1rem}
+.hcea-ruta-n{width:56px;height:56px;border-radius:50%;background:var(--white);border:1px solid rgba(196,163,90,.35);display:flex;align-items:center;justify-content:center;margin:0 auto 1.4rem;font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--gold-text);transition:all .4s}
+.hcea-ruta-step:hover .hcea-ruta-n{background:var(--gold);color:var(--black);border-color:var(--gold);box-shadow:0 0 0 6px rgba(196,163,90,.12)}
+.hcea-ruta-title{font-family:var(--serif);font-size:.95rem;font-weight:400;color:var(--text);margin-bottom:.5rem;line-height:1.3}
+.hcea-ruta-desc{font-size:.72rem;color:var(--muted);line-height:1.65}
+.hcea-ruta-seal{text-align:center;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(196,163,90,.14)}
+.hcea-ruta-seal-txt{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--muted);margin-bottom:1.5rem}
+@media(max-width:900px){.hcea-ruta-steps{grid-template-columns:1fr 1fr;gap:2.5rem}.hcea-ruta-steps::before{display:none}}
+@media(max-width:480px){.hcea-ruta-steps{grid-template-columns:1fr}}
+
+/* ══ SELLO HcEA REUTILIZABLE ══ */
+.hcea-sello-chip{display:inline-flex;align-items:center;gap:.5rem;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;padding:.35rem .8rem;border:1px solid rgba(196,163,90,.32);background:rgba(196,163,90,.07);color:#8a6c37;font-family:var(--sans)}
+.hcea-sello-chip img{width:18px;height:18px;object-fit:contain}
+
+/* ══ ÁRBOL WATERMARK GLOBAL ══ */
+.hcea-tree-bg{position:relative}
+.hcea-tree-bg::before{content:'';position:absolute;right:3%;top:10%;width:320px;height:320px;background:url('images/arbol-dorado.png') center/contain no-repeat;opacity:.04;pointer-events:none;z-index:0}
+
 </style>
 </head>
 <body>
@@ -1711,7 +1776,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     </div>
   </div>
 
-  <section class="hero">
+  <section class="hero hcea-tree-bg">
     <div class="hero-bg"></div>
 
     <!-- ══ Hero Carousel ══ -->
@@ -1837,10 +1902,14 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">María Fontana</div>
-          <div class="hfeed-title">Sinfonía de la Tierra</div>
+          <div class="hfeed-artist">Leonardo Alvez</div>
+          <div class="hfeed-title">A través del tiempo</div>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0">
+            <span class="hcea-badge hcea-badge--unica">Obra única</span>
+            <span class="hcea-badge hcea-badge--mano">Hecho a mano</span>
+          </div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">USD 480</div>
+            <div class="hfeed-price">Consultar</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -1856,10 +1925,14 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Valentina Ríos</div>
-          <div class="hfeed-title">Raíces Doradas</div>
+          <div class="hfeed-artist">Leonardo Alvez</div>
+          <div class="hfeed-title">Vasija ciudad</div>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0">
+            <span class="hcea-badge hcea-badge--tecnica">Técnica artesanal</span>
+            <span class="hcea-badge hcea-badge--uruguay">Curaduría uruguaya</span>
+          </div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">USD 290</div>
+            <div class="hfeed-price">Consultar</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -1875,10 +1948,14 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Lucas Vera</div>
-          <div class="hfeed-title">Azul Profundo</div>
+          <div class="hfeed-artist">Leonardo Alvez</div>
+          <div class="hfeed-title">Umbral de la Metamorfosis</div>
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0">
+            <span class="hcea-badge hcea-badge--unica">Obra única</span>
+            <span class="hcea-badge hcea-badge--nuevo">Nuevo ingreso</span>
+          </div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">USD 1.200</div>
+            <div class="hfeed-price">Consultar</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -2019,6 +2096,126 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ══ CURADURÍA POR ESPACIO ══ -->
+  <section class="hcea-espacio">
+    <div class="hcea-espacio-hd fi">
+      <span class="eyebrow">Encontrá tu obra por espacio</span>
+      <h2 class="h-lg">Arte que se <em>habita.</em></h2>
+      <p style="color:var(--muted);font-size:.9rem;max-width:480px;margin:1rem auto 0;line-height:1.8">Cada espacio tiene una obra que le habla. Navegá por ambiente y encontrá la pieza que transforme el tuyo.</p>
+    </div>
+    <div class="hcea-espacio-grid fi">
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para living</div>
+        <div class="hcea-espacio-sub">Sala principal</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V10l8-7 8 7v10"/><path d="M10 20v-6h4v6"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para dormitorio</div>
+        <div class="hcea-espacio-sub">Espacio de calma</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para estudio</div>
+        <div class="hcea-espacio-sub">Espacio creativo</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para oficina</div>
+        <div class="hcea-espacio-sub">Espacio profesional</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para hotel boutique</div>
+        <div class="hcea-espacio-sub">Hospitalidad de autor</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para consultorio</div>
+        <div class="hcea-espacio-sub">Wellness · Bienestar</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Para comedor</div>
+        <div class="hcea-espacio-sub">Mesa y convivencia</div>
+      </div>
+      <div class="hcea-espacio-card" onclick="showView('galeria')">
+        <div class="hcea-espacio-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        </div>
+        <div class="hcea-espacio-label">Rincón de calma</div>
+        <div class="hcea-espacio-sub">Meditación · Silencio</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem">
+      <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20una%20obra%20para%20un%20espacio%20específico.%20%C2%BFMe%20pueden%20ayudar?" class="btn btn-dark" target="_blank" rel="noopener">¿No encontrás lo que buscás? Consultanos →</a>
+    </div>
+  </section>
+
+  <!-- ══ CURADURÍA POR SENSACIÓN ══ -->
+  <section class="hcea-sensacion hcea-tree-bg">
+    <div class="hcea-sensacion-hd fi">
+      <span class="eyebrow">Encontrá tu obra por lo que querés sentir</span>
+      <h2 class="h-lg">El arte se elige<br>con el <em>cuerpo.</em></h2>
+      <p style="color:var(--muted);font-size:.9rem;max-width:480px;margin:1rem auto 0;line-height:1.8">Antes de saber qué obra querés, sabés cómo querés sentirte. Dejate guiar por la sensación.</p>
+    </div>
+    <div class="hcea-sensacion-grid fi">
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Calma
+        <span>silencio · contemplación</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Presencia
+        <span>fuerza · protagonismo</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Raíz
+        <span>origen · tierra · identidad</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Movimiento
+        <span>energía · tensión · flujo</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Intimidad
+        <span>cercanía · calidez · secreto</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Calidez
+        <span>tierra · hogar · cobijo</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Fuerza
+        <span>tensión · contraste · materia</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Silencio
+        <span>vacío · pausa · misterio</span>
+      </div>
+      <div class="hcea-sensacion-pill" onclick="showView('galeria')">
+        Inspiración
+        <span>apertura · posibilidad</span>
+      </div>
+    </div>
+    <div class="hcea-sensacion-cta fi">
+      <button class="btn btn-dark" onclick="showView('galeria')">Explorar la colección completa →</button>
     </div>
   </section>
 
@@ -2206,9 +2403,50 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     </div>
   </section>
 
-  <!-- ══ ARTE EN CONTEXTO ══ -->
+  <!-- ══ RUTA DE COMPRA ACOMPAÑADA ══ -->
+  <section class="hcea-ruta">
+    <div class="hcea-ruta-inner">
+      <div class="hcea-ruta-hd fi">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 class="h-lg">Comprar arte es simple<br>cuando alguien <em>te acompaña.</em></h2>
+        <p style="color:var(--muted);font-size:.9rem;max-width:520px;margin:1rem auto 0;line-height:1.8">Sin formularios complicados. Sin incertidumbre. Solo vos, la obra y un proceso diseñado para que la experiencia sea tan buena como la pieza.</p>
+      </div>
+      <div class="hcea-ruta-steps fi">
+        <div class="hcea-ruta-step">
+          <div class="hcea-ruta-n">1</div>
+          <div class="hcea-ruta-title">Explorás la selección curada</div>
+          <div class="hcea-ruta-desc">Navegás la galería o usás el quiz de curaduría para encontrar obras que resuenen con tu espacio y sensibilidad.</div>
+        </div>
+        <div class="hcea-ruta-step">
+          <div class="hcea-ruta-n">2</div>
+          <div class="hcea-ruta-title">Consultás por una pieza</div>
+          <div class="hcea-ruta-desc">Escribís por WhatsApp o completás el formulario. Te respondemos en menos de 24 horas con toda la información.</div>
+        </div>
+        <div class="hcea-ruta-step">
+          <div class="hcea-ruta-n">3</div>
+          <div class="hcea-ruta-title">Resolvemos tus dudas</div>
+          <div class="hcea-ruta-desc">Medidas, luz, proceso, historia del artista. Te ayudamos a imaginar la obra en tu espacio antes de decidir.</div>
+        </div>
+        <div class="hcea-ruta-step">
+          <div class="hcea-ruta-n">4</div>
+          <div class="hcea-ruta-title">Coordinás compra y entrega</div>
+          <div class="hcea-ruta-desc">Pago seguro, cuotas disponibles y envío a todo Uruguay. Coordinamos la logística con vos.</div>
+        </div>
+        <div class="hcea-ruta-step">
+          <div class="hcea-ruta-n">5</div>
+          <div class="hcea-ruta-title">La obra llega con historia</div>
+          <div class="hcea-ruta-desc">La pieza llega embalada con cuidado, con su certificado curatorial HcEA y la ficha del artista.</div>
+        </div>
+      </div>
+      <div class="hcea-ruta-seal fi">
+        <p class="hcea-ruta-seal-txt">"No vendemos arte. Acompañamos a personas a encontrar la obra que les habla."</p>
+        <span class="hcea-sello-chip"><img src="images/sello-circular.png" alt="Sello HcEA">Sello HcEA · Obra Curada · Uruguay</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ══ ¿Sos artista? ══ -->
-  <section class="artist-join fi" id="artist-join-section">
+  <section class="artist-join fi hcea-tree-bg" id="artist-join-section">
     <div class="artist-join-inner">
       <div class="aj-content">
         <span class="eyebrow">Para artistas y artesanos/as</span>
