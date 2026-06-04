@@ -51,8 +51,8 @@ img{display:block;width:100%}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
 /* ══ VIEW SYSTEM ══ */
-.view{display:none}
-.view.active{display:block}
+.view{display:none!important}
+.view.active{display:block!important;opacity:1!important;visibility:visible!important}
 .view-section{padding-top:var(--nav-h)}
 
 /* ══ SECTION NAV ══ */
@@ -4005,9 +4005,15 @@ function showView(name) {
 
   if (!VIEWS.includes(name)) name = 'home';
 
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v => {
+    v.classList.remove('active');
+    v.style.display = '';
+  });
   const target = document.getElementById('view-' + name);
-  if (target) target.classList.add('active');
+  if (target) {
+    target.classList.add('active');
+    target.style.display = 'block';
+  }
 
   window.scrollTo({ top:0, behavior:'instant' });
   history.pushState(null, '', name === 'home' ? location.pathname : '#' + name);
