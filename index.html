@@ -52,8 +52,8 @@ img{display:block;width:100%}
 
 /* ══ VIEW SYSTEM ══ */
 .view{display:none}
-.view.active{display:block;animation:vfade .38s cubic-bezier(.25,.46,.45,.94)}
-@keyframes vfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.view.active{display:block;animation:vfade .12s ease}
+@keyframes vfade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .view-section{padding-top:var(--nav-h)}
 
 /* ══ SECTION NAV ══ */
@@ -4021,9 +4021,8 @@ function showView(name) {
   });
 
   if (target) {
-    setTimeout(() => {
-      target.querySelectorAll('.fi').forEach(el => el.classList.add('on'));
-    }, 80);
+    // Hacer visible inmediatamente — sin delay para evitar pantalla negra
+    target.querySelectorAll('.fi').forEach(el => el.classList.add('on'));
     // Trigger lazy AI images in newly visible view
     target.querySelectorAll('img[loading="eager"]').forEach(img => {
       if (!img.complete || img.naturalWidth === 0) {
@@ -4953,19 +4952,8 @@ document.addEventListener('keydown', e => {
 // ── Reveal animations para secciones de vistas ─────────
 // Cuando se activa una vista, activa las animaciones de sus hijos con stagger
 function revealViewItems(viewId) {
-  const view = document.getElementById('view-' + viewId);
-  if (!view) return;
-  // Cards con stagger
-  const cards = view.querySelectorAll('.artwork, .acard, .witem, [data-eestado]');
-  cards.forEach((card, i) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity .5s ease, transform .5s ease';
-    setTimeout(() => {
-      card.style.opacity = '';
-      card.style.transform = '';
-    }, 60 + i * 55);
-  });
+  // No-op: el reveal se maneja directamente en showView con .fi.on
+  // Dejamos la función para no romper llamadas existentes
 }
 
 // ── IntersectionObserver para video section y reveals laterales ──
