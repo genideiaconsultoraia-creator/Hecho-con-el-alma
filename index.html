@@ -4275,8 +4275,7 @@ function renderConsultaStats() {
     }
   });
 }
-// Render inicial
-renderConsultaStats();
+// Render inicial — se llama después de que artworkData esté definido (ver abajo)
 
 // Evento filtering (different structure — top-level divs)
 function filterEventos() {
@@ -4399,6 +4398,7 @@ const artworkData = [
   { artist:'Leonardo Alvez', title:'Sin título', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'], desc:'Pieza cerámica de acabado artesanal. Título a confirmar — consultá por WhatsApp.', origen:'Montevideo, Uruguay', proceso:'Hecho a mano · Pieza única', tecnica:'Cerámica', anio:'2024' },
 ];
 
+renderConsultaStats(); // Movido acá para que artworkData ya esté definido
 let currentModalIdx = 0, currentImgIdx = 0;
 
 function openArtworkModal(idx) {
