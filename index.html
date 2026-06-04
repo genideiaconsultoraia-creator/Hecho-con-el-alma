@@ -1835,6 +1835,46 @@ nav .nav-links{flex-shrink:1}
   margin-bottom:2.5rem;
 }
 
+/* ══ MODAL PREMIUM — PESTAÑAS + FICHA TÉCNICA ══ */
+/* Eliminar pseudo-elementos reemplazados por HTML real */
+.modal-body::before{display:none!important}
+.modal-desc::after{display:none!important}
+/* Sello chip */
+.modal-sello{display:inline-flex;align-items:center;gap:.5rem;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:#8a6c37;border:1px solid rgba(185,154,82,.28);background:rgba(185,154,82,.07);padding:.38rem .82rem;margin-bottom:1rem}
+.modal-sello::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--hcea-aged-gold);flex-shrink:0}
+/* Ficha técnica — grid 2 cols */
+.modal-ficha{display:grid;grid-template-columns:1fr 1fr;gap:.55rem 1.4rem;margin-bottom:1.4rem;padding:.9rem 0;border-top:1px solid rgba(185,154,82,.18);border-bottom:1px solid rgba(185,154,82,.18)}
+.modal-ficha-row{display:flex;flex-direction:column;gap:.18rem}
+.modal-ficha-label{font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--hcea-aged-gold);font-family:var(--sans);font-weight:500}
+.modal-ficha-val{font-family:var(--serif);font-size:.96rem;color:var(--hcea-ink);font-weight:400;line-height:1.25}
+/* Pestañas */
+.modal-tabs{display:flex;border-bottom:1px solid rgba(185,154,82,.18);margin-bottom:1.3rem;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
+.modal-tabs::-webkit-scrollbar{display:none}
+.modal-tab{font-family:var(--sans);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(31,27,22,.38);padding:.7rem 1rem;background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;transition:color .2s,border-color .2s;font-weight:400;flex-shrink:0}
+.modal-tab:hover{color:var(--hcea-ink)}
+.modal-tab.active{color:var(--hcea-aged-gold);border-bottom-color:var(--hcea-aged-gold);font-weight:500}
+.modal-tab-panel{display:none;font-size:.86rem;color:rgba(31,27,22,.6);line-height:1.85;min-height:72px}
+.modal-tab-panel.active{display:block}
+/* CTAs dobles */
+.modal-ctas{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:1.2rem}
+.modal-ctas .btn{justify-content:center;font-size:.68rem}
+@media(max-width:680px){
+  .modal-ctas{grid-template-columns:1fr}
+  .modal-ficha{grid-template-columns:1fr}
+  .modal-tab{font-size:.58rem;padding:.65rem .82rem}
+}
+
+/* ══ RUTA DE COMPRA — ÍCONOS POR PASO ══ */
+.ruta-ico{width:34px;height:34px;margin:0 auto .85rem;opacity:.72;flex-shrink:0}
+.ruta-ico svg{width:100%;height:100%;stroke:var(--hcea-aged-gold);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+/* CTA WhatsApp bloque en ruta */
+.ruta-wa-bloque{display:flex;align-items:center;gap:1.5rem;margin-top:3.5rem;padding:1.6rem 2rem;background:rgba(185,154,82,.06);border:1px solid rgba(185,154,82,.18);max-width:580px;margin-left:auto;margin-right:auto;text-decoration:none;transition:background .25s,border-color .25s}
+.ruta-wa-bloque:hover{background:rgba(185,154,82,.1);border-color:rgba(185,154,82,.35)}
+.ruta-wa-ico{width:42px;height:42px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ruta-wa-ico svg{width:22px;height:22px;fill:#fff}
+.ruta-wa-texto strong{display:block;font-family:var(--serif);font-size:1.02rem;color:var(--hcea-ink);margin-bottom:.18rem}
+.ruta-wa-texto span{font-size:.78rem;color:rgba(31,27,22,.5)}
+
 </style>
 </head>
 <body>
@@ -2508,36 +2548,44 @@ nav .nav-links{flex-shrink:1}
       <p class="ruta-frase fi">"No vendemos arte. Acompañamos a personas a encontrar la obra que les habla."</p>
       <div class="ruta-pasos">
         <div class="ruta-paso fi">
+          <div class="ruta-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
           <div class="ruta-num">1</div>
           <div class="ruta-paso-title">Explorás la selección curada</div>
           <p class="ruta-paso-desc">Cada obra fue elegida por lo que es, no por lo que cuesta. Filtrá por técnica, sensación o espacio.</p>
         </div>
         <div class="ruta-paso fi d1">
+          <div class="ruta-ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <div class="ruta-num">2</div>
           <div class="ruta-paso-title">Consultás por una pieza</div>
           <p class="ruta-paso-desc">Por WhatsApp o email, sin formularios complicados. Una conversación real con alguien que conoce la obra.</p>
         </div>
         <div class="ruta-paso fi d2">
+          <div class="ruta-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><line x1="19" y1="11" x2="19" y2="17"/><line x1="16" y1="14" x2="22" y2="14"/></svg></div>
           <div class="ruta-num">3</div>
-          <div class="ruta-paso-title">Resolvemos tus dudas</div>
-          <p class="ruta-paso-desc">Medidas, colores en contexto, historia del artista, opciones de pago. Todo lo que necesitás saber antes de decidir.</p>
+          <div class="ruta-paso-title">Te ayudamos a resolver dudas</div>
+          <p class="ruta-paso-desc">Medidas, colores en contexto, historia del artista, opciones de pago. Todo antes de decidir.</p>
         </div>
         <div class="ruta-paso fi d3">
+          <div class="ruta-ico"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
           <div class="ruta-num">4</div>
           <div class="ruta-paso-title">Coordinás compra y entrega</div>
-          <p class="ruta-paso-desc">Pago seguro, envío a todo Uruguay. También podés retirar en Montevideo si preferís ver la obra en persona.</p>
+          <p class="ruta-paso-desc">Pago seguro, envío a todo Uruguay. O retirás en Montevideo si querés ver la obra en persona.</p>
         </div>
         <div class="ruta-paso fi d4">
+          <div class="ruta-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
           <div class="ruta-num">5</div>
-          <div class="ruta-paso-title">La obra llega con historia</div>
+          <div class="ruta-paso-title">La obra llega con contexto y sello HcEA</div>
           <p class="ruta-paso-desc">Con certificado de autenticidad y la historia del artista. Una pieza que ya tiene algo que contar desde el primer día.</p>
         </div>
       </div>
-      <div class="ruta-cta fi">
-        <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20asesoría%20para%20elegir%20una%20obra." class="btn btn-gold" target="_blank" rel="noopener">Empezar por WhatsApp →</a>
-        <p style="font-size:.74rem;color:rgba(31,27,22,.38);margin-top:1rem">Sin compromiso · Respondemos en menos de 24 horas</p>
-      </div>
-      <div class="ruta-sello fi">Sello HcEA · Curaduría uruguaya</div>
+      <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20asesor%C3%ADa%20para%20elegir%20una%20obra." class="ruta-wa-bloque fi" target="_blank" rel="noopener">
+        <div class="ruta-wa-ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+        <div class="ruta-wa-texto">
+          <strong>Estamos para acompañarte en cada paso.</strong>
+          <span>Escribinos cuando quieras — respondemos en menos de 24 horas.</span>
+        </div>
+      </a>
+      <div class="ruta-sello fi" style="margin-top:2rem">Sello HcEA · Curaduría uruguaya</div>
     </div>
   </section>
 
@@ -3965,20 +4013,39 @@ nav .nav-links{flex-shrink:1}
       <div class="modal-thumbs" id="modal-thumbs"></div>
     </div>
     <div class="modal-body">
-      <div>
-        <div class="modal-eyebrow" id="modal-artist">Artista</div>
-        <div class="modal-title" id="modal-title">Título de la obra</div>
-        <div class="modal-sub" id="modal-sub">Técnica · Dimensiones · Año</div>
-        <div class="modal-divider"></div>
-        <p class="modal-desc" id="modal-desc">Descripción de la obra.</p>
+      <div class="modal-sello">Sello HcEA · Obra Curada · Uruguay</div>
+      <div class="modal-eyebrow" id="modal-artist">Artista</div>
+      <div class="modal-title" id="modal-title">Título de la obra</div>
+      <div class="modal-sub" id="modal-sub">Técnica · Dimensiones · Año</div>
+      <div class="modal-ficha">
+        <div class="modal-ficha-row"><span class="modal-ficha-label">Origen</span><span class="modal-ficha-val" id="modal-ficha-origen">Uruguay</span></div>
+        <div class="modal-ficha-row"><span class="modal-ficha-label">Medidas</span><span class="modal-ficha-val" id="modal-ficha-medidas">—</span></div>
+        <div class="modal-ficha-row"><span class="modal-ficha-label">Técnica</span><span class="modal-ficha-val" id="modal-ficha-tecnica">—</span></div>
+        <div class="modal-ficha-row"><span class="modal-ficha-label">Año</span><span class="modal-ficha-val" id="modal-ficha-anio">—</span></div>
       </div>
-      <div>
-        <div class="modal-price-row">
-          <div class="modal-price" id="modal-price">USD —</div>
-          <div id="modal-status"></div>
-        </div>
-        <div id="modal-cta"></div>
+      <div class="modal-tabs">
+        <button class="modal-tab active" onclick="modalTab(this,'modal-panel-historia')">Historia</button>
+        <button class="modal-tab" onclick="modalTab(this,'modal-panel-proceso')">Proceso</button>
+        <button class="modal-tab" onclick="modalTab(this,'modal-panel-intencion')">Intención</button>
+        <button class="modal-tab" onclick="modalTab(this,'modal-panel-donde')">Dónde puede vivir</button>
       </div>
+      <div id="modal-panel-historia" class="modal-tab-panel active">
+        <p id="modal-desc">Descripción de la obra.</p>
+      </div>
+      <div id="modal-panel-proceso" class="modal-tab-panel">
+        <p id="modal-proceso">Proceso artesanal a confirmar — consultá por WhatsApp.</p>
+      </div>
+      <div id="modal-panel-intencion" class="modal-tab-panel">
+        <p id="modal-intencion">Intención de la obra a confirmar — consultá por WhatsApp.</p>
+      </div>
+      <div id="modal-panel-donde" class="modal-tab-panel">
+        <p id="modal-donde">Ideal para hogar, estudio, hotel boutique o espacio de calma.</p>
+      </div>
+      <div class="modal-price-row">
+        <div class="modal-price" id="modal-price">USD —</div>
+        <div id="modal-status"></div>
+      </div>
+      <div class="modal-ctas" id="modal-cta"></div>
     </div>
   </div>
 </div>
@@ -4392,19 +4459,51 @@ function searchGrid(gridId, query) {
 
 // ══ ARTWORK MODAL ════════════════════════
 const artworkData = [
-  { artist:'Leonardo Alvez', title:'A través del tiempo',       sub:'Cerámica tallada · Pieza única',   available:true, images:['images/leonardo-alvez/escultura_4_(2).jpeg','images/leonardo-alvez/escultura_4.jpeg'],                                                                                                                      desc:'Vasija de cerámica trabajada con una escena arquitectónica medieval en su interior iluminado. La luz transforma la pieza según la posición del observador.' },
-  { artist:'Leonardo Alvez', title:'Umbral de la Metamorfosis', sub:'Relieve cerámico · Pieza única',   available:true, images:['images/leonardo-alvez/obra.jpeg'],                                                                                                                                                                          desc:'Relieve cerámico de gran detalle que representa una fachada de ventanas. Cada vano es distinto — una exploración de la arquitectura como piel y como memoria.' },
-  { artist:'Leonardo Alvez', title:'Vasija ciudad',             sub:'Cerámica tallada · Pieza única',   available:true, images:['images/leonardo-alvez/escultura_(1).jpeg','images/leonardo-alvez/escultura_(2).jpeg','images/leonardo-alvez/escultura_(3).jpeg'],                                                                          desc:'Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones.' },
-  { artist:'Leonardo Alvez', title:'Sentidos',                  sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_3.jpeg'],                                                                                                                                                                   desc:'Serie de formas orgánicas que evocan la piel, la textura y el tacto. Una obra que se entiende tanto con los ojos como con las manos.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'],                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'],                          desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'],                          desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'],                                                                                                                      desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'],                                                                                                                      desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'],                                                                                                                                                                     desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_2.jpeg'],                                                                                                                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_3.jpeg'],                                                                                                                                                                        desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
-  { artist:'Leonardo Alvez', title:'Sin título',                sub:'Obra en cerámica · Pieza única',   available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'],                                                                                                                                desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp.' },
+  {
+    artist:'Leonardo Alvez', title:'A través del tiempo', sub:'Cerámica tallada · Pieza única', available:true,
+    images:['images/leonardo-alvez/escultura_4_(2).jpeg','images/leonardo-alvez/escultura_4.jpeg'],
+    origen:'Montevideo, Uruguay', medidas:'45 × 28 cm', tecnica:'Cerámica tallada', anio:'2024',
+    desc:'Vasija de cerámica trabajada con una escena arquitectónica medieval en su interior iluminado. La luz transforma la pieza según la posición del observador.',
+    proceso:'Modelado a mano en arcilla blanca. Tallado detallado de la escena interior. Cocción en horno de alta temperatura. La iluminación fue diseñada como parte integral de la obra — no como añadido posterior.',
+    intencion:'Crear un portal entre épocas. El observador no mira una vasija: mira un edificio que sobrevivió al tiempo dentro de la materia. Una obra para quien entiende que el arte puede contener mundos.',
+    dondePuedeVivir:'Ideal para una biblioteca, un estudio intelectual o un living con vocación cultural. La posibilidad de iluminación interior la convierte en una pieza poderosa tanto de día como de noche.'
+  },
+  {
+    artist:'Leonardo Alvez', title:'Umbral de la Metamorfosis', sub:'Relieve cerámico · Pieza única', available:true,
+    images:['images/leonardo-alvez/obra.jpeg'],
+    origen:'Montevideo, Uruguay', medidas:'60 × 40 cm', tecnica:'Relieve en cerámica', anio:'2024',
+    desc:'Relieve cerámico de gran detalle que representa una fachada de ventanas. Cada vano es distinto — una exploración de la arquitectura como piel y como memoria.',
+    proceso:'Construcción por placas de arcilla prensada. Cada ventana fue tallada individualmente antes de la cocción. Acabado con óxidos naturales que profundizan el relieve y generan profundidad visual.',
+    intencion:'La fachada como metáfora de identidad. Cada vano es una historia distinta — juntos forman una arquitectura que no existe en ninguna ciudad real. Una obra sobre la memoria y la transformación.',
+    dondePuedeVivir:'Un corredor de entrada, un estudio o una sala principal. Necesita espacio para ser observada — es una obra para detenerse, no para pasar de largo.'
+  },
+  {
+    artist:'Leonardo Alvez', title:'Vasija ciudad', sub:'Cerámica tallada · Pieza única', available:true,
+    images:['images/leonardo-alvez/escultura_(1).jpeg','images/leonardo-alvez/escultura_(2).jpeg','images/leonardo-alvez/escultura_(3).jpeg'],
+    origen:'Montevideo, Uruguay', medidas:'38 × 22 cm', tecnica:'Cerámica tallada en torno', anio:'2023',
+    desc:'Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones.',
+    proceso:'Modelado en torno y luego intervenido a mano con el relieve urbano. El proceso de tallado duró semanas — cada detalle arquitectónico fue resuelto por capas, respetando la estructura de la pieza.',
+    intencion:'La ciudad como organismo vivo guardado en arcilla. Una exploración de la memoria colectiva y el espacio urbano como material poético — lo que construimos y lo que recordamos.',
+    dondePuedeVivir:'Sala principal, comedor o mesa de trabajo donde se recibe. Funciona como pieza central — convoca la atención sin imponerla. Escala ideal para espacios amplios.'
+  },
+  {
+    artist:'Leonardo Alvez', title:'Sentidos', sub:'Escultura cerámica · Pieza única', available:true,
+    images:['images/leonardo-alvez/escultura_3.jpeg'],
+    origen:'Montevideo, Uruguay', medidas:'25 × 18 cm', tecnica:'Escultura cerámica modelada', anio:'2024',
+    desc:'Serie de formas orgánicas que evocan la piel, la textura y el tacto. Una obra que se entiende tanto con los ojos como con las manos.',
+    proceso:'Construcción escultórica a partir de formas orgánicas modeladas a mano. Sin moldes, sin referencia fija — cada forma surge del gesto y la materia en diálogo directo.',
+    intencion:'Una obra para entender con las manos tanto como con los ojos. La textura es parte del discurso — la rugosidad es intencional. Una exploración de la percepción sensorial como lenguaje.',
+    dondePuedeVivir:'Dormitorio principal, sala de meditación o estudio creativo. Su escala íntima la convierte en una pieza para los espacios de calma, presencia y pensamiento.'
+  },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_5.jpeg','images/leonardo-alvez/escultura_5_(2).jpeg','images/leonardo-alvez/escultura_5_(3).jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_6.jpeg','images/leonardo-alvez/escultura_6_(2).jpeg','images/leonardo-alvez/escultura_6_(3).jpeg','images/leonardo-alvez/escultura_6_(4).jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_7.jpeg','images/leonardo-alvez/escultura_7_(2).jpeg','images/leonardo-alvez/escultura_7_(3).jpeg','images/leonardo-alvez/escultrua_7_(4).jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_8.jpeg','images/leonardo-alvez/escultura_8_(2).jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura_9.jpeg','images/leonardo-alvez/escultura_9_(2).jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Escultura cerámica · Pieza única', available:true, images:['images/leonardo-alvez/escultura.jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_2.jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_3.jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
+  { artist:'Leonardo Alvez', title:'Obra en curaduría', sub:'Obra en cerámica · Pieza única', available:true, images:['images/leonardo-alvez/obra_4.jpeg','images/leonardo-alvez/obra_4_(2).jpeg'], origen:'Montevideo, Uruguay', medidas:'A confirmar', tecnica:'Cerámica artesanal', anio:'2024', desc:'Pieza de cerámica con acabado artesanal. Título y precio a confirmar — consultá por WhatsApp para más información.', proceso:'Proceso artesanal de cerámica. Detalles a confirmar con el artista.', intencion:'A confirmar con el artista — consultá por WhatsApp.', dondePuedeVivir:'Ideal para hogar, estudio o espacio de calma. Consultá por WhatsApp para asesoría personalizada.' },
 ];
 
 // Render inicial — después de artworkData para evitar TDZ con const
@@ -4416,22 +4515,59 @@ function openArtworkModal(idx) {
   const d = artworkData[idx];
   if (!d) return;
   currentModalIdx = idx; currentImgIdx = 0;
+  // Campos base
   document.getElementById('modal-artist').textContent = d.artist;
   document.getElementById('modal-title').textContent  = d.title;
   document.getElementById('modal-sub').textContent    = d.sub;
-  document.getElementById('modal-price').textContent  = 'Consultar';
-  document.getElementById('modal-desc').textContent   = d.desc;
+  document.getElementById('modal-price').textContent  = 'Consultar precio';
   document.getElementById('modal-img-wrap').className = 'modal-img-wrap';
+  // Ficha técnica
+  document.getElementById('modal-ficha-origen').textContent  = d.origen  || 'Uruguay';
+  document.getElementById('modal-ficha-medidas').textContent = d.medidas  || '—';
+  document.getElementById('modal-ficha-tecnica').textContent = (d.sub||'').split('·')[0].trim() || '—';
+  document.getElementById('modal-ficha-anio').textContent    = d.anio     || '—';
+  // Pestañas — contenido
+  document.getElementById('modal-desc').textContent     = d.desc     || '—';
+  document.getElementById('modal-proceso').textContent  = d.proceso  || 'Información de proceso a confirmar con el artista.';
+  document.getElementById('modal-intencion').textContent = d.intencion || 'Intención de la obra a confirmar.';
+  document.getElementById('modal-donde').textContent    = d.dondePuedeVivir || 'Ideal para hogar, estudio, hotel boutique o espacio de calma.';
+  // Resetear a tab Historia
+  document.querySelectorAll('.modal-tab').forEach(function(t){t.classList.remove('active')});
+  document.querySelectorAll('.modal-tab-panel').forEach(function(p){p.classList.remove('active')});
+  var firstTab = document.querySelector('.modal-tab');
+  if (firstTab) firstTab.classList.add('active');
+  var firstPanel = document.getElementById('modal-panel-historia');
+  if (firstPanel) firstPanel.classList.add('active');
+  // Imágenes
   _renderModalImage();
   _renderModalThumbs();
+  // Estado + CTAs
   const statusEl = document.getElementById('modal-status');
   const ctaEl    = document.getElementById('modal-cta');
-  statusEl.className = 'modal-status-avail';
-  statusEl.textContent = 'Disponible';
-  var msg = 'Hola! Vi la obra "' + d.title + '" de ' + d.artist + ' en la galería de Hecho con el Alma y me interesa. ¿Podemos conversar sobre el precio?';
-  ctaEl.innerHTML = '<a href="https://wa.me/59894743435?text=' + encodeURIComponent(msg) + '" class="btn btn-gold" style="width:100%;justify-content:center" target="_blank" rel="noopener">Consultar por WhatsApp →</a>';
+  var msg = 'Hola! Vi la obra "' + d.title + '" de ' + d.artist + ' en Hecho con el Alma y me interesa. ¿Podemos conversar?';
+  var waUrl = 'https://wa.me/59894743435?text=' + encodeURIComponent(msg);
+  if (d.available) {
+    statusEl.className = 'modal-status-avail';
+    statusEl.textContent = 'Disponible';
+    ctaEl.style.gridTemplateColumns = '1fr 1fr';
+    ctaEl.innerHTML = '<a href="' + waUrl + '" class="btn btn-dark" style="justify-content:center" target="_blank" rel="noopener">Consultar →</a>'
+      + '<button class="btn btn-gold" style="justify-content:center" onclick="addToCart(' + idx + ')">Agregar al carrito</button>';
+  } else {
+    statusEl.className = 'modal-status-sold';
+    statusEl.textContent = 'Vendida';
+    ctaEl.style.gridTemplateColumns = '1fr';
+    ctaEl.innerHTML = '<a href="' + waUrl + '" class="btn btn-dark" style="justify-content:center;width:100%" target="_blank" rel="noopener">Consultar disponibilidad →</a>';
+  }
   document.getElementById('artwork-modal-overlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+function modalTab(btn, panelId) {
+  var body = btn.closest('.modal-body');
+  body.querySelectorAll('.modal-tab').forEach(function(t){t.classList.remove('active')});
+  body.querySelectorAll('.modal-tab-panel').forEach(function(p){p.classList.remove('active')});
+  btn.classList.add('active');
+  var panel = document.getElementById(panelId);
+  if (panel) panel.classList.add('active');
 }
 function _renderModalImage() {
   const d = artworkData[currentModalIdx], imgs = d.images||[], total = imgs.length;
