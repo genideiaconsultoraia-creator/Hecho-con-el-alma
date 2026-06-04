@@ -4057,7 +4057,8 @@ document.querySelectorAll('[data-view]').forEach(el => {
 });
 
 // ══ HASH ROUTING ══════════════════════════
-window.addEventListener('load', () => {
+// DOMContentLoaded: activa la vista apenas parsea el HTML, sin esperar imágenes
+document.addEventListener('DOMContentLoaded', () => {
   showView(location.hash.replace('#','').trim() || 'home');
 });
 window.addEventListener('popstate', () => {
