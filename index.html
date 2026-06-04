@@ -52,8 +52,7 @@ img{display:block;width:100%}
 
 /* ══ VIEW SYSTEM ══ */
 .view{display:none}
-.view.active{display:block;animation:vfade .38s cubic-bezier(.25,.46,.45,.94)}
-@keyframes vfade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.view.active{display:block}
 .view-section{padding-top:var(--nav-h)}
 
 /* ══ SECTION NAV ══ */
@@ -4988,9 +4987,6 @@ const _origShowView = typeof showView === 'function' ? showView : null;
 const _showViewOrig = window.showView;
 window.showView = function(name) {
   _showViewOrig(name);
-  if (name !== 'home') {
-    setTimeout(() => revealViewItems(name), 50);
-  }
 };
 
 // ══ INTERACCIÓN & CTAs ══════════════════════════════════
