@@ -4988,6 +4988,7 @@ const _origShowView = typeof showView === 'function' ? showView : null;
 const _showViewOrig = window.showView;
 window.showView = function(name) {
   _showViewOrig(name);
+  window.scrollTo({top: 0, behavior: 'instant'});
   if (name !== 'home') {
     setTimeout(() => revealViewItems(name), 50);
   }
