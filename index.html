@@ -1429,11 +1429,7 @@ body::after{
 nav{height:78px;padding:1rem 2.4rem;background:rgba(8,7,6,.74)!important;backdrop-filter:blur(20px);border-bottom:1px solid rgba(185,154,82,.18)}
 nav.stuck{background:rgba(8,7,6,.92)!important;border-bottom-color:rgba(185,154,82,.26)}
 .nav-logo{display:inline-flex;align-items:center;gap:.85rem;color:#f5ead7!important;font-size:1.22rem!important;letter-spacing:.035em;min-width:210px}
-.nav-logo::before{content:'';width:43px;height:43px;border-radius:50%;border:1px solid rgba(216,191,118,.62);background:
-  radial-gradient(circle at 50% 60%,rgba(216,191,118,.55) 0 3px,transparent 4px),
-  linear-gradient(90deg,transparent 47%,rgba(216,191,118,.5) 49% 51%,transparent 53%),
-  radial-gradient(circle at 50% 48%,rgba(185,154,82,.13),transparent 58%),
-  rgba(185,154,82,.06);box-shadow:0 0 0 4px rgba(185,154,82,.06),0 0 34px rgba(185,154,82,.16)}
+.nav-logo::before{content:'';width:43px;height:43px;border-radius:50%;border:1px solid rgba(216,191,118,.45);background:url('images/sello-circular.png') center/cover no-repeat;box-shadow:0 0 0 4px rgba(185,154,82,.06),0 0 28px rgba(185,154,82,.18);opacity:.92}
 .nav-logo em{color:var(--hcea-soft-gold)!important}.nav-links{gap:2.35rem}.nav-links a{color:rgba(246,238,223,.72);font-weight:500;letter-spacing:.16em}.nav-links a:hover,.nav-links a.active{color:var(--hcea-soft-gold)}
 .cart-btn{border-color:rgba(216,191,118,.22)!important;background:rgba(255,255,255,.035)!important;color:#efe6d8!important}.cart-btn:hover{border-color:var(--hcea-aged-gold)!important}
 .btn-nav-login{border:1px solid rgba(216,191,118,.22)!important;color:rgba(246,238,223,.72)!important;background:rgba(255,255,255,.035)!important;letter-spacing:.18em}.btn-nav-login:hover{border-color:var(--hcea-soft-gold)!important;color:var(--hcea-soft-gold)!important}
@@ -1495,7 +1491,7 @@ nav.stuck{background:rgba(8,7,6,.92)!important;border-bottom-color:rgba(185,154,
 .artwork-modal,.pm-box,.cform-box,.auth-box{background:var(--hcea-ivory)!important;box-shadow:0 40px 140px rgba(0,0,0,.55);border:1px solid rgba(216,191,118,.22)}.modal-body::before{content:'Sello HcEA · Obra Curada · Uruguay';display:inline-flex;width:max-content;margin-bottom:1rem;border:1px solid rgba(185,154,82,.28);background:rgba(185,154,82,.07);padding:.35rem .7rem;font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37}.modal-desc::after{content:'\A\AOrigen: Uruguay · Proceso: pieza hecha a mano · Dónde puede vivir: hogar, estudio, hotel boutique o espacio de calma.';white-space:pre-line;color:#5b5146}.modal-price-row{background:rgba(185,154,82,.055);padding:1rem;border:1px solid rgba(185,154,82,.16)}
 
 /* Footer editorial */
-footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:relative;overflow:hidden}footer::before{content:'HcEA';position:absolute;right:9%;top:24%;font-family:var(--serif);font-size:8rem;color:rgba(216,191,118,.055);letter-spacing:.08em}footer::after{content:'';position:absolute;right:4rem;bottom:3rem;width:170px;height:170px;border-radius:50%;border:1px solid rgba(216,191,118,.25);background:radial-gradient(circle,rgba(216,191,118,.12),transparent 62%)}.foot-brand{display:flex;align-items:center;gap:.8rem}.foot-brand::before{content:'';width:45px;height:45px;border-radius:50%;border:1px solid rgba(216,191,118,.45);background:radial-gradient(circle,rgba(216,191,118,.26),transparent 62%)}.foot-desc{color:rgba(246,238,223,.5)}.foot-col-title{color:var(--hcea-soft-gold)}.foot-links a,.foot-links span{color:rgba(246,238,223,.48)}.foot-nl-input{background:rgba(255,255,255,.055);border-color:rgba(216,191,118,.14)}
+footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:relative;overflow:hidden}footer::before{content:'HcEA';position:absolute;right:9%;top:24%;font-family:var(--serif);font-size:8rem;color:rgba(216,191,118,.055);letter-spacing:.08em}footer::after{content:'';position:absolute;right:4rem;bottom:3rem;width:170px;height:170px;border-radius:50%;border:1px solid rgba(216,191,118,.25);background:radial-gradient(circle,rgba(216,191,118,.12),transparent 62%)}.foot-brand{display:flex;align-items:center;gap:.8rem}.foot-brand::before{display:none}.foot-desc{color:rgba(246,238,223,.5)}.foot-col-title{color:var(--hcea-soft-gold)}.foot-links a,.foot-links span{color:rgba(246,238,223,.48)}.foot-nl-input{background:rgba(255,255,255,.055);border-color:rgba(216,191,118,.14)}
 
 /* Elementos agregados por JS */
 .hcea-seal-chip{display:inline-flex;align-items:center;gap:.45rem;font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6c37;border:1px solid rgba(185,154,82,.25);background:rgba(185,154,82,.07);padding:.36rem .65rem;margin:.7rem 0 .1rem}.hcea-seal-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--hcea-aged-gold)}
@@ -1523,6 +1519,321 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
 
 @media(max-width:1100px){.hero-content{grid-template-columns:1fr}.hero-content::after,.hero-content::before{display:none}.hc-info{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}.event-inner{grid-template-columns:1fr}.event-content{border-left:none}.ctx-grid{grid-template-columns:1fr}.ctx-card{min-height:430px}}
 @media(max-width:768px){nav{height:70px;padding:1rem 1.2rem}.nav-logo{min-width:auto;font-size:1rem!important}.nav-logo::before{width:34px;height:34px}.hero{min-height:90svh;padding-top:88px}.hero-h{font-size:clamp(2.25rem,11vw,3.5rem)!important}.hero-sub{font-size:.9rem}.hero-ctas .btn{width:100%;justify-content:center}.trust-inner{justify-content:center}.trust-item{width:48%;padding:1rem}.entries-grid,.hfeed-grid,.gallery-grid,.artists-grid,.taller-grid,.plans-grid{grid-template-columns:1fr!important;padding-left:1.1rem!important;padding-right:1.1rem!important}.hfeed-card:first-child .hfeed-img-wrap,.hfeed-img-wrap{height:290px}.gallery-hd{align-items:flex-start}.hcea-curation-strip{grid-template-columns:1fr}.hcea-cta-panel{grid-template-columns:1fr;padding:1.45rem}.hcea-cta-actions{justify-content:flex-start}.sb-filters{width:100%}.event-content{padding:3rem 1.3rem}.event-vis{min-height:420px}.ctx-card{min-height:390px}.artist-join::after{display:none}}
+
+/* ══════════════════════════════════════════════════════════════════════
+   AJUSTE FINO VISUAL — SEGUNDA PASADA (Junio 2026)
+   Solo CSS presentacional. No toca lógica JS, Supabase, auth ni carrito.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. NAV: logo nunca se parte, CTA con margen ── */
+.nav-logo{
+  white-space:nowrap;
+  flex-shrink:0;
+  min-width:235px;
+}
+nav .nav-links{flex-shrink:1}
+#nav-zone-out,#nav-zone-in{flex-shrink:0}
+
+/* ── 2. CONTENEDOR GLOBAL: usa mejor el ancho en 1366px ── */
+.container{max-width:1380px}
+
+/* ── 3. GALERÍA: proporción balanceada, obra destacada sin span 2 ── */
+/* En desktop la obra destacada ocupa 1 columna como las demás — más equidad editorial */
+.gallery-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:1.25rem;
+}
+.gallery-grid .artwork:first-child{
+  grid-column:auto;
+  grid-row:auto;
+  display:block;
+}
+.gallery-grid .artwork:first-child .art-img{
+  flex:unset;
+  aspect-ratio:1.05/1;
+  min-height:unset;
+}
+.gallery-grid .artwork:first-child .art-info{
+  padding:1.35rem 1.35rem 1.45rem;
+  border-top:none;
+}
+.gallery-grid .artwork:first-child .art-title{font-size:1.48rem}
+.gallery-grid .artwork:first-child .art-price{font-size:1.25rem}
+.gallery-grid .artwork:first-child::after{display:none}
+/* Galería con más ancho interno */
+.gallery-sec{padding:2.5rem 0 6rem}
+.gallery-main{padding:2.2rem 2.5rem 2.2rem 2.2rem}
+
+/* ── 4. MODAL DE OBRA: más amplio, más aire ── */
+.artwork-modal{
+  max-width:980px;
+  width:94vw;
+}
+.modal-body{
+  padding:3.2rem 3rem 3rem;
+}
+.modal-title{
+  font-size:2.15rem;
+  margin-bottom:.5rem;
+  line-height:1.08;
+}
+.modal-sub{font-size:.82rem;margin-bottom:1.6rem}
+.modal-desc{
+  font-size:.88rem;
+  line-height:1.88;
+  margin-bottom:2rem;
+}
+.modal-price{font-size:2.1rem}
+@media(max-width:780px){.artwork-modal{width:100%}}
+
+/* ── 5. TALLERES: escala real, jerarquía clara ── */
+.workshops-sec{padding:2.5rem 0 7rem}
+.talleres-header{padding:0 2.5rem 3.5rem}
+.talleres-intro{
+  font-size:.96rem;
+  line-height:1.88;
+  max-width:580px;
+  color:var(--hcea-ink);
+  margin-bottom:.5rem;
+}
+.taller-grid{
+  padding:0 2.5rem;
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:1.5rem;
+}
+.tcard-img{aspect-ratio:1.2/1}
+.tcard-body{padding:1.7rem 1.7rem 2.2rem}
+.tcard-name{font-size:1.5rem;line-height:1.18}
+.tcard-artista{font-size:.72rem;letter-spacing:.12em}
+.tcard-meta{gap:.6rem;margin-bottom:1.5rem}
+.tcard-meta-row{font-size:.82rem;color:#3e3428}
+.tcard-price{font-size:1.55rem}
+.tcard-foot{padding-top:1.3rem}
+@media(max-width:1024px){.taller-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:768px){.taller-grid{padding:0 1.2rem!important}.talleres-header{padding:0 1.2rem 2.5rem!important}}
+
+/* ── 6. EVENTO: escala completa, textos más grandes ── */
+.event-content{padding:5.5rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.event-content .h-lg{
+  font-size:clamp(2.8rem,4.8vw,5.4rem);
+  line-height:1.0;
+  letter-spacing:-.03em;
+}
+.event-content .eyebrow{margin-bottom:1.4rem}
+.event-timeline{margin:2.5rem 0;border-left:1px solid rgba(216,191,118,.22);padding-left:1.2rem}
+.estep{padding:1.3rem 0;gap:1.6rem}
+.estep-time{font-size:.72rem;min-width:60px;color:var(--hcea-soft-gold)}
+.estep-desc{font-size:.9rem;color:rgba(245,240,232,.76);line-height:1.65}
+.estep-desc strong{font-size:1.02rem;color:var(--hcea-paper);font-family:var(--serif);margin-bottom:.22rem;display:block}
+.cd-val{font-size:2.6rem;font-weight:600}
+.cd-lbl{font-size:.62rem}
+.event-date-n{font-size:3.2rem}
+.ep-val{font-size:2.7rem}
+.ep-val span{font-size:.95rem}
+.ep-inc{font-size:.82rem;line-height:1.75}
+.tkt{padding:1.1rem 1.1rem 1.2rem}
+.tkt-name{font-size:1.1rem}
+.tkt-price-tag{font-size:.85rem}
+@media(max-width:1100px){.event-content{padding:4rem 2.5rem}}
+@media(max-width:768px){.event-content{padding:3.5rem 1.5rem}}
+
+/* ── 7. ARTISTAS: sidebar claro, cards más humanas ── */
+.artists-sec{padding:2.5rem 0 7rem}
+/* Sidebar en ivory — elimina la pesadez oscura */
+.artists-sec .gallery-layout .sb-filters,
+.artists-sec .sb-filters.sb-dark{
+  background:rgba(251,247,239,.94)!important;
+  border-right:1px solid rgba(185,154,82,.18)!important;
+}
+.artists-sec .sb-filters.sb-dark .sb-hd{border-bottom-color:rgba(185,154,82,.14)!important}
+.artists-sec .sb-filters.sb-dark .sb-title{color:var(--hcea-ink)!important}
+.artists-sec .sb-filters.sb-dark .sb-reset{color:var(--hcea-aged-gold)!important}
+.artists-sec .sb-filters.sb-dark .sb-search-wrap{border-bottom-color:rgba(31,27,22,.07)!important}
+.artists-sec .sb-filters.sb-dark .sb-search-input{
+  background:rgba(255,255,255,.65)!important;
+  border-color:rgba(31,27,22,.12)!important;
+  color:var(--hcea-ink)!important;
+}
+.artists-sec .sb-filters.sb-dark .sb-search-input::placeholder{color:rgba(31,27,22,.32)!important}
+.artists-sec .sb-filters.sb-dark .sb-group{border-bottom-color:rgba(31,27,22,.07)!important}
+.artists-sec .sb-filters.sb-dark .sb-group-hd{color:var(--hcea-ink)!important}
+.artists-sec .sb-filters.sb-dark .sb-group-hd:hover{color:var(--hcea-aged-gold)!important}
+.artists-sec .sb-filters.sb-dark .ftag{
+  color:var(--hcea-ink)!important;
+  border-color:rgba(31,27,22,.14)!important;
+  background:rgba(255,255,255,.5)!important;
+}
+.artists-sec .sb-filters.sb-dark .ftag:hover{border-color:rgba(185,154,82,.45)!important;color:var(--hcea-ink)!important}
+.artists-sec .sb-filters.sb-dark .ftag.active{
+  background:linear-gradient(135deg,#d2b866,var(--hcea-aged-gold))!important;
+  color:#100d09!important;
+  border-color:var(--hcea-aged-gold)!important;
+}
+.artists-sec .sb-filters.sb-dark .sb-toggle-label{color:var(--hcea-ink)!important}
+.artists-sec .sb-filters.sb-dark .sb-count{color:rgba(31,27,22,.4)!important}
+/* Cards artistas más legibles */
+.artists-grid{
+  padding:2.2rem 2.5rem;
+  gap:1.6rem;
+}
+.acard-av{width:80px;height:80px;margin-top:1.4rem}
+.acard-name{font-size:1.68rem;line-height:1.15}
+.acard-spec{font-size:.74rem;letter-spacing:.09em;margin-bottom:1.3rem}
+.acard-bio{font-size:.91rem;line-height:1.85;color:#3a2f25}
+@media(max-width:768px){.artists-grid{padding:1.5rem 1.2rem}}
+
+/* ── 8. BLOQUE PARA ARTISTAS (artist-join): más vida, métricas cálidas ── */
+.artist-join{padding:8rem 2rem}
+.artist-join-inner{gap:5.5rem}
+.aj-h{font-size:clamp(2.1rem,3.4vw,3.3rem);line-height:1.2;margin:.9rem 0 1.4rem}
+.aj-p{font-size:.95rem;line-height:1.95;color:rgba(245,240,232,.68);margin-bottom:2.2rem}
+.aj-benefit{font-size:.9rem;color:rgba(245,240,232,.8);gap:.8rem}
+.aj-check{width:20px;height:20px}
+.aj-stats{gap:1.6rem}
+.aj-stat{
+  padding:2.2rem 1.6rem;
+  border-color:rgba(185,154,82,.16);
+  background:rgba(185,154,82,.06);
+  transition:transform .35s ease,border-color .35s ease;
+}
+.aj-stat:hover{transform:translateY(-4px);border-color:rgba(185,154,82,.32)}
+.aj-stat-n{font-size:2.7rem;line-height:1;color:var(--hcea-soft-gold)}
+.aj-stat-l{font-size:.7rem;letter-spacing:.11em;color:rgba(245,240,232,.45);margin-top:.4rem}
+.aj-quote{font-size:1.02rem;line-height:1.88;color:rgba(245,240,232,.62);border-left-color:rgba(185,154,82,.42);padding-left:1.3rem;margin-top:.8rem}
+
+/* ── 9. TOASTS / ACTIVITY TICKER: menos invasivo ── */
+.activity-ticker{
+  bottom:8rem;
+  right:2rem;
+  max-width:215px;
+  font-size:.61rem;
+  padding:.52rem .9rem .52rem .68rem;
+  background:rgba(8,7,6,.9);
+  border-color:rgba(185,154,82,.22);
+}
+/* En event y ruta de compra ocultamos el ticker para no tapar contenido */
+/* (se controla por JS; el CSS solo reduce tamaño) */
+@media(max-width:768px){
+  .activity-ticker{
+    bottom:7rem;
+    right:1rem;
+    max-width:185px;
+    font-size:.58rem;
+  }
+}
+
+/* ── 10. BOTÓN WHATSAPP: posición limpia ── */
+.wa-float{
+  bottom:2.2rem;
+  right:2.2rem;
+  width:52px;
+  height:52px;
+  box-shadow:0 4px 22px rgba(37,211,102,.4);
+}
+.wa-float svg{width:26px;height:26px}
+@media(max-width:768px){
+  .wa-float{bottom:1.5rem;right:1.5rem;width:48px;height:48px}
+  .wa-float svg{width:24px;height:24px}
+}
+
+/* ── 11. RUTA DE COMPRA: más legible y respirada ── */
+.ruta-sec{padding:9rem 0}
+.ruta-hd{margin-bottom:5rem}
+.ruta-frase{font-size:clamp(1.12rem,2vw,1.5rem);margin-bottom:5rem;padding-left:1.6rem}
+.ruta-pasos{
+  max-width:1180px;
+  padding:0 2.5rem;
+}
+.ruta-paso{padding:0 1.8rem}
+.ruta-num{
+  width:48px;
+  height:48px;
+  font-size:1.15rem;
+  margin-bottom:1.5rem;
+  background:var(--hcea-ivory);
+  box-shadow:0 0 0 6px rgba(185,154,82,.07);
+}
+.ruta-paso-title{
+  font-size:1.12rem;
+  margin-bottom:.6rem;
+  color:var(--hcea-ink);
+  line-height:1.25;
+}
+.ruta-paso-desc{
+  font-size:.83rem;
+  line-height:1.78;
+  color:rgba(31,27,22,.54);
+}
+.ruta-pasos::before{
+  top:2.4rem;
+  height:1px;
+  background:linear-gradient(to right,transparent,rgba(185,154,82,.35) 12%,rgba(185,154,82,.35) 88%,transparent);
+}
+.ruta-cta{margin-top:4.5rem}
+
+/* ── 12. CURADURÍA A MEDIDA: balance oscuro premium ── */
+.obra-ideal{padding:9.5rem 2rem}
+.oi-inner{max-width:740px}
+.oi-hd{margin-bottom:4.5rem}
+.oi-sub{
+  font-size:.96rem;
+  line-height:1.95;
+  color:rgba(245,240,232,.52);
+  max-width:540px;
+  margin:.9rem auto 0;
+}
+.oi-quiz{min-height:240px;padding:2.5rem}
+.oi-q{font-size:1.45rem;line-height:1.45;margin-bottom:.8rem}
+.oi-q-sub{font-size:.74rem;margin-bottom:2.5rem}
+.oi-opts{gap:.85rem;max-width:600px}
+.oi-opt{padding:1.2rem 1.6rem}
+.oi-opt-txt{font-size:.86rem;line-height:1.5}
+
+/* ── 13. HOME FEED OBRAS: más aire ── */
+.hfeed{padding:8rem 0}
+.hfeed-hd{margin-bottom:4rem}
+.hfeed-grid{padding:0 2.5rem}
+
+/* ── 14. FILTROS SIDEBAR GALERÍA: peso visual reducido ── */
+.sb-filters{width:258px}
+.sb-hd{padding:0 1.3rem 1.1rem}
+.sb-group-hd{padding:.88rem 1.3rem;font-size:.64rem;letter-spacing:.16em}
+.sb-group-inner{padding:.35rem 1.3rem 1.1rem}
+.ftag{font-size:.69rem;padding:.48rem .9rem}
+.sb-search-wrap{padding:.85rem 1.3rem}
+
+/* ── 15. DESKTOP 1366px: grillas usan el ancho disponible ── */
+@media(min-width:1200px){
+  .gallery-main{padding:2.2rem 3rem 2.2rem 2.2rem}
+  .taller-grid{padding:0 3rem!important}
+  .talleres-header{padding:0 3rem 3.5rem!important}
+  .artists-grid{padding:2.2rem 3rem!important}
+  .ruta-pasos{max-width:1260px}
+  .hfeed-grid{padding:0 3rem}
+  .entries-grid{padding:0 3rem!important}
+}
+
+/* ── 16. ENTRY CARDS: siempre 2 columnas en desktop ── */
+.entries-grid{
+  grid-template-columns:repeat(2,1fr)!important;
+  max-width:1220px;
+}
+@media(max-width:768px){.entries-grid{grid-template-columns:1fr!important}}
+
+/* ── 17. OBRA DE LA SEMANA: más espacio en desktop ── */
+.owds-content{padding:5.5rem 6rem}
+@media(max-width:1100px){.owds-content{padding:3.5rem 3rem}}
+@media(max-width:860px){.owds-content{padding:2.8rem 1.8rem}}
+
+/* ── 18. PLANES: tarjetas con más aire ── */
+.plans-grid{max-width:1140px;gap:1.8rem}
+.plan{padding:3.2rem 2.8rem}
+
+/* ── 19. GALERÍA: header más alineado ── */
+.gallery-hd{
+  padding:0 2.5rem 2rem;
+  margin-bottom:2.5rem;
+}
 
 </style>
 </head>
@@ -1717,7 +2028,7 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     <!-- ══ Hero Carousel ══ -->
     <div class="hero-carousel" id="heroCarousel">
       <div class="hc-slide active">
-        <img src="https://picsum.photos/seed/hcea1/900/600" alt="Tarde dorada" loading="eager" fetchpriority="high">
+        <img src="images/hero-foto.png" alt="Arte uruguayo curado — Hecho con el Alma" loading="eager" fetchpriority="high">
       </div>
       <div class="hc-slide">
         <img src="https://picsum.photos/seed/hcea2/900/600" alt="Movimiento azul" loading="eager">
@@ -1785,7 +2096,8 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
     </div>
   </div>
 
-  <section class="manifesto">
+  <section class="manifesto" style="background-image:url('images/textura-papel.png');background-repeat:repeat;background-size:320px;position:relative">
+    <img src="images/arbol-dorado.png" alt="" aria-hidden="true" style="position:absolute;right:7%;top:50%;transform:translateY(-50%);height:260px;width:auto;opacity:.13;pointer-events:none;user-select:none">
     <span class="eyebrow">Nuestra convicción</span>
     <q class="fi">"El arte no es un lujo. Es la manera más honesta que tiene un ser humano de decir algo. <strong>Y merece ser visto.</strong>"</q>
   </section>
@@ -3350,7 +3662,9 @@ footer{background:linear-gradient(180deg,#0a0806,#060504)!important;position:rel
 
       <!-- Marca + Newsletter -->
       <div>
-        <div class="foot-brand">Hecho con el <em>Alma</em></div>
+        <div class="foot-brand">
+          <img src="images/logo-horizontal.png" alt="Hecho con el Alma" style="height:52px;width:auto;object-fit:contain;opacity:.88;filter:brightness(1.05)">
+        </div>
         <p style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(185,154,82,.55);margin-bottom:.9rem;font-family:var(--sans)">Curaduría de arte y artesanía uruguaya</p>
         <p class="foot-desc">Una plataforma para descubrir obras, artistas, talleres y experiencias creadas desde Uruguay con sensibilidad, oficio y raíz.</p>
         <div class="foot-social">
