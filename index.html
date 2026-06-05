@@ -2071,16 +2071,16 @@ nav .nav-links{flex-shrink:1}
         <img src="images/hero-foto.png" alt="Arte uruguayo curado — Hecho con el Alma" loading="eager" fetchpriority="high">
       </div>
       <div class="hc-slide">
-        <img src="https://picsum.photos/seed/hcea2/900/600" alt="Movimiento azul" loading="eager">
+        <img src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A través del tiempo — Leonardo Alvez" loading="eager">
       </div>
       <div class="hc-slide">
-        <img src="https://picsum.photos/seed/hcea3/900/600" alt="Raíces" loading="eager">
+        <img src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis — Leonardo Alvez" loading="eager">
       </div>
       <div class="hc-slide">
-        <img src="https://picsum.photos/seed/hcea4/900/600" alt="Campo libre" loading="eager">
+        <img src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija ciudad — Leonardo Alvez" loading="eager">
       </div>
       <div class="hc-slide">
-        <img src="https://picsum.photos/seed/hcea5/900/600" alt="Índigo sereno" loading="eager">
+        <img src="images/leonardo-alvez/escultura_3.jpeg" alt="Sentidos — Leonardo Alvez" loading="eager">
       </div>
       <div class="hc-overlay"></div>
     </div>
@@ -2110,12 +2110,12 @@ nav .nav-links{flex-shrink:1}
     <!-- Info sincronizado con carousel -->
     <div class="hc-info" id="hcInfo">
       <div class="hc-info-inner" id="hcInfoInner">
-        <span class="hc-info-eyebrow">Obra destacada</span>
-        <span class="hc-info-title" id="hcTitle">Tarde dorada</span>
-        <span class="hc-info-artist" id="hcArtist">María Fontana</span>
-        <span class="hc-info-medium" id="hcMedium">Óleo sobre tela · 80×60 cm · 2026</span>
-        <span class="hc-info-price" id="hcPrice">USD 680</span>
-        <button class="hc-info-cta" onclick="showView('galeria')">Ver obra →</button>
+        <span class="hc-info-eyebrow">Temporada 2026</span>
+        <span class="hc-info-title" id="hcTitle">Hecho con el Alma</span>
+        <span class="hc-info-artist" id="hcArtist">Curaduría uruguaya</span>
+        <span class="hc-info-medium" id="hcMedium">Arte y artesanía con raíz · Temporada 2026</span>
+        <span class="hc-info-price" id="hcPrice"></span>
+        <button class="hc-info-cta" onclick="showView('galeria')">Ver galería →</button>
       </div>
     </div>
     <div class="hc-dots" id="hcDots"></div>
@@ -2178,59 +2178,59 @@ nav .nav-links{flex-shrink:1}
 
     <div class="hfeed-grid">
 
-      <!-- ARTWORK DESTACADA: Sinfonía de la Tierra -->
-      <div class="hfeed-card fi" onclick="showView('galeria')">
+      <!-- OBRA 1: A través del tiempo (idx 0) -->
+      <div class="hfeed-card fi" onclick="openArtworkModal(0)">
         <div class="hfeed-img-wrap" style="background:linear-gradient(135deg,#2d2520,#4a3728,#5a4535)">
           <img class="hfeed-ai" src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A través del tiempo — Leonardo Alvez" loading="eager">
           <div class="hfeed-badge hfeed-badge-web">Compra web</div>
           <div class="hfeed-feat-label">★ Destacada</div>
           <div class="hfeed-overlay">
-            <a class="hfeed-consult btn btn-gold" href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Sinfonía%20de%20la%20Tierra%22%20de%20María%20Fontana%20(USD%20480)%20en%20la%20galería.%20%C2%BFEstá%20disponible%3F%20Me%20gustaría%20saber%20más%20sobre%20la%20obra%20y%20cómo%20comprarla." onclick="event.stopPropagation()" target="_blank" rel="noopener">Consultar por esta obra →</a>
+            <a class="hfeed-consult btn btn-gold" href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22A%20trav%C3%A9s%20del%20tiempo%22%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa%20de%20Hecho%20con%20el%20Alma.%20%C2%BFMe%20cuentan%20m%C3%A1s%20sobre%20la%20pieza%20y%20el%20precio%3F" onclick="event.stopPropagation()" target="_blank" rel="noopener">Consultar por esta obra →</a>
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">María Fontana</div>
-          <div class="hfeed-title">Sinfonía de la Tierra</div>
+          <div class="hfeed-artist">Leonardo Alvez</div>
+          <div class="hfeed-title">A través del tiempo</div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">USD 480</div>
+            <div class="hfeed-price" style="font-size:.92rem;letter-spacing:.02em">Consultar precio</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
       </div>
 
-      <!-- ARTWORK 2: Raíces Doradas -->
-      <div class="hfeed-card fi d1" onclick="showView('galeria')">
+      <!-- OBRA 2: Vasija ciudad (idx 2) -->
+      <div class="hfeed-card fi d1" onclick="openArtworkModal(2)">
         <div class="hfeed-img-wrap" style="background:linear-gradient(120deg,#2a2015,#4a3820,#5a4a2a)">
-          <img class="hfeed-ai" src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija tallada — Leonardo Alvez" loading="eager">
+          <img class="hfeed-ai" src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija ciudad — Leonardo Alvez" loading="eager">
           <div class="hfeed-badge hfeed-badge-web">Compra web</div>
           <div class="hfeed-overlay">
-            <a class="hfeed-consult btn btn-gold" href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Raíces%20Doradas%22%20de%20Valentina%20Ríos%20(USD%20290)%20en%20la%20galería.%20%C2%BFEstá%20disponible%3F%20%C2%BFMe%20pueden%20contar%20más%20sobre%20la%20pieza%20y%20el%20proceso%20de%20compra%3F" onclick="event.stopPropagation()" target="_blank" rel="noopener">Consultar →</a>
+            <a class="hfeed-consult btn btn-gold" href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Vasija%20ciudad%22%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa.%20%C2%BFMe%20cuentan%20m%C3%A1s%20sobre%20la%20pieza%20y%20el%20precio%3F" onclick="event.stopPropagation()" target="_blank" rel="noopener">Consultar →</a>
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Valentina Ríos</div>
-          <div class="hfeed-title">Raíces Doradas</div>
+          <div class="hfeed-artist">Leonardo Alvez</div>
+          <div class="hfeed-title">Vasija ciudad</div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">USD 290</div>
+            <div class="hfeed-price" style="font-size:.92rem;letter-spacing:.02em">Consultar precio</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
       </div>
 
-      <!-- ARTWORK 3: Azul Profundo -->
-      <div class="hfeed-card fi d2" onclick="showView('galeria')">
+      <!-- OBRA 3: Umbral de la Metamorfosis (idx 1) -->
+      <div class="hfeed-card fi d2" onclick="openArtworkModal(1)">
         <div class="hfeed-img-wrap" style="background:linear-gradient(160deg,#1e2830,#2d3e4a,#203545)">
           <img class="hfeed-ai" src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis — Leonardo Alvez" loading="eager">
           <div class="hfeed-badge hfeed-badge-avail">Obra única</div>
           <div class="hfeed-overlay">
-            <a class="hfeed-consult btn btn-gold" href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Azul%20Profundo%22%20de%20Lucas%20Vera%20(USD%201.200)%20en%20la%20galería.%20Es%20gran%20formato%20y%20me%20interesa.%20%C2%BFEstá%20disponible%3F%20%C2%BFPodemos%20conversar%3F" onclick="event.stopPropagation()" target="_blank" rel="noopener">Consultar →</a>
+            <a class="hfeed-consult btn btn-gold" href="https://wa.me/59894743435?text=Hola!%20Vi%20la%20obra%20%22Umbral%20de%20la%20Metamorfosis%22%20de%20Leonardo%20Alvez%20en%20la%20galer%C3%ADa.%20%C2%BFPodemos%20conversar%3F" onclick="event.stopPropagation()" target="_blank" rel="noopener">Consultar →</a>
           </div>
         </div>
         <div class="hfeed-info">
-          <div class="hfeed-artist">Lucas Vera</div>
-          <div class="hfeed-title">Azul Profundo</div>
+          <div class="hfeed-artist">Leonardo Alvez</div>
+          <div class="hfeed-title">Umbral de la Metamorfosis</div>
           <div class="hfeed-foot">
-            <div class="hfeed-price">USD 1.200</div>
+            <div class="hfeed-price" style="font-size:.92rem;letter-spacing:.02em">Consultar precio</div>
             <div class="hfeed-avail">Disponible</div>
           </div>
         </div>
@@ -2254,42 +2254,42 @@ nav .nav-links{flex-shrink:1}
     </div>
     <div class="ctx-grid">
 
-      <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-living/800/620" alt="Living en Pocitos" loading="eager">
+      <div class="ctx-card" onclick="openArtworkModal(0)" style="cursor:pointer">
+        <img class="ctx-img" src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A través del tiempo — Leonardo Alvez" loading="eager">
         <div class="ctx-vignette"></div>
-        <div class="ctx-tag">En un hogar</div>
+        <div class="ctx-tag">Para una biblioteca</div>
         <div class="ctx-meta">
-          <div class="ctx-place">Living · Pocitos, Montevideo</div>
-          <div class="ctx-title">Tarde dorada</div>
-          <div class="ctx-artist">María Fontana · USD 680</div>
-          <div class="ctx-quote">"La compramos para el living y cambió el ambiente de toda la planta."</div>
-          <button class="ctx-btn" onclick="showView('galeria')">Ver obra →</button>
+          <div class="ctx-place">Dónde puede vivir</div>
+          <div class="ctx-title">A través del tiempo</div>
+          <div class="ctx-artist">Leonardo Alvez · Cerámica</div>
+          <div class="ctx-quote">"Una pieza con iluminación interior: poderosa de día y de noche. Ideal para un living con vocación cultural."</div>
+          <button class="ctx-btn" onclick="event.stopPropagation();openArtworkModal(0)">Ver obra →</button>
         </div>
       </div>
 
-      <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-office/800/620" alt="Sala de reuniones" loading="eager">
+      <div class="ctx-card" onclick="openArtworkModal(3)" style="cursor:pointer">
+        <img class="ctx-img" src="images/leonardo-alvez/escultura_3.jpeg" alt="Sentidos — Leonardo Alvez" loading="eager">
         <div class="ctx-vignette"></div>
-        <div class="ctx-tag">En una empresa</div>
+        <div class="ctx-tag">Para un espacio de calma</div>
         <div class="ctx-meta">
-          <div class="ctx-place">Sala de directorio · Ciudad Vieja, Mvd</div>
-          <div class="ctx-title">Movimiento azul</div>
-          <div class="ctx-artist">Lucas Vera · USD 890</div>
-          <div class="ctx-quote">"Nuestros clientes la comentan en cada reunión. Vale cada peso."</div>
-          <button class="ctx-btn" onclick="showView('galeria')">Ver obra →</button>
+          <div class="ctx-place">Dónde puede vivir</div>
+          <div class="ctx-title">Sentidos</div>
+          <div class="ctx-artist">Leonardo Alvez · Cerámica</div>
+          <div class="ctx-quote">"Escala íntima, textura para entender con las manos. Para dormitorios, salas de meditación y estudios."</div>
+          <button class="ctx-btn" onclick="event.stopPropagation();openArtworkModal(3)">Ver obra →</button>
         </div>
       </div>
 
-      <div class="ctx-card">
-        <img class="ctx-img" src="https://picsum.photos/seed/ctx-hotel/800/620" alt="Lobby boutique hotel" loading="eager">
+      <div class="ctx-card" onclick="openArtworkModal(1)" style="cursor:pointer">
+        <img class="ctx-img" src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis — Leonardo Alvez" loading="eager">
         <div class="ctx-vignette"></div>
-        <div class="ctx-tag">En un hotel boutique</div>
+        <div class="ctx-tag">Para una sala principal</div>
         <div class="ctx-meta">
-          <div class="ctx-place">Lobby · Casco Histórico, Montevideo</div>
-          <div class="ctx-title">Raíces</div>
-          <div class="ctx-artist">Valentina Ríos · USD 540</div>
-          <div class="ctx-quote">"Los huéspedes la fotografían. Se convirtió en parte de la identidad del hotel."</div>
-          <button class="ctx-btn" onclick="showView('galeria')">Ver obra →</button>
+          <div class="ctx-place">Dónde puede vivir</div>
+          <div class="ctx-title">Umbral de la Metamorfosis</div>
+          <div class="ctx-artist">Leonardo Alvez · Cerámica</div>
+          <div class="ctx-quote">"Una obra para detenerse, no para pasar de largo. Necesita espacio para ser observada: corredor de entrada o sala principal."</div>
+          <button class="ctx-btn" onclick="event.stopPropagation();openArtworkModal(1)">Ver obra →</button>
         </div>
       </div>
 
@@ -2304,26 +2304,26 @@ nav .nav-links{flex-shrink:1}
     <div class="owds-inner">
 
       <!-- Imagen -->
-      <div class="owds-img fi">
+      <div class="owds-img fi" onclick="openArtworkModal(2)" style="cursor:pointer">
         <div class="owds-label">Obra de la semana</div>
-        <img src="https://picsum.photos/seed/hcea-441/900/1100" alt="Desde el Umbral — María Fontana" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <img src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija ciudad — Leonardo Alvez" loading="eager" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
       </div>
 
       <!-- Contenido editorial -->
       <div class="owds-content fi d1">
-        <div class="owds-week">Semana 22 · Temporada 2026</div>
-        <h2 class="owds-title">Desde el<br>Umbral</h2>
-        <div class="owds-artist">María Fontana · Tacuarembó</div>
+        <div class="owds-week">Temporada 2026 · Curaduría HcEA</div>
+        <h2 class="owds-title">Vasija<br>ciudad</h2>
+        <div class="owds-artist">Leonardo Alvez · Montevideo</div>
         <div class="owds-divider"></div>
-        <p class="owds-story">Una puerta entreabierta, luz oblicua desde el campo, el olor a tierra mojada después de la tormenta. Fontana pinta los límites invisibles: el adentro y el afuera, la memoria y el presente. Esta obra nació en el galpón de su familia, mientras esperaba que escampara un verano de 2026.</p>
-        <blockquote class="owds-nota">"Quería capturar ese momento exacto en que todo está quieto pero algo está a punto de cambiar." — María Fontana</blockquote>
+        <p class="owds-story">Vasija de gran porte con relieve arquitectónico tallado. La ciudad emerge de la arcilla como un recuerdo en tres dimensiones. Modelada en torno y luego intervenida a mano: cada detalle urbano fue resuelto por capas, en un proceso de tallado que duró semanas.</p>
+        <blockquote class="owds-nota">La ciudad como organismo vivo guardado en arcilla. Una exploración de la memoria colectiva y el espacio urbano como material poético — lo que construimos y lo que recordamos. <span style="display:block;margin-top:.5rem;font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(185,154,82,.7)">— Nota curatorial HcEA</span></blockquote>
         <div class="owds-price-row">
-          <div class="owds-price">USD 680</div>
+          <div class="owds-price" style="font-size:1.5rem">Consultar precio</div>
           <div class="owds-price-note">Incluye certificado de autenticidad<br>Envío a todo Uruguay · Cuotas disponibles</div>
         </div>
         <div class="owds-actions">
-          <a href="https://wa.me/59894743435?text=Hola!%20Me%20interesa%20la%20obra%20%22Desde%20el%20Umbral%22%20de%20Mar%C3%ADa%20Fontana.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" target="_blank" rel="noopener">Consultar por esta obra →</a>
-          <button class="owds-link" onclick="showView('artistas')">Ver perfil de la artista</button>
+          <a href="https://wa.me/59894743435?text=Hola!%20Me%20interesa%20la%20obra%20%22Vasija%20ciudad%22%20de%20Leonardo%20Alvez.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" target="_blank" rel="noopener">Consultar por esta obra →</a>
+          <button class="owds-link" onclick="showView('artistas')">Ver perfil del artista</button>
         </div>
       </div>
 
@@ -2446,7 +2446,7 @@ nav .nav-links{flex-shrink:1}
       <!-- Frame de video principal -->
       <div class="video-frame fi" id="video-main">
         <!-- Cuando tengan video real: <video autoplay muted loop playsinline><source src="URL_VIDEO.mp4" type="video/mp4"></video> -->
-        <img class="video-frame-poster" src="https://picsum.photos/seed/hcea-901/1100/620" alt="Reel artistas">
+        <img class="video-frame-poster" src="images/leonardo-alvez/escultura_6.jpeg" alt="Reel del proceso artístico">
         <div class="video-frame-overlay"></div>
         <div class="video-frame-center">
           <div class="video-play-btn">
@@ -2466,18 +2466,18 @@ nav .nav-links{flex-shrink:1}
       <div class="video-strip fi">
         <div class="video-strip-item">
           <div class="video-strip-n">EP. 01</div>
-          <div class="video-strip-title">María Fontana en Tacuarembó</div>
-          <div class="video-strip-meta">Óleo · Campo abierto · 12 min — Próximamente</div>
+          <div class="video-strip-title">Leonardo Alvez — El barro que recuerda</div>
+          <div class="video-strip-meta">Cerámica · Montevideo · Próximamente</div>
         </div>
         <div class="video-strip-item">
           <div class="video-strip-n">EP. 02</div>
-          <div class="video-strip-title">Lucas Vera — Gran formato</div>
-          <div class="video-strip-meta">Acrílico · Taller Montevideo · 8 min — Próximamente</div>
+          <div class="video-strip-title">Fabián Trinidad — Spray y papel</div>
+          <div class="video-strip-meta">Pintura · Trayectoria en Brasil · Próximamente</div>
         </div>
         <div class="video-strip-item">
           <div class="video-strip-n">EP. 03</div>
-          <div class="video-strip-title">Valentina Ríos — Materiales vivos</div>
-          <div class="video-strip-meta">Técnica mixta · Colonia · 10 min — Próximamente</div>
+          <div class="video-strip-title">Nuevos artistas en curaduría</div>
+          <div class="video-strip-meta">Sumamos creadores cada temporada · Próximamente</div>
         </div>
       </div>
     </div>
@@ -2495,12 +2495,12 @@ nav .nav-links{flex-shrink:1}
     </div>
     <div class="ig-grid-wrap">
       <div class="ig-grid">
-        <div class="ig-post"><div class="ig-post-bg ig-bg-1"><img class="ig-photo" src="https://picsum.photos/seed/hcea-ig1/600/600" alt="Arte en contexto" loading="eager"></div><div class="ig-post-hover"><span class="ig-likes">♥ 142</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-2"><img class="ig-photo" src="https://picsum.photos/seed/hcea-712/600/600" alt="En el taller L. Vera" loading="eager"></div><div class="ig-post-hover"><span class="ig-likes">♥ 89</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-3"><img class="ig-photo" src="https://picsum.photos/seed/hcea-ig3/600/600" alt="Workshop Valentina" loading="eager"></div><div class="ig-post-hover"><span class="ig-likes">♥ 217</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-4"><img class="ig-photo" src="https://picsum.photos/seed/hcea-ig4/600/600" alt="Reel artista" loading="eager"></div><div class="ig-post-hover"><span class="ig-likes">♥ 74</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-5"><img class="ig-photo" src="https://picsum.photos/seed/hcea-715/600/600" alt="Behind the scenes C. Saralegui" loading="eager"></div><div class="ig-post-hover"><span class="ig-likes">♥ 108</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-6"><img class="ig-photo" src="https://picsum.photos/seed/hcea-ig6/600/600" alt="Detalle obra" loading="eager"></div><div class="ig-post-hover"><span class="ig-likes">♥ 195</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-1"><img class="ig-photo" src="images/leonardo-alvez/escultura_5.jpeg" alt="Cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 142</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-2"><img class="ig-photo" src="images/leonardo-alvez/escultura_6.jpeg" alt="Escultura cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 89</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-3"><img class="ig-photo" src="images/leonardo-alvez/escultura_7.jpeg" alt="Obra cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 217</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-4"><img class="ig-photo" src="images/leonardo-alvez/escultura_8.jpeg" alt="Pieza cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 74</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-5"><img class="ig-photo" src="images/leonardo-alvez/escultura_9.jpeg" alt="Cerámica artesanal de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 108</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-6"><img class="ig-photo" src="images/leonardo-alvez/obra_2.jpeg" alt="Detalle de obra de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 195</span></div></div>
       </div>
     </div>
     <div class="ig-cta">
@@ -2533,7 +2533,7 @@ nav .nav-links{flex-shrink:1}
         <div class="aj-stat fi d1"><div class="aj-stat-n">0%</div><div class="aj-stat-l">Costo fijo mensual</div></div>
         <div class="aj-stat fi d2"><div class="aj-stat-n">200+</div><div class="aj-stat-l">Obras expuestas</div></div>
         <div class="aj-stat fi d3"><div class="aj-stat-n">100%</div><div class="aj-stat-l">Arte original uruguayo</div></div>
-        <p class="aj-quote">"Desde que entré a HcEA dejé de vender como hobby y empecé a vender como artista."<br><strong style="font-style:normal;font-size:.8rem;color:rgba(245,240,232,.4)">— María Fontana, Tacuarembó</strong></p>
+        <p class="aj-quote">"Tu obra no compite con miles de piezas anónimas. Entra a un espacio curado donde se presenta con respeto, contexto y valor."<br><strong style="font-style:normal;font-size:.8rem;color:rgba(245,240,232,.4)">— Filosofía de curaduría HcEA</strong></p>
       </div>
     </div>
   </section>
@@ -2601,12 +2601,12 @@ nav .nav-links{flex-shrink:1}
   </section>
 
   <section class="testimonials">
-    <div class="test-hd"><span class="eyebrow">Lo que dicen</span><h2 class="h-lg">Voces que <em>confían en nosotras</em></h2></div>
+    <div class="test-hd"><span class="eyebrow">Nuestra promesa</span><h2 class="h-lg">Tres formas de <em>vivir el arte</em></h2></div>
     <div class="container">
       <div class="test-grid">
-        <div class="tcard fi"><div class="tcard-qm">"</div><p class="tcard-txt">Compré una obra para mi living y llegó con la historia del artista detrás. Ahora cuando alguien la ve, tengo algo que contar. Eso no lo da ninguna tienda de decoración.</p><div class="tcard-auth"><div class="tav tav1">S</div><div><div class="tcard-name">Sofía Méndez</div><div class="tcard-role">Compradora · Montevideo</div></div></div></div>
-        <div class="tcard fi d1"><div class="tcard-qm">"</div><p class="tcard-txt">Desde que sumé mis obras a la galería, tengo consultas de gente que jamás hubiera llegado a mí sola. El trabajo de curaduría que hacen ellas hace toda la diferencia.</p><div class="tcard-auth"><div class="tav tav2">V</div><div><div class="tcard-name">Valentina Ríos</div><div class="tcard-role">Artista en galería</div></div></div></div>
-        <div class="tcard fi d2"><div class="tcard-qm">"</div><p class="tcard-txt">La experiencia fue lo mejor que hice en meses. Me fui con una obra que yo misma pinté y con ganas de volver al próximo. Nunca pensé que podía hacer algo así.</p><div class="tcard-auth"><div class="tav tav3">C</div><div><div class="tcard-name">Carolina Ibáñez</div><div class="tcard-role">Asistente al evento</div></div></div></div>
+        <div class="tcard fi"><div class="tcard-qm">"</div><p class="tcard-txt">Cada obra llega con la historia del artista, su certificado de autenticidad y el contexto de su proceso. No comprás decoración: te llevás una pieza con algo que contar.</p><div class="tcard-auth"><div class="tav tav1">①</div><div><div class="tcard-name">Para quien compra</div><div class="tcard-role">Obras únicas · Con historia</div></div></div></div>
+        <div class="tcard fi d1"><div class="tcard-qm">"</div><p class="tcard-txt">Curaduría real y presentación con respeto. Tu obra entra a un espacio donde no compite con miles de piezas anónimas — se muestra con contexto, valor y nombre propio.</p><div class="tcard-auth"><div class="tav tav2">②</div><div><div class="tcard-name">Para quien crea</div><div class="tcard-role">Artistas y artesanos/as</div></div></div></div>
+        <div class="tcard fi d2"><div class="tcard-qm">"</div><p class="tcard-txt">Talleres y encuentros donde el arte se vive con las manos, la materia y la gente. Experiencias culturales pensadas para acercarte al proceso creativo, no solo a la obra final.</p><div class="tcard-auth"><div class="tav tav3">③</div><div><div class="tcard-name">Para quien participa</div><div class="tcard-role">Talleres · Eventos · Encuentros</div></div></div></div>
       </div>
     </div>
   </section>
@@ -3445,7 +3445,7 @@ nav .nav-links{flex-shrink:1}
       <div class="witem" data-modalidad="online" data-artista="rios" data-tprecio="bajo">
         <div class="witem-name">Técnica Mixta y Textura</div><div class="witem-meta">rios</div><div class="witem-price">35</div>
         <div class="tcard-img tcard-img-3">
-          <img class="tcard-photo" src="https://picsum.photos/seed/mixta-rios/800/600" alt="Taller técnica mixta" loading="eager">
+          <img class="tcard-photo" src="images/leonardo-alvez/perfil-03.jpg" alt="Artista en su taller" loading="lazy">
           <div class="tcard-overlay"></div>
           <div class="tcard-badge tcard-badge-online">Pre-grabado</div>
           <div class="tcard-hover">
@@ -3453,7 +3453,7 @@ nav .nav-links{flex-shrink:1}
           </div>
         </div>
         <div class="tcard-body">
-          <div class="tcard-artista">Valentina Ríos</div>
+          <div class="tcard-artista">Artista en curaduría · Próximamente</div>
           <div class="tcard-name">Técnica Mixta y Textura</div>
           <div class="tcard-meta">
             <div class="tcard-meta-row">
@@ -3480,7 +3480,7 @@ nav .nav-links{flex-shrink:1}
       <div class="witem" data-modalidad="online" data-artista="rojas" data-tprecio="bajo">
         <div class="witem-name">Acuarela para Principiantes</div><div class="witem-meta">rojas</div><div class="witem-price">30</div>
         <div class="tcard-img tcard-img-4">
-          <img class="tcard-photo" src="https://picsum.photos/seed/acuarela-rojas/800/600" alt="Taller acuarela" loading="eager">
+          <img class="tcard-photo" src="images/leonardo-alvez/escultura_7.jpeg" alt="Proceso artesanal en cerámica" loading="lazy">
           <div class="tcard-overlay"></div>
           <div class="tcard-badge tcard-badge-online">Pre-grabado</div>
           <div class="tcard-hover">
@@ -3488,7 +3488,7 @@ nav .nav-links{flex-shrink:1}
           </div>
         </div>
         <div class="tcard-body">
-          <div class="tcard-artista">Andrés Rojas</div>
+          <div class="tcard-artista">Artista en curaduría · Próximamente</div>
           <div class="tcard-name">Acuarela para Principiantes</div>
           <div class="tcard-meta">
             <div class="tcard-meta-row">
@@ -3516,17 +3516,17 @@ nav .nav-links{flex-shrink:1}
       <div class="witem witem-encuentro" data-modalidad="encuentro" data-artista="vera" data-tprecio="medio">
         <div class="witem-name">Arte del Río de la Plata</div><div class="witem-meta">vera</div><div class="witem-price">50</div>
         <div class="tcard-img tcard-img-6" style="background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 50%,#0d1117 100%)">
-          <img class="tcard-photo" src="https://picsum.photos/seed/encuentro-online/800/600" alt="Encuentro Online HcEA" loading="eager" style="opacity:.55;mix-blend-mode:luminosity">
+          <img class="tcard-photo" src="images/leonardo-alvez/obra_3.jpeg" alt="Encuentro Online HcEA" loading="lazy" style="opacity:.55;mix-blend-mode:luminosity">
           <div class="tcard-overlay"></div>
           <div class="tcard-badge tcard-badge-encuentro">Encuentro HcEA</div>
           <div class="tcard-cupo">Cupo: 20 personas · Zoom</div>
           <div style="position:absolute;bottom:1rem;left:1rem;font-family:var(--sans);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(196,163,90,.6);background:rgba(0,0,0,.5);padding:.2rem .55rem;backdrop-filter:blur(4px)">Evento online · Zoom</div>
           <div class="tcard-hover">
-            <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20Encuentro%20Online%20%22Arte%20del%20R%C3%ADo%20de%20la%20Plata%22%20con%20Lucas%20Vera%20(USD%2050)%20y%20quiero%20reservar%20mi%20lugar.%20%C2%BFC%C3%B3mo%20confirmo%20el%20pago%3F" class="btn btn-gold">Reservar lugar →</a>
+            <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20Encuentro%20Online%20%22Arte%20del%20R%C3%ADo%20de%20la%20Plata%22%20y%20quiero%20reservar%20mi%20lugar.%20%C2%BFC%C3%B3mo%20confirmo%20el%20pago%3F" class="btn btn-gold">Reservar lugar →</a>
           </div>
         </div>
         <div class="tcard-body">
-          <div class="tcard-artista">con Lucas Vera · Anfitriona: HcEA</div>
+          <div class="tcard-artista">Artista invitado/a · Anfitriona: HcEA</div>
           <div class="tcard-name">Arte del Río de la Plata</div>
           <div class="tcard-meta">
             <div class="tcard-meta-row">
@@ -3615,7 +3615,7 @@ nav .nav-links{flex-shrink:1}
         <div class="event-bg"></div>
         <div class="event-inner">
           <div class="event-vis">
-            <img class="ai-img" src="https://picsum.photos/seed/hcea-601/800/1000" alt="Experiencia creativa 14 de junio" loading="eager" style="opacity:.75">
+            <img class="ai-img" src="images/leonardo-alvez/escultura_8.jpeg" alt="Experiencia creativa 14 de junio" loading="eager" style="opacity:.75">
             <div class="event-date"><div class="event-date-n">14</div><div class="event-date-m">Junio · 2026</div></div>
             <div class="event-avail"><div class="event-avail-dot"></div><span class="event-avail-txt">Solo 7 lugares disponibles</span></div>
             <div class="cupos-bar-wrap" style="padding:.8rem 1rem 0">
@@ -4949,42 +4949,7 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ══ PRELOAD AI IMAGES (staggered to avoid rate limiting) ══════
-(function preloadAiImages() {
-  const urls = [
-    // hero + entry cards (priority: visible on load)
-    'https://picsum.photos/seed/hcea-301/340/440',
-    'https://picsum.photos/seed/hcea-401/800/600',
-    'https://picsum.photos/seed/hcea-412/800/600',
-    'https://picsum.photos/seed/hcea-413/800/600',
-    'https://picsum.photos/seed/hcea-404/800/600',
-    // artworks
-    'https://picsum.photos/seed/hcea-121/600/800',
-    'https://picsum.photos/seed/hcea-102/600/800',
-    'https://picsum.photos/seed/hcea-103/600/800',
-    'https://picsum.photos/seed/hcea-124/600/800',
-    'https://picsum.photos/seed/hcea-125/600/800',
-    'https://picsum.photos/seed/hcea-126/600/800',
-    // artist portraits (painting style)
-    'https://picsum.photos/seed/hcea-211/400/400',
-    'https://picsum.photos/seed/hcea-212/400/400',
-    'https://picsum.photos/seed/hcea-203/400/400',
-    // av4 Andrés Rojas: gradiente CSS (Turnstile Pollinations)
-    // av5 Camila Saralegui: gradiente CSS (Turnstile Pollinations)
-    'https://picsum.photos/seed/hcea-216/400/400',
-    // workshop + event
-    'https://picsum.photos/seed/hcea-501/480/600',
-    'https://picsum.photos/seed/hcea-601/800/1000',
-    // social posts
-    // ig-1, ig-3, ig-4, ig-6: gradiente CSS (Turnstile Pollinations)
-    'https://picsum.photos/seed/hcea-712/600/600',
-    'https://picsum.photos/seed/hcea-715/600/600',
-  ];
-  // Stagger: 1 request every 700ms to avoid rate limiting
-  urls.forEach((url, i) => {
-    setTimeout(() => { const img = new Image(); img.src = url; }, i * 700);
-  });
-})();
+// Preload de imágenes externas eliminado — todos los recursos son locales (images/)
 
 // ══════════════════════════════════════
 // MOTION SYSTEM
@@ -5213,14 +5178,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var msgEl  = document.getElementById('atMsg');
   if (ticker && msgEl) {
     var msgs = [
-      '"Azul Profundo" fue consultada 5 veces hoy',
-      'Alguien guardó "Sinfonía de la Tierra" hace 1h',
-      'Solo quedan 2 lugares para el evento · 14 Jun',
-      '"Memorias del Sur" · 7 consultas esta semana',
-      'Joaquín Pereira estará disponible próximamente',
-      '"Raíces Doradas" · nueva obra de Valentina Ríos',
-      'Lucas Vera abre su taller de acrílico en Mayo',
-      '"Horizonte Azul" · vista 12 veces esta semana',
+      '"A través del tiempo" · pieza única de Leonardo Alvez',
+      'Nuevas piezas de cerámica en curaduría',
+      'Evento "Arte en primera persona" · 14 Jun',
+      '"Vasija ciudad" · disponible en la galería',
+      'Fabián Trinidad se suma a la curaduría',
+      '"Umbral de la Metamorfosis" · relieve cerámico único',
+      'Cada obra incluye certificado de autenticidad',
+      '"Sentidos" · escultura cerámica de Leonardo Alvez',
     ];
     var cur = 0;
     msgEl.style.transition = 'opacity .3s ease';
@@ -5278,11 +5243,11 @@ document.addEventListener('DOMContentLoaded', function() {
 // ══ HERO CAROUSEL ════════════════════════
 (function() {
   var HC_DATA = [
-    {title:'Tarde dorada',   artist:'María Fontana',   medium:'Óleo sobre tela · 80×60 cm · 2026',  price:'USD 680'},
-    {title:'Movimiento azul',artist:'Lucas Vera',      medium:'Acrílico sobre tela · 70×90 cm · 2025',price:'USD 890'},
-    {title:'Raíces',         artist:'Valentina Ríos',  medium:'Técnica mixta · 50×70 cm · 2026',    price:'USD 540'},
-    {title:'Campo libre',    artist:'Andrés Rojas',    medium:'Pastel seco · 65×85 cm · 2025',      price:'USD 420'},
-    {title:'Índigo sereno',  artist:'Camila Saralegui',medium:'Acuarela · 40×55 cm · 2026',         price:'USD 310'},
+    {title:'Hecho con el Alma',           artist:'Curaduría uruguaya', medium:'Arte y artesanía con raíz · Temporada 2026', price:''},
+    {title:'A través del tiempo',         artist:'Leonardo Alvez',     medium:'Cerámica tallada · Pieza única',            price:'Consultar precio'},
+    {title:'Umbral de la Metamorfosis',   artist:'Leonardo Alvez',     medium:'Relieve cerámico · Pieza única',            price:'Consultar precio'},
+    {title:'Vasija ciudad',               artist:'Leonardo Alvez',     medium:'Cerámica tallada · Pieza única',            price:'Consultar precio'},
+    {title:'Sentidos',                    artist:'Leonardo Alvez',     medium:'Escultura cerámica · Pieza única',          price:'Consultar precio'},
   ];
   var hcSlides    = document.querySelectorAll('#heroCarousel .hc-slide');
   var hcDotsEl    = document.getElementById('hcDots');
@@ -5777,90 +5742,7 @@ function toggleSave(btn, title) {
   <a class="wa-float" href="https://wa.me/59894743435?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Hecho%20con%20el%20Alma%20%F0%9F%8E%A8" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-<!-- ══ CAROUSEL SCRIPT (aislado) ══ -->
-<script>
-window.addEventListener('load', function() {
-  var HC_DATA = [
-    {title:'Tarde dorada',   artist:'María Fontana',   medium:'Óleo · 80×60 cm · 2026',  price:'USD 680'},
-    {title:'Movimiento azul',artist:'Lucas Vera',      medium:'Acrílico · 70×90 cm · 2025',price:'USD 890'},
-    {title:'Raíces',         artist:'Valentina Ríos',  medium:'Técnica mixta · 50×70 cm · 2026',price:'USD 540'},
-    {title:'Campo libre',    artist:'Andrés Rojas',    medium:'Pastel · 65×85 cm · 2025',  price:'USD 420'},
-    {title:'Índigo sereno',  artist:'Camila Saralegui',medium:'Acuarela · 40×55 cm · 2026',price:'USD 310'},
-  ];
-  var slides    = document.querySelectorAll('#heroCarousel .hc-slide');
-  var dotsEl    = document.getElementById('hcDots');
-  var infoInner = document.getElementById('hcInfoInner');
-  var titleEl   = document.getElementById('hcTitle');
-  var artistEl  = document.getElementById('hcArtist');
-  var mediumEl  = document.getElementById('hcMedium');
-  var priceEl   = document.getElementById('hcPrice');
-  var cur = 0;
-  var INTERVAL = 3000;
-
-  if (!slides.length) return;
-
-  // Forzar primera slide visible
-  for (var i = 0; i < slides.length; i++) {
-    slides[i].style.transition = 'none';
-    slides[i].style.opacity = i === 0 ? '1' : '0';
-  }
-
-  // Crear dots (limpiar primero por si hay duplicados)
-  if (dotsEl) {
-    dotsEl.innerHTML = '';
-    HC_DATA.forEach(function(_, i) {
-      var d = document.createElement('div');
-      d.className = 'hc-dot' + (i === 0 ? ' active' : '');
-      d.style.cssText = 'width:' + (i===0?'40':'24') + 'px;height:2px;background:rgba(196,163,90,' + (i===0?'.8':'.22') + ');cursor:pointer;transition:all .4s;display:inline-block;margin:0 3px';
-      d.addEventListener('click', function() { go(i); });
-      dotsEl.appendChild(d);
-    });
-  }
-
-  function updateDots(idx) {
-    if (!dotsEl) return;
-    for (var i = 0; i < dotsEl.children.length; i++) {
-      var d = dotsEl.children[i];
-      d.style.width = i === idx ? '40px' : '24px';
-      d.style.background = 'rgba(196,163,90,' + (i === idx ? '.8' : '.22') + ')';
-    }
-  }
-
-  function updateInfo(idx) {
-    if (!infoInner) return;
-    infoInner.style.opacity = '0';
-    setTimeout(function() {
-      if (titleEl)  titleEl.textContent  = HC_DATA[idx].title;
-      if (artistEl) artistEl.textContent = HC_DATA[idx].artist;
-      if (mediumEl) mediumEl.textContent = HC_DATA[idx].medium;
-      if (priceEl)  priceEl.textContent  = HC_DATA[idx].price;
-      infoInner.style.transition = 'opacity .4s ease';
-      infoInner.style.opacity = '1';
-    }, 400);
-  }
-
-  function go(idx) {
-    var prev = cur;
-    cur = ((idx % slides.length) + slides.length) % slides.length;
-
-    slides[prev].style.transition = 'opacity .6s ease';
-    slides[prev].style.opacity = '0';
-
-    slides[cur].style.transition = 'none';
-    slides[cur].style.opacity = '0';
-
-    setTimeout(function() {
-      slides[cur].style.transition = 'opacity .6s ease';
-      slides[cur].style.opacity = '1';
-    }, 50);
-
-    updateDots(cur);
-    updateInfo(cur);
-  }
-
-  setInterval(function() { go(cur + 1); }, INTERVAL);
-});
-</script>
+<!-- Carousel controlado por el IIFE HERO CAROUSEL (único, con barra de progreso) -->
 
 <script>
 /* HcEA visual-only enhancements: adds editorial details without changing existing logic */
