@@ -1864,6 +1864,17 @@ nav .nav-links{flex-shrink:1}
   .modal-tab{font-size:.58rem;padding:.65rem .82rem}
 }
 
+/* ══ PANEL PRÓXIMAMENTE (talleres + evento) ══ */
+.coming-soon{max-width:680px;margin:1rem auto 0;text-align:center;padding:3.5rem 2rem;border:1px dashed rgba(185,154,82,.4);background:rgba(185,154,82,.035)}
+.coming-soon-badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--hcea-aged-gold);border:1px solid rgba(185,154,82,.32);padding:.4rem .9rem;margin-bottom:1.6rem}
+.coming-soon-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--hcea-aged-gold);animation:atPulse 2.2s ease-in-out infinite}
+.coming-soon-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.3rem);font-weight:300;color:var(--hcea-ink);line-height:1.15;margin-bottom:1rem}
+.coming-soon-title em{color:var(--hcea-aged-gold);font-style:italic}
+.coming-soon-text{font-size:.92rem;color:rgba(31,27,22,.58);line-height:1.85;max-width:520px;margin:0 auto 2rem}
+.coming-soon.cs-dark{border-color:rgba(216,191,118,.28);background:rgba(255,255,255,.03)}
+.coming-soon.cs-dark .coming-soon-title{color:var(--hcea-paper)}
+.coming-soon.cs-dark .coming-soon-text{color:rgba(245,240,232,.6)}
+
 /* ══ CARD ARTISTA — ESPACIO RESERVADO ══ */
 .acard-reserved{background:transparent!important;border:1px dashed rgba(185,154,82,.4)!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;min-height:280px;transition:border-color .3s ease,background .3s ease}
 .acard-reserved:hover{border-color:rgba(185,154,82,.7)!important;background:rgba(185,154,82,.04)!important;transform:none!important;box-shadow:none!important}
@@ -2139,7 +2150,7 @@ nav .nav-links{flex-shrink:1}
       <div class="trust-sep"></div>
       <div class="trust-item"><div class="trust-n">13</div><div class="trust-l">Obras y piezas únicas</div></div>
       <div class="trust-sep"></div>
-      <div class="trust-item"><div class="trust-n">1°</div><div class="trust-l">Primer evento · 14 Jun</div></div>
+      <div class="trust-item"><div class="trust-n">1°</div><div class="trust-l">Primer evento · Próximamente</div></div>
       <div class="trust-sep"></div>
       <div class="trust-item"><div class="trust-n">100%</div><div class="trust-l">Arte original</div></div>
     </div>
@@ -3416,8 +3427,8 @@ nav .nav-links{flex-shrink:1}
     </div>
   </div>
 
-  <!-- FILTROS TALLERES -->
-  <div class="filter-bar">
+  <!-- FILTROS TALLERES (ocultos hasta que haya talleres reales) -->
+  <div class="filter-bar" style="display:none">
     <div class="filter-bar-inner">
       <div class="filter-group">
         <span class="filter-group-label">Modalidad</span>
@@ -3452,13 +3463,23 @@ nav .nav-links{flex-shrink:1}
     <div class="container">
       <div class="talleres-header">
         <span class="eyebrow fi">Aprendé con quienes lo hacen de verdad</span>
-        <h2 class="h-lg fi">Talleres online de<br><em>artistas y artesanos/as</em></h2>
+        <h2 class="h-lg fi">Talleres y experiencias<br><em>para acercarte al proceso</em></h2>
         <div class="divider fi"></div>
-        <p class="talleres-intro fi">Clases pre-grabadas para aprender a tu ritmo, desde donde estés. Cada taller es dictado por un artista o artesano/a de nuestra galería — con técnica real y perspectiva propia.</p>
+        <p class="talleres-intro fi">Talleres para acercarte al proceso creativo desde las manos, la materia y el encuentro. Estamos preparando una propuesta dictada por los artistas de nuestra galería.</p>
       </div>
     </div>
 
-    <div class="taller-grid" id="talleres-list">
+    <div class="container">
+      <div class="coming-soon fi">
+        <div class="coming-soon-badge">Próximamente</div>
+        <h3 class="coming-soon-title">Talleres <em>en preparación</em></h3>
+        <p class="coming-soon-text">Estamos armando una propuesta de talleres y experiencias —presenciales y online— dictados por los artistas de nuestra galería. Dejanos tu interés y te avisamos apenas estén disponibles.</p>
+        <a href="https://wa.me/59894743435?text=Hola!%20Me%20interesan%20los%20talleres%20de%20Hecho%20con%20el%20Alma.%20%C2%BFMe%20avisan%20cuando%20est%C3%A9n%20disponibles%3F" class="btn btn-gold" target="_blank" rel="noopener">Avisame cuando estén →</a>
+      </div>
+    </div>
+
+    <!-- Grid de talleres oculto hasta tener oferta real -->
+    <div class="taller-grid" id="talleres-list" style="display:none">
 
       <!-- Taller 3: Técnica Mixta (pre-grabado → Skool) -->
       <div class="witem" data-modalidad="online" data-artista="rios" data-tprecio="bajo">
@@ -3602,8 +3623,8 @@ nav .nav-links{flex-shrink:1}
     </div>
   </div>
 
-  <!-- FILTROS EVENTO -->
-  <div class="filter-bar">
+  <!-- FILTROS EVENTO (ocultos hasta tener eventos reales) -->
+  <div class="filter-bar" style="display:none">
     <div class="filter-bar-inner">
       <div class="filter-group">
         <span class="filter-group-label">Estado</span>
@@ -3634,67 +3655,23 @@ nav .nav-links{flex-shrink:1}
         <div class="event-bg"></div>
         <div class="event-inner">
           <div class="event-vis">
-            <img class="ai-img" src="images/leonardo-alvez/escultura_8.jpeg" alt="Experiencia creativa 14 de junio" loading="eager" style="opacity:.75">
-            <div class="event-date"><div class="event-date-n">14</div><div class="event-date-m">Junio · 2026</div></div>
-            <div class="event-avail"><div class="event-avail-dot"></div><span class="event-avail-txt">Solo 7 lugares disponibles</span></div>
-            <div class="cupos-bar-wrap" style="padding:.8rem 1rem 0">
-              <div class="cupos-bar-label"><span style="color:rgba(245,240,232,.45)">Cupos reservados</span><span>5 de 7</span></div>
-              <div class="cupos-bar-track"><div class="cupos-bar-fill" id="cuposBarFill" style="width:71%"></div></div>
-            </div>
+            <img class="ai-img" src="images/leonardo-alvez/escultura_8.jpeg" alt="Experiencia creativa HcEA" loading="eager" style="opacity:.75">
+            <div class="event-date"><div class="event-date-n" style="font-size:1.1rem;letter-spacing:.12em">Próximamente</div><div class="event-date-m">Temporada 2026</div></div>
+            <div class="event-avail"><div class="event-avail-dot"></div><span class="event-avail-txt">Fecha y cupos a confirmar</span></div>
           </div>
           <div class="event-content">
             <span class="eyebrow">Próximo evento</span>
             <h2 class="h-lg" style="color:var(--cream)">Arte en primera<br><em>persona.</em></h2>
             <div class="divider"></div>
-            <div class="event-countdown">
-              <div class="cd-unit"><span class="cd-val" id="cd-d">--</span><span class="cd-lbl">Días</span></div>
-              <div class="cd-sep">:</div>
-              <div class="cd-unit"><span class="cd-val" id="cd-h">--</span><span class="cd-lbl">Horas</span></div>
-              <div class="cd-sep">:</div>
-              <div class="cd-unit"><span class="cd-val" id="cd-m">--</span><span class="cd-lbl">Min</span></div>
-              <div class="cd-sep">:</div>
-              <div class="cd-unit"><span class="cd-val" id="cd-s">--</span><span class="cd-lbl">Seg</span></div>
-            </div>
-            <p style="font-size:.9rem;font-weight:400;color:rgba(245,240,232,.62);max-width:420px;line-height:1.85">No venís de observador. Venís a crear. Una jornada de bienestar y expresión artística, guiada de cerca por un artista real. Todo lo que necesitás está incluido. Lo que hagas, te lo llevás.</p>
-            <div class="event-timeline">
-              <div class="estep"><span class="estep-time">09:00</span><div class="estep-dot"></div><div class="estep-desc"><strong>Encuentro y apertura</strong>Bienvenida y recorrido por las obras del artista que guía el día.</div></div>
-              <div class="estep"><span class="estep-time">10:30</span><div class="estep-dot"></div><div class="estep-desc"><strong>Proceso creativo</strong>Comenzás tu propia obra, con materiales y orientación incluidos.</div></div>
-              <div class="estep"><span class="estep-time">13:00</span><div class="estep-dot"></div><div class="estep-desc"><strong>Pausa y conexión</strong>Momento compartido. Comida, conversación, descanso consciente.</div></div>
-              <div class="estep"><span class="estep-time">16:00</span><div class="estep-dot"></div><div class="estep-desc"><strong>Cierre y muestra</strong>Cada participante comparte lo que creó. Te llevás tu obra.</div></div>
-            </div>
-            <!-- Selector de tickets -->
-            <div class="ticket-select" id="ticket-select">
-              <div class="tkt active" data-tkt="individual" onclick="selectTicket('individual')">
-                <div class="tkt-check">✓</div>
-                <div class="tkt-label">Por persona</div>
-                <div class="tkt-name">Individual</div>
-                <div class="tkt-price-tag">USD 120</div>
+            <p style="font-size:.95rem;font-weight:400;color:rgba(245,240,232,.66);max-width:440px;line-height:1.9">No venís de observador. Venís a crear. Estamos preparando una jornada de bienestar y expresión artística, guiada de cerca por un artista real — para vivir el arte con las manos, no solo mirarlo.</p>
+            <div class="coming-soon cs-dark" style="margin:2.5rem 0 0;text-align:left;max-width:none;padding:2.2rem 2rem">
+              <div class="coming-soon-badge">Próximamente</div>
+              <h3 class="coming-soon-title" style="font-size:1.5rem;margin-bottom:.8rem">Estamos definiendo<br><em>fecha, cupos y formato</em></h3>
+              <p class="coming-soon-text" style="margin:0 0 1.6rem">Dejanos tu interés y serás de los primeros en enterarte cuando abramos las reservas de nuestra primera experiencia presencial.</p>
+              <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                <a href="https://wa.me/59894743435?text=Hola!%20Me%20interesa%20la%20experiencia%20%22Arte%20en%20primera%20persona%22%20de%20Hecho%20con%20el%20Alma.%20%C2%BFMe%20avisan%20cuando%20abran%20las%20reservas%3F" class="btn btn-gold" target="_blank" rel="noopener">Avisame cuando abra →</a>
+                <button class="btn btn-light" onclick="showView('galeria')">Ver galería mientras tanto</button>
               </div>
-              <div class="tkt" data-tkt="pareja" onclick="selectTicket('pareja')">
-                <div class="tkt-save">Ahorrás USD 30</div>
-                <div class="tkt-check">✓</div>
-                <div class="tkt-label">Por pareja</div>
-                <div class="tkt-name">Pareja</div>
-                <div class="tkt-price-tag">USD 210</div>
-              </div>
-              <div class="tkt" data-tkt="familia" onclick="selectTicket('familia')">
-                <div class="tkt-check">✓</div>
-                <div class="tkt-label">2 adultos + niños</div>
-                <div class="tkt-name">Familia</div>
-                <div class="tkt-price-tag">USD 280</div>
-                <div class="tkt-kids">🎨 Dinámicas especiales para los chicos</div>
-              </div>
-            </div>
-            <div class="event-price">
-              <div>
-                <div class="ep-lbl" id="ep-lbl">Ticket individual</div>
-                <div class="ep-val" id="ep-val">USD 120 <span>/ persona</span></div>
-              </div>
-              <div class="ep-inc" id="ep-inc">✓ Workshop completo<br>✓ Materiales incluidos<br>✓ Almuerzo y bebidas<br>✓ Tu obra para llevarte</div>
-            </div>
-            <div style="display:flex;gap:1rem;flex-wrap:wrap">
-              <a id="btn-reservar-evento" href="https://wa.me/59894743435?text=Hola!%20Quiero%20reservar%20un%20lugar%20para%20la%20experiencia%20del%2014%20de%20junio%20(ticket%20individual)." class="btn btn-gold">Reservar mi lugar</a>
-              <button class="btn btn-light" onclick="showView('talleres')">Ver talleres también</button>
             </div>
           </div>
         </div>
@@ -4169,7 +4146,7 @@ function showView(name) {
     galeria:  { title:'Galería de obras — Hecho con el Alma', desc:'Explorar obras originales de artistas uruguayos. Óleo, acrílico, técnica mixta y acuarela disponibles.' },
     artistas: { title:'Artistas — Hecho con el Alma', desc:'Conocé a los artistas y artesanos/as uruguayos curados por Hecho con el Alma. Sus técnicas, obras y talleres.' },
     talleres: { title:'Talleres — Hecho con el Alma', desc:'Talleres pre-grabados de artistas y artesanos/as uruguayos. Aprendé a tu ritmo desde donde estés.' },
-    evento:   { title:'Evento · 14 de Junio 2026 — Hecho con el Alma', desc:'Día de campo con arte en la naturaleza. Un artista real, materiales incluidos, tu obra para llevarte.' },
+    evento:   { title:'Evento · Próximamente — Hecho con el Alma', desc:'Estamos preparando "Arte en primera persona", nuestra primera experiencia presencial. Dejanos tu interés y te avisamos cuando abran las reservas.' },
   };
   const m = metaMap[name] || metaMap.home;
   document.title = m.title;
@@ -5199,7 +5176,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var msgs = [
       '"A través del tiempo" · pieza única de Leonardo Alvez',
       'Nuevas piezas de cerámica en curaduría',
-      'Evento "Arte en primera persona" · 14 Jun',
+      'Evento "Arte en primera persona" · Próximamente',
       '"Vasija ciudad" · disponible en la galería',
       'Fabián Trinidad se suma a la curaduría',
       '"Umbral de la Metamorfosis" · relieve cerámico único',
