@@ -1864,6 +1864,15 @@ nav .nav-links{flex-shrink:1}
   .modal-tab{font-size:.58rem;padding:.65rem .82rem}
 }
 
+/* ══ CARD ARTISTA — ESPACIO RESERVADO ══ */
+.acard-reserved{background:transparent!important;border:1px dashed rgba(185,154,82,.4)!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;min-height:280px;transition:border-color .3s ease,background .3s ease}
+.acard-reserved:hover{border-color:rgba(185,154,82,.7)!important;background:rgba(185,154,82,.04)!important;transform:none!important;box-shadow:none!important}
+.acard-reserved::before{display:none!important}
+.acard-reserved-inner{display:flex;flex-direction:column;align-items:center;gap:.55rem;padding:1rem}
+.acard-reserved-plus{width:48px;height:48px;border-radius:50%;border:1px solid rgba(185,154,82,.45);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--hcea-aged-gold);margin-bottom:.5rem}
+.acard-reserved-title{font-family:var(--serif);font-size:1.25rem;color:var(--hcea-ink);font-weight:400}
+.acard-reserved-text{font-size:.8rem;color:rgba(31,27,22,.52);line-height:1.7;max-width:240px;margin-bottom:.6rem}
+
 /* ══ RUTA DE COMPRA — ÍCONOS POR PASO ══ */
 .ruta-ico{width:34px;height:34px;margin:0 auto .85rem;opacity:.72;flex-shrink:0}
 .ruta-ico svg{width:100%;height:100%;stroke:var(--hcea-aged-gold);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
@@ -2092,13 +2101,13 @@ nav .nav-links{flex-shrink:1}
         <div class="hero-frame-label">Obra disponible — Temporada 2026</div>
       </div>
       <div class="hero-stats">
-        <div><div class="hero-stat-n">18</div><div class="hero-stat-l">Artistas curados</div></div>
-        <div><div class="hero-stat-n">200+</div><div class="hero-stat-l">Obras únicas</div></div>
+        <div><div class="hero-stat-n">2</div><div class="hero-stat-l">Artistas en curaduría</div></div>
+        <div><div class="hero-stat-n">13</div><div class="hero-stat-l">Obras únicas</div></div>
       </div>
     </div>
     <div class="hero-content">
       <div class="hero-tag"><div class="hero-tag-dot"></div><span class="hero-tag-txt">Arte Uruguayo Curado · Montevideo</span></div>
-      <div class="hero-scarcity"><div class="hs-dot"></div><span>Temporada 2026 · <span class="hs-num" id="hs-count">15</span> de 18 obras disponibles</span></div>
+      <div class="hero-scarcity"><div class="hs-dot"></div><span>Temporada 2026 · <span class="hs-num" id="hs-count">13</span> obras en curaduría</span></div>
       <h1 class="hero-h">El arte que se hace con el <em>alma</em><br>no se olvida.</h1>
       <p class="hero-sub">Conectamos obras y piezas únicas de artistas y artesanos/as uruguayos con personas que entienden que lo hecho a mano no es decoración — es la historia más honesta que alguien puede contar.</p>
       <div class="hero-ctas">
@@ -2128,9 +2137,9 @@ nav .nav-links{flex-shrink:1}
     <div class="trust-inner">
       <div class="trust-item"><div class="trust-n">2</div><div class="trust-l">Artistas y artesanos/as</div></div>
       <div class="trust-sep"></div>
-      <div class="trust-item"><div class="trust-n">200+</div><div class="trust-l">Obras y piezas únicas</div></div>
+      <div class="trust-item"><div class="trust-n">13</div><div class="trust-l">Obras y piezas únicas</div></div>
       <div class="trust-sep"></div>
-      <div class="trust-item"><div class="trust-n">6</div><div class="trust-l">Eventos realizados</div></div>
+      <div class="trust-item"><div class="trust-n">1°</div><div class="trust-l">Primer evento · 14 Jun</div></div>
       <div class="trust-sep"></div>
       <div class="trust-item"><div class="trust-n">100%</div><div class="trust-l">Arte original</div></div>
     </div>
@@ -2239,7 +2248,7 @@ nav .nav-links{flex-shrink:1}
     </div>
 
     <div class="hfeed-cta fi">
-      <button class="btn btn-light" onclick="showView('galeria')">Ver galería completa — 200+ obras <span class="arr">→</span></button>
+      <button class="btn btn-light" onclick="showView('galeria')">Ver galería completa — 13 obras <span class="arr">→</span></button>
       <p class="hfeed-cta-note">Todas las obras son originales y únicas · Certificado de autenticidad incluido</p>
     </div>
   </section>
@@ -2529,9 +2538,9 @@ nav .nav-links{flex-shrink:1}
         </div>
       </div>
       <div class="aj-stats">
-        <div class="aj-stat fi"><div class="aj-stat-n">18</div><div class="aj-stat-l">Artistas y artesanos/as activos</div></div>
+        <div class="aj-stat fi"><div class="aj-stat-n">2</div><div class="aj-stat-l">Artistas y artesanos/as en curaduría</div></div>
         <div class="aj-stat fi d1"><div class="aj-stat-n">0%</div><div class="aj-stat-l">Costo fijo mensual</div></div>
-        <div class="aj-stat fi d2"><div class="aj-stat-n">200+</div><div class="aj-stat-l">Obras expuestas</div></div>
+        <div class="aj-stat fi d2"><div class="aj-stat-n">13</div><div class="aj-stat-l">Obras expuestas</div></div>
         <div class="aj-stat fi d3"><div class="aj-stat-n">100%</div><div class="aj-stat-l">Arte original uruguayo</div></div>
         <p class="aj-quote">"Tu obra no compite con miles de piezas anónimas. Entra a un espacio curado donde se presenta con respeto, contexto y valor."<br><strong style="font-style:normal;font-size:.8rem;color:rgba(245,240,232,.4)">— Filosofía de curaduría HcEA</strong></p>
       </div>
@@ -3301,7 +3310,7 @@ nav .nav-links{flex-shrink:1}
           <div class="acard-spec">Escultura en cerámica y barro · Uruguay</div>
           <p class="acard-bio">Trabaja el barro y la cerámica con una precisión que desafía el material. Sus piezas —desde vasijas talladas hasta esculturas figurativas— llevan el tiempo adentro: cada una es un proceso lento que se nota en el resultado. Instagram: <a href="https://instagram.com/barroypiel11" target="_blank" style="color:var(--gold-text)">@barroypiel11</a></p>
           <div class="acard-foot">
-            <div class="acard-works-line"><strong>22</strong> obras disponibles</div>
+            <div class="acard-works-line"><strong>13</strong> obras disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Leonardo Alvez')">Ver obras <span class="arr">→</span></button>
             </div>
@@ -3318,6 +3327,16 @@ nav .nav-links{flex-shrink:1}
           <div class="acard-foot">
             <div class="acard-works">Obras próximamente</div>
             <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20perfil%20de%20Fabián%20Trinidad%20en%20HcEA%20y%20me%20interesa%20su%20obra.%20%C2%BFCuándo%20van%20a%20estar%20disponibles%3F" class="btn btn-ghost">Notificarme <span class="arr">→</span></a>
+          </div>
+        </div>
+
+        <!-- ESPACIO RESERVADO: próximos artistas en curaduría -->
+        <div class="acard acard-reserved" data-especialidad="" data-servicio="pronto" data-departamento="" onclick="showView('planes')">
+          <div class="acard-reserved-inner">
+            <div class="acard-reserved-plus">+</div>
+            <div class="acard-reserved-title">Espacio reservado</div>
+            <p class="acard-reserved-text">Sumamos nuevos artistas y artesanos/as cada temporada. La próxima obra curada podría ser la tuya.</p>
+            <button class="btn btn-dark" style="font-size:.66rem" onclick="event.stopPropagation();showView('planes')">Sumá tu arte →</button>
           </div>
         </div>
 
@@ -4148,7 +4167,7 @@ function showView(name) {
   const metaMap = {
     home:     { title:'Hecho con el Alma — Arte Uruguayo Curado', desc:'Plataforma de curaduría de arte uruguayo. Obras originales, artistas curados, talleres y eventos en Montevideo.' },
     galeria:  { title:'Galería de obras — Hecho con el Alma', desc:'Explorar obras originales de artistas uruguayos. Óleo, acrílico, técnica mixta y acuarela disponibles.' },
-    artistas: { title:'Artistas — Hecho con el Alma', desc:'Conocé a los 18 artistas uruguayos curados por Hecho con el Alma. Sus técnicas, obras y talleres.' },
+    artistas: { title:'Artistas — Hecho con el Alma', desc:'Conocé a los artistas y artesanos/as uruguayos curados por Hecho con el Alma. Sus técnicas, obras y talleres.' },
     talleres: { title:'Talleres — Hecho con el Alma', desc:'Talleres pre-grabados de artistas y artesanos/as uruguayos. Aprendé a tu ritmo desde donde estés.' },
     evento:   { title:'Evento · 14 de Junio 2026 — Hecho con el Alma', desc:'Día de campo con arte en la naturaleza. Un artista real, materiales incluidos, tu obra para llevarte.' },
   };
