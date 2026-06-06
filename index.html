@@ -1867,6 +1867,23 @@ nav .nav-links{flex-shrink:1}
   .modal-tab{font-size:.58rem;padding:.65rem .82rem}
 }
 
+/* ══ MÉTODOS DE PAGO (checkout paso 3) ══ */
+.pm-paymethods{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1.4rem}
+.pm-pay-opt{background:var(--white);border:1.5px solid rgba(26,26,26,.14);padding:1rem .8rem;cursor:pointer;text-align:center;transition:all .25s;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.pm-pay-opt.active{border-color:var(--gold);background:rgba(196,163,90,.05)}
+.pm-pay-opt svg{width:24px;height:24px;stroke:var(--muted);fill:none;stroke-width:1.5}
+.pm-pay-opt.active svg{stroke:var(--gold-text)}
+.pm-pay-opt-title{font-size:.74rem;font-weight:500;color:var(--text);letter-spacing:.02em}
+.pm-pay-opt.active .pm-pay-opt-title{color:var(--gold-text)}
+.pm-pay-opt-sub{font-size:.62rem;color:var(--muted);letter-spacing:.04em}
+.pm-pay-panel{margin-bottom:1.2rem}
+.pm-bank{border:1px solid rgba(0,0,0,.08);background:#fafaf8;padding:1.1rem 1.3rem;margin-bottom:1rem}
+.pm-bank-row{display:flex;justify-content:space-between;padding:.45rem 0;font-size:.8rem;color:var(--muted);border-bottom:1px solid rgba(0,0,0,.05)}
+.pm-bank-row:last-child{border-bottom:none}
+.pm-bank-row strong{color:var(--text);font-weight:500}
+.pm-pay-note{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:1.1rem}
+@media(max-width:600px){.pm-paymethods{grid-template-columns:1fr}.pm-pay-opt{flex-direction:row;justify-content:flex-start;text-align:left;gap:.7rem}}
+
 /* ══ CURADURÍA POR SENSACIÓN ══ */
 .sens-sec{background:var(--hcea-ivory);padding:7rem 0;position:relative;overflow:hidden;border-top:1px solid rgba(185,154,82,.12)}
 .sens-hd{text-align:center;margin-bottom:3.5rem;padding:0 2rem}
@@ -4056,23 +4073,59 @@ nav .nav-links{flex-shrink:1}
             <strong id="pm-split-hcea" style="color:var(--text)">—</strong>
           </div>
         </div>
-        <div class="pm-mp-box">
-          <div class="pm-mp-logo">Mercado<span>Pago</span></div>
-          <div class="pm-mp-tagline">Serás redirigido al checkout seguro de Mercado Pago.<br>Podés pagar con tarjeta, transferencia o saldo MP.</div>
-          <button class="pm-mp-btn" onclick="goToMP()">
-            <div class="pm-mp-btn-icon"></div>
-            Pagar con Mercado Pago
+        <span class="pm-section-lbl">¿Cómo querés pagar?</span>
+        <div class="pm-paymethods">
+          <button class="pm-pay-opt active" data-pay="transfer" onclick="selectPayMethod('transfer')">
+            <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            <div class="pm-pay-opt-title">Transferencia</div>
+            <div class="pm-pay-opt-sub">Sin recargo</div>
           </button>
-          <div class="pm-cuotas">
-            <div class="pm-cuota"><strong id="pm-cuota-1">—</strong>1 pago</div>
-            <div class="pm-cuota"><strong id="pm-cuota-3">—</strong>3 cuotas s/i</div>
-            <div class="pm-cuota"><strong id="pm-cuota-6">—</strong>6 cuotas s/i</div>
-          </div>
+          <button class="pm-pay-opt" data-pay="mp" onclick="selectPayMethod('mp')">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h2M12 15h5"/></svg>
+            <div class="pm-pay-opt-title">Mercado Pago</div>
+            <div class="pm-pay-opt-sub">En cuotas</div>
+          </button>
+          <button class="pm-pay-opt" data-pay="consult" onclick="selectPayMethod('consult')">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <div class="pm-pay-opt-title">Consultar</div>
+            <div class="pm-pay-opt-sub">Por WhatsApp</div>
+          </button>
         </div>
-        <p class="pm-guarantee">🔒 Pago protegido por Mercado Pago · Tus datos nunca se comparten · Podés cancelar hasta 24hs antes del envío</p>
+
+        <!-- Panel: Transferencia bancaria -->
+        <div class="pm-pay-panel" id="pm-pay-transfer">
+          <div class="pm-bank">
+            <div class="pm-bank-row"><span>Banco</span><strong>A confirmar</strong></div>
+            <div class="pm-bank-row"><span>Cuenta / Nº</span><strong>A confirmar</strong></div>
+            <div class="pm-bank-row"><span>Titular</span><strong>Hecho con el Alma</strong></div>
+          </div>
+          <p class="pm-pay-note">Transferí el total y envianos el comprobante por WhatsApp. Coordinamos el envío apenas lo recibamos. El monto exacto se confirma al coordinar.</p>
+          <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="window.open(_waPurchaseLink('transfer'),'_blank')">Coordinar transferencia por WhatsApp →</button>
+        </div>
+
+        <!-- Panel: Mercado Pago en cuotas -->
+        <div class="pm-pay-panel" id="pm-pay-mp" style="display:none">
+          <div class="pm-mp-box">
+            <div class="pm-mp-logo">Mercado<span>Pago</span></div>
+            <div class="pm-mp-tagline">Pagá con tarjeta en cuotas. Te enviamos el link de pago seguro por WhatsApp.</div>
+            <div class="pm-cuotas">
+              <div class="pm-cuota"><strong id="pm-cuota-1">—</strong>1 pago</div>
+              <div class="pm-cuota"><strong id="pm-cuota-3">—</strong>3 cuotas</div>
+              <div class="pm-cuota"><strong id="pm-cuota-6">—</strong>6 cuotas</div>
+            </div>
+          </div>
+          <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="window.open(_waPurchaseLink('mp'),'_blank')">Recibir link de pago en cuotas →</button>
+        </div>
+
+        <!-- Panel: Consultar / WhatsApp -->
+        <div class="pm-pay-panel" id="pm-pay-consult" style="display:none">
+          <p class="pm-pay-note">¿Preferís coordinar con una persona? Te acompañamos a cerrar la compra por WhatsApp: resolvemos dudas, definimos el pago y coordinamos el envío.</p>
+          <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="window.open(_waPurchaseLink('consult'),'_blank')">Coordinar por WhatsApp →</button>
+        </div>
+
+        <p class="pm-guarantee">🔒 Obra única · Certificado de autenticidad incluido · Coordinamos envío a todo Uruguay</p>
         <div class="pm-nav">
           <button class="btn btn-dark" style="font-size:.68rem" onclick="purchasePrevStep()">← Volver</button>
-          <a href="https://wa.me/59894743435?text=Hola!%20Estaba%20por%20completar%20la%20compra%20de%20una%20obra%20en%20la%20web%20y%20prefiero%20coordinar%20directamente.%20%C2%BFMe%20ayudan%20a%20cerrarla%3F" class="btn btn-ghost" style="font-size:.68rem">¿Dudas? WhatsApp →</a>
         </div>
       </div>
       <!-- SUCCESS STATE (prototipo) -->
@@ -4883,16 +4936,17 @@ function renderCartBody() {
     return;
   }
   if (footer) footer.style.display = '';
-  const total = cart.reduce((s, i) => s + i.priceNum, 0);
+  const allPriced = cart.every(i => isFinite(i.priceNum) && i.priceNum > 0);
+  const total = cart.reduce((s, i) => s + (isFinite(i.priceNum) ? i.priceNum : 0), 0);
   const totalEl = document.getElementById('cart-total-val');
-  if (totalEl) totalEl.textContent = 'USD ' + total.toLocaleString('es-UY');
+  if (totalEl) totalEl.textContent = allPriced ? ('USD ' + total.toLocaleString('es-UY')) : 'A coordinar';
   body.innerHTML = cart.map(item => `
     <div class="cart-item">
-      <div class="cart-item-thumb pm-art-thumb-bg ${bgClasses[item.idx]}"></div>
+      <div class="cart-item-thumb" style="background:url('${(artworkData[item.idx] && artworkData[item.idx].images && artworkData[item.idx].images[0]) || ''}') center/cover, #e8dcc8"></div>
       <div class="cart-item-info">
         <div class="cart-item-title">${item.title}</div>
         <div class="cart-item-artist">${item.artist}</div>
-        <div class="cart-item-price">${item.price}</div>
+        <div class="cart-item-price">${item.price || 'Consultar precio'}</div>
       </div>
       <button class="cart-item-remove" onclick="removeFromCart(${item.idx})" title="Quitar">
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -4999,25 +5053,56 @@ function _fillPurchaseSummary(idx) {
     const thumbEl = document.getElementById('pm-thumb-' + s);
     if (nameEl)  nameEl.textContent  = d.title;
     if (subEl)   subEl.textContent   = d.artist + ' · ' + d.sub;
-    if (priceEl) priceEl.textContent = d.price;
-    if (thumbEl) thumbEl.className   = 'pm-art-thumb-bg ' + bgClasses[idx];
+    if (priceEl) priceEl.textContent = d.price || 'Consultar precio';
+    if (thumbEl) {
+      thumbEl.className = 'pm-art-thumb-bg';
+      var _timg = (d.images && d.images[0]) ? d.images[0] : '';
+      if (_timg) { thumbEl.style.background = "url('" + _timg + "') center/cover, #e8dcc8"; thumbEl.textContent = ''; }
+    }
   }
-  // cuotas en paso 3
+  // cuotas en paso 3 (con guarda si la obra no tiene precio fijo)
   const p = d.priceNum;
+  const hasPrice = (typeof p === 'number' && isFinite(p) && p > 0);
   const c1  = document.getElementById('pm-cuota-1');
   const c3  = document.getElementById('pm-cuota-3');
   const c6  = document.getElementById('pm-cuota-6');
-  if (c1) c1.textContent = 'USD ' + p;
-  if (c3) c3.textContent = 'USD ' + Math.round(p / 3);
-  if (c6) c6.textContent = 'USD ' + Math.round(p / 6);
-  // split comisión 30/70
-  const HCEA_COMMISSION = 0.30;
-  const hcea    = Math.round(p * HCEA_COMMISSION);
-  const artista = p - hcea;
-  const splitArtista = document.getElementById('pm-split-artista');
-  const splitHcea    = document.getElementById('pm-split-hcea');
-  if (splitArtista) splitArtista.textContent = 'USD ' + artista;
-  if (splitHcea)    splitHcea.textContent    = 'USD ' + hcea;
+  if (c1) c1.textContent = hasPrice ? ('USD ' + p) : 'A coordinar';
+  if (c3) c3.textContent = hasPrice ? ('USD ' + Math.round(p / 3)) : '—';
+  if (c6) c6.textContent = hasPrice ? ('USD ' + Math.round(p / 6)) : '—';
+  // split comisión 30/70 — se oculta si no hay precio fijo
+  const splitBox = document.getElementById('pm-split-box');
+  if (splitBox) splitBox.style.display = hasPrice ? '' : 'none';
+  if (hasPrice) {
+    const hcea    = Math.round(p * 0.30);
+    const artista = p - hcea;
+    const splitArtista = document.getElementById('pm-split-artista');
+    const splitHcea    = document.getElementById('pm-split-hcea');
+    if (splitArtista) splitArtista.textContent = 'USD ' + artista;
+    if (splitHcea)    splitHcea.textContent    = 'USD ' + hcea;
+  }
+  // resetear método de pago a Transferencia
+  selectPayMethod('transfer');
+}
+
+// Selección de método de pago (paso 3)
+function selectPayMethod(method) {
+  document.querySelectorAll('.pm-pay-opt').forEach(function(o){ o.classList.toggle('active', o.dataset.pay === method); });
+  ['transfer','mp','consult'].forEach(function(m){
+    var el = document.getElementById('pm-pay-' + m);
+    if (el) el.style.display = (m === method ? '' : 'none');
+  });
+}
+
+// Link de WhatsApp con contexto de la obra según método
+function _waPurchaseLink(method) {
+  var d = artworkData[purchaseIdx] || {};
+  var obra = d.title ? ('"' + d.title + '" de ' + d.artist) : 'una obra';
+  var msgs = {
+    transfer: 'Hola! Quiero comprar ' + obra + ' por transferencia bancaria. ¿Me pasan los datos para coordinar?',
+    mp:       'Hola! Quiero comprar ' + obra + ' y pagar en cuotas con Mercado Pago. ¿Me envían el link de pago?',
+    consult:  'Hola! Quiero coordinar la compra de ' + obra + ' por acá. ¿Me ayudan a cerrarla?'
+  };
+  return 'https://wa.me/59894743435?text=' + encodeURIComponent(msgs[method] || msgs.consult);
 }
 
 function goToMP() {
