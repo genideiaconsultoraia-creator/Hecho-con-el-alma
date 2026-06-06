@@ -4903,9 +4903,8 @@ function requireAuth(callback) {
 var _pendingAction = null; // acción pendiente hasta que el usuario se loguee
 
 function addToCart(idx) {
-  if (!requireAuth(function(){ addToCart(idx); })) return;
   const d = artworkData[idx];
-  if (!d || !d.compra) return;
+  if (!d) return;
   if (cart.find(i => i.idx === idx)) { openCart(); return; }
   cart.push({ idx, title: d.title, artist: d.artist, price: d.price, priceNum: d.priceNum });
   updateCartUI();
@@ -4956,7 +4955,6 @@ function renderCartBody() {
 }
 
 function toggleCart() {
-  if (!requireAuth(function(){ toggleCart(); })) return;
   document.getElementById('cart-drawer').classList.contains('open') ? closeCart() : openCart();
 }
 function openCart() {
@@ -4986,7 +4984,6 @@ function selectDelivery(mode) {
 }
 
 function openPurchaseModal(idx) {
-  if (!requireAuth(function(){ openPurchaseModal(idx); })) return;
   try {
     purchaseIdx  = idx;
     purchaseStep = 1;
