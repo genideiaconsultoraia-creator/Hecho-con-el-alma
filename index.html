@@ -3577,7 +3577,7 @@ nav .nav-links{flex-shrink:1}
             <div class="acard-works-line"><strong>13</strong> obras disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Leonardo Alvez')">Ver obras <span class="arr">→</span></button>
-              <button type="button" class="acard-share" onclick="shareStoryArtist('Leonardo Alvez','Escultura en cerámica y barro · Uruguay','images/leonardo-alvez/perfil-03.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Compartir</button>
+              <button type="button" class="acard-share" onclick="shareStoryArtist('Leonardo Alvez','Escultura en cerámica y barro · Uruguay','images/leonardo-alvez/perfil-03.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
         </div>
@@ -3593,7 +3593,7 @@ nav .nav-links{flex-shrink:1}
             <div class="acard-works-line"><strong>10</strong> obras disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Carlos Larregui')">Ver obras <span class="arr">→</span></button>
-              <button type="button" class="acard-share" onclick="shareStoryArtist('Carlos Larregui','Cerámica y alfarería artesanal · Uruguay','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Compartir</button>
+              <button type="button" class="acard-share" onclick="shareStoryArtist('Carlos Larregui','Cerámica y alfarería artesanal · Uruguay','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
         </div>
@@ -3609,7 +3609,7 @@ nav .nav-links{flex-shrink:1}
             <div class="acard-works">Obras próximamente</div>
             <div class="acard-actions">
               <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20perfil%20de%20Fabián%20Trinidad%20en%20HcEA%20y%20me%20interesa%20su%20obra.%20%C2%BFCuándo%20van%20a%20estar%20disponibles%3F" class="btn btn-ghost">Notificarme <span class="arr">→</span></a>
-              <button type="button" class="acard-share" onclick="shareStoryArtist('Fabián Trinidad','Pintura con spray · Uruguay','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Compartir</button>
+              <button type="button" class="acard-share" onclick="shareStoryArtist('Fabián Trinidad','Pintura con spray · Uruguay','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
         </div>
@@ -4351,7 +4351,7 @@ nav .nav-links{flex-shrink:1}
         <div id="modal-status"></div>
       </div>
       <div class="modal-ctas" id="modal-cta"></div>
-      <button type="button" class="share-story-btn" onclick="shareStoryObra(currentModalIdx, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>Compartir en historia</button>
+      <button type="button" class="share-story-btn" onclick="shareStoryObra(currentModalIdx, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir esta obra</button>
     </div>
   </div>
 </div>
@@ -6130,7 +6130,7 @@ async function _hceaShareOrDownload(canvas, filename, shareTitle){
   }
   var url=URL.createObjectURL(blob), a=document.createElement('a'); a.href=url; a.download=filename;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(url);},1500);
-  _hceaToast('Imagen descargada. Subila a tu historia de Instagram y agregá el sticker de link a hechoconelalma.shop');
+  _hceaToast('Imagen descargada — lista para compartir donde quieras. Si la subís a una historia de Instagram, agregale el sticker de link a hechoconelalma.shop');
 }
 
 async function shareStoryObra(idx, btn){
