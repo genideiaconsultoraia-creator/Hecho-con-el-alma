@@ -1542,10 +1542,14 @@ nav .nav-links{flex-shrink:1}
 
 /* ── 3. GALERÍA: proporción balanceada, obra destacada sin span 2 ── */
 /* En desktop la obra destacada ocupa 1 columna como las demás — más equidad editorial */
+/* Solo desktop: en mobile manda el 1fr del bloque @768 (este !important lo pisaba) */
+@media(min-width:769px){
 .gallery-grid{
   grid-template-columns:repeat(3,minmax(0,1fr))!important;
   gap:1.25rem;
 }
+}
+.gallery-grid{gap:1.25rem}
 .gallery-grid .artwork:first-child{
   grid-column:auto;
   grid-row:auto;
@@ -1933,6 +1937,32 @@ nav .nav-links{flex-shrink:1}
 .ruta-wa-texto strong{display:block;font-family:var(--serif);font-size:1.02rem;color:var(--hcea-ink);margin-bottom:.18rem}
 .ruta-wa-texto span{font-size:.78rem;color:rgba(31,27,22,.5)}
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   RESCATE MOBILE (jun 2026) — va AL FINAL del stylesheet a propósito:
+   las "pasadas visuales" de desktop declaradas arriba pisaban las media
+   queries mobile por orden de cascada. No mover este bloque hacia arriba.
+   ══════════════════════════════════════════════════════════════════════ */
+.duo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:860px;margin:0 auto}
+.sb-toggle-btn{display:none}
+@media(max-width:768px){
+  /* Trust bar: 2×2 compacta (antes 4 filas gigantes por el min-width desktop) */
+  .trust-inner{flex-wrap:wrap;justify-content:center;gap:.4rem .5rem}
+  .trust-item{min-width:0!important;width:46%!important;padding:.55rem .3rem!important;flex-direction:column;text-align:center;gap:.3rem}
+  .trust-item::before{display:none!important}
+  .trust-n{font-size:1.45rem!important}
+  .trust-l{max-width:none!important;font-size:.6rem}
+  /* Vistas con sidebar (galería/artistas/talleres): columna + filtros colapsables */
+  .gallery-layout{flex-direction:column}
+  .sb-filters{position:static!important;width:100%!important;height:auto!important;max-height:none;border-right:none!important;box-shadow:none!important;display:none;padding:.4rem 0 1rem}
+  .sb-filters.sb-open{display:block}
+  .sb-toggle-btn{display:flex;align-items:center;justify-content:space-between;width:calc(100% - 2.2rem);margin:.9rem 1.1rem .2rem;padding:.85rem 1.1rem;background:transparent;border:1px solid rgba(31,27,22,.22);font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:inherit;cursor:pointer}
+  .gallery-main{padding:1.2rem 0!important}
+  /* Home: artistas/artesanos apilados */
+  .duo-grid{grid-template-columns:1fr}
+  /* Ticker de actividad: discreto, sin tapar CTAs */
+  .activity-ticker{max-width:215px;font-size:.58rem;bottom:5.6rem;right:.7rem;padding:.45rem .7rem .45rem .6rem}
+}
 </style>
 </head>
 <body>
@@ -2144,20 +2174,10 @@ nav .nav-links{flex-shrink:1}
     </div>
     <!-- ══ /Hero Carousel ══ -->
 
-    <div class="hero-frame" style="display:none">
-      <div class="hero-frame-inner">
-        <img class="ai-img" src="https://picsum.photos/seed/hcea-301/340/440" alt="Obra disponible" loading="eager">
-        <div class="hero-frame-label">Obra disponible — Temporada 2026</div>
-      </div>
-      <div class="hero-stats">
-        <div><div class="hero-stat-n">2</div><div class="hero-stat-l">Artistas en curaduría</div></div>
-        <div><div class="hero-stat-n">13</div><div class="hero-stat-l">Obras únicas</div></div>
-      </div>
-    </div>
     <div class="hero-content">
       <div class="hero-tag"><div class="hero-tag-dot"></div><span class="hero-tag-txt">Arte Uruguayo Curado · Montevideo</span></div>
       <div class="hero-scarcity"><div class="hs-dot"></div><span>Temporada 2026 · <span class="hs-num" id="hs-count">13</span> obras en curaduría</span></div>
-      <h1 class="hero-h">El arte que se hace con el <em>alma</em><br>no se olvida.</h1>
+      <h1 class="hero-h">El arte que se hace con el <em>alma</em> <br>no se olvida.</h1>
       <p class="hero-sub">Conectamos obras y piezas únicas de artistas y artesanos/as uruguayos con personas que entienden que lo hecho a mano no es decoración — es la historia más honesta que alguien puede contar.</p>
       <div class="hero-ctas">
         <button class="btn btn-gold" onclick="showView('galeria')">Explorar obras curadas →</button>
@@ -2208,7 +2228,7 @@ nav .nav-links{flex-shrink:1}
         <h2 class="h-lg">Para artistas.<br><em>Para artesanos/as.</em></h2>
         <p style="color:var(--muted);font-size:.9rem;max-width:480px;margin:1.2rem auto 0;line-height:1.8">Cada uno se define y se representa a su manera. Acá los dos tienen el mismo espacio — porque lo hecho con las manos y el alma merece ser visto.</p>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;max-width:860px;margin:0 auto">
+      <div class="duo-grid">
         <div class="fi" style="background:var(--black);padding:3rem 2.5rem;border:1px solid rgba(196,163,90,.14)">
           <div style="font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">Artistas</div>
           <p style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:1.4rem">Pintores, escultores,<br>fotógrafos, ilustradores.</p>
@@ -2299,6 +2319,56 @@ nav .nav-links{flex-shrink:1}
     <div class="hfeed-cta fi">
       <button class="btn btn-light" onclick="showView('galeria')">Ver galería completa — 13 obras <span class="arr">→</span></button>
       <p class="hfeed-cta-note">Todas las obras son originales y únicas · Certificado de autenticidad incluido</p>
+    </div>
+  </section>
+
+  <!-- ══ POR QUÉ CONFIAR (prueba social honesta) ══ -->
+  <section style="background:var(--black);padding:5rem 0;border-top:1px solid rgba(196,163,90,.14)">
+    <div class="container">
+      <div class="fi" style="text-align:center;margin-bottom:3rem">
+        <span class="eyebrow" style="color:var(--gold)">Por qué confiar</span>
+        <h2 class="h-lg" style="color:var(--cream)">Comprar arte online<br><em>sin miedo a equivocarte.</em></h2>
+        <p style="color:rgba(245,240,232,.5);font-size:.9rem;max-width:520px;margin:1.2rem auto 0;line-height:1.8">No somos un catálogo automático. Cada pieza pasa por una persona antes de llegar a vos — y llega con todo lo que necesitás para decidir tranquila/o.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2px;max-width:980px;margin:0 auto">
+
+        <div class="fi" style="background:rgba(255,255,255,.025);padding:2.3rem 1.9rem;border:1px solid rgba(196,163,90,.1)">
+          <div style="color:var(--gold);margin-bottom:.9rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div style="font-family:var(--serif);font-size:1.12rem;color:var(--cream);margin-bottom:.55rem">Curaduría humana</div>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.7">Cada obra fue elegida a mano por lo que es, no subida por un algoritmo. Curamos para que no tengas que filtrar entre miles.</p>
+        </div>
+
+        <div class="fi d1" style="background:rgba(255,255,255,.025);padding:2.3rem 1.9rem;border:1px solid rgba(196,163,90,.1)">
+          <div style="color:var(--gold);margin-bottom:.9rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+          <div style="font-family:var(--serif);font-size:1.12rem;color:var(--cream);margin-bottom:.55rem">Artista real, con nombre</div>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.7">Sabés quién hizo tu obra, cómo la hizo y de dónde viene. Detrás de cada pieza hay una persona, no un usuario anónimo.</p>
+        </div>
+
+        <div class="fi d2" style="background:rgba(255,255,255,.025);padding:2.3rem 1.9rem;border:1px solid rgba(196,163,90,.1)">
+          <div style="color:var(--gold);margin-bottom:.9rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L8 22l4-2.2L16 22l-1-7.5"/></svg></div>
+          <div style="font-family:var(--serif);font-size:1.12rem;color:var(--cream);margin-bottom:.55rem">Certificado de autenticidad</div>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.7">Cada obra llega con su certificado. Lo que comprás es original, único y documentado — para siempre.</p>
+        </div>
+
+        <div class="fi" style="background:rgba(255,255,255,.025);padding:2.3rem 1.9rem;border:1px solid rgba(196,163,90,.1)">
+          <div style="color:var(--gold);margin-bottom:.9rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+          <div style="font-family:var(--serif);font-size:1.12rem;color:var(--cream);margin-bottom:.55rem">Original y protegida</div>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.7">Pieza única e irrepetible. Los derechos del artista están amparados por la Ley 9.739 de Uruguay.</p>
+        </div>
+
+        <div class="fi d1" style="background:rgba(255,255,255,.025);padding:2.3rem 1.9rem;border:1px solid rgba(196,163,90,.1)">
+          <div style="color:var(--gold);margin-bottom:.9rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div style="font-family:var(--serif);font-size:1.12rem;color:var(--cream);margin-bottom:.55rem">La ves antes de decidir</div>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.7">Fotos reales, medidas y contexto de cada pieza. Y si estás en Montevideo, podés verla y retirarla en persona.</p>
+        </div>
+
+        <div class="fi d2" style="background:rgba(255,255,255,.025);padding:2.3rem 1.9rem;border:1px solid rgba(196,163,90,.1)">
+          <div style="color:var(--gold);margin-bottom:.9rem"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <div style="font-family:var(--serif);font-size:1.12rem;color:var(--cream);margin-bottom:.55rem">Te acompaña una persona</div>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.5);line-height:1.7">Conversás por WhatsApp con alguien que conoce la obra y el proceso. No con un bot — con quien la curó.</p>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -2463,6 +2533,18 @@ nav .nav-links{flex-shrink:1}
     </div>
     <div class="sens-foot fi">
       <button class="btn btn-dark" onclick="showView('galeria')">O explorá toda la galería →</button>
+    </div>
+  </section>
+
+  <!-- ══ LISTA DE ESPERA (bucle abierto honesto) ══ -->
+  <section style="background:var(--cream);padding:4.5rem 0;border-top:1px solid rgba(196,163,90,.15)">
+    <div class="container">
+      <div class="fi" style="max-width:680px;margin:0 auto;text-align:center;background:#fbf7ef;border:1px solid rgba(196,163,90,.2);padding:3rem 2.4rem">
+        <span class="eyebrow">¿Todavía no la viste?</span>
+        <h2 style="font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--text);line-height:1.3;margin:.6rem 0 1rem">Decinos qué buscás<br>y te avisamos cuando entre.</h2>
+        <p style="font-size:.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.8rem">Sumamos obras y artistas en cada temporada. Contanos qué estás buscando — técnica, sensación, espacio o presupuesto — y te escribimos en cuanto llega algo que encaja. Sin compromiso.</p>
+        <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20que%20me%20avisen%20cuando%20entre%20una%20obra%20que%20encaje%20con%20lo%20que%20busco.%20Estoy%20buscando%3A%20" class="btn btn-gold" target="_blank" rel="noopener">Quiero estar en la lista →</a>
+      </div>
     </div>
   </section>
 
@@ -2631,12 +2713,12 @@ nav .nav-links{flex-shrink:1}
     </div>
     <div class="ig-grid-wrap">
       <div class="ig-grid">
-        <div class="ig-post"><div class="ig-post-bg ig-bg-1"><img class="ig-photo" src="images/leonardo-alvez/escultura_5.jpeg" alt="Cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 142</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-2"><img class="ig-photo" src="images/leonardo-alvez/escultura_6.jpeg" alt="Escultura cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 89</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-3"><img class="ig-photo" src="images/leonardo-alvez/escultura_7.jpeg" alt="Obra cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 217</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-4"><img class="ig-photo" src="images/leonardo-alvez/escultura_8.jpeg" alt="Pieza cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 74</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-5"><img class="ig-photo" src="images/leonardo-alvez/escultura_9.jpeg" alt="Cerámica artesanal de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 108</span></div></div>
-        <div class="ig-post"><div class="ig-post-bg ig-bg-6"><img class="ig-photo" src="images/leonardo-alvez/obra_2.jpeg" alt="Detalle de obra de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">♥ 195</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-1"><img class="ig-photo" src="images/leonardo-alvez/escultura_5.jpeg" alt="Cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">Ver en IG →</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-2"><img class="ig-photo" src="images/leonardo-alvez/escultura_6.jpeg" alt="Escultura cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">Ver en IG →</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-3"><img class="ig-photo" src="images/leonardo-alvez/escultura_7.jpeg" alt="Obra cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">Ver en IG →</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-4"><img class="ig-photo" src="images/leonardo-alvez/escultura_8.jpeg" alt="Pieza cerámica de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">Ver en IG →</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-5"><img class="ig-photo" src="images/leonardo-alvez/escultura_9.jpeg" alt="Cerámica artesanal de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">Ver en IG →</span></div></div>
+        <div class="ig-post"><div class="ig-post-bg ig-bg-6"><img class="ig-photo" src="images/leonardo-alvez/obra_2.jpeg" alt="Detalle de obra de Leonardo Alvez" loading="lazy"></div><div class="ig-post-hover"><span class="ig-likes">Ver en IG →</span></div></div>
       </div>
     </div>
     <div class="ig-cta">
@@ -2799,13 +2881,13 @@ nav .nav-links{flex-shrink:1}
       </div>
       <div class="dash-welcome">
         <h2 class="dash-greeting">Bienvenida, <em id="dash-b-greeting">Sofia</em></h2>
-        <p class="dash-greeting-sub">3 obras guardadas · 2 alertas activas · Proximo evento: 14 Jun</p>
+        <p class="dash-greeting-sub">3 obras guardadas · 2 alertas activas · 1 consulta abierta</p>
       </div>
       <div class="dash-stats-row">
         <div class="dash-stat"><div class="dash-stat-n">3</div><div class="dash-stat-l">Obras guardadas</div></div>
         <div class="dash-stat"><div class="dash-stat-n">2</div><div class="dash-stat-l">Alertas activas</div></div>
         <div class="dash-stat"><div class="dash-stat-n">1</div><div class="dash-stat-l">Consulta abierta</div></div>
-        <div class="dash-stat"><div class="dash-stat-n" id="dash-b-dias">18</div><div class="dash-stat-l">Dias al evento</div></div>
+        <div class="dash-stat"><div class="dash-stat-n">13</div><div class="dash-stat-l">Obras en galería</div></div>
       </div>
 
       <!-- Favoritos -->
@@ -2814,7 +2896,7 @@ nav .nav-links{flex-shrink:1}
         <div class="dash-fav-grid">
           <div class="dash-fav-card" onclick="showView('galeria')">
             <div class="dash-fav-img" style="background:linear-gradient(135deg,#2d2520,#4a3728,#5a4535)">
-              <img class="dash-fav-ai" src="https://picsum.photos/seed/hcea-121/400/240" alt="Sinfonia" loading="eager">
+              <img class="dash-fav-ai" src="images/leonardo-alvez/obra.jpeg" alt="Sinfonia" loading="eager">
             </div>
             <div class="dash-fav-body">
               <div class="dash-fav-artist">Maria Fontana</div>
@@ -2825,7 +2907,7 @@ nav .nav-links{flex-shrink:1}
           </div>
           <div class="dash-fav-card" onclick="showView('galeria')">
             <div class="dash-fav-img" style="background:linear-gradient(160deg,#1e2830,#2d3e4a,#203545)">
-              <img class="dash-fav-ai" src="https://picsum.photos/seed/hcea-102/400/240" alt="Azul" loading="eager">
+              <img class="dash-fav-ai" src="images/leonardo-alvez/obra_3.jpeg" alt="Azul" loading="eager">
             </div>
             <div class="dash-fav-body">
               <div class="dash-fav-artist">Lucas Vera</div>
@@ -2836,7 +2918,7 @@ nav .nav-links{flex-shrink:1}
           </div>
           <div class="dash-fav-card" onclick="showView('galeria')">
             <div class="dash-fav-img" style="background:linear-gradient(130deg,#251515,#3d2020,#4a3028)">
-              <img class="dash-fav-ai" src="https://picsum.photos/seed/hcea-125/400/240" alt="Memorias" loading="eager">
+              <img class="dash-fav-ai" src="images/leonardo-alvez/obra_2.jpeg" alt="Memorias" loading="eager">
             </div>
             <div class="dash-fav-body">
               <div class="dash-fav-artist">Maria Fontana</div>
@@ -2882,7 +2964,7 @@ nav .nav-links{flex-shrink:1}
           <div class="buyer-upsell-tag">No te pierdas nada</div>
           <div class="buyer-upsell-title">Acceso anticipado al proximo evento</div>
           <div class="buyer-upsell-desc">Los miembros registrados son los primeros en enterarse cuando hay obras nuevas, eventos privados y oportunidades de coleccion antes del lanzamiento publico.</div>
-          <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20evento%20del%2014%20de%20junio%20en%20la%20web%20y%20quiero%20reservar%20mi%20lugar.%20%C2%BFCu%C3%A1ntos%20lugares%20quedan%20disponibles%3F%20%C2%BFC%C3%B3mo%20confirmo%20el%20pago%3F" class="btn btn-gold" target="_blank" rel="noopener" style="font-size:.7rem">Reservar lugar en el proximo evento →</a>
+          <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20pr%C3%B3ximo%20evento%20en%20la%20web%20y%20quiero%20reservar%20mi%20lugar.%20%C2%BFCu%C3%A1ntos%20lugares%20quedan%20disponibles%3F%20%C2%BFC%C3%B3mo%20confirmo%20el%20pago%3F" class="btn btn-gold" target="_blank" rel="noopener" style="font-size:.7rem">Reservar lugar en el proximo evento →</a>
         </div>
       </div>
 
@@ -2903,9 +2985,9 @@ nav .nav-links{flex-shrink:1}
         <div class="dash-section-title">Ofertas exclusivas para miembros</div>
         <div class="dash-offer-box">
           <div class="dash-offer-eyebrow">Oferta especial · Temporada 2026</div>
-          <div class="dash-offer-title">Acceso anticipado al evento del 14 de junio</div>
+          <div class="dash-offer-title">Acceso anticipado al proximo evento</div>
           <div class="dash-offer-desc">Como compradora registrada, tenes acceso prioritario a la reserva de lugar antes de que se abra al publico general. Solo quedan 2 cupos.</div>
-          <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20reservar%20mi%20lugar%20para%20el%20evento%20del%2014%20de%20junio.%20%C2%BFCu%C3%A1ntos%20lugares%20quedan%3F%20%C2%BFC%C3%B3mo%20confirmo%20el%20pago%3F" class="btn btn-gold" target="_blank" rel="noopener">Reservar mi lugar ahora</a>
+          <a href="https://wa.me/59894743435?text=Hola!%20Quiero%20reservar%20mi%20lugar%20para%20el%20pr%C3%B3ximo%20evento.%20%C2%BFCu%C3%A1ntos%20lugares%20quedan%3F%20%C2%BFC%C3%B3mo%20confirmo%20el%20pago%3F" class="btn btn-gold" target="_blank" rel="noopener">Reservar mi lugar ahora</a>
         </div>
         <div style="text-align:center;padding:1.5rem;background:var(--cream-d);border:1px solid rgba(196,163,90,.1)">
           <div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem">Proximamente</div>
@@ -2980,7 +3062,7 @@ nav .nav-links{flex-shrink:1}
           <div class="dash-obra">
             <div class="dash-obra-thumb">
               <div class="dash-obra-thumb-inner" style="background:linear-gradient(135deg,#2d2520,#4a3728)">
-                <img src="https://picsum.photos/seed/hcea-121/120/120" alt="Sinfonia" loading="eager">
+                <img src="images/leonardo-alvez/obra.jpeg" alt="Sinfonia" loading="eager">
               </div>
             </div>
             <div>
@@ -2992,7 +3074,7 @@ nav .nav-links{flex-shrink:1}
           <div class="dash-obra">
             <div class="dash-obra-thumb">
               <div class="dash-obra-thumb-inner" style="background:linear-gradient(130deg,#251515,#3d2020)">
-                <img src="https://picsum.photos/seed/hcea-125/120/120" alt="Memorias" loading="eager">
+                <img src="images/leonardo-alvez/obra_2.jpeg" alt="Memorias" loading="eager">
               </div>
             </div>
             <div>
@@ -3038,7 +3120,7 @@ nav .nav-links{flex-shrink:1}
 
           <div class="dash-activity-card">
             <div class="dac-thumb">
-              <img src="https://picsum.photos/seed/hcea-121/120/120" alt="Sinfonia de la Tierra">
+              <img src="images/leonardo-alvez/obra.jpeg" alt="Sinfonia de la Tierra">
             </div>
             <div class="dac-body">
               <div class="dac-title">Sinfonía de la Tierra</div>
@@ -3055,7 +3137,7 @@ nav .nav-links{flex-shrink:1}
 
           <div class="dash-activity-card">
             <div class="dac-thumb">
-              <img src="https://picsum.photos/seed/hcea-125/120/120" alt="Memorias del Sur">
+              <img src="images/leonardo-alvez/obra_2.jpeg" alt="Memorias del Sur">
             </div>
             <div class="dac-body">
               <div class="dac-title">Memorias del Sur</div>
@@ -3220,8 +3302,8 @@ nav .nav-links{flex-shrink:1}
       </div>
     </div>
 
-    <!-- Toggle listo para colgar -->
-    <div class="sb-toggle-row">
+    <!-- Toggle listo para colgar — oculto: ninguna obra tiene data-listo aún (filtraba a 0 obras) -->
+    <div class="sb-toggle-row" style="display:none">
       <span class="sb-toggle-label">Listo para colgar</span>
       <label class="sb-toggle">
         <input type="checkbox" id="toggleListoColgar" onchange="filterListoColgar(this.checked)">
@@ -3230,7 +3312,7 @@ nav .nav-links{flex-shrink:1}
       </label>
     </div>
 
-    <div class="sb-count" id="gallery-count">6 obras</div>
+    <div class="sb-count" id="gallery-count">13 obras</div>
   </aside>
 
   <div class="gallery-main">
@@ -4837,35 +4919,6 @@ function showViewAndSearch(view, query) {
   }, 140);
 }
 
-// ── Ticket selector para evento ──
-function selectTicket(type) {
-  document.querySelectorAll('.tkt').forEach(t => t.classList.toggle('active', t.dataset.tkt === type));
-  const data = {
-    individual: {
-      lbl: 'Ticket individual',
-      val: 'USD 120', unit: '/ persona',
-      inc: '✓ Workshop completo<br>✓ Materiales incluidos<br>✓ Almuerzo y bebidas<br>✓ Tu obra para llevarte',
-      msg: 'Hola! Quiero reservar un lugar para la experiencia creativa del 14 de junio (ticket individual).'
-    },
-    pareja: {
-      lbl: 'Ticket pareja — ahorrás USD 30',
-      val: 'USD 210', unit: '/ pareja',
-      inc: '✓ Workshop completo para los dos<br>✓ Materiales para ambos<br>✓ Almuerzo y bebidas<br>✓ Cada uno se lleva su obra',
-      msg: 'Hola! Quiero reservar 2 lugares para la experiencia creativa del 14 de junio (ticket pareja).'
-    },
-    familia: {
-      lbl: 'Ticket familia',
-      val: 'USD 280', unit: '/ familia',
-      inc: '✓ 2 adultos + niños incluidos<br>✓ 🎨 Dinámicas especiales para los chicos<br>✓ Materiales para todos<br>✓ Almuerzo y bebidas<br>✓ Cada uno se lleva su creación',
-      msg: 'Hola! Quiero reservar un ticket FAMILIA para la experiencia creativa del 14 de junio. Somos adultos con niños.'
-    }
-  };
-  const d = data[type];
-  document.getElementById('ep-lbl').textContent = d.lbl;
-  document.getElementById('ep-val').innerHTML = d.val + ' <span>' + d.unit + '</span>';
-  document.getElementById('ep-inc').innerHTML = d.inc;
-  document.getElementById('btn-reservar-evento').href = 'https://wa.me/59894743435?text=' + encodeURIComponent(d.msg);
-}
 
 function showViewAndFilterTalleres(artistaVal) {
   showView('talleres');
@@ -5187,45 +5240,8 @@ document.addEventListener('keydown', e => {
   }, { passive: true });
 })();
 
-// ── Number counter animation ─────────
-(function() {
-  function animateCount(el, target, suffix, duration) {
-    const start = performance.now();
-    const isFloat = target % 1 !== 0;
-    function step(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - p, 3); // ease-out cubic
-      const val = Math.round(ease * target);
-      el.textContent = val + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  const counters = [
-    { selectors: ['.trust-n:nth-child(1)', '.hero-stat-n:first-child'], target: 18, suffix: '' },
-    { selectors: ['.trust-n:nth-child(2)'], target: 200, suffix: '+' },
-    { selectors: ['.trust-n:nth-child(3)'], target: 6, suffix: '' },
-    { selectors: ['.trust-n:nth-child(4)'], target: 100, suffix: '%' },
-  ];
-
-  const trustItems = document.querySelectorAll('.trust-n');
-  let counted = false;
-  const trustObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !counted) {
-        counted = true;
-        trustItems.forEach((el, i) => {
-          const targets = [18, 200, 6, 100];
-          const suffixes = ['', '+', '', '%'];
-          if (targets[i] !== undefined) animateCount(el, targets[i], suffixes[i], 1400);
-        });
-      }
-    });
-  }, { threshold: .5 });
-  const trustEl = document.querySelector('.trust');
-  if (trustEl) trustObs.observe(trustEl);
-})();
+// Counter animation eliminado: animaba la trust bar a valores ficticios (18/200+/6)
+// pisando los números reales del HTML (2/13/1°/100%). Los números quedan estáticos.
 
 // ── Reveal animations para secciones de vistas ─────────
 // Cuando se activa una vista, activa las animaciones de sus hijos con stagger
@@ -5307,18 +5323,8 @@ document.addEventListener('DOMContentLoaded', function() {
     img.appendChild(btn);
   });
 
-  // ── Badge de alta demanda en obras específicas ──
-  var artworks = document.querySelectorAll('.artwork');
-  [0, 4].forEach(function(idx){
-    var art = artworks[idx];
-    if (!art) return;
-    var img = art.querySelector('.art-img');
-    if (!img) return;
-    var badge = document.createElement('div');
-    badge.className = 'art-scarce';
-    badge.textContent = '↑ Alta demanda';
-    img.appendChild(badge);
-  });
+  // Badge "Alta demanda" eliminado: era escasez fabricada sin datos reales
+  // (regla de integridad 04/06: cero métricas inventadas).
 
   // ── Trust strip en artwork cards ──
   document.querySelectorAll('.art-info').forEach(function(info){
@@ -5397,25 +5403,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // carousel init movido fuera del DOMContentLoaded — ver bloque al final del script
 
-  // ── Countdown evento 14 Jun 2026 ──
-  try {
-    var cdTarget = new Date('2026-06-14T09:00:00-03:00').getTime();
-    function cdPad(n){ return String(n).padStart(2,'0'); }
-    function cdTick(){
-      var diff = cdTarget - Date.now();
-      if (diff <= 0) { ['cd-d','cd-h','cd-m','cd-s'].forEach(function(id){ var e=document.getElementById(id); if(e)e.textContent='00'; }); return; }
-      var dd=Math.floor(diff/86400000), hh=Math.floor((diff%86400000)/3600000),
-          mm=Math.floor((diff%3600000)/60000), ss=Math.floor((diff%60000)/1000);
-      var dE=document.getElementById('cd-d'),hE=document.getElementById('cd-h'),
-          mE=document.getElementById('cd-m'),sE=document.getElementById('cd-s');
-      if(dE)dE.textContent=cdPad(dd); if(hE)hE.textContent=cdPad(hh);
-      if(mE)mE.textContent=cdPad(mm); if(sE)sE.textContent=cdPad(ss);
-    }
-    cdTick();
-    setInterval(cdTick, 1000);
-  } catch(e) {}
-
 }); // end load
+
+// ── Filtros colapsables en mobile (botón "Filtrar" antes de cada sidebar) ──
+(function(){
+  document.querySelectorAll('.gallery-layout .sb-filters').forEach(function(sb){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'sb-toggle-btn';
+    btn.innerHTML = '<span>Filtrar</span><span aria-hidden="true">↓</span>';
+    btn.addEventListener('click', function(){
+      var open = sb.classList.toggle('sb-open');
+      btn.querySelector('span:last-child').textContent = open ? '↑' : '↓';
+    });
+    sb.parentNode.insertBefore(btn, sb);
+  });
+})();
 
 // ══ HERO CAROUSEL ════════════════════════
 (function() {
@@ -5760,11 +5763,6 @@ function updateDashboardForUser(user) {
     if (avEl) avEl.textContent = name[0].toUpperCase();
     if (nmEl) nmEl.textContent = name;
     if (grEl) grEl.textContent = fname;
-    var diasEl = document.getElementById('dash-b-dias');
-    if (diasEl) {
-      var dias = Math.max(0, Math.ceil((new Date('2026-06-14').getTime() - Date.now()) / 86400000));
-      diasEl.textContent = dias;
-    }
   } else {
     var avEl=document.getElementById('dash-a-av'), nmEl=document.getElementById('dash-a-name'), grEl=document.getElementById('dash-a-greeting'), plEl=document.getElementById('dash-a-plan');
     if (avEl) avEl.textContent = name[0].toUpperCase();
