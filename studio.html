@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Studio — Generador de historias · HcEA (interno)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#b99a52;--soft:#d8bf76;--bg:#0b0a08;--panel:#14110d;--cream:#f2eadc;--line:rgba(185,154,82,.18)}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--cream);font-family:'Jost',system-ui,sans-serif;padding:2rem 1.2rem 4rem}
+  .hd{max-width:1100px;margin:0 auto 2rem}
+  .hd h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.8rem;margin:0 0 .3rem}
+  .hd .sub{color:rgba(245,240,232,.5);font-size:.85rem;line-height:1.6}
+  .hd .tag{display:inline-block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);border:1px solid var(--line);padding:.3rem .6rem;margin-bottom:.9rem}
+  .grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.6rem}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1.1rem;display:flex;flex-direction:column;gap:.7rem}
+  .card h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.2rem;margin:0;color:var(--soft)}
+  canvas{width:100%;max-width:240px;height:auto;align-self:center;border:1px solid rgba(185,154,82,.25);border-radius:4px;background:#080706}
+  label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);display:block;margin-bottom:.2rem}
+  input,textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--cream);font-family:inherit;font-size:.82rem;padding:.5rem .6rem;border-radius:6px;resize:vertical}
+  textarea{min-height:48px}
+  .field{margin-bottom:.1rem}
+  .dl{margin-top:.4rem;background:linear-gradient(135deg,#d2b866,var(--gold));color:#100d09;border:none;font-family:inherit;font-weight:500;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;padding:.7rem;border-radius:6px;cursor:pointer}
+  .dl:hover{filter:brightness(1.06)}
+  .note{max-width:1100px;margin:2rem auto 0;color:rgba(245,240,232,.4);font-size:.78rem;line-height:1.7;border-top:1px solid var(--line);padding-top:1.2rem}
+</style>
+</head>
+<body>
+<div class="hd">
+  <div class="tag">Herramienta interna · No publicar</div>
+  <h1>Studio — Generador de historias</h1>
+  <div class="sub">Editá el texto de cada intro y descargá el PNG 1080×1920 listo para subir a las Destacadas de Instagram. Mismo marco y logo que la web.</div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<div class="note">
+  Cómo usar: editá los campos si querés cambiar el copy → la vista previa se actualiza sola → <strong>Descargar PNG</strong> → subí la imagen a la story y agregá el sticker de link a hechoconelalma.shop.<br>
+  Las de <strong>Obras / Artistas / Proceso</strong> van como primera story de cada Destacada (antes de tus fotos/reels). <strong>Prensa</strong> queda para cuando salga el video.
+</div>
+
+<script>
+var SLIDES = [
+  {key:'empeza',   titulo:'Empezá acá',    eyebrow:'Bienvenida',           l1:'Esto es',        l2:'Hecho con el Alma',  sub:'Arte y artesanía uruguaya,\ncurada a mano.'},
+  {key:'obras',    titulo:'Obras',         eyebrow:'· Obras disponibles ·', l1:'A continuación,', l2:'las obras curadas',  sub:'Piezas únicas de la temporada.\nTocá el link para verlas en la web.'},
+  {key:'artistas', titulo:'Artistas',      eyebrow:'· Artistas ·',          l1:'A continuación,', l2:'los artistas',       sub:'Las personas y las manos\ndetrás de cada obra.'},
+  {key:'proceso',  titulo:'El proceso',    eyebrow:'· El proceso ·',        l1:'A continuación,', l2:'el proceso',         sub:'Cómo nace cada pieza,\npaso a paso.'},
+  {key:'prensa',   titulo:'Prensa',        eyebrow:'· En los medios ·',     l1:'A continuación,', l2:'en los medios',      sub:'Lo que se dice\nde Hecho con el Alma.'},
+  {key:'comprar',  titulo:'Cómo comprar',  eyebrow:'· Cómo comprar ·',      l1:'A continuación,', l2:'cómo comprar',       sub:'Del primer mensaje a la obra\nen tu pared. Sin vueltas.'}
+];
+
+var LOGO=new Image(); var logoReady=false;
+LOGO.onload=function(){ logoReady=true; renderAll(); };
+LOGO.onerror=function(){ logoReady=false; renderAll(); };
+LOGO.src='images/logo-hcea.png';
+
+function drawIntro(canvas, d){
+  var ctx=canvas.getContext('2d'), W=1080, H=1920, cx=W/2;
+  ctx.textAlign='center';
+  ctx.fillStyle='#080706'; ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='rgba(185,154,82,.45)'; ctx.lineWidth=2; ctx.strokeRect(34,34,W-68,H-68);
+  var sy=300, br=92;
+  if(logoReady){
+    ctx.save(); ctx.beginPath(); ctx.arc(cx,sy,br,0,7); ctx.closePath();
+    ctx.fillStyle='#fbf7ef'; ctx.fill(); ctx.clip();
+    ctx.drawImage(LOGO,50,55,720,720,cx-br,sy-br,br*2,br*2); ctx.restore();
+    ctx.strokeStyle='rgba(185,154,82,.5)'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(cx,sy,br,0,7); ctx.stroke();
+  }
+  ctx.fillStyle='#f2eadc'; ctx.font='400 50px "Cormorant Garamond",serif'; ctx.fillText('Hecho con el Alma', cx, sy+br+74);
+  ctx.fillStyle='#d8bf76'; ctx.font='400 34px "Cormorant Garamond",serif'; ctx.fillText(d.eyebrow, cx, 706);
+  ctx.fillStyle='#fbf7ef'; ctx.font='500 94px "Cormorant Garamond",serif';
+  ctx.fillText(d.l1, cx, 930); ctx.fillText(d.l2, cx, 1040);
+  ctx.fillStyle='rgba(245,240,232,.55)'; ctx.font='400 42px "Cormorant Garamond",serif';
+  var lines=(d.sub||'').split('\n'), yy=1170;
+  for(var i=0;i<Math.min(lines.length,3);i++){ ctx.fillText(lines[i], cx, yy); yy+=56; }
+  ctx.strokeStyle='rgba(185,154,82,.25)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(cx-210,1650); ctx.lineTo(cx+210,1650); ctx.stroke();
+  ctx.fillStyle='#f2eadc'; ctx.font='400 48px "Cormorant Garamond",serif'; ctx.fillText('hechoconelalma.shop', cx, 1738);
+  ctx.fillStyle='rgba(245,240,232,.45)'; ctx.font='400 33px "Cormorant Garamond",serif'; ctx.fillText('Tocá el link →', cx, 1788);
+}
+
+function cardFor(d, idx){
+  var c=document.createElement('div'); c.className='card';
+  c.innerHTML='<h2>'+d.titulo+'</h2>'+
+    '<canvas width="1080" height="1920" id="cv-'+d.key+'"></canvas>'+
+    '<div class="field"><label>Encabezado</label><input data-k="eyebrow" value="'+escapeAttr(d.eyebrow)+'"></div>'+
+    '<div class="field"><label>Titular línea 1</label><input data-k="l1" value="'+escapeAttr(d.l1)+'"></div>'+
+    '<div class="field"><label>Titular línea 2</label><input data-k="l2" value="'+escapeAttr(d.l2)+'"></div>'+
+    '<div class="field"><label>Bajada (Enter = salto de línea)</label><textarea data-k="sub">'+escapeHtml(d.sub)+'</textarea></div>'+
+    '<button class="dl">Descargar PNG</button>';
+  var canvas=c.querySelector('canvas');
+  c.querySelectorAll('input,textarea').forEach(function(inp){
+    inp.addEventListener('input',function(){ d[inp.getAttribute('data-k')]=inp.value; drawIntro(canvas,d); });
+  });
+  c.querySelector('.dl').addEventListener('click',function(){
+    canvas.toBlob(function(blob){
+      var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='intro-'+d.key+'.png';
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href);},1500);
+    },'image/png');
+  });
+  return c;
+}
+function escapeAttr(s){ return String(s).replace(/"/g,'&quot;'); }
+function escapeHtml(s){ return String(s).replace(/</g,'&lt;'); }
+
+var grid=document.getElementById('grid');
+SLIDES.forEach(function(d,i){ grid.appendChild(cardFor(d,i)); });
+
+function renderAll(){
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(_renderAll); } else { _renderAll(); }
+}
+function _renderAll(){ SLIDES.forEach(function(d){ var cv=document.getElementById('cv-'+d.key); if(cv) drawIntro(cv,d); }); }
+renderAll();
+</script>
+</body>
+</html>
