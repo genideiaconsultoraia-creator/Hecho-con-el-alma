@@ -1997,7 +1997,7 @@ nav .nav-links{flex-shrink:1}
     <li><a data-view="evento">Evento</a></li>
   </ul>
   <!-- NAV AUTH ZONE -->
-  <button class="cart-btn" id="cart-btn" onclick="toggleCart()" aria-label="Carrito">
+  <button class="cart-btn" id="cart-btn" onclick="toggleCart()" aria-label="Carrito" style="display:none">
     <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
     <span class="cart-badge" id="cart-badge" style="display:none">0</span>
   </button>
@@ -2056,8 +2056,8 @@ nav .nav-links{flex-shrink:1}
       <span class="cart-total-lbl">Total</span>
       <span class="cart-total-val" id="cart-total-val">USD 0</span>
     </div>
-    <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="checkoutCart()">Ir al pago →</button>
-    <p style="font-size:.7rem;color:var(--muted);margin-top:.8rem;text-align:center;line-height:1.6">Elegís retiro o envío en el siguiente paso.<br>Pago 100% seguro vía Mercado Pago.</p>
+    <a class="btn btn-gold" style="width:100%;justify-content:center" href="https://wa.me/59894743435?text=Hola!%20Quiero%20consultar%20por%20unas%20obras%20de%20la%20galer%C3%ADa." target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+    <p style="font-size:.7rem;color:var(--muted);margin-top:.8rem;text-align:center;line-height:1.6">Coordinamos cada pieza directo con vos por WhatsApp.</p>
   </div>
 </div>
 
@@ -2264,7 +2264,7 @@ nav .nav-links{flex-shrink:1}
     <div class="hfeed-hd fi">
       <span class="eyebrow">Selección de la temporada</span>
       <h2 class="h-lg" style="color:var(--cream)">Obras disponibles<br><em>ahora mismo.</em></h2>
-      <p class="hfeed-tagline">Originales únicas · Artistas y artesanos/as uruguayos · Envío a todo el país</p>
+      <p class="hfeed-tagline">Originales únicas · Artistas y artesanos/as uruguayos · Curaduría con alma</p>
     </div>
 
     <div class="hfeed-grid">
@@ -2460,7 +2460,7 @@ nav .nav-links{flex-shrink:1}
         <blockquote class="owds-nota">La ciudad como organismo vivo guardado en arcilla. Una exploración de la memoria colectiva y el espacio urbano como material poético — lo que construimos y lo que recordamos. <span style="display:block;margin-top:.5rem;font-style:normal;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(185,154,82,.7)">— Nota curatorial HcEA</span></blockquote>
         <div class="owds-price-row">
           <div class="owds-price" style="font-size:1.5rem">Consultar precio</div>
-          <div class="owds-price-note">Incluye certificado de autenticidad<br>Envío a todo Uruguay · Cuotas disponibles</div>
+          <div class="owds-price-note">Incluye certificado de autenticidad<br>Consultá disponibilidad por WhatsApp</div>
         </div>
         <div class="owds-actions">
           <a href="https://wa.me/59894743435?text=Hola!%20Me%20interesa%20la%20obra%20%22Vasija%20ciudad%22%20de%20Leonardo%20Alvez.%20%C2%BFPodemos%20conversar%3F" class="btn btn-gold" target="_blank" rel="noopener">Consultar por esta obra →</a>
@@ -2794,18 +2794,18 @@ nav .nav-links{flex-shrink:1}
           <div class="ruta-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><line x1="19" y1="11" x2="19" y2="17"/><line x1="16" y1="14" x2="22" y2="14"/></svg></div>
           <div class="ruta-num">3</div>
           <div class="ruta-paso-title">Te ayudamos a resolver dudas</div>
-          <p class="ruta-paso-desc">Medidas, colores en contexto, historia del artista, opciones de pago. Todo antes de decidir.</p>
+          <p class="ruta-paso-desc">Medidas, colores en contexto, historia del artista. Todo antes de decidir.</p>
         </div>
         <div class="ruta-paso fi d3">
           <div class="ruta-ico"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
           <div class="ruta-num">4</div>
-          <div class="ruta-paso-title">Coordinás compra y entrega</div>
-          <p class="ruta-paso-desc">Pago seguro, envío a todo Uruguay. O retirás en Montevideo si querés ver la obra en persona.</p>
+          <div class="ruta-paso-title">Coordinamos los detalles juntos</div>
+          <p class="ruta-paso-desc">Conversás por WhatsApp con quien conoce la obra y resolvés todo a tu ritmo, sin apuro.</p>
         </div>
         <div class="ruta-paso fi d4">
           <div class="ruta-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
           <div class="ruta-num">5</div>
-          <div class="ruta-paso-title">La obra llega con contexto y sello HcEA</div>
+          <div class="ruta-paso-title">Cada obra, con su contexto y sello HcEA</div>
           <p class="ruta-paso-desc">Con certificado de autenticidad y la historia del artista. Una pieza que ya tiene algo que contar desde el primer día.</p>
         </div>
       </div>
@@ -4049,7 +4049,7 @@ nav .nav-links{flex-shrink:1}
 
 
 <!-- PURCHASE MODAL -->
-<div class="purchase-modal" id="purchase-modal" onclick="handlePurchaseOverlayClick(event)">
+<div class="purchase-modal" id="purchase-modal" onclick="handlePurchaseOverlayClick(event)" style="display:none">
   <div class="pm-box" id="pm-box">
     <div class="pm-header">
       <span class="pm-header-title">Comprar obra</span>
@@ -4865,9 +4865,8 @@ function openArtworkModal(idx) {
   if (d.available) {
     statusEl.className = 'modal-status-avail';
     statusEl.textContent = 'Disponible';
-    ctaEl.style.gridTemplateColumns = '1fr 1fr';
-    ctaEl.innerHTML = '<a href="' + waUrl + '" class="btn btn-dark" style="justify-content:center" target="_blank" rel="noopener">Consultar →</a>'
-      + '<button class="btn btn-gold" style="justify-content:center" onclick="addToCart(' + idx + ')">Agregar al carrito</button>';
+    ctaEl.style.gridTemplateColumns = '1fr';
+    ctaEl.innerHTML = '<a href="' + waUrl + '" class="btn btn-gold" style="justify-content:center;width:100%" target="_blank" rel="noopener">Consultar por esta obra →</a>';
   } else {
     statusEl.className = 'modal-status-sold';
     statusEl.textContent = 'Vendida';
@@ -5420,27 +5419,12 @@ document.addEventListener('DOMContentLoaded', function() {
     strip.className = 'art-trust';
     strip.innerHTML =
       '<span class="art-trust-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Original</span>' +
-      '<span class="art-trust-item"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Envío UY</span>' +
+      '<span class="art-trust-item"><svg viewBox="0 0 24 24"><path d="M12 21s-8-4.5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6.5-8 11-8 11z"/></svg>Hecha a mano</span>' +
       '<span class="art-trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Certificada</span>';
     info.appendChild(strip);
   });
 
-  // ── Botón "Seguir" en artist cards ──
-  var followCounts = [142, 89, 217, 74, 108, 65];
-  document.querySelectorAll('.acard .acard-foot').forEach(function(foot, idx){
-    var actions = foot.querySelector('.acard-actions');
-    if (!actions) return;
-    var cnt = followCounts[idx] || 50;
-    var btn = document.createElement('button');
-    btn.className = 'btn-seguir';
-    btn.innerHTML = '<span class="seg-ico">+ Seguir</span><span class="seg-cnt">' + cnt + '</span>';
-    btn.addEventListener('click', function(){
-      var on = btn.classList.toggle('siguiendo');
-      btn.querySelector('.seg-ico').textContent = on ? 'Siguiendo' : '+ Seguir';
-      btn.querySelector('.seg-cnt').textContent = on ? cnt + 1 : cnt;
-    });
-    foot.insertBefore(btn, actions);
-  });
+  // ── Botón "Seguir" retirado: no mostramos contadores de seguidores inventados ──
 
   // ── Activity ticker ──
   var ticker = document.getElementById('activityTicker');
@@ -5451,7 +5435,6 @@ document.addEventListener('DOMContentLoaded', function() {
       'Nuevas piezas de cerámica en curaduría',
       'Evento "Arte en primera persona" · Próximamente',
       '"Vasija ciudad" · disponible en la galería',
-      'Fabián Trinidad se suma a la curaduría',
       '"Umbral de la Metamorfosis" · relieve cerámico único',
       'Cada obra incluye certificado de autenticidad',
       '"Sentidos" · escultura cerámica de Leonardo Alvez',
