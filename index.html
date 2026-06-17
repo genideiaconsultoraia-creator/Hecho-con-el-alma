@@ -1976,6 +1976,22 @@ nav .nav-links{flex-shrink:1}
 .acard-share:hover{background:rgba(185,154,82,.1)}
 .acard-share:disabled{cursor:default;opacity:.7}
 .acard-share svg{width:13px;height:13px;flex-shrink:0}
+/* ════ TANDA 1 — VIDA + FEEDBACK (no toca layout) ════ */
+a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition:transform .18s ease,box-shadow .25s ease,border-color .25s ease,background-color .2s ease,color .2s ease}
+.btn:active,button:active,a.btn:active,.entry-card:active,.sens-card:active,.ctx-card:active,.acard:active,.artwork:active{transform:scale(.97)}
+.entry-card:hover,.sens-card:hover,.ctx-card:hover{border-color:var(--gold)!important;transform:translateY(-3px)}
+.reveal{opacity:0;transform:translateY(18px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.23,1,.32,1)}
+@media(prefers-reduced-motion:reduce){.reveal,.reveal.in{opacity:1!important;transform:none!important}}
+/* ════ TANDA 2 — MÓVIL MÁS DIRECTO ════ */
+@media(max-width:768px){
+  .ig-feed,.owds{display:none!important}
+  .ctx-grid,.test-grid{display:flex!important;gap:.85rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:.2rem .1rem .8rem;scrollbar-width:none}
+  .ctx-grid::-webkit-scrollbar,.test-grid::-webkit-scrollbar{display:none}
+  .ctx-grid>*,.test-grid>.tcard{flex:0 0 82%;scroll-snap-align:start}
+  .sens-grid{grid-template-columns:1fr 1fr!important;gap:.7rem}
+  .activity-ticker{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -6133,6 +6149,21 @@ async function shareStoryArtist(name, spec, photoSrc, btn){
   }catch(e){ console.error(e); _hceaToast('No se pudo generar la imagen. Probá de nuevo.'); }
   finally{ _hceaBusy(btn,false); }
 }
+</script>
+<script>
+/* Scroll-reveal — la clase .reveal la pone el JS; si el navegador no soporta IO, nada queda oculto. */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var home=document.getElementById('view-home');
+  if(!home) return;
+  var secs=home.querySelectorAll('section');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.04});
+  secs.forEach(function(el,i){ if(i===0) return; /* no ocultar el hero */ el.classList.add('reveal'); io.observe(el); });
+  /* red de seguridad: si algo quedó sin revelar a los 2.5s, mostrarlo */
+  setTimeout(function(){ home.querySelectorAll('.reveal:not(.in)').forEach(function(el){ var r=el.getBoundingClientRect(); if(r.top < window.innerHeight) el.classList.add('in'); }); },2500);
+})();
 </script>
 </body>
 </html>
