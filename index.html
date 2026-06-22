@@ -1992,6 +1992,19 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
   .sens-grid{grid-template-columns:1fr 1fr!important;gap:.7rem}
   .activity-ticker{display:none!important}
 }
+/* ════ FIX MODAL OBRA EN MÓVIL (jun 2026) — va AL FINAL a propósito.
+   El modal es grid; en mobile la columna `1fr` se inflaba al min-content
+   de la imagen (~473px) y desbordaba a la derecha (había que "mover los
+   espacios" para ver pestañas/botones). minmax(0,1fr)+min-width:0 lo
+   encierran en el ancho de pantalla. Imagen 4/5 + contain = obra completa
+   sin recortes, todos los detalles a la vista. ════ */
+@media(max-width:680px){
+  .artwork-modal{grid-template-columns:minmax(0,1fr)}
+  .modal-img-wrap,.modal-body,.modal-thumbs,.modal-tabs,.modal-desc,.modal-ctas{min-width:0}
+  .modal-img-wrap{aspect-ratio:4/5;background:#0f0d0a}
+  #modal-img{object-fit:contain!important}
+  .modal-body{padding:1.6rem 1.4rem 1.9rem}
+}
 </style>
 </head>
 <body>
