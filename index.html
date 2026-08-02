@@ -530,6 +530,10 @@ footer{background:#080706;border-top:1px solid rgba(196,163,90,.12);padding:5rem
 .modal-desc{font-size:.84rem;font-weight:300;line-height:1.8;color:var(--muted);margin-bottom:1.8rem;flex:1}
 .modal-price-row{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 0;border-top:1px solid var(--cream-d);border-bottom:1px solid var(--cream-d);margin-bottom:1.6rem}
 .modal-price{font-family:var(--serif);font-size:1.9rem;font-weight:400}
+/* Aviso de método de pago — el precio publicado es el de transferencia */
+.modal-pay-note{display:none;font-size:.72rem;line-height:1.6;color:var(--muted);border-left:2px solid var(--gold-b);padding:.15rem 0 .15rem .8rem;margin:-.9rem 0 1.4rem}
+.modal-pay-note.visible{display:block}
+.modal-pay-note strong{color:var(--text);font-weight:500}
 .modal-status-avail{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#5a8a5a;display:flex;align-items:center;gap:.35rem}
 .modal-status-avail::before{content:'';width:5px;height:5px;background:#5a8a5a;border-radius:50%}
 .modal-status-sold{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -3527,23 +3531,23 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         <!-- ══ CERAMISTAS DE BLANQUILLO — 5 juegos con precio publicado ══ -->
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="hasta1500" data-categoria="artesania" data-departamento="durazno">
           <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-01.jpg" alt="Tres bowls de terracota esmaltados por dentro — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(28)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de tres bowls</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 1.100</div></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de tres bowls</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 1.375</div></div></div>
         </div>
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="hasta1500" data-categoria="artesania" data-departamento="durazno">
           <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-02.jpg" alt="Dos tazas de cerámica veteada con bandeja — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(29)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de café para dos</div><div class="art-meta">Cerámica veteada</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 1.200</div></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de café para dos</div><div class="art-meta">Cerámica veteada</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 1.500</div></div></div>
         </div>
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="de1500a3000" data-categoria="artesania" data-departamento="durazno">
           <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-03.jpg" alt="Licorera de terracota con cuatro vasos — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(30)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de licorera y cuatro vasos</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 2.000</div></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de licorera y cuatro vasos</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 2.500</div></div></div>
         </div>
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="mas3000" data-categoria="artesania" data-departamento="durazno">
           <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-04.jpg" alt="Juego de té de cerámica veteada: jarra con tapa, cinco tazas y azucarera — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(31)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de té veteado</div><div class="art-meta">Cerámica veteada</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 3.200</div></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de té veteado</div><div class="art-meta">Cerámica veteada</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 4.000</div></div></div>
         </div>
         <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="mas3000" data-categoria="artesania" data-departamento="durazno">
           <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-05.jpg" alt="Ánfora de terracota con dos asas, tres bowls y dos lecheras — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(32)">Ver obra →</button></div></div>
-          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Conjunto ánfora y vajilla</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 4.000</div></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Conjunto ánfora y vajilla</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 5.000</div></div></div>
         </div>
 
         <div class="filter-empty" id="gallery-empty">
@@ -4441,6 +4445,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         <div class="modal-price" id="modal-price">USD —</div>
         <div id="modal-status"></div>
       </div>
+      <div class="modal-pay-note" id="modal-pay-note"></div>
       <div class="modal-ctas" id="modal-cta"></div>
       <button type="button" class="share-story-btn" onclick="shareStoryObra(currentModalIdx, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir esta obra</button>
     </div>
@@ -4855,6 +4860,24 @@ function searchGrid(gridId, query) {
 }
 
 // ══ ARTWORK MODAL ════════════════════════
+// ══ PRECIOS ═══════════════════════════════
+// `precioArtista` es el neto que recibe el taller. El precio publicado (`precio`) ya
+// lleva la comisión de HcEA SUMADA ARRIBA, no descontada, y es el que se paga POR
+// TRANSFERENCIA — sin recargo.
+//
+// Mercado Pago suma su costo aparte, y ojo con la cuenta: si MP se queda con f% de lo
+// cobrado, cobrar T×(1+f) NO alcanza. Con f=6%, cobrando T×1,06 se recibe T×0,9964 y la
+// diferencia sale de la comisión de HcEA. Para recibir T neto hay que cobrar T÷(1−f).
+//
+// Para cambiar la comisión: tocar COMISION_HCEA y recalcular los `precio` de artworkData
+// y de las cards de la galería (precioArtista × (1 + COMISION_HCEA)).
+const COMISION_HCEA = 0.25;
+const COMISION_MP   = null;  // ← % real del panel de MP (ej: 0.06). En null no se muestra el recargo.
+
+const fmtPesos = n => '$U ' + Math.round(n).toLocaleString('es-UY');
+const precioMercadoPago = precioTransferencia =>
+  COMISION_MP == null ? null : precioTransferencia / (1 - COMISION_MP);
+
 const artworkData = [
   {
     artist:'Leonardo Alvez', title:'A través del tiempo', sub:'Cerámica tallada · Pieza única', available:true,
@@ -4919,27 +4942,27 @@ const artworkData = [
 
   // ══ CERAMISTAS DE BLANQUILLO — cerámica utilitaria, precio publicado ══
   // El precio es del juego completo que se ve en la foto. Medidas a confirmar con el taller.
-  { artist:'Ceramistas de Blanquillo', title:'Juego de tres bowls', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precio:'$U 1.100', images:['images/ceramistas-blanquillo/pieza-01.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
+  { artist:'Ceramistas de Blanquillo', title:'Juego de tres bowls', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precioArtista:1100, precio:'$U 1.375', images:['images/ceramistas-blanquillo/pieza-01.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
     desc:'Tres bowls de terracota en tamaños escalonados, esmaltados por dentro y crudos por fuera. El contraste entre el interior brillante y la superficie mate es la firma del taller.',
     proceso:'Arcilla extraída y molida en Blanquillo. Modelado a mano, esmalte interior y cocción en horno. Ninguno de los tres sale exactamente igual al anterior.',
     intencion:'Piezas para usar todos los días, no para mirar de lejos. La escala escalonada resuelve el desayuno, la picada y el postre con el mismo lenguaje.',
     dondePuedeVivir:'Cocina, mesa de diario o mesa puesta. Funciona tanto en uso como apilado a la vista.' },
-  { artist:'Ceramistas de Blanquillo', title:'Juego de café para dos', sub:'Cerámica veteada · Hecho a mano', imgFit:'contain', available:true, precio:'$U 1.200', images:['images/ceramistas-blanquillo/pieza-02.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica veteada esmaltada', anio:'2026',
+  { artist:'Ceramistas de Blanquillo', title:'Juego de café para dos', sub:'Cerámica veteada · Hecho a mano', imgFit:'contain', available:true, precioArtista:1200, precio:'$U 1.500', images:['images/ceramistas-blanquillo/pieza-02.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica veteada esmaltada', anio:'2026',
     desc:'Dos tazas con asa y una bandeja ovalada, en arcilla veteada con esmalte brillante. El dibujo marrón y crema no está pintado: es la mezcla de dos arcillas distintas.',
     proceso:'Veteado obtenido al trabajar juntas dos arcillas de distinto tono. El patrón se define solo, en el amasado — no se puede repetir ni corregir.',
     intencion:'Un juego para dos, con la certeza de que no existe otro igual. El veteado hace que cada taza tenga su propio dibujo.',
     dondePuedeVivir:'Desayuno, sobremesa o regalo de pareja. La bandeja lo vuelve un conjunto autónomo sobre cualquier mesa.' },
-  { artist:'Ceramistas de Blanquillo', title:'Juego de licorera y cuatro vasos', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precio:'$U 2.000', images:['images/ceramistas-blanquillo/pieza-03.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
+  { artist:'Ceramistas de Blanquillo', title:'Juego de licorera y cuatro vasos', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precioArtista:2000, precio:'$U 2.500', images:['images/ceramistas-blanquillo/pieza-03.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
     desc:'Botella de cuello alto y cuatro vasos en terracota rosada, esmaltados en el interior. Formas limpias, sin decoración: toda la presencia está en el color natural de la arcilla.',
     proceso:'Arcilla de Blanquillo modelada a mano, esmaltada por dentro para el uso y dejada cruda por fuera para conservar el tacto de la tierra.',
     intencion:'La sobriedad como decisión. Sin dibujo ni relieve, la pieza se apoya en la proporción y en el tono que da el suelo de donde salió.',
     dondePuedeVivir:'Mesa de comedor, mesa de campo o barra. Sirve tanto para licor como para agua.' },
-  { artist:'Ceramistas de Blanquillo', title:'Juego de té veteado', sub:'Cerámica veteada · Hecho a mano', imgFit:'contain', available:true, precio:'$U 3.200', images:['images/ceramistas-blanquillo/pieza-04.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica veteada esmaltada', anio:'2026',
+  { artist:'Ceramistas de Blanquillo', title:'Juego de té veteado', sub:'Cerámica veteada · Hecho a mano', imgFit:'contain', available:true, precioArtista:3200, precio:'$U 4.000', images:['images/ceramistas-blanquillo/pieza-04.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica veteada esmaltada', anio:'2026',
     desc:'Juego completo en arcilla veteada: jarra con tapa, cinco tazas y azucarera con su cuchara. Cada pieza tiene un dibujo distinto porque el veteado nunca se repite.',
     proceso:'Dos arcillas trabajadas juntas hasta lograr el veteado, modeladas pieza por pieza y esmaltadas. Es el juego más completo que sale del taller.',
     intencion:'Un juego para la mesa larga, la que reúne. Que sean cinco tazas distintas entre sí no es un defecto del proceso: es la prueba de que las hizo una persona.',
     dondePuedeVivir:'Mesa de recibir, casa de campo o regalo de fondo. Es una pieza de uso, pero se banca quedar a la vista.' },
-  { artist:'Ceramistas de Blanquillo', title:'Conjunto ánfora y vajilla', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precio:'$U 4.000', images:['images/ceramistas-blanquillo/pieza-05.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
+  { artist:'Ceramistas de Blanquillo', title:'Conjunto ánfora y vajilla', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precioArtista:4000, precio:'$U 5.000', images:['images/ceramistas-blanquillo/pieza-05.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
     desc:'Ánfora de dos asas acompañada de tres bowls y dos lecheras, todo en terracota rosada con esmalte interior. El conjunto más grande del taller.',
     proceso:'Todas las piezas salen de la misma arcilla y de la misma cocción, por eso el tono es parejo entre el ánfora y la vajilla que la acompaña.',
     intencion:'Una pieza de porte que no se queda sola: viene con la vajilla que la sostiene. El ánfora manda la escala y el resto la acompaña.',
@@ -4961,6 +4984,18 @@ function openArtworkModal(idx) {
   document.getElementById('modal-sub').textContent    = d.sub;
   // Precio publicado solo si la obra lo tiene cargado; el resto sigue con consulta
   document.getElementById('modal-price').textContent  = d.precio || 'Consultar precio';
+  // Aviso de método de pago — solo en obras con precio publicado
+  const notaPago = document.getElementById('modal-pay-note');
+  notaPago.classList.toggle('visible', !!d.precioArtista);
+  if (d.precioArtista) {
+    const transferencia = Math.round(d.precioArtista * (1 + COMISION_HCEA));
+    const mp = precioMercadoPago(transferencia);
+    notaPago.innerHTML = mp
+      ? 'Precio final <strong>por transferencia</strong>. Con <strong>Mercado Pago</strong> el total es ' +
+        fmtPesos(mp) + ', porque se suma el costo de la plataforma.'
+      : 'Precio final <strong>por transferencia</strong>. Con <strong>Mercado Pago</strong> se suma el ' +
+        'costo de la plataforma: te pasamos el total exacto cuando consultás.';
+  }
   // Obras con imgFit:'contain' se muestran enteras (foto panorámica o vertical que el recorte mutila)
   document.getElementById('modal-img-wrap').className = 'modal-img-wrap' + (d.imgFit === 'contain' ? ' fit-contain' : '');
   // Ficha técnica
