@@ -283,7 +283,9 @@ nav .btn-gold{font-size:.68rem;padding:.65rem 1.5rem}
 .gallery-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,.07)}
 .artwork{background:var(--white);overflow:hidden;position:relative;transition:opacity .3s ease}
-.artwork.hidden{display:none}
+/* !important porque .gallery-grid .artwork:first-child fija display:flex y le gana
+   por especificidad: sin esto, filtrar dejaba a la card destacada como hueco vacío */
+.artwork.hidden{display:none!important}
 .art-img{aspect-ratio:3/4;position:relative;overflow:hidden}
 .art-img-1{background:linear-gradient(135deg,#2d2520,#4a3728,#5a4535)}
 .art-img-2{background:linear-gradient(160deg,#1e2830,#2d3e4a,#203545)}
@@ -302,6 +304,16 @@ nav .btn-gold{font-size:.68rem;padding:.65rem 1.5rem}
 .art-meta{font-size:.8rem;color:#4a4540;margin-bottom:1.1rem;line-height:1.6}
 .art-foot{display:flex;align-items:center;justify-content:space-between}
 .art-price{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text)}
+/* Precio publicado — obras con precio cerrado, queda fuera del gating de .art-price */
+.art-price-open{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--text)}
+/* Foto completa — para tomas panorámicas o verticales que el recorte mutila.
+   Marco cuadrado: una foto apaisada y una vertical dejan la misma proporción de
+   passe-partout, así el conjunto se ve parejo. El zoom del hover queda anulado
+   porque volvería a recortar la foto. */
+.art-img.art-img-full{aspect-ratio:1/1;background:var(--cream)}
+.art-img.art-img-full .ai-img{object-fit:contain}
+.artwork:hover .art-img.art-img-full .ai-img{transform:none}
+.modal-img-wrap.fit-contain{background:var(--cream)}
 .art-avail{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#3d7a3d;display:flex;align-items:center;gap:.35rem;font-weight:500}
 .art-avail::before{content:'';width:5px;height:5px;background:#3d7a3d;border-radius:50%}
 .art-sold-txt{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#5a5450;font-weight:400}
@@ -2359,7 +2371,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
     </div>
 
     <div class="hfeed-cta fi">
-      <button class="btn btn-light" onclick="showView('galeria')">Ver galería completa — 28 obras <span class="arr">→</span></button>
+      <button class="btn btn-light" onclick="showView('galeria')">Ver galería completa — 33 obras <span class="arr">→</span></button>
       <p class="hfeed-cta-note">Todas las obras son originales y únicas · Certificado de autenticidad incluido</p>
     </div>
   </section>
@@ -3291,9 +3303,10 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
       <div class="sb-group-body">
         <div class="sb-group-inner" data-filter-key="precio" data-filter-target="gallery-grid">
           <button class="ftag active" data-value="todo">Todo</button>
-          <button class="ftag" data-value="bajo">Hasta USD 400</button>
-          <button class="ftag" data-value="medio">USD 400 – 800</button>
-          <button class="ftag" data-value="alto">Más de USD 800</button>
+          <button class="ftag" data-value="hasta1500">Hasta $U 1.500</button>
+          <button class="ftag" data-value="de1500a3000">$U 1.500 – 3.000</button>
+          <button class="ftag" data-value="mas3000">Más de $U 3.000</button>
+          <button class="ftag" data-value="consultar">A consultar</button>
         </div>
       </div>
     </div>
@@ -3336,6 +3349,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <button class="ftag active" data-value="todo">Todo</button>
           <button class="ftag" data-value="montevideo">Montevideo</button>
           <button class="ftag" data-value="colonia">Colonia</button>
+          <button class="ftag" data-value="durazno">Durazno</button>
           <button class="ftag" data-value="maldonado">Maldonado</button>
           <button class="ftag" data-value="salto">Salto</button>
           <button class="ftag" data-value="tacuarembo">Tacuarembó</button>
@@ -3354,7 +3368,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
       </label>
     </div>
 
-    <div class="sb-count" id="gallery-count">28 obras</div>
+    <div class="sb-count" id="gallery-count">33 obras</div>
   </aside>
 
   <div class="gallery-main">
@@ -3383,131 +3397,153 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
       <div class="gallery-grid" id="gallery-grid">
 
         <!-- 0: A traves del tiempo (2 fotos) -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_4_(2).jpeg" alt="A traves del tiempo" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(0)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">A través del tiempo</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 1: Umbral de la Metamorfosis (1 foto) -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra.jpeg" alt="Umbral de la Metamorfosis" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(1)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Umbral de la Metamorfosis</div><div class="art-meta">Relieve cerámico · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 2: Vasija ciudad (3 fotos) -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_(1).jpeg" alt="Vasija ciudad" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">3 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(2)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Vasija ciudad</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 3: Sentidos (1 foto) -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_3.jpeg" alt="Sentidos" loading="eager"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(3)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title">Sentidos</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 4: 3 fotos -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_5.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">3 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(4)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 5: 4 fotos -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_6.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">4 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(5)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 6: 4 fotos -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_7.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">4 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(6)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 7: 2 fotos -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_8.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(7)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 8: 2 fotos -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura_9.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(8)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 9: 1 foto -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/escultura.jpeg" alt="Escultura ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(9)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Escultura cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 10: obra_2 -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_2.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(10)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 11: obra_3 -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_3.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(11)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
         <!-- 12: obra_4 (2 fotos) -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="montevideo">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="montevideo">
           <div class="art-img"><img class="ai-img" src="images/leonardo-alvez/obra_4.jpeg" alt="Obra ceramica" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-photo-count">2 fotos</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(12)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Leonardo Alvez</div><div class="art-title-pending">Obra en curaduría</div><div class="art-title" style="font-style:italic;opacity:.55">Sin título</div><div class="art-meta">Obra en cerámica · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
 
         <!-- ══ CARLOS LARREGUI — 10 obras (datos en curaduría) ══ -->
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-01.jpeg" alt="Vasija de cerámica con patrón geométrico — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(13)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Geometría en barro</div><div class="art-meta">Cerámica esmaltada y tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-02.jpeg" alt="Vasija de cerámica esmaltada con motivo de hojas — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(14)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Hojas de craquelé</div><div class="art-meta">Cerámica esmaltada, craquelado · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-03.jpeg" alt="Cuenco de cerámica con espiral y borde calado — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(15)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Cuenco Ola</div><div class="art-meta">Cerámica calada y texturada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-04.jpeg" alt="Vasija de cerámica con motivos precolombinos — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(16)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Raíz precolombina</div><div class="art-meta">Cerámica con engobes · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-05.jpeg" alt="Cuenco de cerámica con banda turquesa tallada — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(17)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Cobre y turquesa</div><div class="art-meta">Cerámica tallada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-06.jpeg" alt="Vasija de cerámica con relieve floral — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(18)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Jardín en relieve</div><div class="art-meta">Cerámica esmaltada en relieve · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-07.jpeg" alt="Vasija de terracota con banda de textura rústica — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(19)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Vasija Piedra</div><div class="art-meta">Cerámica con textura natural · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-08.jpeg" alt="Vasija de cerámica azul con paneles tipo arco — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(20)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Arcos de añil</div><div class="art-meta">Cerámica esmaltada · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-09.jpeg" alt="Vasija de cerámica con nudo celta — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(21)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Nudo Celta</div><div class="art-meta">Cerámica esmaltada con greca · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-10.jpeg" alt="Vasija globular de cerámica con paneles azules — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(22)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Abanicos</div><div class="art-meta">Cerámica dibujada a mano · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20obra%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-11.jpeg" alt="Escultura esférica de terracota abierta con una llama tallada en el interior — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(23)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Semilla de fuego</div><div class="art-meta">Escultura en terracota · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20escultura%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-12.jpeg" alt="Escultura esférica de terracota tallada con ramas y raíces — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(24)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Raíces del tiempo</div><div class="art-meta">Escultura en terracota · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20escultura%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-13.jpeg" alt="Conjunto escultórico de terracota tipo dolmen — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(25)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Vestigio</div><div class="art-meta">Conjunto escultórico en terracota · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20escultura%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-14.jpeg" alt="Escultura geométrica angular de terracota — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(26)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Laberinto de barro</div><div class="art-meta">Escultura en terracota · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20escultura%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
         </div>
-        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="medio" data-categoria="escultura" data-departamento="">
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="consultar" data-categoria="escultura" data-departamento="">
           <div class="art-img"><img class="ai-img" src="images/carlos-larregui/obra-15.jpeg" alt="Formas-semilla de terracota abiertas — Carlos Larregui" loading="lazy"><div class="art-badge">Obra única</div><div class="art-dept-badge">Uruguay</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(27)">Ver obra →</button></div></div>
           <div class="art-info"><div class="art-artist">Carlos Larregui</div><div class="art-title">Lo que guarda la tierra</div><div class="art-meta">Escultura en terracota · Pieza única</div><div class="art-foot"><div class="art-avail">Disponible</div><a href="https://wa.me/59894743435?text=Hola!%20Vi%20una%20escultura%20de%20Carlos%20Larregui%20en%20la%20galer%C3%ADa%20y%20quiero%20consultar%20precio." class="art-price-consult" onclick="event.stopPropagation()">Consultar precio →</a></div></div>
+        </div>
+
+        <!-- ══ CERAMISTAS DE BLANQUILLO — 5 juegos con precio publicado ══ -->
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="hasta1500" data-categoria="artesania" data-departamento="durazno">
+          <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-01.jpg" alt="Tres bowls de terracota esmaltados por dentro — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(28)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de tres bowls</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 1.100</div></div></div>
+        </div>
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="hasta1500" data-categoria="artesania" data-departamento="durazno">
+          <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-02.jpg" alt="Dos tazas de cerámica veteada con bandeja — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(29)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de café para dos</div><div class="art-meta">Cerámica veteada</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 1.200</div></div></div>
+        </div>
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="de1500a3000" data-categoria="artesania" data-departamento="durazno">
+          <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-03.jpg" alt="Licorera de terracota con cuatro vasos — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(30)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de licorera y cuatro vasos</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 2.000</div></div></div>
+        </div>
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="mas3000" data-categoria="artesania" data-departamento="durazno">
+          <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-04.jpg" alt="Juego de té de cerámica veteada: jarra con tapa, cinco tazas y azucarera — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(31)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Juego de té veteado</div><div class="art-meta">Cerámica veteada</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 3.200</div></div></div>
+        </div>
+        <div class="artwork" data-tecnica="ceramica" data-estado="disponible" data-precio="mas3000" data-categoria="artesania" data-departamento="durazno">
+          <div class="art-img art-img-full"><img class="ai-img" src="images/ceramistas-blanquillo/pieza-05.jpg" alt="Ánfora de terracota con dos asas, tres bowls y dos lecheras — Ceramistas de Blanquillo" loading="lazy"><div class="art-badge">Hecho a mano</div><div class="art-dept-badge">Durazno</div><div class="art-hover"><button class="btn btn-gold" onclick="event.stopPropagation();openArtworkModal(32)">Ver obra →</button></div></div>
+          <div class="art-info"><div class="art-artist">Ceramistas de Blanquillo</div><div class="art-title">Conjunto ánfora y vajilla</div><div class="art-meta">Cerámica utilitaria</div><div class="art-foot"><div class="art-avail">Disponible</div><div class="art-price-open">$U 4.000</div></div></div>
         </div>
 
         <div class="filter-empty" id="gallery-empty">
@@ -3564,6 +3600,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <button class="ftag active" data-value="todo">Todo</button>
           <button class="ftag" data-value="pintura">Pintura</button>
           <button class="ftag" data-value="escultura">Escultura</button>
+          <button class="ftag" data-value="ceramica">Cerámica</button>
           <button class="ftag" data-value="fotografia">Fotografía</button>
           <button class="ftag" data-value="acuarela">Acuarela</button>
           <button class="ftag" data-value="mixta">Técnica mixta</button>
@@ -3596,6 +3633,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <button class="ftag active" data-value="todo">Todo</button>
           <button class="ftag" data-value="montevideo">Montevideo</button>
           <button class="ftag" data-value="colonia">Colonia</button>
+          <button class="ftag" data-value="durazno">Durazno</button>
           <button class="ftag" data-value="maldonado">Maldonado</button>
           <button class="ftag" data-value="salto">Salto</button>
           <button class="ftag" data-value="tacuarembo">Tacuarembó</button>
@@ -3603,7 +3641,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
       </div>
     </div>
 
-    <div class="sb-count" id="artists-count">3 artistas</div>
+    <div class="sb-count" id="artists-count">4 artistas</div>
   </aside>
 
   <div class="gallery-main">
@@ -3639,10 +3677,26 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-spec">Cerámica y alfarería artesanal · Uruguay</div>
           <p class="acard-bio">Ceramista uruguayo de gran versatilidad. Sus piezas —vasijas, cuencos y formas decorativas— recorren una notable variedad de técnicas y estilos: esmaltado, tallado, calado y motivos que van de lo geométrico y precolombino a lo floral y celta. Bio y datos completos en curaduría.</p>
           <div class="acard-foot">
-            <div class="acard-works-line"><strong>10</strong> obras disponibles</div>
+            <div class="acard-works-line"><strong>15</strong> obras disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Carlos Larregui')">Ver obras <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Carlos Larregui','Cerámica y alfarería artesanal · Uruguay','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ARTISTA: Ceramistas de Blanquillo -->
+        <div class="acard" data-especialidad="ceramica" data-servicio="solo-galeria" data-departamento="durazno">
+          <div class="acard-tag">Galería</div>
+          <div class="acard-av av2"><img src="images/ceramistas-blanquillo/pieza-04.jpg" alt="Cerámica veteada de Ceramistas de Blanquillo" loading="lazy"></div>
+          <div class="acard-name">Ceramistas de Blanquillo</div>
+          <div class="acard-spec">Cerámica utilitaria · Blanquillo, Durazno</div>
+          <p class="acard-bio">Un taller de ceramistas en Blanquillo, la capital nacional de la cerámica. Extraen la arcilla del suelo del pueblo y la muelen ellas mismas: el proceso empieza en la tierra y termina cuando se abre el horno. Como dicen ellas, quien compra una pieza tiene en la mano más de 400 millones de años.</p>
+          <div class="acard-foot">
+            <div class="acard-works-line"><strong>5</strong> juegos disponibles</div>
+            <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Ceramistas de Blanquillo')">Ver obras <span class="arr">→</span></button>
+              <button type="button" class="acard-share" onclick="shareStoryArtist('Ceramistas de Blanquillo','Cerámica utilitaria · Blanquillo, Durazno','images/ceramistas-blanquillo/pieza-04.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
         </div>
@@ -4267,18 +4321,6 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           </div>
           <div class="pm-art-price-val" id="pm-price-3">—</div>
         </div>
-        <!-- Desglose comisión -->
-        <div id="pm-split-box" style="border:1px solid rgba(0,0,0,.08);background:#fafaf8;padding:1.2rem 1.4rem;margin-bottom:1.2rem;font-size:.78rem;color:var(--muted)">
-          <div style="font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--subtle);margin-bottom:.75rem">Distribución del pago</div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:.4rem">
-            <span>Artista recibe <span style="color:var(--gold-text);font-size:.65rem">(70%)</span></span>
-            <strong id="pm-split-artista" style="color:var(--text)">—</strong>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding-top:.4rem;border-top:1px solid rgba(0,0,0,.06)">
-            <span>Hecho con el Alma <span style="color:var(--gold-text);font-size:.65rem">(30%)</span></span>
-            <strong id="pm-split-hcea" style="color:var(--text)">—</strong>
-          </div>
-        </div>
         <span class="pm-section-lbl">¿Cómo querés pagar?</span>
         <div class="pm-paymethods">
           <button class="pm-pay-opt active" data-pay="transfer" onclick="selectPayMethod('transfer')">
@@ -4874,6 +4916,34 @@ const artworkData = [
   { artist:'Carlos Larregui', title:'Vestigio', sub:'Conjunto escultórico en terracota · Pieza única', available:true, images:['images/carlos-larregui/obra-13.jpeg'], origen:'Uruguay', medidas:'A confirmar', tecnica:'Escultura en terracota', anio:'—', desc:'Conjunto escultórico de formas arquitectónicas en terracota que evocan dólmenes y estructuras megalíticas. Obra de su serie escultórica expuesta en galería.', proceso:'Escultura modelada y tallada a mano por Carlos Larregui. Técnica y proceso en detalle, en curaduría.', intencion:'Título, medidas y precio en curaduría — consultá por WhatsApp.', dondePuedeVivir:'Pieza escultórica ideal como obra central en living, estudio o espacio de exposición. Consultá por WhatsApp para asesoría.' },
   { artist:'Carlos Larregui', title:'Laberinto de barro', sub:'Escultura en terracota · Pieza única', available:true, images:['images/carlos-larregui/obra-14.jpeg'], origen:'Uruguay', medidas:'A confirmar', tecnica:'Escultura en terracota', anio:'—', desc:'Escultura geométrica angular en terracota, de planos y volúmenes que arman un recorrido tipo laberinto. Obra de su serie escultórica expuesta en galería.', proceso:'Escultura modelada y tallada a mano por Carlos Larregui. Técnica y proceso en detalle, en curaduría.', intencion:'Título, medidas y precio en curaduría — consultá por WhatsApp.', dondePuedeVivir:'Pieza escultórica ideal como obra central en living, estudio o espacio de exposición. Consultá por WhatsApp para asesoría.' },
   { artist:'Carlos Larregui', title:'Lo que guarda la tierra', sub:'Escultura en terracota · Pieza única', available:true, images:['images/carlos-larregui/obra-15.jpeg'], origen:'Uruguay', medidas:'A confirmar', tecnica:'Escultura en terracota', anio:'—', desc:'Formas-semilla de terracota abiertas que dejan ver el espacio interior tallado. Obra de su serie escultórica expuesta en galería.', proceso:'Escultura modelada y tallada a mano por Carlos Larregui. Técnica y proceso en detalle, en curaduría.', intencion:'Título, medidas y precio en curaduría — consultá por WhatsApp.', dondePuedeVivir:'Pieza escultórica ideal como obra central en living, estudio o espacio de exposición. Consultá por WhatsApp para asesoría.' },
+
+  // ══ CERAMISTAS DE BLANQUILLO — cerámica utilitaria, precio publicado ══
+  // El precio es del juego completo que se ve en la foto. Medidas a confirmar con el taller.
+  { artist:'Ceramistas de Blanquillo', title:'Juego de tres bowls', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precio:'$U 1.100', images:['images/ceramistas-blanquillo/pieza-01.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
+    desc:'Tres bowls de terracota en tamaños escalonados, esmaltados por dentro y crudos por fuera. El contraste entre el interior brillante y la superficie mate es la firma del taller.',
+    proceso:'Arcilla extraída y molida en Blanquillo. Modelado a mano, esmalte interior y cocción en horno. Ninguno de los tres sale exactamente igual al anterior.',
+    intencion:'Piezas para usar todos los días, no para mirar de lejos. La escala escalonada resuelve el desayuno, la picada y el postre con el mismo lenguaje.',
+    dondePuedeVivir:'Cocina, mesa de diario o mesa puesta. Funciona tanto en uso como apilado a la vista.' },
+  { artist:'Ceramistas de Blanquillo', title:'Juego de café para dos', sub:'Cerámica veteada · Hecho a mano', imgFit:'contain', available:true, precio:'$U 1.200', images:['images/ceramistas-blanquillo/pieza-02.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica veteada esmaltada', anio:'2026',
+    desc:'Dos tazas con asa y una bandeja ovalada, en arcilla veteada con esmalte brillante. El dibujo marrón y crema no está pintado: es la mezcla de dos arcillas distintas.',
+    proceso:'Veteado obtenido al trabajar juntas dos arcillas de distinto tono. El patrón se define solo, en el amasado — no se puede repetir ni corregir.',
+    intencion:'Un juego para dos, con la certeza de que no existe otro igual. El veteado hace que cada taza tenga su propio dibujo.',
+    dondePuedeVivir:'Desayuno, sobremesa o regalo de pareja. La bandeja lo vuelve un conjunto autónomo sobre cualquier mesa.' },
+  { artist:'Ceramistas de Blanquillo', title:'Juego de licorera y cuatro vasos', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precio:'$U 2.000', images:['images/ceramistas-blanquillo/pieza-03.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
+    desc:'Botella de cuello alto y cuatro vasos en terracota rosada, esmaltados en el interior. Formas limpias, sin decoración: toda la presencia está en el color natural de la arcilla.',
+    proceso:'Arcilla de Blanquillo modelada a mano, esmaltada por dentro para el uso y dejada cruda por fuera para conservar el tacto de la tierra.',
+    intencion:'La sobriedad como decisión. Sin dibujo ni relieve, la pieza se apoya en la proporción y en el tono que da el suelo de donde salió.',
+    dondePuedeVivir:'Mesa de comedor, mesa de campo o barra. Sirve tanto para licor como para agua.' },
+  { artist:'Ceramistas de Blanquillo', title:'Juego de té veteado', sub:'Cerámica veteada · Hecho a mano', imgFit:'contain', available:true, precio:'$U 3.200', images:['images/ceramistas-blanquillo/pieza-04.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica veteada esmaltada', anio:'2026',
+    desc:'Juego completo en arcilla veteada: jarra con tapa, cinco tazas y azucarera con su cuchara. Cada pieza tiene un dibujo distinto porque el veteado nunca se repite.',
+    proceso:'Dos arcillas trabajadas juntas hasta lograr el veteado, modeladas pieza por pieza y esmaltadas. Es el juego más completo que sale del taller.',
+    intencion:'Un juego para la mesa larga, la que reúne. Que sean cinco tazas distintas entre sí no es un defecto del proceso: es la prueba de que las hizo una persona.',
+    dondePuedeVivir:'Mesa de recibir, casa de campo o regalo de fondo. Es una pieza de uso, pero se banca quedar a la vista.' },
+  { artist:'Ceramistas de Blanquillo', title:'Conjunto ánfora y vajilla', sub:'Cerámica utilitaria · Hecho a mano', imgFit:'contain', available:true, precio:'$U 4.000', images:['images/ceramistas-blanquillo/pieza-05.jpg'], origen:'Blanquillo, Durazno', medidas:'A confirmar', tecnica:'Cerámica utilitaria esmaltada', anio:'2026',
+    desc:'Ánfora de dos asas acompañada de tres bowls y dos lecheras, todo en terracota rosada con esmalte interior. El conjunto más grande del taller.',
+    proceso:'Todas las piezas salen de la misma arcilla y de la misma cocción, por eso el tono es parejo entre el ánfora y la vajilla que la acompaña.',
+    intencion:'Una pieza de porte que no se queda sola: viene con la vajilla que la sostiene. El ánfora manda la escala y el resto la acompaña.',
+    dondePuedeVivir:'Comedor amplio, casa de campo o espacio de recepción. El ánfora funciona sola como pieza central.' },
 ];
 
 // Render inicial — después de artworkData para evitar TDZ con const
@@ -4889,8 +4959,10 @@ function openArtworkModal(idx) {
   document.getElementById('modal-artist').textContent = d.artist;
   document.getElementById('modal-title').textContent  = d.title;
   document.getElementById('modal-sub').textContent    = d.sub;
-  document.getElementById('modal-price').textContent  = 'Consultar precio';
-  document.getElementById('modal-img-wrap').className = 'modal-img-wrap';
+  // Precio publicado solo si la obra lo tiene cargado; el resto sigue con consulta
+  document.getElementById('modal-price').textContent  = d.precio || 'Consultar precio';
+  // Obras con imgFit:'contain' se muestran enteras (foto panorámica o vertical que el recorte mutila)
+  document.getElementById('modal-img-wrap').className = 'modal-img-wrap' + (d.imgFit === 'contain' ? ' fit-contain' : '');
   // Ficha técnica
   document.getElementById('modal-ficha-origen').textContent  = d.origen  || 'Uruguay';
   document.getElementById('modal-ficha-medidas').textContent = d.medidas  || '—';
@@ -4943,6 +5015,8 @@ function _renderModalImage() {
   const src = imgs[currentImgIdx]||'';
   const modalImg = document.getElementById('modal-img');
   const modalPh  = document.getElementById('modal-img-ph');
+  // El object-fit va inline en el <img>, así que se resuelve acá y no por CSS
+  modalImg.style.objectFit = d.imgFit || 'cover';
   if (src) { modalImg.src=src; modalImg.alt=d.title; modalImg.style.display='block'; if(modalPh) modalPh.style.display='none'; }
   else      { modalImg.style.display='none'; if(modalPh){modalPh.style.display='flex';modalPh.textContent=d.title;} }
   const multi = total > 1;
@@ -5258,17 +5332,6 @@ function _fillPurchaseSummary(idx) {
   if (c1) c1.textContent = hasPrice ? ('USD ' + p) : 'A coordinar';
   if (c3) c3.textContent = hasPrice ? ('USD ' + Math.round(p / 3)) : '—';
   if (c6) c6.textContent = hasPrice ? ('USD ' + Math.round(p / 6)) : '—';
-  // split comisión 30/70 — se oculta si no hay precio fijo
-  const splitBox = document.getElementById('pm-split-box');
-  if (splitBox) splitBox.style.display = hasPrice ? '' : 'none';
-  if (hasPrice) {
-    const hcea    = Math.round(p * 0.30);
-    const artista = p - hcea;
-    const splitArtista = document.getElementById('pm-split-artista');
-    const splitHcea    = document.getElementById('pm-split-hcea');
-    if (splitArtista) splitArtista.textContent = 'USD ' + artista;
-    if (splitHcea)    splitHcea.textContent    = 'USD ' + hcea;
-  }
   // resetear método de pago a Transferencia
   selectPayMethod('transfer');
 }
@@ -6049,20 +6112,25 @@ function toggleSave(btn, title) {
   ready(function(){
     document.body.classList.add('hcea-final-branding');
 
-    // Artwork cards: sello curatorial + emotional ficha details
-    document.querySelectorAll('.artwork .art-info').forEach(function(info, i){
-      if(!info.querySelector('.hcea-seal-chip')){
-        var seal=document.createElement('div');
-        seal.className='hcea-seal-chip';
-        seal.textContent='Sello HcEA · Obra Curada';
-        var details=document.createElement('div');
-        details.className='hcea-detail-row';
-        var origins=['Montevideo','Canelones','Maldonado','Tacuarembó','Colonia','Uruguay'];
-        var lives=['Hogar','Estudio','Hotel boutique','Oficina','Espacio de calma','Living'];
-        details.innerHTML='<span>Origen: '+origins[i%origins.length]+'</span><span>Proceso: hecho a mano</span><span>Puede vivir en: '+lives[i%lives.length]+'</span>';
-        var meta=info.querySelector('.art-meta');
-        if(meta){ meta.insertAdjacentElement('afterend', seal); seal.insertAdjacentElement('afterend', details); }
-      }
+    // Artwork cards: sello curatorial + ficha editorial
+    // El origen sale de artworkData (dato real de la obra), no de una lista fija.
+    document.querySelectorAll('.artwork').forEach(function(card, i){
+      var info = card.querySelector('.art-info');
+      if(!info || info.querySelector('.hcea-seal-chip')) return;
+      var seal=document.createElement('div');
+      seal.className='hcea-seal-chip';
+      seal.textContent='Sello HcEA · Obra Curada';
+      var details=document.createElement('div');
+      details.className='hcea-detail-row';
+      // Índice real de la obra: el que dispara el modal desde esta misma card
+      var btn=card.querySelector('.art-hover button[onclick]');
+      var m=btn && btn.getAttribute('onclick').match(/openArtworkModal\((\d+)\)/);
+      var obra=(m && typeof artworkData!=='undefined') ? artworkData[+m[1]] : null;
+      var origen=(obra && obra.origen) ? obra.origen : 'Uruguay';
+      var lives=['Hogar','Estudio','Hotel boutique','Oficina','Espacio de calma','Living'];
+      details.innerHTML='<span>Origen: '+origen+'</span><span>Proceso: hecho a mano</span><span>Puede vivir en: '+lives[i%lives.length]+'</span>';
+      var meta=info.querySelector('.art-meta');
+      if(meta){ meta.insertAdjacentElement('afterend', seal); seal.insertAdjacentElement('afterend', details); }
     });
 
     // Gallery trust strip after header/login area
