@@ -6393,7 +6393,10 @@ function toggleSave(btn, title) {
       var obra=(m && typeof artworkData!=='undefined') ? artworkData[+m[1]] : null;
       var origen=(obra && obra.origen) ? obra.origen : 'Uruguay';
       var lives=['Hogar','Estudio','Hotel boutique','Oficina','Espacio de calma','Living'];
-      details.innerHTML='<span>Origen: '+origen+'</span><span>Proceso: hecho a mano</span><span>Puede vivir en: '+lives[i%lives.length]+'</span>';
+      // Prendas (ropa de vestir) no "viven en un ambiente" — van puestas. Detectamos por técnica.
+      var esRopa=obra && obra.tecnica==='Teñido y estampado natural';
+      var terceraLinea=esRopa ? 'Uso: diario' : ('Puede vivir en: '+lives[i%lives.length]);
+      details.innerHTML='<span>Origen: '+origen+'</span><span>Proceso: hecho a mano</span><span>'+terceraLinea+'</span>';
       var meta=info.querySelector('.art-meta');
       if(meta){ meta.insertAdjacentElement('afterend', seal); seal.insertAdjacentElement('afterend', details); }
     });
