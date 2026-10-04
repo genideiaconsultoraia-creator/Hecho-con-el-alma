@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>if(location.pathname.indexOf("/obra/")===0)document.write('<base href="/">');</script>
 <title>Hecho con el Alma — Arte Uruguayo Curado</title>
 <link rel="icon" type="image/png" href="images/logo-badge.png">
 <link rel="apple-touch-icon" href="images/logo-badge.png">
@@ -1608,6 +1609,19 @@ nav .nav-links{flex-shrink:1}
 }
 .modal-price{font-size:2.1rem}
 @media(max-width:780px){.artwork-modal{width:100%}}
+/* ── Ficha de obra en celular (destino de Stories): foto grande y CTA siempre a mano ── */
+.share-link-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;width:100%;margin-top:.7rem;padding:.72rem 1rem;background:transparent;border:1px solid rgba(26,26,26,.22);color:var(--text);font-family:var(--sans);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:background .2s,border-color .2s}
+.share-link-btn:hover{background:rgba(26,26,26,.05);border-color:rgba(26,26,26,.5)}
+.share-link-btn svg{width:15px;height:15px;flex-shrink:0}
+@media(max-width:680px){
+  .modal-overlay{padding:0;align-items:stretch}
+  .artwork-modal{max-height:100dvh;height:100dvh;align-content:start;-webkit-overflow-scrolling:touch}
+  .modal-img-wrap{aspect-ratio:4/5;max-height:68vh}
+  .modal-close{width:42px;height:42px;top:.8rem;right:.8rem}
+  .modal-body{padding:1.5rem 1.3rem 0}
+  .modal-title{font-size:1.7rem}
+  .modal-ctas{position:sticky;bottom:0;z-index:5;background:var(--cream);padding:.8rem 0 calc(.8rem + env(safe-area-inset-bottom));margin-top:.4rem}
+}
 
 /* ── 5. TALLERES: escala real, jerarquía clara ── */
 .workshops-sec{padding:2.5rem 0 7rem}
@@ -4778,6 +4792,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
       </div>
       <div class="modal-pay-note" id="modal-pay-note"></div>
       <div class="modal-ctas" id="modal-cta"></div>
+      <button type="button" class="share-link-btn" onclick="shareObraLink(currentModalIdx, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Copiar link de la obra</button>
       <button type="button" class="share-story-btn" onclick="shareStoryObra(currentModalIdx, this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir esta obra</button>
     </div>
   </div>
@@ -4837,10 +4852,10 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
 // ══ VIEWS ══════════════════════════════════
 const VIEWS = ['home','galeria','artistas','talleres','evento','dashboard-buyer','dashboard-artist'];
 
-function showView(name) {
+function showView(name, opts) {
   // Alias especial: 'planes' → abre artistas y scrollea a la sección
   if (name === 'planes') {
-    showView('artistas');
+    showView('artistas', opts);
     setTimeout(() => {
       const el = document.getElementById('planes');
       if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -4855,7 +4870,7 @@ function showView(name) {
   if (target) target.classList.add('active');
 
   window.scrollTo({ top:0, behavior:'instant' });
-  history.pushState(null, '', name === 'home' ? location.pathname : '#' + name);
+  if (!(opts && opts.silent)) history.pushState(null, '', name === 'home' ? '/' : '/#' + name);
 
   document.querySelectorAll('.nav-links a[data-view]').forEach(a => {
     a.classList.toggle('active', a.dataset.view === name);
@@ -4902,10 +4917,30 @@ document.querySelectorAll('[data-view]').forEach(el => {
 
 // ══ HASH ROUTING ══════════════════════════
 window.addEventListener('load', () => {
+  // Link directo a una obra (/obra/slug): abre la galería de fondo y la ficha encima
+  const slugObra = obraSlugFromPath();
+  if (slugObra) {
+    const idx = artworkSlugs.indexOf(slugObra);
+    if (idx >= 0) {
+      showView('galeria', { silent:true });
+      openArtworkModal(idx, { fromRoute:true });
+      return;
+    }
+    // Slug inexistente: vuelve a la galería sin dejar una URL rota
+    history.replaceState(null, '', '/#galeria');
+    showView('galeria', { silent:true });
+    return;
+  }
   showView(location.hash.replace('#','').trim() || 'home');
 });
 window.addEventListener('popstate', () => {
-  showView(location.hash.replace('#','').trim() || 'home');
+  const slugObra = obraSlugFromPath();
+  if (slugObra && artworkSlugs.indexOf(slugObra) >= 0) {
+    openArtworkModal(artworkSlugs.indexOf(slugObra), { fromRoute:true });
+    return;
+  }
+  _closeArtworkModalUI();
+  showView(location.hash.replace('#','').trim() || 'home', { silent:true });
 });
 
 // ══ NAV STICKY ════════════════════════════
@@ -5557,15 +5592,51 @@ const artworkData = [
     dondePuedeVivir:'Fiestas, eventos y salidas de noche.' },
 ];
 
+// ══ URL PROPIA POR OBRA (/obra/slug) ══════════════
+// El slug sale del título: no hay catálogo paralelo. Una obra nueva en artworkData ya tiene su URL.
+// Si dos obras comparten título, la primera queda sin número y las siguientes llevan -2, -3...
+// Por eso las obras nuevas siempre se agregan al final del array: el orden mantiene estables los links ya compartidos.
+const slugifyObra = t => (t || 'obra').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'obra';
+const artworkSlugs = (() => {
+  const usados = {};
+  return artworkData.map(d => {
+    const base = slugifyObra(d.title);
+    usados[base] = (usados[base] || 0) + 1;
+    return usados[base] === 1 ? base : base + '-' + usados[base];
+  });
+})();
+function obraSlugFromPath() {
+  const m = location.pathname.match(/^\/obra\/([^\/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
 // Render inicial — después de artworkData para evitar TDZ con const
 renderConsultaStats();
 
 let currentModalIdx = 0, currentImgIdx = 0;
 
-function openArtworkModal(idx) {
+let _modalPushed = false, _prevTitle = '', _prevDesc = '';
+
+function openArtworkModal(idx, opts) {
   const d = artworkData[idx];
   if (!d) return;
   currentModalIdx = idx; currentImgIdx = 0;
+  // URL propia de la obra: se actualiza al abrir desde la galería; si ya venimos de la URL no se repite
+  const urlObra = '/obra/' + artworkSlugs[idx];
+  const overlay = document.getElementById('artwork-modal-overlay');
+  if (!overlay.classList.contains('open')) {
+    _prevTitle = document.title;
+    const md = document.querySelector('meta[name="description"]');
+    _prevDesc = md ? md.content : '';
+  }
+  if (!(opts && opts.fromRoute) && location.pathname !== urlObra) {
+    history.pushState({ obra:true }, '', urlObra);
+    _modalPushed = true;
+  }
+  document.title = d.title + ' — ' + d.artist + ' · Hecho con el Alma';
+  const metaDescEl = document.querySelector('meta[name="description"]');
+  if (metaDescEl) metaDescEl.content = d.desc || '';
   // Campos base
   document.getElementById('modal-artist').textContent = d.artist;
   document.getElementById('modal-title').textContent  = d.title;
@@ -5668,9 +5739,32 @@ function modalNavImg(dir) {
   currentImgIdx = (currentImgIdx+dir+total)%total;
   _renderModalImage();
 }
-function closeArtworkModal() {
-  document.getElementById('artwork-modal-overlay').classList.remove('open');
+function _closeArtworkModalUI() {
+  const overlay = document.getElementById('artwork-modal-overlay');
+  if (!overlay.classList.contains('open')) return;
+  overlay.classList.remove('open');
   document.body.style.overflow = '';
+  document.title = _prevTitle || document.title;
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.content = _prevDesc;
+}
+function closeArtworkModal() {
+  const overlay = document.getElementById('artwork-modal-overlay');
+  if (!overlay.classList.contains('open')) return;
+  if (obraSlugFromPath()) {
+    if (_modalPushed) {
+      // Veníamos de la galería: volver una entrada deja la URL como estaba (popstate cierra la ficha)
+      _modalPushed = false;
+      history.back();
+      return;
+    }
+    // Entró directo por el link: no hay galería atrás, así que lo llevamos a la galería
+    _closeArtworkModalUI();
+    history.replaceState(null, '', '/#galeria');
+    showView('galeria', { silent:true });
+    return;
+  }
+  _closeArtworkModalUI();
 }
 function handleModalOverlayClick(e) {
   if (e.target === document.getElementById('artwork-modal-overlay')) closeArtworkModal();
@@ -6111,8 +6205,8 @@ document.querySelectorAll('.video-reel .fi').forEach(el => motionObs.observe(el)
 const _origShowView = typeof showView === 'function' ? showView : null;
 // Wrapeamos showView para agregar stagger al activar vistas
 const _showViewOrig = window.showView;
-window.showView = function(name) {
-  _showViewOrig(name);
+window.showView = function(name, opts) {
+  _showViewOrig(name, opts);
   if (name !== 'home') {
     setTimeout(() => revealViewItems(name), 50);
   }
@@ -6870,6 +6964,21 @@ async function _hceaShareOrDownload(canvas, filename, shareTitle){
   var url=URL.createObjectURL(blob), a=document.createElement('a'); a.href=url; a.download=filename;
   document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(url);},1500);
   _hceaToast('Imagen descargada — lista para compartir donde quieras. Si la subís a una historia de Instagram, agregale el sticker de link a hechoconelalma.shop');
+}
+
+async function shareObraLink(idx, btn){
+  const url = location.origin + '/obra/' + artworkSlugs[idx];
+  let ok = false;
+  try { await navigator.clipboard.writeText(url); ok = true; }
+  catch(e) {
+    // Respaldo para navegadores sin Clipboard API (o sin permiso)
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch(_) {}
+    ta.remove();
+  }
+  _hceaToast(ok ? 'Link de la obra copiado' : url);
 }
 
 async function shareStoryObra(idx, btn){

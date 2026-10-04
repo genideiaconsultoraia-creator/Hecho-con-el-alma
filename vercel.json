@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/obra/:slug", "destination": "/index.html" }
+  ]
+}
