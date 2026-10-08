@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>if(location.pathname.indexOf("/obra/")===0)document.write('<base href="/">');</script>
+<script>if(/^\/(obra|historias)\//.test(location.pathname))document.write('<base href="/">');</script>
 <title>Hecho con el Alma — Arte Uruguayo Curado</title>
 <link rel="icon" type="image/png" href="images/logo-badge.png">
 <link rel="apple-touch-icon" href="images/logo-badge.png">
@@ -2036,6 +2036,40 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
   .modal-body{padding:1.6rem 1.4rem 1.9rem}
 }
 </style>
+<style id="historias-css">
+.hist-wrap{max-width:1080px;margin:0 auto;padding:3.2rem 1.6rem 5rem}
+.hist-head{margin-bottom:2.6rem}
+.hist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.hist-card{background:#fff;border:1px solid var(--hcea-line-soft);cursor:pointer;display:flex;flex-direction:column;transition:transform .35s ease,box-shadow .35s ease;text-align:left;padding:0;font:inherit;color:inherit}
+.hist-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(49,37,22,.14)}
+.hist-card-img{aspect-ratio:4/3;overflow:hidden;background:var(--hcea-paper)}
+.hist-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hist-card-body{padding:1.3rem 1.4rem 1.5rem}
+.hist-kicker{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);display:block;margin-bottom:.6rem}
+.hist-card-title{font-family:var(--serif);font-size:1.55rem;line-height:1.12;margin:0 0 .6rem;font-weight:500}
+.hist-card-lead{font-size:.86rem;line-height:1.6;color:var(--muted);margin:0 0 1rem}
+.hist-more{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text)}
+.hist-art{max-width:760px;margin:0 auto;padding:2.2rem 1.4rem 5rem}
+.hist-back{background:none;border:0;font:inherit;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:0;margin-bottom:1.6rem}
+.hist-cover{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;margin:0 0 2rem;background:var(--hcea-paper)}
+.hist-title{font-family:var(--serif);font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.04;font-weight:500;margin:.4rem 0 1.2rem}
+.hist-lead{font-family:var(--serif);font-size:1.32rem;line-height:1.55;color:var(--hcea-ink);margin:0 0 2.4rem}
+.hist-sec{border-top:1px solid var(--hcea-line);padding:1.5rem 0 .6rem}
+.hist-sec h3{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text);font-weight:500;margin:0 0 .9rem}
+.hist-sec p{font-size:1.02rem;line-height:1.8;color:#3e3428;margin:0 0 1rem}
+.hist-quote{font-family:var(--serif);font-style:italic;font-size:1.6rem;line-height:1.35;color:var(--hcea-ink);margin:2rem 0;padding:0 0 0 1.2rem;border-left:2px solid var(--hcea-aged-gold)}
+.hist-quote span{display:block;font-family:inherit;font-style:normal;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-text);margin-top:.7rem}
+.hist-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin:1.2rem 0 1.4rem}
+.hist-strip img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;background:var(--hcea-paper)}
+.hist-obras{margin-top:2.4rem}
+.hist-obras-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.hist-obra{background:#fff;border:1px solid var(--hcea-line-soft);padding:0;cursor:pointer;text-align:left;font:inherit;color:inherit}
+.hist-obra img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.hist-obra span{display:block;font-family:var(--serif);font-size:1.02rem;padding:.55rem .7rem .7rem;line-height:1.15}
+.hist-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem}
+@media(max-width:820px){.hist-grid{grid-template-columns:repeat(2,1fr)}.hist-wrap{padding:2.2rem 1.1rem 4rem}}
+@media(max-width:560px){.hist-grid{grid-template-columns:1fr}.hist-lead{font-size:1.18rem}.hist-quote{font-size:1.35rem}.hist-art{padding:1.4rem 1.1rem 4rem}}
+</style>
 </head>
 <body>
 
@@ -2052,6 +2086,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
   <ul class="nav-links">
     <li><a data-view="galeria">Galería</a></li>
     <li><a data-view="artistas">Artistas</a></li>
+    <li><a data-view="historias">Historias</a></li>
     <li><a data-view="talleres">Talleres</a></li>
     <li><a data-view="evento">Evento</a></li>
   </ul>
@@ -2084,6 +2119,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
   <ul class="drawer-nav">
     <li><a data-view="galeria" onclick="closeDrawer()">Galería</a></li>
     <li><a data-view="artistas" onclick="closeDrawer()">Artistas</a></li>
+    <li><a data-view="historias" onclick="closeDrawer()">Historias</a></li>
     <li><a data-view="talleres" onclick="closeDrawer()">Talleres</a></li>
     <li><a data-view="evento" onclick="closeDrawer()">Evento</a></li>
   </ul>
@@ -3280,6 +3316,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
     <div class="sec-tabs">
       <button class="sec-tab active" data-view="galeria">Galería</button>
       <button class="sec-tab" data-view="artistas">Artistas</button>
+      <button class="sec-tab" data-view="historias">Historias</button>
       <button class="sec-tab" data-view="talleres">Talleres</button>
       <button class="sec-tab" data-view="evento">Evento</button>
     </div>
@@ -3806,6 +3843,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
     <div class="sec-tabs">
       <button class="sec-tab" data-view="galeria">Galería</button>
       <button class="sec-tab active" data-view="artistas">Artistas</button>
+      <button class="sec-tab" data-view="historias">Historias</button>
       <button class="sec-tab" data-view="talleres">Talleres</button>
       <button class="sec-tab" data-view="evento">Evento</button>
     </div>
@@ -3917,6 +3955,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
             <div class="acard-works-line"><strong>15</strong> obras disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Carlos Larregui')">Ver obras <span class="arr">→</span></button>
+              <button class="btn btn-ghost" onclick="openHistoria('carlos-larregui-caolin')">Su historia <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Carlos Larregui','Cerámica y alfarería artesanal · Uruguay','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
@@ -3933,6 +3972,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
             <div class="acard-works-line"><strong>5</strong> juegos disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Ceramistas de Blanquillo')">Ver obras <span class="arr">→</span></button>
+              <button class="btn btn-ghost" onclick="openHistoria('ceramistas-de-blanquillo-legado')">Su historia <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Ceramistas de Blanquillo','Cerámica utilitaria · Blanquillo, Durazno','images/ceramistas-blanquillo/pieza-04.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
@@ -3965,6 +4005,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
             <div class="acard-works-line"><strong>7</strong> prendas disponibles</div>
             <div class="acard-actions">
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Gimena Damiano')">Ver obras <span class="arr">→</span></button>
+              <button class="btn btn-ghost" onclick="openHistoria('gimena-damiano-tintes-naturales')">Su historia <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Maria Gimena Damiano','Diseño textil, teñido y estampado natural · Canelones, Uruguay','images/gimena-damiano/perfil-taller.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
           </div>
@@ -4154,6 +4195,33 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
 
 
 <!-- ══════ VIEW: TALLERES ══════ -->
+<div id="view-historias" class="view view-section">
+
+  <div class="sec-nav">
+    <button class="sec-back" onclick="showView('home')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Inicio
+    </button>
+    <div class="sec-tabs">
+      <button class="sec-tab" data-view="galeria">Galería</button>
+      <button class="sec-tab" data-view="artistas">Artistas</button>
+      <button class="sec-tab active" data-view="historias">Historias</button>
+      <button class="sec-tab" data-view="talleres">Talleres</button>
+      <button class="sec-tab" data-view="evento">Evento</button>
+    </div>
+  </div>
+
+  <div id="historias-list" class="hist-wrap">
+    <div class="hist-head fi">
+      <span class="eyebrow">Historias detrás de cada pieza</span>
+      <h2 class="h-lg">Lo que hay antes<br><em>de la obra</em></h2>
+    </div>
+    <div class="hist-grid" id="historias-grid"></div>
+  </div>
+
+  <article id="historia-detail" class="hist-art" style="display:none"></article>
+
+</div>
+
 <div id="view-talleres" class="view view-section">
 
   <div class="sec-nav">
@@ -4163,6 +4231,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
     <div class="sec-tabs">
       <button class="sec-tab" data-view="galeria">Galería</button>
       <button class="sec-tab" data-view="artistas">Artistas</button>
+      <button class="sec-tab" data-view="historias">Historias</button>
       <button class="sec-tab active" data-view="talleres">Talleres</button>
       <button class="sec-tab" data-view="evento">Evento</button>
     </div>
@@ -4359,6 +4428,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
     <div class="sec-tabs">
       <button class="sec-tab" data-view="galeria">Galería</button>
       <button class="sec-tab" data-view="artistas">Artistas</button>
+      <button class="sec-tab" data-view="historias">Historias</button>
       <button class="sec-tab" data-view="talleres">Talleres</button>
       <button class="sec-tab active" data-view="evento">Evento</button>
     </div>
@@ -4866,7 +4936,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
 <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 // ══ VIEWS ══════════════════════════════════
-const VIEWS = ['home','galeria','artistas','talleres','evento','dashboard-buyer','dashboard-artist'];
+const VIEWS = ['home','galeria','artistas','historias','talleres','evento','dashboard-buyer','dashboard-artist'];
 
 function showView(name, opts) {
   // Alias especial: 'planes' → abre artistas y scrollea a la sección
@@ -4895,6 +4965,8 @@ function showView(name, opts) {
     t.classList.toggle('active', t.dataset.view === name);
   });
 
+  if (name === 'historias' && !(opts && opts.detail)) _historiasShowList();
+
   if (target) {
     setTimeout(() => {
       target.querySelectorAll('.fi').forEach(el => el.classList.add('on'));
@@ -4913,6 +4985,7 @@ function showView(name, opts) {
     home:     { title:'Hecho con el Alma — Arte Uruguayo Curado', desc:'Plataforma de curaduría de arte uruguayo. Obras originales, artistas curados, talleres y eventos en Montevideo.' },
     galeria:  { title:'Galería de obras — Hecho con el Alma', desc:'Explorar obras originales de artistas uruguayos. Óleo, acrílico, técnica mixta y acuarela disponibles.' },
     artistas: { title:'Artistas — Hecho con el Alma', desc:'Conocé a los artistas y artesanos/as uruguayos curados por Hecho con el Alma. Sus técnicas, obras y talleres.' },
+    historias:{ title:'Historias — Hecho con el Alma', desc:'Las historias detrás de cada pieza: el material, el proceso y las personas que las hacen. Arte y artesanía uruguaya con historia.' },
     talleres: { title:'Talleres — Hecho con el Alma', desc:'Talleres pre-grabados de artistas y artesanos/as uruguayos. Aprendé a tu ritmo desde donde estés.' },
     evento:   { title:'Evento · Próximamente — Hecho con el Alma', desc:'Estamos preparando "Arte en primera persona", nuestra primera experiencia presencial. Dejanos tu interés y te avisamos cuando abran las reservas.' },
   };
@@ -4947,9 +5020,27 @@ window.addEventListener('load', () => {
     showView('galeria', { silent:true });
     return;
   }
+  const slugHist = historiaSlugFromPath();
+  if (slugHist) {
+    if (storiesData.some(h => h.slug === slugHist)) {
+      showView('historias', { silent:true, detail:true });
+      openHistoria(slugHist, { fromRoute:true });
+      return;
+    }
+    history.replaceState(null, '', '/#historias');
+    showView('historias', { silent:true });
+    return;
+  }
   showView(location.hash.replace('#','').trim() || 'home');
 });
 window.addEventListener('popstate', () => {
+  const slugHist = historiaSlugFromPath();
+  if (slugHist && storiesData.some(h => h.slug === slugHist)) {
+    _closeArtworkModalUI();
+    showView('historias', { silent:true, detail:true });
+    openHistoria(slugHist, { fromRoute:true });
+    return;
+  }
   const slugObra = obraSlugFromPath();
   if (slugObra && artworkSlugs.indexOf(slugObra) >= 0) {
     openArtworkModal(artworkSlugs.indexOf(slugObra), { fromRoute:true });
@@ -5625,6 +5716,129 @@ const artworkSlugs = (() => {
 function obraSlugFromPath() {
   const m = location.pathname.match(/^\/obra\/([^\/]+)\/?$/);
   return m ? decodeURIComponent(m[1]) : null;
+}
+
+// ══ HISTORIAS (/historias, /historias/slug) ══════════════
+// Cada historia usa solo lo que el artista dijo (formulario o entrevista). Las nuevas se agregan al final del array.
+const storiesData = [
+  { slug:'carlos-larregui-caolin', artist:'Carlos Larregui', kicker:'Carlos Larregui · San Gregorio de Polanco',
+    title:'Una arcilla que nunca se mezcló', cover:'images/carlos-larregui/obra-06.jpeg',
+    lead:'Carlos nació en un lugar con yacimientos de caolín de alta pureza. Hace 40 años que trabaja la cerámica, y ese material es el punto de partida de su oficio.',
+    sections:[
+      { h:'El material', p:[
+        'Caolín es una palabra china: según cuenta Carlos, en chino significa «montaña blanca». El nombre viene de una colina cercana a Jingdezhen, la ciudad china de la porcelana, de donde se extraía el mineral.',
+        'En Uruguay, dice, en la zona del departamento de Durazno hay una gran zanja que la cruza de este a oeste, y ahí el material se produce y queda en el mismo lugar donde se formó. Es una arcilla primaria: no se mezcló con otras arcillas, y por eso es extremadamente pura.' ] },
+      { h:'El proceso', p:[
+        'Carlos lleva 40 años en el oficio y hace 30 vive en San Gregorio de Polanco, la Ciudad Museo de artes visuales, donde además de la cerámica trabaja como muralista. Su taller se llama Kéramos. En su zona, el caolín también se volvió una fuente de trabajo, a partir de la enseñanza del oficio.',
+        'Cuando fue al yacimiento y tocó el material por primera vez, cuenta, «me dio vuelta a la cabeza»: era algo que había estado sepultado en silencio, comprimido, durante millones de años.' ],
+        quote:{ t:'Me siento un privilegiado que me pongo en contacto con la génesis del mundo.', by:'Carlos Larregui' } },
+      { h:'La pieza', p:[
+        'Sus piezas —vasijas, cuencos y formas decorativas— recorren el esmaltado, el tallado y el calado, con motivos que van de lo geométrico y precolombino a lo floral y celta.' ],
+        strip:['images/carlos-larregui/obra-04.jpeg','images/carlos-larregui/obra-06.jpeg','images/carlos-larregui/obra-09.jpeg'] }
+    ] },
+  { slug:'gimena-damiano-tintes-naturales', artist:'Maria Gimena Damiano', kicker:'Gimena Damiano · Canelones',
+    title:'De las fábricas de Asia a las plantas de Canelones', cover:'images/gimena-damiano/perfil-taller.jpg',
+    lead:'Gimena empezó como diseñadora textil, controlando producción en fábricas de China e India. Ahí se dio cuenta de que faltaba una parte importante en la historia de las prendas y de sus procesos.',
+    sections:[
+      { h:'El material', p:[
+        'Hoy trabaja con tejidos naturales —algodón orgánico, bambú, lino y lana merino uruguaya— y los tiñe con lo que recolecta de los árboles: hojas, tallos, corteza, frutos, raíces y cáscaras de cebolla. Para los rosados y rojizos usa cochinilla.' ] },
+      { h:'El proceso', p:[
+        'Su trabajo se reparte entre Montevideo y Canelones. En la capital desarrolla el diseño de las colecciones, la moldería, el corte y las campañas de fotos, y vende en ferias y locales. En el campo, en Canelones, tiene un taller tintóreo con ollas industriales donde colorea a mano cada tela con plantas.',
+        'Cada prenda lleva unos cuatro días de trabajo, y el estampado se define durante el proceso: nunca se repite igual.' ],
+        quote:{ t:'Implementar una nueva forma de hacer vestimenta con mayor conciencia, promoviendo la industria nacional.', by:'Gimena Damiano' } },
+      { h:'La pieza', p:[
+        'La Colección Reflejo 2026 son prendas teñidas y estampadas a mano. Como el color viene de plantas, puede haber variaciones de tono entre la foto y la prenda que llega a tu casa: es parte de lo que la hace única.' ],
+        strip:['images/gimena-damiano/coleccion-reflejo-01.jpg','images/gimena-damiano/coleccion-reflejo-02.jpg','images/gimena-damiano/coleccion-reflejo-05.jpg'] }
+    ] },
+  { slug:'ceramistas-de-blanquillo-legado', artist:'Ceramistas de Blanquillo', kicker:'Ceramistas de Blanquillo · Durazno',
+    title:'Un legado que empezó en un galpón', cover:'images/ceramistas-blanquillo/pieza-04.jpg',
+    lead:'En Blanquillo, Durazno, Rosana Martínez trabaja la cerámica desde 2012, en uno de los galpones de AFE. Es el mismo lugar donde empezaron sus antecesoras.',
+    sections:[
+      { h:'El legado', p:[
+        'El oficio le llegó de mujeres ceramistas de su familia, y su madre fue quien la impulsó e inspiró a seguir. Rosana lo cuenta como «una herencia» que recibe «con mucho compromiso». El espacio es amplio y cómodo, y tiene para ella un significado especial: ahí se iniciaron quienes vinieron antes.' ] },
+      { h:'El material', p:[
+        'Extraen la arcilla del suelo de Blanquillo y la muelen ellas mismas: el proceso empieza en la tierra y termina cuando se abre el horno. Usan arcilla caolín «de primer orden, casi sin impurezas», de color blanco, y una arcilla amarilla.' ] },
+      { h:'El proceso', p:[
+        'La técnica se llama marmolado: la mezcla de dos colores naturales de sus tierras que, trabajadas juntas, se transforman en un diseño único. El dibujo no está pintado; se define en el amasado y no se puede repetir ni corregir.' ],
+        quote:{ t:'Cada pieza es única, ningún diseño es igual a otro.', by:'Rosana Martínez' } },
+      { h:'La pieza', p:[
+        'Son piezas para usar todos los días, no para mirar de lejos: bowls, tazas, jarras. Ninguna sale igual a la anterior.' ],
+        strip:['images/ceramistas-blanquillo/pieza-02.jpg','images/ceramistas-blanquillo/pieza-01.jpg','images/ceramistas-blanquillo/pieza-05.jpg'] }
+    ] }
+];
+
+const _hesc = t => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const _hsrc = src => '/' + src.replace(/^\/+/, '');
+function historiaSlugFromPath() {
+  const m = location.pathname.match(/^\/historias\/([^\/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function historiaFor(artist) { return storiesData.find(h => h.artist === artist) || null; }
+
+function _historiasShowList() {
+  const grid = document.getElementById('historias-grid');
+  if (!grid) return;
+  if (!grid.dataset.ready) {
+    grid.innerHTML = storiesData.map(h =>
+      '<button type="button" class="hist-card" onclick="openHistoria(\'' + h.slug + '\')">' +
+        '<div class="hist-card-img"><img src="' + _hsrc(h.cover) + '" alt="' + _hesc(h.title) + '" loading="lazy"></div>' +
+        '<div class="hist-card-body"><span class="hist-kicker">' + _hesc(h.kicker) + '</span>' +
+        '<h3 class="hist-card-title">' + _hesc(h.title) + '</h3>' +
+        '<p class="hist-card-lead">' + _hesc(h.lead) + '</p>' +
+        '<span class="hist-more">Leer historia →</span></div></button>').join('');
+    grid.dataset.ready = '1';
+  }
+  document.getElementById('historias-list').style.display = '';
+  document.getElementById('historia-detail').style.display = 'none';
+}
+
+function openHistoria(slug, opts) {
+  const h = storiesData.find(x => x.slug === slug);
+  if (!h) return;
+  const obras = [];
+  artworkData.forEach((d, i) => { if (d.artist === h.artist && obras.length < 3) obras.push(i); });
+  const secs = h.sections.map(sec =>
+    '<section class="hist-sec"><h3>' + _hesc(sec.h) + '</h3>' + sec.p.map(t => '<p>' + _hesc(t) + '</p>').join('') +
+    (sec.strip ? '<div class="hist-strip">' + sec.strip.map(src => '<img src="' + _hsrc(src) + '" alt="" loading="lazy">').join('') + '</div>' : '') + '</section>' +
+    (sec.quote ? '<blockquote class="hist-quote">«' + _hesc(sec.quote.t) + '»<span>' + _hesc(sec.quote.by) + '</span></blockquote>' : '')
+  ).join('');
+  const obrasHTML = obras.length ?
+    '<div class="hist-obras"><span class="hist-kicker">Obras de ' + _hesc(h.kicker.split(' · ')[0]) + '</span><div class="hist-obras-row">' +
+    obras.map(i => '<button type="button" class="hist-obra" onclick="openArtworkModal(' + i + ')"><img src="' + _hsrc(artworkData[i].images[0]) + '" alt="' + _hesc(artworkData[i].title) + '" loading="lazy"><span>' + _hesc(artworkData[i].title) + '</span></button>').join('') +
+    '</div></div>' : '';
+  const box = document.getElementById('historia-detail');
+  box.innerHTML =
+    '<button type="button" class="hist-back" onclick="showView(\'historias\')">← Todas las historias</button>' +
+    '<img class="hist-cover" src="' + _hsrc(h.cover) + '" alt="' + _hesc(h.title) + '">' +
+    '<span class="hist-kicker">' + _hesc(h.kicker) + '</span>' +
+    '<h1 class="hist-title">' + _hesc(h.title) + '</h1>' +
+    '<p class="hist-lead">' + _hesc(h.lead) + '</p>' + secs + obrasHTML +
+    '<div class="hist-cta"><button type="button" class="btn btn-gold" onclick="showViewAndSearch(\'galeria\',\'' + h.artist.replace(/'/g, "\\'") + '\')">Ver obras <span class="arr">→</span></button>' +
+    '<button type="button" class="btn btn-ghost" onclick="shareHistoriaLink(\'' + h.slug + '\')">Copiar link</button></div>';
+  document.getElementById('historias-list').style.display = 'none';
+  box.style.display = '';
+  if (!(opts && opts.fromRoute)) {
+    showView('historias', { silent:true, detail:true });
+    history.pushState({ historia:true }, '', '/historias/' + h.slug);
+  }
+  document.title = h.title + ' — Hecho con el Alma';
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.content = h.lead;
+  window.scrollTo({ top:0, behavior:'instant' });
+}
+
+async function shareHistoriaLink(slug) {
+  const url = location.origin + '/historias/' + slug;
+  let ok = false;
+  try { await navigator.clipboard.writeText(url); ok = true; }
+  catch(e) {
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch(_) {}
+    ta.remove();
+  }
+  _hceaToast(ok ? 'Link de la historia copiado' : url);
 }
 
 // Render inicial — después de artworkData para evitar TDZ con const

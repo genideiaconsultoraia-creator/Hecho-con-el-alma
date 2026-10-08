@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/obra/:slug", "destination": "/index.html" }
+    { "source": "/obra/:slug", "destination": "/index.html" },
+    { "source": "/historias/:slug", "destination": "/index.html" }
   ]
 }
