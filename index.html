@@ -2937,8 +2937,8 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
     <span class="eyebrow">No te pierdas nada</span>
     <h2 class="nl-h">Sé la primera en saber<br>cuando llega una obra nueva.</h2>
     <p class="nl-sub">Nuevos artistas, obras disponibles, plazas en eventos. Sin spam — solo arte que vale la pena.</p>
-    <form class="nl-form" onsubmit="return false">
-      <input type="email" class="nl-input" placeholder="Tu correo electrónico">
+    <form class="nl-form" onsubmit="return registrarCorreo(event,'web-home')">
+      <input type="email" name="email" class="nl-input" placeholder="Tu correo electrónico" autocomplete="email" required>
       <button type="submit" class="nl-btn">Suscribirme</button>
     </form>
     <p class="nl-priv">Tu información no se comparte. Podés darte de baja cuando quieras.</p>
@@ -4546,10 +4546,10 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
         <span class="foot-nl-label">Novedades & primeras oportunidades</span>
         <p class="foot-nl-incentive">Enterate antes que nadie cuando llegan obras nuevas. Sin spam.</p>
-        <div class="foot-nl-form">
-          <input class="foot-nl-input" type="email" placeholder="tu@correo.com">
-          <button class="foot-nl-btn" onclick="this.textContent='✓ Listo'">Suscribirse</button>
-        </div>
+        <form class="foot-nl-form" onsubmit="return registrarCorreo(event,'web-footer')">
+          <input class="foot-nl-input" type="email" name="email" placeholder="tu@correo.com" autocomplete="email" required>
+          <button class="foot-nl-btn" type="submit">Suscribirse</button>
+        </form>
       </div>
 
       <!-- Explorar -->
@@ -5887,6 +5887,33 @@ async function registrarNovedades(ev, slug, artista) {
     const texto = 'Hola! Soy ' + nombre + '. Quiero enterarme de lo próximo de Hecho con el Alma (vi la historia de ' + artista + ').';
     window.open('https://wa.me/59894743435?text=' + encodeURIComponent(texto), '_blank', 'noopener');
     box.innerHTML = '<div class="hist-nl-ok"><span class="hist-kicker">Último paso</span><h3>Mandanos el mensaje por WhatsApp</h3><p>Se abrió WhatsApp con tu mensaje listo. Enviándolo ya quedás anotada o anotado para recibir las novedades.</p></div>';
+  }
+  return false;
+}
+
+async function registrarCorreo(ev, origen) {
+  ev.preventDefault();
+  const form = ev.target;
+  const email = form.email.value.trim().toLowerCase();
+  let err = form.parentNode.querySelector('.nl-error');
+  if (!err) { err = document.createElement('p'); err.className = 'nl-error'; err.style.cssText = 'font-size:.8rem;margin:.7rem 0 0;color:#b5523f'; form.after(err); }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { err.textContent = 'Revisá tu correo, parece que le falta algo.'; return false; }
+  err.textContent = '';
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  let guardado = false;
+  if (typeof _sb !== 'undefined' && _sb) {
+    try {
+      const r = await _sb.from('novedades').insert({ email: email, origen: origen });
+      guardado = !r.error;
+    } catch (e) { guardado = false; }
+  }
+  if (guardado) {
+    form.outerHTML = '<p class="nl-gracias" style="margin:0;font-size:.95rem">Listo, gracias. Te avisamos cuando haya novedades.</p>';
+    err.remove();
+  } else {
+    btn.disabled = false;
+    err.innerHTML = 'No pudimos guardar tu correo ahora. Escribinos por <a href="https://wa.me/59894743435?text=' + encodeURIComponent('Hola! Quiero enterarme de las novedades de Hecho con el Alma. Mi correo es ' + email) + '" target="_blank" rel="noopener" style="text-decoration:underline">WhatsApp</a> y te anotamos.';
   }
   return false;
 }
