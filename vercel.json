@@ -1,6 +1,9 @@
 {
+  "functions": {
+    "api/page.js": { "includeFiles": "index.html" }
+  },
   "rewrites": [
-    { "source": "/obra/:slug", "destination": "/index.html" },
-    { "source": "/historias/:slug", "destination": "/index.html" }
+    { "source": "/obra/:slug", "destination": "/api/page?type=obra&slug=:slug" },
+    { "source": "/historias/:slug", "destination": "/api/page?type=historia&slug=:slug" }
   ]
 }
