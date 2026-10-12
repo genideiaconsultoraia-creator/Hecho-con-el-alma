@@ -1,5 +1,5 @@
 // Sirve index.html con etiquetas de vista previa (título, descripción, imagen)
-// para /obra/:slug y /historias/:slug. Los datos salen de index.html: no hay catálogo paralelo.
+// para /obra/:slug, /historias/:slug y /artista/:slug. Los datos salen de index.html: no hay catálogo paralelo.
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
@@ -37,7 +37,24 @@ const esc = t => String(t == null ? '' : t).replace(/&/g, '&amp;').replace(/"/g,
 const abs = src => /^https?:/.test(src) ? src : SITE + '/' + String(src).replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/');
 const corto = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1).replace(/\s+\S*$/, '') + '…' : t; };
 
+// Perfil de artista: los datos salen de la tarjeta (data-slug) de la sección Artistas en index.html
+function artista(slug, c) {
+  const i = c.html.indexOf('data-slug="' + slug + '"');
+  if (i < 0) return null;
+  const sig = c.html.indexOf('<div class="acard"', i + 10);
+  const bloque = c.html.slice(i, sig < 0 ? i + 4000 : sig);
+  const g = re => { const m = bloque.match(re); return m ? m[1] : ''; };
+  const limpio = t => t.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+  const nombre = limpio(g(/acard-name">([\s\S]*?)<\/div>/)).replace(/\s*\(.*\)$/, '');
+  if (!nombre) return null;
+  const spec = limpio(g(/acard-spec">([\s\S]*?)<\/div>/));
+  const bio = limpio(g(/acard-bio">([\s\S]*?)<\/p>/));
+  const foto = g(/acard-av[^"]*"><img src="([^"]+)"/);
+  return { title: nombre + ' — Hecho con el Alma', desc: corto(spec + '. ' + bio, 200), image: abs(foto || 'images/og/home.jpg'), url: SITE + '/artista/' + slug, type: 'profile' };
+}
+
 function datos(tipo, slug, c) {
+  if (tipo === 'artista') return artista(slug, c);
   if (tipo === 'historia') {
     const h = c.historias.find(x => x.slug === slug);
     if (!h) return null;
@@ -50,6 +67,10 @@ function datos(tipo, slug, c) {
 
 module.exports = (req, res) => {
   const { type, slug } = req.query || {};
+  if (type === 'artista' && decodeURIComponent(slug || '') === 'heber-cabanelas') {
+    res.setHeader('Location', '/heber.html');
+    return res.status(302).end();
+  }
   let html;
   try {
     const c = cargar();

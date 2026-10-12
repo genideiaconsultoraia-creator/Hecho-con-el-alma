@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>if(/^\/(obra|historias)\//.test(location.pathname))document.write('<base href="/">');</script>
+<script>if(/^\/(obra|historias|artista)\//.test(location.pathname))document.write('<base href="/">');</script>
 <title>Hecho con el Alma — Arte Uruguayo Curado</title>
 <link rel="icon" type="image/png" href="images/logo-badge.png">
 <link rel="apple-touch-icon" href="images/logo-badge.png">
@@ -2082,8 +2082,15 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
 .hist-nl p{font-size:.92rem;line-height:1.6;color:#3e3428;margin:0 0 1.1rem}
 .hist-nl .btn{display:inline-block;text-decoration:none}
 .hist-nl small{display:block;font-size:.74rem;color:var(--muted);margin-top:.7rem;line-height:1.5}
-@media(max-width:560px){@media(max-width:820px){.hist-grid{grid-template-columns:repeat(2,1fr)}.hist-wrap{padding:2.2rem 1.1rem 4rem}}
+@media(max-width:820px){.hist-grid{grid-template-columns:repeat(2,1fr)}.hist-wrap{padding:2.2rem 1.1rem 4rem}}
 @media(max-width:560px){.hist-grid{grid-template-columns:1fr}.hist-lead{font-size:1.18rem}.hist-quote{font-size:1.35rem}.hist-art{padding:1.4rem 1.1rem 4rem}}
+.artp-top{display:flex;gap:1.6rem;align-items:center;margin:0 0 1.6rem}
+.hist-art .artp-photo{width:150px;height:150px;max-width:150px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--hcea-paper);border:1px solid var(--hcea-line-soft,rgba(31,27,22,.12))}
+.hist-art .artp-ini{display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.6rem;color:rgba(245,240,232,.8);background:linear-gradient(135deg,#3a2a16,#6b4a24)}
+.artp-tag{display:inline-block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#8a6c37;border:1px solid rgba(185,154,82,.4);padding:.25rem .6rem;margin-bottom:.6rem}
+.artp-spec{font-size:.95rem;color:var(--muted);margin:.2rem 0 0}
+.artp-soon{color:var(--muted);font-size:.95rem;margin-top:2.2rem}
+@media(max-width:560px){.artp-top{flex-direction:column;align-items:flex-start}.hist-art .artp-photo{width:120px;height:120px;max-width:120px}}
 </style>
 </head>
 <body>
@@ -3959,7 +3966,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
       <div class="artists-grid" id="artists-grid">
 
         <!-- ARTISTA: Leonardo Alvez -->
-        <div class="acard" data-especialidad="escultura" data-servicio="solo-galeria" data-departamento="tacuarembo">
+        <div class="acard" data-slug="leonardo-alvez" data-artworks="Leonardo Alvez" data-q="Leonardo Alvez" data-especialidad="escultura" data-servicio="solo-galeria" data-departamento="tacuarembo">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av1"><img src="images/leonardo-alvez/perfil-04.jpg" alt="Leonardo Alvez" loading="eager"></div>
           <div class="acard-name">Leonardo Alvez</div>
@@ -3968,6 +3975,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>13</strong> obras disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('leonardo-alvez')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Leonardo Alvez')">Ver obras <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Leonardo Alvez','Escultura en cerámica y barro · Uruguay','images/leonardo-alvez/perfil-04.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -3975,7 +3983,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Carlos Larregui -->
-        <div class="acard" data-especialidad="escultura" data-servicio="solo-galeria" data-departamento="">
+        <div class="acard" data-slug="carlos-larregui" data-artworks="Carlos Larregui" data-q="Carlos Larregui" data-especialidad="escultura" data-servicio="solo-galeria" data-departamento="">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><img src="images/carlos-larregui/perfil.jpg" alt="Carlos Larregui en su taller de San Gregorio de Polanco" loading="lazy"></div>
           <div class="acard-name">Carlos Larregui</div>
@@ -3984,6 +3992,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>15</strong> obras disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('carlos-larregui')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Carlos Larregui')">Ver obras <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="openHistoria('carlos-larregui-caolin')">Su historia <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Carlos Larregui','Cerámica y alfarería artesanal · Uruguay','images/carlos-larregui/perfil.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
@@ -3992,7 +4001,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Ceramistas de Blanquillo -->
-        <div class="acard" data-especialidad="ceramica" data-servicio="solo-galeria" data-departamento="durazno">
+        <div class="acard" data-slug="ceramistas-de-blanquillo" data-artworks="Ceramistas de Blanquillo" data-q="Ceramistas de Blanquillo" data-especialidad="ceramica" data-servicio="solo-galeria" data-departamento="durazno">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><img src="images/ceramistas-blanquillo/perfil-rosana.jpg" alt="Rosana Martinez, de Ceramistas de Blanquillo" loading="lazy"></div>
           <div class="acard-name">Ceramistas de Blanquillo</div>
@@ -4001,6 +4010,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>5</strong> juegos disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('ceramistas-de-blanquillo')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Ceramistas de Blanquillo')">Ver obras <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="openHistoria('ceramistas-de-blanquillo-legado')">Su historia <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Ceramistas de Blanquillo','Cerámica utilitaria · Blanquillo, Durazno','images/ceramistas-blanquillo/perfil-rosana.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
@@ -4009,7 +4019,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Fabián Trinidad -->
-        <div class="acard" data-especialidad="pintura" data-servicio="solo-galeria" data-departamento="rocha">
+        <div class="acard" data-slug="fabian-trinidad" data-artworks="Fabián Trinidad" data-q="Fabián Trinidad" data-especialidad="pintura" data-servicio="solo-galeria" data-departamento="rocha">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><img src="images/fabian-trinidad/perfil.jpg" alt="Fabián Trinidad pintando en su taller" loading="lazy"></div>
           <div class="acard-name">Fabián Trinidad</div>
@@ -4018,6 +4028,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>3</strong> obras disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('fabian-trinidad')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Fabián Trinidad')">Ver obras <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Fabián Trinidad','Pintura acrílica · Punta del Diablo, Rocha','images/fabian-trinidad/perfil.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4025,7 +4036,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Maria Gimena Damiano -->
-        <div class="acard" data-especialidad="textil" data-servicio="solo-galeria" data-departamento="canelones">
+        <div class="acard" data-slug="gimena-damiano" data-artworks="Maria Gimena Damiano" data-q="Gimena Damiano" data-especialidad="textil" data-servicio="solo-galeria" data-departamento="canelones">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><img src="images/gimena-damiano/perfil-taller.jpg" alt="Maria Gimena Damiano" loading="lazy"></div>
           <div class="acard-name">Maria Gimena Damiano</div>
@@ -4034,6 +4045,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>7</strong> prendas disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('gimena-damiano')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Gimena Damiano')">Ver obras <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="openHistoria('gimena-damiano-tintes-naturales')">Su historia <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Maria Gimena Damiano','Diseño textil, teñido y estampado natural · Canelones, Uruguay','images/gimena-damiano/perfil-taller.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
@@ -4042,7 +4054,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Marie Claire Marambio -->
-        <div class="acard" data-especialidad="textil" data-servicio="solo-galeria" data-departamento="montevideo">
+        <div class="acard" data-slug="marie-claire-marambio" data-artworks="Marie Claire Marambio" data-q="Marie Claire Marambio" data-especialidad="textil" data-servicio="solo-galeria" data-departamento="montevideo">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><img src="images/marie-claire-tejidos/perfil.jpg" alt="Marie Claire Marambio" loading="lazy"></div>
           <div class="acard-name">Marie Claire Marambio</div>
@@ -4051,6 +4063,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>10</strong> obras disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('marie-claire-marambio')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Marie Claire Marambio')">Ver obras <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Marie Claire Marambio','Claire Tejidos · Crochet, dos agujas y macramé · Montevideo','images/marie-claire-tejidos/perfil.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4058,7 +4071,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: BV Mates y Bombillas -->
-        <div class="acard" data-especialidad="ceramica" data-servicio="solo-galeria" data-departamento="">
+        <div class="acard" data-slug="bv-mates-y-bombillas" data-artworks="Julio Cesar Valdez Franco" data-q="Julio Cesar Valdez Franco" data-especialidad="ceramica" data-servicio="solo-galeria" data-departamento="">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><img src="images/bv-mates/perfil.jpg" alt="Julio Valdés y su familia en el puesto de BV Mates y Bombillas" loading="lazy"></div>
           <div class="acard-name">BV Mates y Bombillas</div>
@@ -4067,6 +4080,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>1</strong> obra disponible</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('bv-mates-y-bombillas')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Julio Cesar Valdez Franco')">Ver obras <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('BV Mates y Bombillas','Mates grabados con motivos de fútbol · Uruguay','images/bv-mates/perfil.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4074,7 +4088,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Manuel Génova -->
-        <div class="acard" data-especialidad="escultura" data-servicio="pronto" data-departamento="durazno">
+        <div class="acard" data-slug="manuel-genova" data-q="" data-especialidad="escultura" data-servicio="pronto" data-departamento="durazno">
           <div class="acard-tag">Próximamente</div>
           <div class="acard-av av2"><img src="images/manuel-genova/perfil-taller.jpg" alt="Manuel Génova" loading="lazy"></div>
           <div class="acard-name">Manuel Génova</div>
@@ -4083,6 +4097,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works">Obras próximamente</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('manuel-genova')">Ver perfil <span class="arr">→</span></button>
               <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20perfil%20de%20Manuel%20G%C3%A9nova%20en%20HcEA%20y%20me%20interesa%20su%20obra.%20%C2%BFCu%C3%A1ndo%20van%20a%20estar%20disponibles%3F" class="btn btn-ghost">Notificarme <span class="arr">→</span></a>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Manuel Génova','Tallado en madera · San Francisco, La Paloma, Durazno','images/manuel-genova/perfil-taller.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4090,7 +4105,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Heber Cabanelas -->
-        <div class="acard" data-especialidad="mixta" data-servicio="a-pedido" data-departamento="montevideo">
+        <div class="acard" data-slug="heber-cabanelas" data-artworks="Heber Eduardo Cabanelas" data-q="Heber" data-especialidad="mixta" data-servicio="a-pedido" data-departamento="montevideo">
           <div class="acard-tag">A pedido</div>
           <div class="acard-av av2"><img src="images/heber-cabanelas/perfil.jpg" alt="Heber Eduardo Cabanelas" loading="lazy"></div>
           <div class="acard-name">Heber Eduardo Cabanelas</div>
@@ -4099,6 +4114,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>4</strong> ejemplos de su trabajo</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('heber-cabanelas')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Heber')">Ver ejemplos <span class="arr">→</span></button>
               <a href="/heber.html" class="btn btn-ghost">Ver perfil <span class="arr">→</span></a>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Heber Eduardo Cabanelas','Creación de cuchillos y herrería · Cordón, Montevideo','images/heber-cabanelas/perfil.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
@@ -4107,7 +4123,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Gustavo De Leon (Fotosublime artesanos) -->
-        <div class="acard" data-especialidad="mixta" data-servicio="pronto" data-departamento="maldonado">
+        <div class="acard" data-slug="gustavo-de-leon" data-q="" data-especialidad="mixta" data-servicio="pronto" data-departamento="maldonado">
           <div class="acard-tag">Próximamente</div>
           <div class="acard-av av2"><div class="av-grad" style="background:linear-gradient(135deg,#1e2a2a,#3d5c5c);font-family:var(--serif);font-size:1.4rem;color:rgba(245,240,232,.7)">GL</div></div>
           <div class="acard-name">Gustavo De Leon</div>
@@ -4116,6 +4132,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works">Obras próximamente</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('gustavo-de-leon')">Ver perfil <span class="arr">→</span></button>
               <a href="https://wa.me/59894743435?text=Hola!%20Vi%20el%20perfil%20de%20Gustavo%20De%20Leon%20(Fotosublime)%20en%20HcEA%20y%20me%20interesa%20su%20obra.%20%C2%BFCu%C3%A1ndo%20van%20a%20estar%20disponibles%3F" class="btn btn-ghost">Notificarme <span class="arr">→</span></a>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Gustavo De Leon','Fotosublime artesanos · Fotografía aplicada a madera, cerámica y piedras · Maldonado','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4123,7 +4140,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: TATETI crochet -->
-        <div class="acard" data-especialidad="textil" data-servicio="solo-galeria" data-departamento="montevideo">
+        <div class="acard" data-slug="tateti-crochet" data-artworks="Martha Aguilar|Virginia Paternostro" data-q="TATETI" data-especialidad="textil" data-servicio="solo-galeria" data-departamento="montevideo">
           <div class="acard-tag">Galería</div>
           <div class="acard-av av2"><div class="av-grad" style="background:linear-gradient(135deg,#3a2a16,#6b4a24);font-family:var(--serif);font-size:1.4rem;color:rgba(245,240,232,.7)">TT</div></div>
           <div class="acard-name">TATETI crochet</div>
@@ -4132,6 +4149,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>18</strong> obras disponibles</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('tateti-crochet')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','TATETI')">Ver obras <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('TATETI crochet','Virginia Paternostro y Martha Aguilar · Crochet · Montevideo','', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4139,7 +4157,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
         </div>
 
         <!-- ARTISTA: Carmen -->
-        <div class="acard" data-especialidad="textil" data-servicio="a-pedido" data-departamento="">
+        <div class="acard" data-slug="carmen" data-artworks="Carmen" data-q="Carmen" data-especialidad="textil" data-servicio="a-pedido" data-departamento="">
           <div class="acard-tag">A pedido</div>
           <div class="acard-av av1"><div class="av-grad" style="background:linear-gradient(135deg,#3a2a16,#6b4a24);font-family:var(--serif);font-size:1.4rem;color:rgba(245,240,232,.7)">C</div></div>
           <div class="acard-name">Carmen</div>
@@ -4148,6 +4166,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
           <div class="acard-foot">
             <div class="acard-works-line"><strong>8</strong> ejemplos de su trabajo</div>
             <div class="acard-actions">
+              <button class="btn btn-ghost" onclick="openArtista('carmen')">Ver perfil <span class="arr">→</span></button>
               <button class="btn btn-ghost" onclick="showViewAndSearch('galeria','Carmen')">Ver ejemplos <span class="arr">→</span></button>
               <button type="button" class="acard-share" onclick="shareStoryArtist('Carmen','Tejido a mano · San José, Uruguay','images/carmen/cardigan-beige-01.jpg', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg>Compartir</button>
             </div>
@@ -4251,6 +4270,22 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
 
   <article id="historia-detail" class="hist-art" style="display:none"></article>
 
+</div>
+
+<div id="view-artista" class="view view-section">
+  <div class="sec-nav">
+    <button class="sec-back" onclick="showView('artistas')">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Artistas
+    </button>
+    <div class="sec-tabs">
+      <button class="sec-tab" data-view="galeria">Galería</button>
+      <button class="sec-tab active" data-view="artistas">Artistas</button>
+      <button class="sec-tab" data-view="historias">Historias</button>
+      <button class="sec-tab" data-view="talleres">Talleres</button>
+      <button class="sec-tab" data-view="evento">Evento</button>
+    </div>
+  </div>
+  <article id="artista-detail" class="hist-art"></article>
 </div>
 
 <div id="view-talleres" class="view view-section">
@@ -4964,7 +4999,7 @@ a,button,.btn,.entry-card,.sens-card,.ctx-card,.acard,.artwork,.tcard{transition
 <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 // ══ VIEWS ══════════════════════════════════
-const VIEWS = ['home','galeria','artistas','historias','talleres','evento','dashboard-buyer','dashboard-artist'];
+const VIEWS = ['home','galeria','artistas','artista','historias','talleres','evento','dashboard-buyer','dashboard-artist'];
 
 function showView(name, opts) {
   // Alias especial: 'planes' → abre artistas y scrollea a la sección
@@ -5048,6 +5083,13 @@ window.addEventListener('load', () => {
     showView('galeria', { silent:true });
     return;
   }
+  const slugArt = artistaSlugFromPath();
+  if (slugArt) {
+    if (_artistaCard(slugArt)) { openArtista(slugArt, { fromRoute:true }); return; }
+    history.replaceState(null, '', '/#artistas');
+    showView('artistas', { silent:true });
+    return;
+  }
   const slugHist = historiaSlugFromPath();
   if (slugHist) {
     if (storiesData.some(h => h.slug === slugHist)) {
@@ -5062,6 +5104,12 @@ window.addEventListener('load', () => {
   showView(location.hash.replace('#','').trim() || 'home');
 });
 window.addEventListener('popstate', () => {
+  const slugArt = artistaSlugFromPath();
+  if (slugArt && _artistaCard(slugArt)) {
+    _closeArtworkModalUI();
+    openArtista(slugArt, { fromRoute:true });
+    return;
+  }
   const slugHist = historiaSlugFromPath();
   if (slugHist && storiesData.some(h => h.slug === slugHist)) {
     _closeArtworkModalUI();
@@ -5897,6 +5945,74 @@ async function shareHistoriaLink(slug) {
     ta.remove();
   }
   _hceaToast(ok ? 'Link de la historia copiado' : url);
+}
+
+// ══ PERFIL PROPIO POR ARTISTA (/artista/slug) ══════════════
+// Los datos salen de las tarjetas de la sección Artistas (data-slug): no hay catálogo paralelo.
+// Heber ya tiene su página propia (/heber.html): su link /artista/heber-cabanelas lleva allí.
+function artistaSlugFromPath() {
+  const m = location.pathname.match(/^\/artista\/([^\/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _artistaCard(slug) { return document.querySelector('.acard[data-slug="' + slug + '"]'); }
+
+function openArtista(slug, opts) {
+  const card = _artistaCard(slug);
+  if (!card) return;
+  if (slug === 'heber-cabanelas') { location.href = '/heber.html'; return; }
+  const name = card.querySelector('.acard-name').textContent.replace(/\s*\(.*\)\s*$/, '');
+  const spec = card.querySelector('.acard-spec').textContent;
+  const bio = card.querySelector('.acard-bio').textContent;
+  const tag = card.querySelector('.acard-tag').textContent;
+  const img = card.querySelector('.acard-av img');
+  const names = (card.dataset.artworks || '').split('|').filter(Boolean);
+  const obras = [];
+  artworkData.forEach((d, i) => { if (names.indexOf(d.artist) >= 0 && obras.length < 6) obras.push(i); });
+  const hm = (card.innerHTML.match(/openHistoria\('([^']+)'\)/) || [])[1];
+  const q = card.dataset.q || name;
+  const photo = img
+    ? '<img class="artp-photo" src="' + _hsrc(img.getAttribute('src')) + '" alt="' + _hesc(img.alt) + '">'
+    : '<div class="artp-photo artp-ini">' + _hesc(name.split(' ').map(w => w[0]).slice(0, 2).join('')) + '</div>';
+  const obrasHTML = obras.length
+    ? '<div class="hist-obras"><span class="hist-kicker">Sus obras</span><div class="hist-obras-row">' +
+      obras.map(i => '<button type="button" class="hist-obra" onclick="openArtworkModal(' + i + ')"><img src="' + _hsrc(artworkData[i].images[0]) + '" alt="' + _hesc(artworkData[i].title) + '" loading="lazy"><span>' + _hesc(artworkData[i].title) + '</span></button>').join('') +
+      '</div></div>'
+    : '<p class="artp-soon">Sus obras llegan pronto a la galería.</p>';
+  const box = document.getElementById('artista-detail');
+  box.innerHTML =
+    '<div class="artp-top">' + photo + '<div><span class="artp-tag">' + _hesc(tag) + '</span>' +
+    '<h1 class="hist-title" style="margin:.2rem 0 0">' + _hesc(name) + '</h1><p class="artp-spec">' + _hesc(spec) + '</p></div></div>' +
+    '<p class="hist-lead">' + _hesc(bio) + '</p>' + obrasHTML +
+    '<div class="hist-cta">' +
+    (obras.length ? '<button type="button" class="btn btn-gold" onclick="showViewAndSearch(\'galeria\',\'' + q.replace(/'/g, "\\'") + '\')">Ver todas sus obras <span class="arr">→</span></button>' : '') +
+    (hm ? '<button type="button" class="btn btn-ghost" onclick="openHistoria(\'' + hm + '\')">Su historia <span class="arr">→</span></button>' : '') +
+    '<button type="button" class="btn btn-ghost" onclick="shareArtistaLink(\'' + slug + '\')">Copiar link</button></div>' +
+    '<section class="hist-nl"><span class="hist-kicker">Enterarme de lo próximo</span>' +
+    '<h3>Que lo próximo te llegue a vos</h3>' +
+    '<p>Nuevas historias, artistas y obras, directo a tu WhatsApp. Escribinos y te anotamos.</p>' +
+    '<a class="btn btn-gold" href="' + waNovedades(name) + '" target="_blank" rel="noopener">Anotarme por WhatsApp <span class="arr">→</span></a>' +
+    '<small>Usamos tu número solo para avisarte novedades de Hecho con el Alma. Podés pedir que te saquemos cuando quieras.</small></section>';
+  showView('artista', { silent:true });
+  if (!(opts && opts.fromRoute)) history.pushState({ artista:true }, '', '/artista/' + slug);
+  document.title = name + ' — Hecho con el Alma';
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.content = spec + '. ' + bio.slice(0, 140);
+  document.querySelectorAll('.sec-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'artistas'));
+  window.scrollTo({ top:0, behavior:'instant' });
+}
+
+async function shareArtistaLink(slug) {
+  const url = location.origin + '/artista/' + slug;
+  let ok = false;
+  try { await navigator.clipboard.writeText(url); ok = true; }
+  catch(e) {
+    const ta = document.createElement('textarea');
+    ta.value = url; ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta); ta.select();
+    try { ok = document.execCommand('copy'); } catch(_) {}
+    ta.remove();
+  }
+  _hceaToast(ok ? 'Link del artista copiado' : url);
 }
 
 // Render inicial — después de artworkData para evitar TDZ con const

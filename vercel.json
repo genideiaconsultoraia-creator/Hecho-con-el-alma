@@ -4,6 +4,7 @@
   },
   "rewrites": [
     { "source": "/obra/:slug", "destination": "/api/page?type=obra&slug=:slug" },
-    { "source": "/historias/:slug", "destination": "/api/page?type=historia&slug=:slug" }
+    { "source": "/historias/:slug", "destination": "/api/page?type=historia&slug=:slug" },
+    { "source": "/artista/:slug", "destination": "/api/page?type=artista&slug=:slug" }
   ]
 }
